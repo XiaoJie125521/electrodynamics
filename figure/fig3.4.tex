@@ -1,0 +1,70 @@
+\documentclass[tikz, border=15pt]{standalone}
+\usepackage{amsmath, amssymb,bm}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+	\begin{tikzpicture}[>=Stealth, line cap=round, line join=round]
+		
+		% ================= 1. 绘制三维任意体域 (Region \Omega) =================
+		% 绘制一个不对称的封闭平滑曲线，代表三维体积的截面
+		\draw[thick, fill=blue!8, fill opacity=0.8] 
+		(0, 3) to[out=10, in=130] (4, 2.2) 
+		to[out=-50, in=90] (5, 0) 
+		to[out=-90, in=30] (3, -2.5) 
+		to[out=-150, in=-40] (-1.4, -2.1) 
+		to[out=140, in=270] (-2.5, 0) 
+		to[out=80, in=-170] cycle;
+		
+		% 添加“赤道”辅助线以增强 3D 纵深感
+		\draw[dashed, gray!80, thick] (-2.5, 0) to[out=60, in=125] (5, 0);
+		\draw[gray!80, thick] (-2.5, 0) to[out=-60, in=-120] (5, 0);
+		
+		% ================= 2. 区域与边界标签 =================
+		\node[text=blue!70!black, scale=1.4] at (-0.5, 0.8) {$\Omega$};
+		\node[text=blue!70!black, scale=1.2] at (1.5, 2.8) {边界 $\partial \Omega$};
+		
+		% ================= 3. 内部体积元 dV 与散度 =================
+		\begin{scope}[shift={(1.0, -0.6)}, scale=0.4]
+			% 绘制一个微小三维立方体代表 dV
+			\draw[fill=yellow!50, draw=yellow!70!black, thin] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle; % 正面
+			\draw[fill=yellow!30, draw=yellow!70!black, thin] (0,1) -- (0.5,1.5) -- (1.5,1.5) -- (1,1) -- cycle; % 顶面
+			\draw[fill=yellow!70, draw=yellow!70!black, thin] (1,0) -- (1.5,0.5) -- (1.5,1.5) -- (1,1) -- cycle; % 侧面
+			\node[text=black, scale=2.5] at (3.1, 0.5) {{\footnotesize $\mathrm{d}V$}};
+		\end{scope}
+		\node[text=black, scale=1.1] at (0.2, -1) {散度源 $\nabla \cdot \bm{F}$};
+		
+		% ================= 4. 表面积元 dS 与穿透矢量 =================
+		% 定义曲面上的点 P
+		\coordinate (P) at (4.4, 0.55);
+		
+		% 绘制一个贴合表面的微小曲面片 dS
+		\draw[fill=red!20, draw=red!70!black, thick] 
+		(4, 1.1) to[out=30, in=10] (4.8, 0.5)
+		to[out=200, in=-20] (4.3, 0.2)
+		to[out=150, in=-160] cycle;
+		\node[text=red!80!black, scale=1.1] at (4.3, 0.8) {$\mathrm{d}S$};
+		
+		% 绘制外法向单位矢量 \hat{n} (垂直于 dS 向外)
+		\draw[->, line width=1.5pt, blue!80!black] (P) -- ++(1.4, 0.2) node[right] {$\hat{\bm{n}}$};
+		
+		% 绘制矢量场 F
+		\draw[->, line width=1.5pt, green!50!black] (P) -- ++(1.1, 0.9) node[above right, inner sep=1pt] {$\bm{F}$};
+		
+		% 绘制 F 与 \hat{n} 之间的夹角标示
+		\draw[gray, thick] (P) ++(0.5, 0.07) arc (8:39:0.5);
+		
+		% ================= 5. 绘制背景矢量场线 (通量示意) =================
+		\begin{scope}[green!50!black, thick, opacity=0.5]
+			\draw[->] (-3, 1) to[out=20, in=200] ++(2, 0.5);
+			\draw[->] (-2.8, -1.5) to[out=10, in=190] ++(2.5, 0.3);
+			\draw[->] (2.2, 1.8) to[out=20, in=210] ++(1.8, 0.8);
+			\draw[->] (3.0, -1.8) to[out=15, in=195] ++(2.2, 0.5);
+		\end{scope}
+		
+		% ================= 6. 底部公式框 =================
+		\node[fill=gray!10, rounded corners, inner sep=10pt] at (1.6, -4.2) {
+			\Large $\displaystyle \iiint_{\Omega} (\nabla \cdot \bm{F}) \, \mathrm{d}V = \iint_{\partial \Omega} \bm{F} \cdot \hat{\bm{n}} \, \mathrm{d}S$
+		};
+		
+	\end{tikzpicture}
+\end{document}

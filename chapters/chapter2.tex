@@ -1,0 +1,2956 @@
+\chapter{张量的一般定义、坐标变换与协变导数}
+
+\section{为什么需要张量语言}
+
+在上一章中已经说明: 同一个向量在不同基底下可以有不同的分量表示. 例如, 在曲线坐标中, 向量既可以写成
+\[
+\bm{A}=A^i\bm{e}_i,
+\]
+也可以写成
+\[
+\bm{A}=A_i\bm{e}^i.
+\]
+其中 $A^i$ 和 $A_i$ 是同一个向量的两种不同分量. 它们的数值依赖于坐标系和基底的选择, 但向量 $\bm{A}$ 本身并不依赖于坐标系. 
+
+物理定律应当描述对象本身, 而不是依赖某个特定坐标系下的数组表示. 因此, 需要一种语言, 既能进行具体分量计算, 又能保证表达式在坐标变换下具有明确的变换规律. 张量语言正是为此引入的. 
+
+张量不是“带很多指标的数组”. 数组只是张量在某个坐标系下的分量. 真正的张量对象本身是坐标无关的, 而它的分量应按照特定规则随坐标变换. 
+
+\section{坐标变换与基底变换}
+
+设原坐标为
+\[
+x^1,x^2,x^3,
+\]
+新坐标为
+\[
+x'^1,x'^2,x'^3.
+\]
+二者之间满足可逆光滑变换: 
+\[
+x'^\mu=x'^\mu(x^1,x^2,x^3),
+\]
+以及反变换
+\[
+x^\mu=x^\mu(x'^1,x'^2,x'^3).
+\]
+这里用希腊指标 $\mu,\nu,\alpha,\beta$ 表示一般坐标指标, 取值范围仍为 $1,2,3$. 在以后推广到四维时空时, 它们也可以取 $0,1,2,3$. 本章暂时只讨论三维空间中的张量结构. 
+
+自然基底定义为
+\[
+\bm{e}_\mu
+=
+\frac{\partial \bm{r}}{\partial x^\mu}.
+\]
+新坐标下的自然基底为
+\[
+\bm{e}'_\mu
+=
+\frac{\partial \bm{r}}{\partial x'^\mu}.
+\]
+由链式法则, 
+\[
+\bm{e}'_\mu
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\frac{\partial \bm{r}}{\partial x^\alpha}.
+\]
+因此
+\[
+\bm{e}'_\mu
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\bm{e}_\alpha.
+\]
+这说明自然基底 $\bm{e}_\mu$ 的变换规律中出现的是
+\[
+\frac{\partial x^\alpha}{\partial x'^\mu}.
+\]
+
+与之对偶的基底为
+\[
+\bm{e}^\mu=\nabla x^\mu.
+\]
+新坐标下的对偶基底为
+\[
+\bm{e}'^\mu=\nabla x'^\mu.
+\]
+由链式法则, 
+\[
+\bm{e}'^\mu
+=
+\frac{\partial x'^\mu}{\partial x^\alpha}
+\bm{e}^\alpha.
+\]
+所以对偶基底的变换规律中出现的是
+\[
+\frac{\partial x'^\mu}{\partial x^\alpha}.
+\]
+这是理解协变指标和逆变指标的关键. 
+
+\section{逆变分量与协变分量的变换规律}
+
+设向量 $\bm{A}$ 在旧坐标和新坐标下分别写成
+\[
+\bm{A}=A^\mu\bm{e}_\mu,
+\]
+以及
+\[
+\bm{A}=A'^\mu\bm{e}'_\mu.
+\]
+由于向量本身不随坐标选择而改变, 有
+\[
+A^\alpha\bm{e}_\alpha
+=
+A'^\mu\bm{e}'_\mu.
+\]
+代入基底变换式
+\[
+\bm{e}'_\mu
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\bm{e}_\alpha,
+\]
+得到
+\[
+A^\alpha\bm{e}_\alpha
+=
+A'^\mu
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\bm{e}_\alpha.
+\]
+比较 $\bm{e}_\alpha$ 的系数, 得到
+\[
+A^\alpha
+=
+A'^\mu
+\frac{\partial x^\alpha}{\partial x'^\mu}.
+\]
+等价地, 
+\[
+A'^\mu
+=
+\frac{\partial x'^\mu}{\partial x^\alpha}A^\alpha.
+\]
+这就是逆变分量的变换规律. 逆变分量的变换因子是
+\[
+\frac{\partial x'^\mu}{\partial x^\alpha}.
+\]
+
+再考虑协变分量. 设一形式 $\omega$ 写成
+\[
+\omega=\omega_\mu \dif x^\mu.
+\]
+在新坐标下写成
+\[
+\omega=\omega'_\mu \dif x'^\mu.
+\]
+由链式法则, 
+\[
+\dif x'^\mu
+=
+\frac{\partial x'^\mu}{\partial x^\alpha}\dif x^\alpha.
+\]
+于是
+\[
+\omega
+=
+\omega'_\mu
+\frac{\partial x'^\mu}{\partial x^\alpha}
+\dif x^\alpha.
+\]
+与
+\[
+\omega=\omega_\alpha \dif x^\alpha
+\]
+比较, 得
+\[
+\omega_\alpha
+=
+\omega'_\mu
+\frac{\partial x'^\mu}{\partial x^\alpha}.
+\]
+因此
+\[
+\omega'_\mu
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}\omega_\alpha.
+\]
+这就是协变分量的变换规律. 协变分量的变换因子是
+\[
+\frac{\partial x^\alpha}{\partial x'^\mu}.
+\]
+总结起来: 
+
+逆变分量满足
+\[
+A'^\mu
+=
+\frac{\partial x'^\mu}{\partial x^\alpha}A^\alpha.
+\]
+协变分量满足
+\[
+\omega'_\mu
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}\omega_\alpha.
+\]
+逆变指标在坐标变换时配 $\partial x'/\partial x$, 协变指标在坐标变换时配 $\partial x/\partial x'$. 
+
+\section{一般张量的分量变换规律}
+
+一个具有 $p$ 个逆变指标和 $q$ 个协变指标的对象, 若在坐标变换下满足
+\[
+T'^{\mu_1\cdots\mu_p}_{\nu_1\cdots\nu_q}
+=
+\frac{\partial x'^{\mu_1}}{\partial x^{\alpha_1}}
+\cdots
+\frac{\partial x'^{\mu_p}}{\partial x^{\alpha_p}}
+\frac{\partial x^{\beta_1}}{\partial x'^{\nu_1}}
+\cdots
+\frac{\partial x^{\beta_q}}{\partial x'^{\nu_q}}
+T^{\alpha_1\cdots\alpha_p}_{\beta_1\cdots\beta_q},
+\]
+则称它是一个 $(p,q)$ 型张量. 其中, $p$ 表示逆变指标的个数, $q$ 表示协变指标的个数. 
+
+总阶数为
+\[
+p+q.
+\]
+例如, 标量是 $(0,0)$ 型张量. 它没有指标, 在坐标变换下保持不变: 
+\[
+\phi'=\phi.
+\]
+向量是 $(1,0)$ 型张量, 其分量变换为
+\[
+A'^\mu
+=
+\frac{\partial x'^\mu}{\partial x^\alpha}A^\alpha.
+\]
+一形式或协向量是 $(0,1)$ 型张量, 其分量变换为
+\[
+\omega'_\mu
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}\omega_\alpha.
+\]
+二阶逆变张量是 $(2,0)$ 型张量, 满足
+\[
+T'^{\mu\nu}
+=
+\frac{\partial x'^\mu}{\partial x^\alpha}
+\frac{\partial x'^\nu}{\partial x^\beta}
+T^{\alpha\beta}.
+\]
+二阶协变张量是 $(0,2)$ 型张量, 满足
+\[
+T'_{\mu\nu}
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\frac{\partial x^\beta}{\partial x'^\nu}
+T_{\alpha\beta}.
+\]
+混合张量是同时具有逆变指标和协变指标的张量. 例如 $(1,1)$ 型张量满足
+\[
+T'^\mu{}_\nu
+=
+\frac{\partial x'^\mu}{\partial x^\alpha}
+\frac{\partial x^\beta}{\partial x'^\nu}
+T^\alpha{}_\beta.
+\]
+\section{度规张量作为 $(0,2)$ 型张量}
+
+在曲线坐标中, 度规张量定义为
+\[
+g_{\mu\nu}
+=
+\bm{e}_\mu\cdot\bm{e}_\nu.
+\]
+它是一个 $(0,2)$ 型张量. 下面验证它的变换规律. 
+
+新坐标下的度规为
+\[
+g'_{\mu\nu}
+=
+\bm{e}'_\mu\cdot\bm{e}'_\nu.
+\]
+由基底变换
+\[
+\bm{e}'_\mu
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\bm{e}_\alpha,
+\]
+以及
+\[
+\bm{e}'_\nu
+=
+\frac{\partial x^\beta}{\partial x'^\nu}
+\bm{e}_\beta,
+\]
+得到
+\[
+g'_{\mu\nu}
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\frac{\partial x^\beta}{\partial x'^\nu}
+(\bm{e}_\alpha\cdot\bm{e}_\beta).
+\]
+因此
+\[
+g'_{\mu\nu}
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\frac{\partial x^\beta}{\partial x'^\nu}
+g_{\alpha\beta}.
+\]
+这正是 $(0,2)$ 型张量的变换规律. 
+
+逆变度规 $g^{\mu\nu}$ 是 $g_{\mu\nu}$ 的逆矩阵, 满足
+\[
+g^{\mu\alpha}g_{\alpha\nu}
+=
+\delta^\mu_\nu.
+\]
+它是 $(2,0)$ 型张量, 变换规律为
+\[
+g'^{\mu\nu}
+=
+\frac{\partial x'^\mu}{\partial x^\alpha}
+\frac{\partial x'^\nu}{\partial x^\beta}
+g^{\alpha\beta}.
+\]
+度规张量有两个基本作用. 
+
+第一, 它定义长度和夹角: 
+\[
+\bm{A}\cdot\bm{B}
+=
+g_{\mu\nu}A^\mu B^\nu.
+\]
+第二, 它负责升降指标: 
+\[
+A_\mu=g_{\mu\nu}A^\nu,
+\]
+以及
+\[
+A^\mu=g^{\mu\nu}A_\nu.
+\]
+\section{张量密度与体积元}
+
+度规张量的行列式记为 $g = \det(g_{\mu\nu})$. 根据矩阵行列式的乘法性质, 度规在坐标变换下的行列式行为是: 
+\[
+g' = \det\left( \frac{\partial x^\alpha}{\partial x'^\mu} \right)^2 g.
+\]
+显然, $g$ 并不是一个标量（(0,0)型张量）, 因为坐标变换时多出了雅可比行列式的平方项. 这种带有额外雅可比因子的几何量被称为张量密度. 
+
+对方程两边开平方, 得到: 
+\[
+\sqrt{g'} = \left| \det\left( \frac{\partial x}{\partial x'} \right) \right| \sqrt{g}.
+\]
+另一方面, 三维坐标体积元 $\dif^{3}x = \dif x^{1} \dif x^{2} \dif x^{3}$ 的变换规律为: 
+\[
+\dif^{3}x' = \left| \det\left( \frac{\partial x'}{\partial x} \right) \right| \dif^{3}x.
+\]
+由于这两个变换因子互为倒数, 二者相乘即可得到一个在任何坐标系下都保持不变的标量体积元: 
+\[
+\dif V = \sqrt{g}\, \dif^{3}x = \sqrt{g'}\, \dif^{3}x'.
+\]
+这正是在物理空间中进行积分, 例如计算全空间电荷量或作用量积分时, 需要引入因子 $\sqrt{g}$ 的数学原因. 
+\begin{example}{由球坐标线元求度规与体积元}{2,1}
+	球坐标 $(r,\theta,\varphi)$ 中的线元为
+	\[
+	\dif s^{2}
+	=
+	\dif r^{2}
+	+
+	r^{2}\dif\theta^{2}
+	+
+	r^{2}\sin^{2}\theta\,\dif\varphi^{2}.
+	\]
+	求球坐标下的度规 $g_{\mu\nu}$、逆变度规 $g^{\mu\nu}$、度规行列式 $g$ 以及体积元 $\dif V$. 
+\end{example}
+
+\begin{solution}
+	一般曲线坐标中的线元写为
+	\[
+	\dif s^{2}
+	=
+	g_{\mu\nu}\dif x^{\mu}\dif x^{\nu}.
+	\]
+	在球坐标中取
+	\[
+	(x^{1},x^{2},x^{3})=(r,\theta,\varphi).
+	\]
+	将题中的线元与一般形式比较, 可直接读出非零度规分量: 
+	\[
+	g_{rr}=1,
+	\qquad
+	g_{\theta\theta}=r^{2},
+	\qquad
+	g_{\varphi\varphi}=r^{2}\sin^{2}\theta.
+	\]
+	因此度规矩阵为
+	\[
+	(g_{\mu\nu})
+	=
+	\begin{pmatrix}
+		1 & 0 & 0\\
+		0 & r^{2} & 0\\
+		0 & 0 & r^{2}\sin^{2}\theta
+	\end{pmatrix}.
+	\]
+	由于该矩阵为对角矩阵, 其逆矩阵可直接写出: 
+	\[
+	(g^{\mu\nu})
+	=
+	\begin{pmatrix}
+		1 & 0 & 0\\
+		0 & \dfrac{1}{r^{2}} & 0\\
+		0 & 0 & \dfrac{1}{r^{2}\sin^{2}\theta}
+	\end{pmatrix}.
+	\]
+	于是
+	\[
+	g^{rr}=1,
+	\qquad
+	g^{\theta\theta}=\frac{1}{r^{2}},
+	\qquad
+	g^{\varphi\varphi}=\frac{1}{r^{2}\sin^{2}\theta}.
+	\]
+	度规行列式为
+	\[
+	g
+	=
+	\det(g_{\mu\nu})
+	=
+	1\cdot r^{2}\cdot r^{2}\sin^{2}\theta
+	=
+	r^{4}\sin^{2}\theta.
+	\]
+	因此
+	\[
+	\sqrt{g}=r^{2}\sin\theta.
+	\]
+	曲线坐标中的体积元为
+	\[
+	\dif V
+	=
+	\sqrt{g}\,\dif r\,\dif\theta\,\dif\varphi.
+	\]
+	代入 $\sqrt{g}=r^{2}\sin\theta$, 得到
+	\[
+	\dif V
+	=
+	r^{2}\sin\theta\,\dif r\,\dif\theta\,\dif\varphi.
+	\]
+	这正是球坐标中的体积元. 该例表明, 度规不仅给出长度和夹角, 也决定曲线坐标中的积分测度. 
+\end{solution}
+
+
+\section{Kronecker 符号与恒等张量}
+
+Kronecker 符号定义为
+\[
+\delta^\mu_\nu
+=
+\begin{cases}
+1,& \mu=\nu,\\
+0,& \mu\neq\nu.
+\end{cases}
+\]
+它可以看作恒等映射的分量. 对于任意向量 $A^\nu$, 有
+\[
+\delta^\mu_\nu A^\nu=A^\mu.
+\]
+对于任意协向量 $\omega_\mu$, 有
+\[
+\delta^\mu_\nu\omega_\mu=\omega_\nu.
+\]
+作为一个 $(1,1)$ 型张量, $\delta^\mu_\nu$ 在坐标变换下保持形式不变. 验证如下: 
+\[
+\delta'^\mu_\nu
+=
+\frac{\partial x'^\mu}{\partial x^\alpha}
+\frac{\partial x^\beta}{\partial x'^\nu}
+\delta^\alpha_\beta.
+\]
+由于
+\[
+\delta^\alpha_\beta
+\]
+只起到令 $\alpha=\beta$ 的作用, 所以
+\[
+\delta'^\mu_\nu
+=
+\frac{\partial x'^\mu}{\partial x^\alpha}
+\frac{\partial x^\alpha}{\partial x'^\nu}.
+\]
+由链式法则, 
+\[
+\frac{\partial x'^\mu}{\partial x^\alpha}
+\frac{\partial x^\alpha}{\partial x'^\nu}
+=
+\frac{\partial x'^\mu}{\partial x'^\nu}
+=
+\delta^\mu_\nu.
+\]
+因此
+\[
+\delta'^\mu_\nu=\delta^\mu_\nu.
+\]
+\section{张量的基本代数运算}
+
+张量之间可以进行加法、数乘、张量积和缩并. 在进行这些运算时, 需要严格遵守指标的代数检验规则. 
+
+\subsection{加法与数乘}
+
+只有类型相同的张量才能相加. 例如, 若 $A^\mu{}_\nu$ 和 $B^\mu{}_\nu$ 都是 $(1,1)$ 型张量, 则
+\[
+C^\mu{}_\nu
+=
+A^\mu{}_\nu+B^\mu{}_\nu
+\]
+仍然是 $(1,1)$ 型张量. 
+
+若 $\lambda$ 是标量, 则
+\[
+D^\mu{}_\nu
+=
+\lambda A^\mu{}_\nu
+\]
+也是 $(1,1)$ 型张量. 
+
+不同类型的张量不能直接相加. 例如, $A^\mu$ 与 $\omega_\mu$ 不能直接相加, 因为它们的变换规律不同. 
+
+\subsection{张量积}
+
+两个张量可以相乘形成更高阶张量. 
+
+若 $A^\mu$ 是 $(1,0)$ 型张量, $\omega_\nu$ 是 $(0,1)$ 型张量, 则
+\[
+T^\mu{}_\nu
+=
+A^\mu\omega_\nu
+\]
+是 $(1,1)$ 型张量. 
+
+若 $S^{\mu\nu}$ 是 $(2,0)$ 型张量, $B_\alpha$ 是 $(0,1)$ 型张量, 则
+\[
+U^{\mu\nu}{}_\alpha
+=
+S^{\mu\nu}B_\alpha
+\]
+是 $(2,1)$ 型张量. 
+
+张量积的规则是: 逆变指标数相加, 协变指标数相加. 
+
+\subsection{缩并}
+
+若一个张量同时含有一个逆变指标和一个协变指标, 可以令这两个指标相同并求和, 这叫缩并. 
+
+例如, $(1,1)$ 型张量 $T^\mu{}_\nu$ 可以缩并为标量: 
+\[
+T^\mu{}_\mu.
+\]
+这相当于矩阵的迹. 
+
+再如, $(2,1)$ 型张量 $U^{\mu\nu}{}_\alpha$ 可以对 $\nu$ 和 $\alpha$ 缩并, 得到一个向量: 
+\[
+V^\mu
+=
+U^{\mu\nu}{}_\nu.
+\]
+每进行一次缩并, 总阶数降低两阶, 具体地说, $(p,q)$ 型张量缩并一次后变成 $(p-1,q-1)$ 型张量. 
+
+\subsection{内积作为张量积与缩并}
+
+向量 $A^\mu$ 与协向量 $\omega_\mu$ 的自然配对为
+\[
+\omega_\mu A^\mu.
+\]
+这是一个标量. 
+
+两个向量之间的内积需要借助度规: 
+\[
+\bm{A}\cdot\bm{B}
+=
+g_{\mu\nu}A^\mu B^\nu.
+\]
+这里先形成张量积
+\[
+g_{\mu\nu}A^\mu B^\nu,
+\]
+然后对两个指标进行缩并, 最终得到标量. 
+
+\subsection{自由指标与哑指标的代数检验}
+
+在书写和推导张量方程时, 指标结构提供了基本的代数检验标准: 
+
+\begin{enumerate}
+\item \textbf{自由指标的匹配}: 未被缩并的指标称为自由指标. 方程等号两侧的自由指标应在字母和位置（上或下）上严格对应. 例如 $C^\mu{}_{\nu}=A^\mu{}_{\lambda}B^\lambda{}_{\nu}$, 两侧的自由指标都是上一 $\mu$ 下一 $\nu$. 
+\item \textbf{哑指标的配对}: 被缩并求和的指标称为哑指标. 在同一项中, 哑指标只能出现且仅出现两次, 一次在上, 一次在下. 哑指标的具体字母不影响缩并结果, 可以作一致替换, 例如 $A^\mu B_{\mu}=A^\alpha B_{\alpha}$. 
+\end{enumerate}
+
+\begin{example}{刚体惯性张量的张量形式}{2,2}
+	设刚体占据空间区域 $B$, 质量密度为 $\rho$, 相对于某一固定点 $O$ 的位置矢量为 $\bm{r}$, 其分量记为 $x^{i}$. 若刚体以角速度 $\bm{\omega}$ 转动, 则质元速度为
+	\[
+	\bm{v}
+	=
+	\bm{\omega}\times\bm{r}.
+	\]
+	刚体相对于点 $O$ 的角动量定义为
+	\[
+	\bm{L}
+	=
+	\int_{B}\rho\,\bm{r}\times\bm{v}\,\dif V.
+	\]
+	证明角动量与角速度之间满足
+	\[
+	L_{i}=I_{ij}\omega^{j},
+	\]
+	其中
+	\[
+	I_{ij}
+	=
+	\int_{B}\rho
+	\left(
+	r^{2}\delta_{ij}
+	-
+	x_{i}x_{j}
+	\right)\dif V
+	\]
+	称为刚体关于点 $O$ 的惯性张量. 
+\end{example}
+
+\begin{solution}
+	由刚体转动的速度公式
+	\[
+	\bm{v}
+	=
+	\bm{\omega}\times\bm{r}
+	\]
+	可得速度分量为
+	\[
+	v^{i}
+	=
+	\varepsilon^{i}{}_{jk}\omega^{j}x^{k}.
+	\]
+	角动量分量为
+	\[
+	L_{i}
+	=
+	\int_{B}\rho\,(\bm{r}\times\bm{v})_{i}\,\dif V.
+	\]
+	利用叉积的指标形式, 有
+	\[
+	(\bm{r}\times\bm{v})_{i}
+	=
+	\varepsilon_{ijk}x^{j}v^{k}.
+	\]
+	代入 $v^{k}=\varepsilon^{k}{}_{\ell m}\omega^{\ell}x^{m}$, 得到
+	\[
+	L_{i}
+	=
+	\int_{B}\rho\,
+	\varepsilon_{ijk}x^{j}
+	\varepsilon^{k}{}_{\ell m}\omega^{\ell}x^{m}
+	\,\dif V.
+	\]
+	利用 Levi-Civita 张量的缩并恒等式
+	\[
+	\varepsilon_{ijk}\varepsilon^{k}{}_{\ell m}
+	=
+	\delta_{i\ell}\delta_{jm}
+	-
+	\delta_{im}\delta_{j\ell},
+	\]
+	可得
+	\[
+	L_{i}
+	=
+	\int_{B}\rho
+	\left(
+	\delta_{i\ell}\delta_{jm}
+	-
+	\delta_{im}\delta_{j\ell}
+	\right)
+	x^{j}x^{m}\omega^{\ell}
+	\,\dif V.
+	\]
+	第一项为
+	\[
+	\delta_{i\ell}\delta_{jm}x^{j}x^{m}\omega^{\ell}
+	=
+	\delta_{i\ell}r^{2}\omega^{\ell}
+	=
+	r^{2}\omega_{i}.
+	\]
+	第二项为
+	\[
+	\delta_{im}\delta_{j\ell}x^{j}x^{m}\omega^{\ell}
+	=
+	x_{i}x_{\ell}\omega^{\ell}.
+	\]
+	因此
+	\[
+	L_{i}
+	=
+	\int_{B}\rho
+	\left(
+	r^{2}\omega_{i}
+	-
+	x_{i}x_{\ell}\omega^{\ell}
+	\right)\dif V.
+	\]
+	在欧氏空间中, $\omega_{i}=\delta_{ij}\omega^{j}$, 于是上式可以写为
+	\[
+	L_{i}
+	=
+	\int_{B}\rho
+	\left(
+	r^{2}\delta_{ij}
+	-
+	x_{i}x_{j}
+	\right)\omega^{j}\,\dif V.
+	\]
+	由于 $\omega^{j}$ 与积分变量无关, 可以提出积分号外, 得到
+	\[
+	L_{i}
+	=
+	\left[
+	\int_{B}\rho
+	\left(
+	r^{2}\delta_{ij}
+	-
+	x_{i}x_{j}
+	\right)\dif V
+	\right]\omega^{j}.
+	\]
+	因此定义
+	\[
+	I_{ij}
+	=
+	\int_{B}\rho
+	\left(
+	r^{2}\delta_{ij}
+	-
+	x_{i}x_{j}
+	\right)\dif V,
+	\]
+	便有
+	\[
+	L_{i}
+	=
+	I_{ij}\omega^{j}.
+	\]
+	
+	由定义可见, 惯性张量满足
+	\[
+	I_{ij}=I_{ji},
+	\]
+	因此它是一个对称二阶张量. 在正交笛卡尔坐标中, $I_{ij}$ 可看作一个对称矩阵. 若选取惯性主轴作为坐标轴, 则惯性张量可以对角化: 
+	\[
+	(I_{ij})
+	=
+	\begin{pmatrix}
+		I_{1} & 0 & 0\\
+		0 & I_{2} & 0\\
+		0 & 0 & I_{3}
+	\end{pmatrix}.
+	\]
+	此时角动量与角速度的关系化为
+	\[
+	L_{1}=I_{1}\omega^{1},
+	\qquad
+	L_{2}=I_{2}\omega^{2},
+	\qquad
+	L_{3}=I_{3}\omega^{3}.
+	\]
+	该例表明, 惯性张量描述刚体转动时角速度与角动量之间的线性关系; 一般情况下, 角动量方向并不必然与角速度方向相同. 
+\end{solution}
+
+\section{对称张量与反对称张量}
+
+张量的指标结构中常常包含对称性. 对称性不仅能简化计算, 还常常反映物理或几何结构. 
+
+若二阶逆变张量满足
+\[
+S^{\mu\nu}=S^{\nu\mu},
+\]
+则称它是对称张量. 
+
+若二阶协变张量满足
+\[
+S_{\mu\nu}=S_{\nu\mu},
+\]
+则也称它是对称张量. 
+
+度规张量就是对称张量, 因为
+\[
+g_{\mu\nu}
+=
+\bm{e}_\mu\cdot\bm{e}_\nu
+=
+\bm{e}_\nu\cdot\bm{e}_\mu
+=
+g_{\nu\mu}.
+\]
+若二阶张量满足
+\[
+A_{\mu\nu}=-A_{\nu\mu},
+\]
+则称它是反对称张量. 
+
+反对称张量的对角分量必为零. 因为令 $\mu=\nu$, 有
+\[
+A_{\mu\mu}=-A_{\mu\mu}.
+\]
+所以
+\[
+A_{\mu\mu}=0.
+\]
+比如角速度张量:
+\[
+\Omega=\begin{pmatrix}
+	0 & -\omega_z & \omega_y\\
+	\omega_z & 0 & -\omega_x\\
+	-\omega_y & \omega_x & 0
+\end{pmatrix}=
+\begin{pmatrix}
+	0 & -3 & 2\\
+	3 & 0 & -1\\
+	-2 & 1 & 0
+\end{pmatrix}
+\]
+
+任意二阶协变张量 $T_{\mu\nu}$ 都可以唯一分解为对称部分和反对称部分: 
+\[
+T_{\mu\nu}
+=
+T_{(\mu\nu)}+T_{[\mu\nu]},
+\]
+其中
+\[
+T_{(\mu\nu)}
+=
+\frac{1}{2}(T_{\mu\nu}+T_{\nu\mu}),
+\]
+称为对称部分, 
+\[
+T_{[\mu\nu]}
+=
+\frac{1}{2}(T_{\mu\nu}-T_{\nu\mu}),
+\]
+称为反对称部分. 
+
+显然有
+\[
+T_{(\mu\nu)}=T_{(\nu\mu)},
+\]
+以及
+\[
+T_{[\mu\nu]}=-T_{[\nu\mu]}.
+\]
+括号 $(\cdots)$ 表示对称化, 方括号 $[\cdots]$ 表示反对称化. 
+
+更一般地, 对两个指标的对称化定义为
+\[
+T_{(\mu\nu)}
+=
+\frac{1}{2}(T_{\mu\nu}+T_{\nu\mu}),
+\]
+反对称化定义为
+\[
+T_{[\mu\nu]}
+=
+\frac{1}{2}(T_{\mu\nu}-T_{\nu\mu}).
+\]
+\section{偏导数为什么通常不是张量}
+
+设 $\phi$ 是标量场. 它的偏导数
+\[
+\partial_\mu\phi
+=
+\frac{\partial\phi}{\partial x^\mu}
+\]
+是一个协变向量. 因为在坐标变换下, 
+\[
+\partial'_\mu\phi
+=
+\frac{\partial\phi}{\partial x'^\mu}
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\frac{\partial\phi}{\partial x^\alpha}.
+\]
+因此
+\[
+\partial'_\mu\phi
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\partial_\alpha\phi.
+\]
+这正是协变分量的变换规律. 
+
+但是, 若 $A^\nu$ 是一个向量场, 那么普通偏导
+\[
+\partial_\mu A^\nu
+\]
+一般不是 $(1,1)$ 型张量. 
+
+原因是 $A^\nu$ 本身在坐标变换下带有 Jacobian 因子: 
+\[
+A'^\nu
+=
+\frac{\partial x'^\nu}{\partial x^\beta}A^\beta.
+\]
+对新坐标求偏导: 
+\[
+\partial'_\mu A'^\nu
+=
+\frac{\partial}{\partial x'^\mu}
+\left(
+\frac{\partial x'^\nu}{\partial x^\beta}A^\beta
+\right).
+\]
+使用乘积法则, 得到
+\[
+\partial'_\mu A'^\nu
+=
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\frac{\partial x'^\nu}{\partial x^\beta}
+\partial_\alpha A^\beta
++
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\frac{\partial^2 x'^\nu}{\partial x^\alpha\partial x^\beta}
+A^\beta.
+\]
+第一项符合 $(1,1)$ 型张量的变换规律, 但第二项
+\[
+\frac{\partial x^\alpha}{\partial x'^\mu}
+\frac{\partial^2 x'^\nu}{\partial x^\alpha\partial x^\beta}
+A^\beta
+\]
+是额外项. 一般坐标变换下, 这一项不为零. 
+
+因此, 普通偏导 $\partial_\mu A^\nu$ 一般不是张量. 只有当坐标变换为线性变换时, 二阶偏导数才为零, 普通偏导才按张量规律变换. 在一般曲线坐标中, 需要引入协变导数. 
+
+\section{基底的变化与 Christoffel 符号}
+
+\subsection{自然基底的变化}
+
+在曲线坐标中, 自然基底一般随空间点改变. 设坐标为 $(x^{1},x^{2},x^{3})$, 位置矢量为 $\bm{r}=\bm{r}(x^{1},x^{2},x^{3})$. 自然基底定义为
+\[
+\bm{e}_{\mu}
+=
+\frac{\partial \bm{r}}{\partial x^{\mu}}.
+\]
+当沿坐标方向 $x^{\nu}$ 改变位置时, 基底 $\bm{e}_{\mu}$ 的变化由
+\[
+\partial_{\nu}\bm{e}_{\mu}
+=
+\frac{\partial}{\partial x^{\nu}}
+\left(
+\frac{\partial \bm{r}}{\partial x^{\mu}}
+\right)
+=
+\frac{\partial^{2}\bm{r}}{\partial x^{\nu}\partial x^{\mu}}
+\]
+给出. 由于 $\partial_{\nu}\bm{e}_{\mu}$ 仍是该点切空间中的向量, 可以用自然基底展开: 
+\begin{equation}
+	\partial_{\nu}\bm{e}_{\mu}
+	=
+	\Gamma^{\lambda}{}_{\nu\mu}\bm{e}_{\lambda}.
+	\label{eq:2.1}
+\end{equation}
+展开系数 $\Gamma^{\lambda}{}_{\nu\mu}$ 称为第二类 Christoffel 符号, 也称为联络系数. 它描述自然基底 $\bm{e}_{\mu}$ 沿 $x^{\nu}$ 方向变化时在 $\bm{e}_{\lambda}$ 方向上的分量. 
+
+若坐标函数足够光滑, 则偏导数可交换: 
+\[
+\partial_{\nu}\partial_{\mu}\bm{r}
+=
+\partial_{\mu}\partial_{\nu}\bm{r}.
+\]
+因此
+\[
+\partial_{\nu}\bm{e}_{\mu}
+=
+\partial_{\mu}\bm{e}_{\nu}.
+\]
+由自然基底展开的唯一性可得
+\begin{equation}
+	\Gamma^{\lambda}{}_{\nu\mu}
+	=
+	\Gamma^{\lambda}{}_{\mu\nu}.
+	\label{eq:2.2}
+\end{equation}
+这表明, 在由坐标自然基底诱导的联络中, Christoffel 符号关于下两个指标对称. 
+
+\subsection{第一类 Christoffel 符号}
+
+度规张量定义为自然基底的内积: 
+\[
+g_{\mu\nu}
+=
+\bm{e}_{\mu}\cdot\bm{e}_{\nu}.
+\]
+它刻画了曲线坐标中基底的长度和夹角. 对 $x^{\lambda}$ 求偏导, 得
+\[
+\partial_{\lambda}g_{\mu\nu}
+=
+\partial_{\lambda}
+(\bm{e}_{\mu}\cdot\bm{e}_{\nu}).
+\]
+由乘积法则可得
+\[
+\partial_{\lambda}g_{\mu\nu}
+=
+(\partial_{\lambda}\bm{e}_{\mu})\cdot\bm{e}_{\nu}
++
+\bm{e}_{\mu}\cdot
+(\partial_{\lambda}\bm{e}_{\nu}).
+\]
+代入基底变化公式
+\[
+\partial_{\lambda}\bm{e}_{\mu}
+=
+\Gamma^{\rho}{}_{\lambda\mu}\bm{e}_{\rho},
+\qquad
+\partial_{\lambda}\bm{e}_{\nu}
+=
+\Gamma^{\rho}{}_{\lambda\nu}\bm{e}_{\rho},
+\]
+得到
+\[
+\partial_{\lambda}g_{\mu\nu}
+=
+\Gamma^{\rho}{}_{\lambda\mu}g_{\rho\nu}
++
+\Gamma^{\rho}{}_{\lambda\nu}g_{\mu\rho}.
+\]
+为了降低 Christoffel 符号的第一个指标, 定义第一类 Christoffel 符号为
+\begin{equation}
+	\Gamma_{\sigma\lambda\mu}
+	=
+	g_{\sigma\rho}\Gamma^{\rho}{}_{\lambda\mu}.
+	\label{eq:2.3}
+\end{equation}
+于是上式可写为
+\[
+\partial_{\lambda}g_{\mu\nu}
+=
+\Gamma_{\nu\lambda\mu}
++
+\Gamma_{\mu\lambda\nu}.
+\]
+对指标作循环置换, 得到三式: 
+\[
+\partial_{\lambda}g_{\mu\nu}
+=
+\Gamma_{\nu\lambda\mu}
++
+\Gamma_{\mu\lambda\nu},
+\]
+\[
+\partial_{\mu}g_{\nu\lambda}
+=
+\Gamma_{\lambda\mu\nu}
++
+\Gamma_{\nu\mu\lambda},
+\]
+\[
+\partial_{\nu}g_{\lambda\mu}
+=
+\Gamma_{\mu\nu\lambda}
++
+\Gamma_{\lambda\nu\mu}.
+\]
+利用对称性
+\[
+\Gamma^{\rho}{}_{\lambda\mu}
+=
+\Gamma^{\rho}{}_{\mu\lambda},
+\]
+即
+\[
+\Gamma_{\sigma\lambda\mu}
+=
+\Gamma_{\sigma\mu\lambda},
+\]
+将第二式与第三式相加, 并减去第一式, 得
+\[
+\partial_{\mu}g_{\nu\lambda}
++
+\partial_{\nu}g_{\lambda\mu}
+-
+\partial_{\lambda}g_{\mu\nu}
+=
+2\Gamma_{\lambda\mu\nu}.
+\]
+因此第一类 Christoffel 符号为
+\begin{equation}
+	\Gamma_{\lambda\mu\nu}
+	=
+	\frac{1}{2}
+	\left(
+	\partial_{\mu}g_{\nu\lambda}
+	+
+	\partial_{\nu}g_{\lambda\mu}
+	-
+	\partial_{\lambda}g_{\mu\nu}
+	\right).
+	\label{eq:2.4}
+\end{equation}
+第一类 Christoffel 符号可以完全由度规及其一阶偏导数表示. 
+
+\subsection{第二类 Christoffel 符号}
+
+第二类 Christoffel 符号由第一类 Christoffel 符号升高第一个指标得到. 由定义
+\[
+\Gamma_{\lambda\mu\nu}
+=
+g_{\lambda\sigma}\Gamma^{\sigma}{}_{\mu\nu},
+\]
+两边乘以逆变度规 $g^{\rho\lambda}$, 得
+\[
+g^{\rho\lambda}\Gamma_{\lambda\mu\nu}
+=
+g^{\rho\lambda}g_{\lambda\sigma}\Gamma^{\sigma}{}_{\mu\nu}.
+\]
+由于
+\[
+g^{\rho\lambda}g_{\lambda\sigma}
+=
+\delta^{\rho}_{\sigma},
+\]
+所以
+\[
+\Gamma^{\rho}{}_{\mu\nu}
+=
+g^{\rho\lambda}\Gamma_{\lambda\mu\nu}.
+\]
+代入第一类 Christoffel 符号公式, 得到
+\begin{equation}
+	\Gamma^{\rho}{}_{\mu\nu}
+	=
+	\frac{1}{2}g^{\rho\lambda}
+	\left(
+	\partial_{\mu}g_{\nu\lambda}
+	+
+	\partial_{\nu}g_{\lambda\mu}
+	-
+	\partial_{\lambda}g_{\mu\nu}
+	\right).
+	\label{eq:2.5}
+\end{equation}
+等价地, 改写哑指标, 可写为
+\begin{equation}
+	\Gamma^{\lambda}{}_{\mu\nu}
+	=
+	\frac{1}{2}g^{\lambda\sigma}
+	\left(
+	\partial_{\mu}g_{\nu\sigma}
+	+
+	\partial_{\nu}g_{\mu\sigma}
+	-
+	\partial_{\sigma}g_{\mu\nu}
+	\right).
+	\label{eq:2.6}
+\end{equation}
+这就是通常所称的 Christoffel 符号公式. 因此在欧氏空间的曲线坐标中, 只要给定度规 $g_{\mu\nu}$, 就可以计算联络系数. 
+
+\begin{example}{由柱坐标度规计算 Christoffel 符号}{2,3}
+	柱坐标 $(\rho,\varphi,z)$ 的线元为
+	\[
+	\dif s^{2}
+	=
+	\dif\rho^{2}
+	+
+	\rho^{2}\dif\varphi^{2}
+	+
+	\dif z^{2}.
+	\]
+	由此求柱坐标中非零的第二类 Christoffel 符号. 
+\end{example}
+
+\begin{solution}
+	由线元
+	\[
+	\dif s^{2}
+	=
+	g_{\mu\nu}\dif x^{\mu}\dif x^{\nu}
+	\]
+	可知, 在柱坐标
+	\[
+	(x^{1},x^{2},x^{3})=(\rho,\varphi,z)
+	\]
+	中, 度规矩阵为
+	\[
+	(g_{\mu\nu})
+	=
+	\begin{pmatrix}
+		1&0&0\\
+		0&\rho^{2}&0\\
+		0&0&1
+	\end{pmatrix}.
+	\]
+	因此非零度规分量为
+	\[
+	g_{\rho\rho}=1,
+	\qquad
+	g_{\varphi\varphi}=\rho^{2},
+	\qquad
+	g_{zz}=1.
+	\]
+	逆变度规为
+	\[
+	(g^{\mu\nu})
+	=
+	\begin{pmatrix}
+		1&0&0\\
+		0&\dfrac{1}{\rho^{2}}&0\\
+		0&0&1
+	\end{pmatrix}.
+	\]
+	因此
+	\[
+	g^{\rho\rho}=1,
+	\qquad
+	g^{\varphi\varphi}=\frac{1}{\rho^{2}},
+	\qquad
+	g^{zz}=1.
+	\]
+	
+	第二类 Christoffel 符号由公式
+	\[
+	\Gamma^{\lambda}{}_{\mu\nu}
+	=
+	\frac{1}{2}g^{\lambda\sigma}
+	\left(
+	\partial_{\mu}g_{\nu\sigma}
+	+
+	\partial_{\nu}g_{\mu\sigma}
+	-
+	\partial_{\sigma}g_{\mu\nu}
+	\right)
+	\]
+	给出. 柱坐标度规中只有 $g_{\varphi\varphi}=\rho^{2}$ 依赖坐标, 因此唯一非零的度规偏导数为
+	\[
+	\partial_{\rho}g_{\varphi\varphi}
+	=
+	2\rho.
+	\]
+	
+	先计算 $\Gamma^{\rho}{}_{\varphi\varphi}$. 取 $\lambda=\rho,\mu=\varphi,\nu=\varphi$, 有
+	\[
+	\Gamma^{\rho}{}_{\varphi\varphi}
+	=
+	\frac{1}{2}g^{\rho\sigma}
+	\left(
+	\partial_{\varphi}g_{\varphi\sigma}
+	+
+	\partial_{\varphi}g_{\varphi\sigma}
+	-
+	\partial_{\sigma}g_{\varphi\varphi}
+	\right).
+	\]
+	由于 $g^{\rho\sigma}$ 只有在 $\sigma=\rho$ 时非零, 故
+	\[
+	\Gamma^{\rho}{}_{\varphi\varphi}
+	=
+	-\frac{1}{2}g^{\rho\rho}\partial_{\rho}g_{\varphi\varphi}.
+	\]
+	代入 $g^{\rho\rho}=1$ 与 $\partial_{\rho}g_{\varphi\varphi}=2\rho$, 得到
+	\[
+	\Gamma^{\rho}{}_{\varphi\varphi}
+	=
+	-\rho.
+	\]
+	
+	再计算 $\Gamma^{\varphi}{}_{\rho\varphi}$. 取 $\lambda=\varphi,\mu=\rho,\nu=\varphi$, 有
+	\[
+	\Gamma^{\varphi}{}_{\rho\varphi}
+	=
+	\frac{1}{2}g^{\varphi\sigma}
+	\left(
+	\partial_{\rho}g_{\varphi\sigma}
+	+
+	\partial_{\varphi}g_{\rho\sigma}
+	-
+	\partial_{\sigma}g_{\rho\varphi}
+	\right).
+	\]
+	由于 $g^{\varphi\sigma}$ 只有在 $\sigma=\varphi$ 时非零, 且 $g_{\rho\varphi}=0$, 可得
+	\[
+	\Gamma^{\varphi}{}_{\rho\varphi}
+	=
+	\frac{1}{2}g^{\varphi\varphi}\partial_{\rho}g_{\varphi\varphi}.
+	\]
+	代入
+	\[
+	g^{\varphi\varphi}=\frac{1}{\rho^{2}},
+	\qquad
+	\partial_{\rho}g_{\varphi\varphi}=2\rho,
+	\]
+	得到
+	\[
+	\Gamma^{\varphi}{}_{\rho\varphi}
+	=
+	\frac{1}{\rho}.
+	\]
+	由于 Christoffel 符号在下两个指标上对称, 因此
+	\[
+	\Gamma^{\varphi}{}_{\varphi\rho}
+	=
+	\Gamma^{\varphi}{}_{\rho\varphi}
+	=
+	\frac{1}{\rho}.
+	\]
+	
+	综上, 柱坐标中非零的第二类 Christoffel 符号为
+	\[
+	\Gamma^{\rho}{}_{\varphi\varphi}
+	=
+	-\rho,
+	\qquad
+	\Gamma^{\varphi}{}_{\rho\varphi}
+	=
+	\Gamma^{\varphi}{}_{\varphi\rho}
+	=
+	\frac{1}{\rho}.
+	\]
+	其余 Christoffel 符号均为零. 
+	
+	这些非零项反映了柱坐标自然基底随位置变化的事实. 即使空间本身仍是欧氏空间, 曲线坐标中的基底变化也会使协变导数中出现 Christoffel 项. 
+\end{solution}
+
+\section{协变导数}
+
+\subsection{逆变分量的协变导数}
+
+设向量场在自然基底下表示为
+\[
+\bm{A}
+=
+A^{\nu}\bm{e}_{\nu}.
+\]
+对坐标 $x^{\mu}$ 求偏导, 由乘积法则得
+\[
+\partial_{\mu}\bm{A}
+=
+\partial_{\mu}(A^{\nu}\bm{e}_{\nu})
+=
+(\partial_{\mu}A^{\nu})\bm{e}_{\nu}
++
+A^{\nu}\partial_{\mu}\bm{e}_{\nu}.
+\]
+代入基底变化公式
+\[
+\partial_{\mu}\bm{e}_{\nu}
+=
+\Gamma^{\lambda}{}_{\mu\nu}\bm{e}_{\lambda},
+\]
+可得
+\[
+\partial_{\mu}\bm{A}
+=
+(\partial_{\mu}A^{\lambda})\bm{e}_{\lambda}
++
+A^{\nu}\Gamma^{\lambda}{}_{\mu\nu}\bm{e}_{\lambda}.
+\]
+合并同类项, 得到
+\[
+\partial_{\mu}\bm{A}
+=
+\left(
+\partial_{\mu}A^{\lambda}
++
+\Gamma^{\lambda}{}_{\mu\nu}A^{\nu}
+\right)\bm{e}_{\lambda}.
+\]
+因此, 括号中的量定义为逆变分量的协变导数: 
+\begin{equation}
+	\nabla_{\mu}A^{\lambda}
+	=
+	\partial_{\mu}A^{\lambda}
+	+
+	\Gamma^{\lambda}{}_{\mu\nu}A^{\nu}.
+	\label{eq:2.7}
+\end{equation}
+协变导数中的第二项来自基底变化. 若在笛卡尔坐标中, 基底不变, Christoffel 符号为零, 上式退化为普通偏导数. 
+
+\subsection{协变分量的协变导数}
+
+协变分量的协变导数可以由标量配对的不变性推出. 设 $\omega_{\nu}$ 是协变向量分量, $A^{\nu}$ 是任意逆变向量分量, 则
+\[
+\omega_{\nu}A^{\nu}
+\]
+是标量. 标量的协变导数等于普通偏导数, 因此
+\[
+\nabla_{\mu}(\omega_{\nu}A^{\nu})
+=
+\partial_{\mu}(\omega_{\nu}A^{\nu}).
+\]
+另一方面, 协变导数应满足 Leibniz 法则: 
+\[
+\nabla_{\mu}(\omega_{\nu}A^{\nu})
+=
+(\nabla_{\mu}\omega_{\nu})A^{\nu}
++
+\omega_{\nu}\nabla_{\mu}A^{\nu}.
+\]
+代入逆变分量的协变导数公式: 
+\[
+\nabla_{\mu}A^{\nu}
+=
+\partial_{\mu}A^{\nu}
++
+\Gamma^{\nu}{}_{\mu\lambda}A^{\lambda},
+\]
+得到
+\[
+\nabla_{\mu}(\omega_{\nu}A^{\nu})
+=
+(\nabla_{\mu}\omega_{\nu})A^{\nu}
++
+\omega_{\nu}\partial_{\mu}A^{\nu}
++
+\omega_{\nu}\Gamma^{\nu}{}_{\mu\lambda}A^{\lambda}.
+\]
+而普通偏导为
+\[
+\partial_{\mu}(\omega_{\nu}A^{\nu})
+=
+(\partial_{\mu}\omega_{\nu})A^{\nu}
++
+\omega_{\nu}\partial_{\mu}A^{\nu}.
+\]
+比较两式, 并消去公共项, 可得
+\[
+(\nabla_{\mu}\omega_{\nu})A^{\nu}
++
+\omega_{\nu}\Gamma^{\nu}{}_{\mu\lambda}A^{\lambda}
+=
+(\partial_{\mu}\omega_{\nu})A^{\nu}.
+\]
+将第二项中的哑指标 $\nu,\lambda$ 改写为统一形式: 
+\[
+\omega_{\nu}\Gamma^{\nu}{}_{\mu\lambda}A^{\lambda}
+=
+\Gamma^{\lambda}{}_{\mu\nu}\omega_{\lambda}A^{\nu}.
+\]
+因此
+\[
+(\nabla_{\mu}\omega_{\nu})A^{\nu}
++
+\Gamma^{\lambda}{}_{\mu\nu}\omega_{\lambda}A^{\nu}
+=
+(\partial_{\mu}\omega_{\nu})A^{\nu}.
+\]
+由于 $A^{\nu}$ 任意, 得到
+\begin{equation}
+	\nabla_{\mu}\omega_{\nu}
+	=
+	\partial_{\mu}\omega_{\nu}
+	-
+	\Gamma^{\lambda}{}_{\mu\nu}\omega_{\lambda}.
+	\label{eq:2.8}
+\end{equation}
+由此可见, 逆变指标给出正的 Christoffel 项, 协变指标给出负的 Christoffel 项. 
+
+\subsection{一般张量的协变导数}
+
+对一般张量, 协变导数的规则可以由上述两种情形推广得到. 每一个逆变指标产生一个正的联络项, 每一个协变指标产生一个负的联络项. 
+
+例如, 对 $(1,1)$ 型张量 $T^{\alpha}{}_{\beta}$, 有
+\begin{equation}
+	\nabla_{\mu}T^{\alpha}{}_{\beta}
+	=
+	\partial_{\mu}T^{\alpha}{}_{\beta}
+	+
+	\Gamma^{\alpha}{}_{\mu\lambda}T^{\lambda}{}_{\beta}
+	-
+	\Gamma^{\lambda}{}_{\mu\beta}T^{\alpha}{}_{\lambda}.
+	\label{eq:2.9}
+\end{equation}
+对于 $(2,0)$ 型张量 $S^{\alpha\beta}$, 有
+\[
+\nabla_{\mu}S^{\alpha\beta}
+=
+\partial_{\mu}S^{\alpha\beta}
++
+\Gamma^{\alpha}{}_{\mu\lambda}S^{\lambda\beta}
++
+\Gamma^{\beta}{}_{\mu\lambda}S^{\alpha\lambda}.
+\]
+对于 $(0,2)$ 型张量 $B_{\alpha\beta}$, 有
+\[
+\nabla_{\mu}B_{\alpha\beta}
+=
+\partial_{\mu}B_{\alpha\beta}
+-
+\Gamma^{\lambda}{}_{\mu\alpha}B_{\lambda\beta}
+-
+\Gamma^{\lambda}{}_{\mu\beta}B_{\alpha\lambda}.
+\]
+保证了张量场求导后仍然按照张量规律变换. 
+
+\begin{example}{柱坐标中向量场的协变导数}{2,4}
+	在柱坐标 $(\rho,\varphi,z)$ 中, 设向量场在自然基底下写为
+	\[
+	\bm{A}
+	=
+	A^{\rho}\bm{e}_{\rho}
+	+
+	A^{\varphi}\bm{e}_{\varphi}
+	+
+	A^{z}\bm{e}_{z}.
+	\]
+	已知柱坐标中非零 Christoffel 符号为
+	\[
+	\Gamma^{\rho}{}_{\varphi\varphi}
+	=
+	-\rho,
+	\qquad
+	\Gamma^{\varphi}{}_{\rho\varphi}
+	=
+	\Gamma^{\varphi}{}_{\varphi\rho}
+	=
+	\frac{1}{\rho}.
+	\]
+	求 $\nabla_{\varphi}A^{\rho}$、$\nabla_{\varphi}A^{\varphi}$ 和 $\nabla_{\rho}A^{\varphi}$. 
+\end{example}
+
+\begin{solution}
+	向量逆变分量的协变导数为
+	\[
+	\nabla_{\mu}A^{\lambda}
+	=
+	\partial_{\mu}A^{\lambda}
+	+
+	\Gamma^{\lambda}{}_{\mu\nu}A^{\nu}.
+	\]
+	首先计算 $\nabla_{\varphi}A^{\rho}$. 令 $\mu=\varphi,\lambda=\rho$, 得到
+	\[
+	\nabla_{\varphi}A^{\rho}
+	=
+	\partial_{\varphi}A^{\rho}
+	+
+	\Gamma^{\rho}{}_{\varphi\nu}A^{\nu}.
+	\]
+	在柱坐标中, 与 $\Gamma^{\rho}{}_{\varphi\nu}$ 有关的非零项只有
+	\[
+	\Gamma^{\rho}{}_{\varphi\varphi}
+	=
+	-\rho.
+	\]
+	因此
+	\[
+	\nabla_{\varphi}A^{\rho}
+	=
+	\partial_{\varphi}A^{\rho}
+	+
+	\Gamma^{\rho}{}_{\varphi\varphi}A^{\varphi}
+	=
+	\partial_{\varphi}A^{\rho}
+	-
+	\rho A^{\varphi}.
+	\]
+	
+	其次计算 $\nabla_{\varphi}A^{\varphi}$. 令 $\mu=\varphi,\lambda=\varphi$, 有
+	\[
+	\nabla_{\varphi}A^{\varphi}
+	=
+	\partial_{\varphi}A^{\varphi}
+	+
+	\Gamma^{\varphi}{}_{\varphi\nu}A^{\nu}.
+	\]
+	在柱坐标中, 与 $\Gamma^{\varphi}{}_{\varphi\nu}$ 有关的非零项为
+	\[
+	\Gamma^{\varphi}{}_{\varphi\rho}
+	=
+	\frac{1}{\rho}.
+	\]
+	所以
+	\[
+	\nabla_{\varphi}A^{\varphi}
+	=
+	\partial_{\varphi}A^{\varphi}
+	+
+	\Gamma^{\varphi}{}_{\varphi\rho}A^{\rho}
+	=
+	\partial_{\varphi}A^{\varphi}
+	+
+	\frac{1}{\rho}A^{\rho}.
+	\]
+	
+	最后计算 $\nabla_{\rho}A^{\varphi}$. 令 $\mu=\rho,\lambda=\varphi$, 有
+	\[
+	\nabla_{\rho}A^{\varphi}
+	=
+	\partial_{\rho}A^{\varphi}
+	+
+	\Gamma^{\varphi}{}_{\rho\nu}A^{\nu}.
+	\]
+	在柱坐标中, 与 $\Gamma^{\varphi}{}_{\rho\nu}$ 有关的非零项为
+	\[
+	\Gamma^{\varphi}{}_{\rho\varphi}
+	=
+	\frac{1}{\rho}.
+	\]
+	因此
+	\[
+	\nabla_{\rho}A^{\varphi}
+	=
+	\partial_{\rho}A^{\varphi}
+	+
+	\Gamma^{\varphi}{}_{\rho\varphi}A^{\varphi}
+	=
+	\partial_{\rho}A^{\varphi}
+	+
+	\frac{1}{\rho}A^{\varphi}.
+	\]
+	
+	综上, 
+	\[
+	\nabla_{\varphi}A^{\rho}
+	=
+	\partial_{\varphi}A^{\rho}
+	-
+	\rho A^{\varphi},
+	\]
+	\[
+	\nabla_{\varphi}A^{\varphi}
+	=
+	\partial_{\varphi}A^{\varphi}
+	+
+	\frac{1}{\rho}A^{\rho},
+	\]
+	\[
+	\nabla_{\rho}A^{\varphi}
+	=
+	\partial_{\rho}A^{\varphi}
+	+
+	\frac{1}{\rho}A^{\varphi}.
+	\]
+\end{solution}
+
+\section{测地线方程}
+
+\subsection{平行移动与测地线}
+
+协变导数可以用来描述向量沿曲线的平行移动. 设曲线由
+\[
+x^{\mu}=x^{\mu}(s)
+\]
+给出, 其中 $s$ 是曲线参数. 曲线的切向量为
+\[
+u^{\mu}
+=
+\frac{\dif x^{\mu}}{\dif s}.
+\]
+向量 $A^{\mu}$ 沿曲线的绝对导数定义为
+\[
+\frac{D A^{\mu}}{\dif s}
+=
+u^{\nu}\nabla_{\nu}A^{\mu}.
+\]
+代入协变导数公式, 得
+\[
+\frac{D A^{\mu}}{\dif s}
+=
+\frac{\dif x^{\nu}}{\dif s}
+\left(
+\partial_{\nu}A^{\mu}
++
+\Gamma^{\mu}{}_{\nu\lambda}A^{\lambda}
+\right).
+\]
+沿曲线有
+\[
+\frac{\dif A^{\mu}}{\dif s}
+=
+\frac{\dif x^{\nu}}{\dif s}\partial_{\nu}A^{\mu},
+\]
+因此
+\begin{equation}
+	\frac{D A^{\mu}}{\dif s}
+	=
+	\frac{\dif A^{\mu}}{\dif s}
+	+
+	\Gamma^{\mu}{}_{\nu\lambda}
+	\frac{\dif x^{\nu}}{\dif s}
+	A^{\lambda}.
+	\label{eq:2.10}
+\end{equation}
+若向量沿曲线平行移动, 则
+\[
+\frac{D A^{\mu}}{\dif s}=0.
+\]
+
+测地线可以理解为其切向量沿自身平行移动的曲线. 令
+\[
+A^{\mu}=u^{\mu}=\frac{\dif x^{\mu}}{\dif s},
+\]
+并要求
+\[
+\frac{D u^{\mu}}{\dif s}=0.
+\]
+由式 \eqref{eq:2.10} 得
+\[
+\frac{\dif u^{\mu}}{\dif s}
++
+\Gamma^{\mu}{}_{\nu\lambda}u^{\nu}u^{\lambda}
+=
+0.
+\]
+代入 $u^{\mu}=\dif x^{\mu}/\dif s$, 得到测地线方程: 
+\begin{equation}
+	\frac{\dif^{2}x^{\mu}}{\dif s^{2}}
+	+
+	\Gamma^{\mu}{}_{\nu\lambda}
+	\frac{\dif x^{\nu}}{\dif s}
+	\frac{\dif x^{\lambda}}{\dif s}
+	=
+	0.
+	\label{eq:2.11}
+\end{equation}
+在笛卡尔坐标中 $\Gamma^{\mu}{}_{\nu\lambda}=0$, 测地线方程退化为
+\[
+\frac{\dif^{2}x^{\mu}}{\dif s^{2}}=0,
+\]
+即通常意义下的直线方程. 
+
+\begin{example}{平面极坐标中的测地线方程}{2,5}
+	二维欧氏平面采用极坐标 $(r,\varphi)$, 线元为
+	\[
+	\dif s^{2}
+	=
+	\dif r^{2}
+	+
+	r^{2}\dif\varphi^{2}.
+	\]
+	已知非零 Christoffel 符号为
+	\[
+	\Gamma^{r}{}_{\varphi\varphi}
+	=
+	-r,
+	\qquad
+	\Gamma^{\varphi}{}_{r\varphi}
+	=
+	\Gamma^{\varphi}{}_{\varphi r}
+	=
+	\frac{1}{r}.
+	\]
+	写出平面极坐标中的测地线方程. 
+\end{example}
+
+\begin{solution}
+	测地线方程为
+	\[
+	\frac{\dif^{2}x^{\mu}}{\dif s^{2}}
+	+
+	\Gamma^{\mu}{}_{\nu\lambda}
+	\frac{\dif x^{\nu}}{\dif s}
+	\frac{\dif x^{\lambda}}{\dif s}
+	=
+	0.
+	\]
+	在极坐标中, 坐标为
+	\[
+	(x^{1},x^{2})=(r,\varphi).
+	\]
+	因此测地线方程应分别写出 $r$ 分量和 $\varphi$ 分量. 
+	
+	先取 $\mu=r$. 由于与 $r$ 分量有关的非零 Christoffel 符号为
+	\[
+	\Gamma^{r}{}_{\varphi\varphi}
+	=
+	-r,
+	\]
+	所以
+	\[
+	\frac{\dif^{2}r}{\dif s^{2}}
+	+
+	\Gamma^{r}{}_{\varphi\varphi}
+	\frac{\dif\varphi}{\dif s}
+	\frac{\dif\varphi}{\dif s}
+	=
+	0.
+	\]
+	代入 $\Gamma^{r}{}_{\varphi\varphi}=-r$, 得到
+	\[
+	\frac{\dif^{2}r}{\dif s^{2}}
+	-
+	r\left(
+	\frac{\dif\varphi}{\dif s}
+	\right)^{2}
+	=
+	0.
+	\]
+	
+	再取 $\mu=\varphi$. 与 $\varphi$ 分量有关的非零 Christoffel 符号为
+	\[
+	\Gamma^{\varphi}{}_{r\varphi}
+	=
+	\Gamma^{\varphi}{}_{\varphi r}
+	=
+	\frac{1}{r}.
+	\]
+	因此
+	\[
+	\frac{\dif^{2}\varphi}{\dif s^{2}}
+	+
+	\Gamma^{\varphi}{}_{r\varphi}
+	\frac{\dif r}{\dif s}
+	\frac{\dif\varphi}{\dif s}
+	+
+	\Gamma^{\varphi}{}_{\varphi r}
+	\frac{\dif\varphi}{\dif s}
+	\frac{\dif r}{\dif s}
+	=
+	0.
+	\]
+	代入 Christoffel 符号, 得到
+	\[
+	\frac{\dif^{2}\varphi}{\dif s^{2}}
+	+
+	\frac{1}{r}
+	\frac{\dif r}{\dif s}
+	\frac{\dif\varphi}{\dif s}
+	+
+	\frac{1}{r}
+	\frac{\dif\varphi}{\dif s}
+	\frac{\dif r}{\dif s}
+	=
+	0.
+	\]
+	整理得
+	\[
+	\frac{\dif^{2}\varphi}{\dif s^{2}}
+	+
+	\frac{2}{r}
+	\frac{\dif r}{\dif s}
+	\frac{\dif\varphi}{\dif s}
+	=
+	0.
+	\]
+	
+	综上, 平面极坐标中的测地线方程为
+	\[
+	\frac{\dif^{2}r}{\dif s^{2}}
+	-
+	r\left(
+	\frac{\dif\varphi}{\dif s}
+	\right)^{2}
+	=
+	0,
+	\]
+	\[
+	\frac{\dif^{2}\varphi}{\dif s^{2}}
+	+
+	\frac{2}{r}
+	\frac{\dif r}{\dif s}
+	\frac{\dif\varphi}{\dif s}
+	=
+	0.
+	\]
+	这些方程描述的仍是欧氏平面中的直线. Christoffel 符号的出现并不表示空间弯曲, 而是由于极坐标自然基底随位置变化. 
+\end{solution}
+
+\section{正交曲线坐标系中的联络系数}
+
+\subsection{正交曲线坐标的度规}
+
+设三维正交曲线坐标为 $(q^{1},q^{2},q^{3})$, 其线元为
+\[
+\dif s^{2}
+=
+h_{1}^{2}(\dif q^{1})^{2}
++
+h_{2}^{2}(\dif q^{2})^{2}
++
+h_{3}^{2}(\dif q^{3})^{2}.
+\]
+此时度规为
+\[
+g_{ij}
+=
+h_{i}^{2}\delta_{ij},
+\qquad
+\text{不对 } i \text{ 求和}.
+\]
+逆变度规为
+\[
+g^{ij}
+=
+\frac{1}{h_{i}^{2}}\delta^{ij},
+\qquad
+\text{不对 } i \text{ 求和}.
+\]
+将这些表达式代入 Christoffel 符号公式
+\[
+\Gamma^{i}{}_{jk}
+=
+\frac{1}{2}g^{i\ell}
+\left(
+\partial_{j}g_{k\ell}
++
+\partial_{k}g_{j\ell}
+-
+\partial_{\ell}g_{jk}
+\right),
+\]
+即可得到正交曲线坐标中的联络系数. 
+
+\subsection{正交曲线坐标中的非零联络系数}
+
+由于正交度规只有对角分量
+\[
+g_{ii}=h_{i}^{2},
+\]
+大多数 Christoffel 符号为零. 非零项可以分为以下几类. 
+
+第一类为三个指标相同的情形. 对固定的 $i$, 有
+\begin{equation}
+	\Gamma^{i}{}_{ii}
+	=
+	\frac{1}{h_{i}}\partial_{i}h_{i}
+	=
+	\partial_{i}\ln h_{i}.
+	\label{eq:2.12}
+\end{equation}
+
+第二类为上指标与其中一个下指标相同的情形. 若 $i\neq j$, 则
+\begin{equation}
+	\Gamma^{i}{}_{ij}
+	=
+	\Gamma^{i}{}_{ji}
+	=
+	\frac{1}{h_{i}}\partial_{j}h_{i}
+	=
+	\partial_{j}\ln h_{i}.
+	\label{eq:2.13}
+\end{equation}
+
+第三类为两个下指标相同而上指标不同的情形. 若 $i\neq j$, 则
+\begin{equation}
+	\Gamma^{i}{}_{jj}
+	=
+	-
+	\frac{h_{j}}{h_{i}^{2}}\partial_{i}h_{j}.
+	\label{eq:2.14}
+\end{equation}
+
+除此之外, 若三个指标互不相同, 则
+\begin{equation}
+	\Gamma^{i}{}_{jk}=0,
+	\qquad
+	i,j,k \text{ 互不相同}.
+	\label{eq:2.15}
+\end{equation}
+可以看出,出正交曲线坐标中的 Christoffel 符号完全由 Lamé 系数 $h_{i}$ 及其偏导数决定. 
+
+\subsection{柱坐标中的联络系数}
+
+柱坐标 $(\rho,\varphi,z)$ 的 Lamé 系数为
+\[
+h_{\rho}=1,
+\qquad
+h_{\varphi}=\rho,
+\qquad
+h_{z}=1.
+\]
+由正交曲线坐标的联络系数公式可知, 唯一非零的 Christoffel 符号为
+\[
+\Gamma^{\rho}{}_{\varphi\varphi}
+=
+-\rho,
+\]
+以及
+\[
+\Gamma^{\varphi}{}_{\rho\varphi}
+=
+\Gamma^{\varphi}{}_{\varphi\rho}
+=
+\frac{1}{\rho}.
+\]
+因此柱坐标中的基底变化为
+\[
+\partial_{\varphi}\bm{e}_{\varphi}
+=
+-\rho\bm{e}_{\rho},
+\]
+\[
+\partial_{\rho}\bm{e}_{\varphi}
+=
+\partial_{\varphi}\bm{e}_{\rho}
+=
+\frac{1}{\rho}\bm{e}_{\varphi}.
+\]
+这些公式反映了柱坐标中角向基底随 $\varphi$ 变化的几何事实. 
+
+\subsection{球坐标中的联络系数}
+
+球坐标 $(r,\theta,\varphi)$ 的 Lamé 系数为
+\[
+h_{r}=1,
+\qquad
+h_{\theta}=r,
+\qquad
+h_{\varphi}=r\sin\theta.
+\]
+由正交曲线坐标的联络系数公式, 得到非零 Christoffel 符号: 
+\[
+\Gamma^{r}{}_{\theta\theta}
+=
+-r,
+\qquad
+\Gamma^{r}{}_{\varphi\varphi}
+=
+-r\sin^{2}\theta,
+\]
+\[
+\Gamma^{\theta}{}_{r\theta}
+=
+\Gamma^{\theta}{}_{\theta r}
+=
+\frac{1}{r},
+\qquad
+\Gamma^{\theta}{}_{\varphi\varphi}
+=
+-\sin\theta\cos\theta,
+\]
+\[
+\Gamma^{\varphi}{}_{r\varphi}
+=
+\Gamma^{\varphi}{}_{\varphi r}
+=
+\frac{1}{r},
+\qquad
+\Gamma^{\varphi}{}_{\theta\varphi}
+=
+\Gamma^{\varphi}{}_{\varphi\theta}
+=
+\cot\theta.
+\]
+这些联络系数说明, 球坐标中不仅角向基底随角度变化, 径向和极角方向的基底也随位置改变. 正是这些基底变化项, 使得球坐标中的向量微分公式比笛卡尔坐标更复杂. 
+
+\section{协变导数的基本性质}
+
+协变导数的引入, 是为了在一般曲线坐标中对张量场求导时仍保持张量形式. 普通偏导数只对分量求导, 而协变导数还包含联络项, 用以补偿基底随位置变化所产生的影响. 
+
+设 $T^{\alpha_{1}\cdots\alpha_{p}}{}_{\beta_{1}\cdots\beta_{q}}$ 是一个 $(p,q)$ 型张量, 则其协变导数
+\[
+\nabla_{\mu}T^{\alpha_{1}\cdots\alpha_{p}}{}_{\beta_{1}\cdots\beta_{q}}
+\]
+是一个 $(p,q+1)$ 型张量. 新增加的下指标 $\mu$ 表示求导方向. 由此可见, 协变导数把张量场映为更高一阶的张量场. 
+
+例如, 若 $A^{\nu}$ 是逆变向量分量, 则
+\[
+\nabla_{\mu}A^{\nu}
+\]
+是一个 $(1,1)$ 型张量. 若 $\omega_{\nu}$ 是协变向量分量, 则
+\[
+\nabla_{\mu}\omega_{\nu}
+\]
+是一个 $(0,2)$ 型张量. 若 $T^{\alpha}{}_{\beta}$ 是 $(1,1)$ 型张量, 则
+\[
+\nabla_{\mu}T^{\alpha}{}_{\beta}
+\]
+是一个 $(1,2)$ 型张量. 
+
+协变导数满足线性性. 若 $A^{\nu}$ 和 $B^{\nu}$ 是两个向量场, 则
+\[
+\nabla_{\mu}(A^{\nu}+B^{\nu})
+=
+\nabla_{\mu}A^{\nu}
++
+\nabla_{\mu}B^{\nu}.
+\]
+若 $f$ 是标量函数, 则
+\[
+\nabla_{\mu}(fA^{\nu})
+=
+(\partial_{\mu}f)A^{\nu}
++
+f\nabla_{\mu}A^{\nu}.
+\]
+这里标量函数没有张量指标, 因此其协变导数退化为普通偏导数. 
+
+协变导数也满足 Leibniz 法则. 若 $A^{\alpha}$ 和 $B^{\beta}$ 是两个向量场, 则
+\[
+\nabla_{\mu}(A^{\alpha}B^{\beta})
+=
+(\nabla_{\mu}A^{\alpha})B^{\beta}
++
+A^{\alpha}(\nabla_{\mu}B^{\beta}).
+\]
+更一般地, 协变导数作用在张量积上时, 对每个因子分别求协变导数并相加. 
+
+对于标量场 $\phi$, 协变导数没有 Christoffel 修正项, 因此
+\[
+\nabla_{\mu}\phi
+=
+\partial_{\mu}\phi.
+\]
+这是因为 Christoffel 项只与张量指标有关, 而标量场没有上指标或下指标. 相应地, 标量场的二阶协变导数为
+\[
+\nabla_{\mu}\nabla_{\nu}\phi
+=
+\partial_{\mu}\partial_{\nu}\phi
+-
+\Gamma^{\lambda}{}_{\mu\nu}\partial_{\lambda}\phi.
+\]
+这里第二次求导时, $\nabla_{\nu}\phi=\partial_{\nu}\phi$ 已经是一个协变向量分量, 因此会出现协变指标对应的负联络项. 
+
+协变导数还与缩并运算相容. 设 $T^{\alpha}{}_{\beta}$ 是一个 $(1,1)$ 型张量, 则
+\[
+\nabla_{\mu}(T^{\alpha}{}_{\alpha})
+=
+\nabla_{\mu}T^{\alpha}{}_{\alpha}.
+\]
+这表示可以先对张量缩并再求协变导数, 也可以先求协变导数再缩并, 结果一致. 该性质使得协变导数在复杂张量表达式中可以按照通常的指标代数规则使用. 
+
+对于由度规确定的 Levi-Civita 联络, 协变导数满足度规相容性: 
+\[
+\nabla_{\lambda}g_{\mu\nu}=0.
+\]
+由于逆变度规是协变度规的逆矩阵, 也有
+\[
+\nabla_{\lambda}g^{\mu\nu}=0.
+\]
+度规相容性的几何意义是: 平行移动保持向量的长度和夹角不变. 因此, 这种联络与欧氏空间或 Riemann 空间中的内积结构相容. 
+
+度规相容性还保证协变导数可以与升降指标交换. 例如, 由
+\[
+A_{\nu}=g_{\nu\lambda}A^{\lambda}
+\]
+可得
+\[
+\nabla_{\mu}A_{\nu}
+=
+\nabla_{\mu}(g_{\nu\lambda}A^{\lambda}).
+\]
+利用 Leibniz 法则, 有
+\[
+\nabla_{\mu}A_{\nu}
+=
+(\nabla_{\mu}g_{\nu\lambda})A^{\lambda}
++
+g_{\nu\lambda}\nabla_{\mu}A^{\lambda}.
+\]
+由于 $\nabla_{\mu}g_{\nu\lambda}=0$, 于是
+\[
+\nabla_{\mu}A_{\nu}
+=
+g_{\nu\lambda}\nabla_{\mu}A^{\lambda}.
+\]
+因此, 在 Levi-Civita 联络下, 可以先升降指标再求协变导数, 也可以先求协变导数再升降指标. 
+
+可见, 协变导数具有以下基本特征: 把 $(p,q)$ 型张量场映为 $(p,q+1)$ 型张量场; 满足线性性和 Leibniz 法则; 它与缩并运算相容; 对于标量场退化为普通偏导数; 在度规相容联络下, 可以与升降指标交换. 
+
+\section{商法则}
+
+在张量分析中, 判断一个对象是否为张量, 通常可以直接检查它在坐标变换下的分量变换规律. 但在实际物理推导中, 有时某个对象的变换律并不容易直接写出, 而它与任意张量缩并后的结果却具有明确的张量性质. 此时可以借助商法则反推该对象本身的张量性质. 
+
+商法则的基本思想是: 若一个未知对象与任意给定张量缩并后总能得到张量, 则在适当的非退化条件下, 该未知对象本身也必须按照相应的张量规律变换. 
+
+先考虑最简单的情形. 设 $B_{\mu}$ 是一个待判断的对象. 若对任意逆变向量 $A^{\mu}$, 缩并
+\[
+A^{\mu}B_{\mu}
+\]
+总是标量, 则 $B_{\mu}$ 应为协变向量. 
+
+证明如下. 由于 $A^{\mu}B_{\mu}$ 是标量, 在坐标变换下应满足
+\[
+A'^{\mu}B'_{\mu}
+=
+A^{\alpha}B_{\alpha}.
+\]
+另一方面, 逆变向量分量的变换规律为
+\[
+A'^{\mu}
+=
+\frac{\partial x'^{\mu}}{\partial x^{\alpha}}A^{\alpha}.
+\]
+代入上式, 得到
+\[
+\frac{\partial x'^{\mu}}{\partial x^{\alpha}}A^{\alpha}B'_{\mu}
+=
+A^{\alpha}B_{\alpha}.
+\]
+整理为
+\[
+A^{\alpha}
+\left(
+\frac{\partial x'^{\mu}}{\partial x^{\alpha}}B'_{\mu}
+-
+B_{\alpha}
+\right)
+=
+0.
+\]
+由于 $A^{\alpha}$ 是任意逆变向量分量, 括号中的系数必须为零, 即
+\[
+\frac{\partial x'^{\mu}}{\partial x^{\alpha}}B'_{\mu}
+=
+B_{\alpha}.
+\]
+两边乘以 $\partial x^{\alpha}/\partial x'^{\nu}$, 并利用链式法则
+\[
+\frac{\partial x^{\alpha}}{\partial x'^{\nu}}
+\frac{\partial x'^{\mu}}{\partial x^{\alpha}}
+=
+\delta^{\mu}_{\nu},
+\]
+得到
+\[
+B'_{\nu}
+=
+\frac{\partial x^{\alpha}}{\partial x'^{\nu}}B_{\alpha}.
+\]
+这正是协变向量的变换规律. 因此, $B_{\mu}$ 是协变向量. 
+
+类似地, 若 $C^{\mu}$ 是一个未知对象, 并且对任意协变向量 $\omega_{\mu}$, 缩并
+\[
+C^{\mu}\omega_{\mu}
+\]
+总是标量, 则 $C^{\mu}$ 必为逆变向量. 证明过程与上例完全类似, 只需利用协变向量的变换规律
+\[
+\omega'_{\mu}
+=
+\frac{\partial x^{\alpha}}{\partial x'^{\mu}}\omega_{\alpha}.
+\]
+由标量不变性可推出
+\[
+C'^{\mu}
+=
+\frac{\partial x'^{\mu}}{\partial x^{\alpha}}C^{\alpha}.
+\]
+
+商法则也可以用于高阶张量. 例如, 设 $B_{\mu\nu}$ 是一个带两个下指标的未知对象. 若对任意两个逆变向量 $A^{\mu}$ 和 $C^{\nu}$, 缩并
+\[
+B_{\mu\nu}A^{\mu}C^{\nu}
+\]
+总是标量, 则 $B_{\mu\nu}$ 必须按二阶协变张量变换, 即
+\[
+B'_{\mu\nu}
+=
+\frac{\partial x^{\alpha}}{\partial x'^{\mu}}
+\frac{\partial x^{\beta}}{\partial x'^{\nu}}
+B_{\alpha\beta}.
+\]
+更一般地, 若一个未知对象与任意适当类型的张量缩并后得到确定类型的张量, 则未知对象的指标类型可以由缩并关系反推出. 
+
+商法则在物理中具有重要作用. 许多物理方程本身具有坐标无关意义, 若方程中除某一对象外其余量的张量性质已经确定, 就可以利用商法则判断该对象的张量类型. 例如, 若已知某个表达式对任意向量作用后都给出标量, 便可反推出该表达式对应的量应是协变向量; 若某个表达式与任意向量缩并后得到向量, 则可反推出它应具有二阶张量的变换规律. 
+
+需要注意的是, 商法则中的“任意张量”条件不可省略. 如果只对某一个特殊向量或某一类受限对象缩并后得到张量, 并不能推出未知对象本身一定是张量. 商法则成立的关键在于: 缩并对象具有足够的任意性, 使得坐标变换中的各分量系数可以逐一比较. 
+
+下面给出一例:
+\begin{example}{由虚功标量推出广义力的协变性质}{2,6}
+	设系统的广义坐标为 $q^{\mu}$, 虚位移为 $\delta q^{\mu}$. 若虚功
+	\[
+	\delta W
+	=
+	Q_{\mu}\delta q^{\mu}
+	\]
+	在任意坐标变换下都是标量, 并且 $\delta q^{\mu}$ 是任意逆变向量分量, 证明 $Q_{\mu}$ 是协变向量分量. 
+\end{example}
+
+\begin{solution}
+	虚位移是坐标增量, 因此在坐标变换 $q^{\mu}\mapsto q'^{\mu}$ 下满足逆变分量的变换规律: 
+	\[
+	\delta q'^{\mu}
+	=
+	\frac{\partial q'^{\mu}}{\partial q^{\alpha}}
+	\delta q^{\alpha}.
+	\]
+	由于虚功是标量, 有
+	\[
+	\delta W'
+	=
+	\delta W.
+	\]
+	即
+	\[
+	Q'_{\mu}\delta q'^{\mu}
+	=
+	Q_{\alpha}\delta q^{\alpha}.
+	\]
+	代入虚位移的变换规律, 得到
+	\[
+	Q'_{\mu}
+	\frac{\partial q'^{\mu}}{\partial q^{\alpha}}
+	\delta q^{\alpha}
+	=
+	Q_{\alpha}\delta q^{\alpha}.
+	\]
+	整理为
+	\[
+	\left(
+	\frac{\partial q'^{\mu}}{\partial q^{\alpha}}Q'_{\mu}
+	-
+	Q_{\alpha}
+	\right)\delta q^{\alpha}
+	=
+	0.
+	\]
+	由于 $\delta q^{\alpha}$ 是任意虚位移分量, 括号中的系数必须为零, 即
+	\[
+	\frac{\partial q'^{\mu}}{\partial q^{\alpha}}Q'_{\mu}
+	=
+	Q_{\alpha}.
+	\]
+	两边乘以 $\partial q^{\alpha}/\partial q'^{\nu}$, 并利用链式法则
+	\[
+	\frac{\partial q^{\alpha}}{\partial q'^{\nu}}
+	\frac{\partial q'^{\mu}}{\partial q^{\alpha}}
+	=
+	\delta^{\mu}_{\nu},
+	\]
+	得到
+	\[
+	Q'_{\nu}
+	=
+	\frac{\partial q^{\alpha}}{\partial q'^{\nu}}Q_{\alpha}.
+	\]
+	这正是协变向量的变换规律. 因此, 广义力 $Q_{\mu}$ 是协变向量分量. 
+	
+	该例表明, 若一个对象与任意逆变向量缩并后得到标量, 则该对象必须按协变向量规律变换. 这正是商法则的典型应用. 
+\end{solution}
+
+\begin{example}{由 Cauchy 公式判断应力张量的张量性}{2,7}
+	设连续介质中某点处, 过该点取一微小有向面元, 其单位法向量为 $\bm{n}$. 面元上受到的面力密度记为 $\bm{p}$. Cauchy 应力公式写作
+	\[
+	p^{i}
+	=
+	\sigma^{i}{}_{j}n^{j}.
+	\]
+	其中 $p^{i}$ 和 $n^{j}$ 分别是面力密度向量和法向量的逆变分量. 若该关系对任意法向量 $\bm{n}$ 成立, 并且 $\bm{p}$ 在坐标变换下始终是向量, 证明 $\sigma^{i}{}_{j}$ 是一个 $(1,1)$ 型张量. 
+\end{example}
+
+\begin{solution}
+	设坐标变换为 $x^{i}\mapsto x'^{i}$. 由于 $\bm{p}$ 和 $\bm{n}$ 都是向量, 它们的逆变分量分别满足
+	\[
+	p'^{i}
+	=
+	\frac{\partial x'^{i}}{\partial x^{\alpha}}p^{\alpha},
+	\qquad
+	n'^{j}
+	=
+	\frac{\partial x'^{j}}{\partial x^{\beta}}n^{\beta}.
+	\]
+	在旧坐标系中, Cauchy 公式为
+	\[
+	p^{\alpha}
+	=
+	\sigma^{\alpha}{}_{\beta}n^{\beta}.
+	\]
+	在新坐标系中, 同一物理关系应写为
+	\[
+	p'^{i}
+	=
+	\sigma'^{i}{}_{j}n'^{j}.
+	\]
+	将 $p'^{i}$ 和 $n'^{j}$ 的变换规律代入, 得到
+	\[
+	\frac{\partial x'^{i}}{\partial x^{\alpha}}p^{\alpha}
+	=
+	\sigma'^{i}{}_{j}
+	\frac{\partial x'^{j}}{\partial x^{\beta}}n^{\beta}.
+	\]
+	再代入旧坐标系中的关系 $p^{\alpha}=\sigma^{\alpha}{}_{\beta}n^{\beta}$, 得
+	\[
+	\frac{\partial x'^{i}}{\partial x^{\alpha}}
+	\sigma^{\alpha}{}_{\beta}n^{\beta}
+	=
+	\sigma'^{i}{}_{j}
+	\frac{\partial x'^{j}}{\partial x^{\beta}}n^{\beta}.
+	\]
+	整理为
+	\[
+	\left(
+	\frac{\partial x'^{i}}{\partial x^{\alpha}}
+	\sigma^{\alpha}{}_{\beta}
+	-
+	\sigma'^{i}{}_{j}
+	\frac{\partial x'^{j}}{\partial x^{\beta}}
+	\right)n^{\beta}
+	=
+	0.
+	\]
+	由于法向量 $n^{\beta}$ 可以任意选取, 括号中的系数必须为零, 即
+	\[
+	\frac{\partial x'^{i}}{\partial x^{\alpha}}
+	\sigma^{\alpha}{}_{\beta}
+	=
+	\sigma'^{i}{}_{j}
+	\frac{\partial x'^{j}}{\partial x^{\beta}}.
+	\]
+	两边乘以 $\partial x^{\beta}/\partial x'^{k}$, 并利用链式法则
+	\[
+	\frac{\partial x'^{j}}{\partial x^{\beta}}
+	\frac{\partial x^{\beta}}{\partial x'^{k}}
+	=
+	\delta^{j}_{k},
+	\]
+	得到
+	\[
+	\sigma'^{i}{}_{k}
+	=
+	\frac{\partial x'^{i}}{\partial x^{\alpha}}
+	\frac{\partial x^{\beta}}{\partial x'^{k}}
+	\sigma^{\alpha}{}_{\beta}.
+	\]
+	这正是 $(1,1)$ 型张量的变换规律. 因此, $\sigma^{i}{}_{j}$ 是一个 $(1,1)$ 型张量. 
+	
+	该例体现了商法则的典型用法: 已知 $p^{i}=\sigma^{i}{}_{j}n^{j}$ 对任意向量 $n^{j}$ 成立, 并且缩并结果 $p^{i}$ 是向量, 则可反推出 $\sigma^{i}{}_{j}$ 必须具有二阶混合张量的变换规律. 
+\end{solution}
+
+\section{散度、旋度与协变导数}
+
+在第一章中, 散度和旋度是从曲线坐标中的体积元、面积元以及 Levi-Civita 张量引入的. 现在可以用协变导数重新表述这些公式. 这样做的优点在于, 散度和旋度不再只是坐标公式, 而可以看作张量场协变导数的缩并与反对称化. 
+
+设向量场为
+\[
+\bm{A}=A^{\mu}\bm{e}_{\mu}.
+\]
+向量场的协变导数为
+\[
+\nabla_{\nu}A^{\mu}
+=
+\partial_{\nu}A^{\mu}
++
+\Gamma^{\mu}{}_{\nu\lambda}A^{\lambda}.
+\]
+它是一个 $(1,1)$ 型张量. 对其中的逆变指标和导数指标进行缩并, 得到一个标量: 
+\[
+\nabla_{\mu}A^{\mu}.
+\]
+因此, 在张量语言中, 向量场的散度定义为
+\[
+\nabla\cdot\bm{A}
+=
+\nabla_{\mu}A^{\mu}.
+\]
+将协变导数公式展开, 有
+\[
+\nabla_{\mu}A^{\mu}
+=
+\partial_{\mu}A^{\mu}
++
+\Gamma^{\mu}{}_{\mu\lambda}A^{\lambda}.
+\]
+为了将它化为第一章中的散度形式, 需要计算 Christoffel 符号的缩并 $\Gamma^{\mu}{}_{\mu\lambda}$. 
+
+由第二类 Christoffel 符号公式
+\[
+\Gamma^{\mu}{}_{\mu\lambda}
+=
+\frac{1}{2}g^{\mu\sigma}
+\left(
+\partial_{\mu}g_{\lambda\sigma}
++
+\partial_{\lambda}g_{\mu\sigma}
+-
+\partial_{\sigma}g_{\mu\lambda}
+\right)
+\]
+出发. 由于 $g_{\mu\sigma}=g_{\sigma\mu}$, 并且 $\mu,\sigma$ 是哑指标, 第一项与第三项相互抵消, 故有
+\[
+\Gamma^{\mu}{}_{\mu\lambda}
+=
+\frac{1}{2}g^{\mu\sigma}\partial_{\lambda}g_{\mu\sigma}.
+\]
+另一方面, 行列式微分公式给出
+\[
+\partial_{\lambda}g
+=
+g\,g^{\mu\sigma}\partial_{\lambda}g_{\mu\sigma}.
+\]
+因此
+\[
+g^{\mu\sigma}\partial_{\lambda}g_{\mu\sigma}
+=
+\frac{1}{g}\partial_{\lambda}g
+=
+\partial_{\lambda}\ln g.
+\]
+于是
+\[
+\Gamma^{\mu}{}_{\mu\lambda}
+=
+\frac{1}{2}\partial_{\lambda}\ln g
+=
+\partial_{\lambda}\ln\sqrt{g}.
+\]
+将其代入散度公式, 得到
+\[
+\nabla_{\mu}A^{\mu}
+=
+\partial_{\mu}A^{\mu}
++
+A^{\mu}\partial_{\mu}\ln\sqrt{g}.
+\]
+利用
+\[
+A^{\mu}\partial_{\mu}\ln\sqrt{g}
+=
+\frac{1}{\sqrt{g}}A^{\mu}\partial_{\mu}\sqrt{g},
+\]
+可得
+\[
+\nabla_{\mu}A^{\mu}
+=
+\frac{1}{\sqrt{g}}
+\left(
+\sqrt{g}\,\partial_{\mu}A^{\mu}
++
+A^{\mu}\partial_{\mu}\sqrt{g}
+\right).
+\]
+括号中的表达式正是乘积求导: 
+\[
+\sqrt{g}\,\partial_{\mu}A^{\mu}
++
+A^{\mu}\partial_{\mu}\sqrt{g}
+=
+\partial_{\mu}(\sqrt{g}A^{\mu}).
+\]
+因此
+\begin{equation}
+	\nabla\cdot\bm{A}
+	=
+	\nabla_{\mu}A^{\mu}
+	=
+	\frac{1}{\sqrt{g}}\partial_{\mu}(\sqrt{g}A^{\mu}).
+	\label{eq:2.16}
+\end{equation}
+这正是一般曲线坐标中的散度公式. 由此可见, 散度可以理解为向量场协变导数的迹, 而因子 $\sqrt{g}$ 来源于曲线坐标下体积元的变化. 
+
+下面讨论旋度. 旋度只在三维有向空间中具有向量形式, 它依赖 Levi-Civita 张量. 设
+\[
+A_{\lambda}
+=
+g_{\lambda\rho}A^{\rho}
+\]
+是向量场对应的一形式分量. 旋度的逆变分量定义为
+\[
+(\nabla\times\bm{A})^{\mu}
+=
+\varepsilon^{\mu\nu\lambda}\nabla_{\nu}A_{\lambda}.
+\]
+这里 $\nabla_{\nu}A_{\lambda}$ 是一个二阶协变张量, 而 $\varepsilon^{\mu\nu\lambda}$ 将其反对称部分对应为一个逆变向量. 
+
+展开协变导数, 有
+\[
+\varepsilon^{\mu\nu\lambda}\nabla_{\nu}A_{\lambda}
+=
+\varepsilon^{\mu\nu\lambda}
+\left(
+\partial_{\nu}A_{\lambda}
+-
+\Gamma^{\rho}{}_{\nu\lambda}A_{\rho}
+\right).
+\]
+其中第二项为
+\[
+\varepsilon^{\mu\nu\lambda}\Gamma^{\rho}{}_{\nu\lambda}A_{\rho}.
+\]
+对于 Levi-Civita 联络, Christoffel 符号在下两个指标上对称: 
+\[
+\Gamma^{\rho}{}_{\nu\lambda}
+=
+\Gamma^{\rho}{}_{\lambda\nu}.
+\]
+而 Levi-Civita 张量在 $\nu,\lambda$ 上反对称: 
+\[
+\varepsilon^{\mu\nu\lambda}
+=
+-\varepsilon^{\mu\lambda\nu}.
+\]
+对称张量与反对称张量缩并为零, 因此
+\[
+\varepsilon^{\mu\nu\lambda}\Gamma^{\rho}{}_{\nu\lambda}A_{\rho}
+=
+0.
+\]
+于是旋度公式化为
+\begin{equation}
+	(\nabla\times\bm{A})^{\mu}
+	=
+	\varepsilon^{\mu\nu\lambda}\partial_{\nu}A_{\lambda}.
+	\label{eq:2.17}
+\end{equation}
+该式说明, 旋度中虽然可以使用普通偏导数, 但偏导数作用的对象必须是协变分量 $A_{\lambda}$, 而不是逆变分量 $A^{\lambda}$. 其原因在于, 旋度本质上取的是一形式 $A_{\lambda}\dif x^{\lambda}$ 的反对称导数; 联络项由于对称性在反对称化中自动抵消. 
+
+若将 Levi-Civita 张量写成排列符号, 则有
+\[
+\varepsilon^{\mu\nu\lambda}
+=
+\frac{1}{\sqrt{g}}[\mu\nu\lambda].
+\]
+因此旋度的逆变分量也可以写成
+\[
+(\nabla\times\bm{A})^{\mu}
+=
+\frac{1}{\sqrt{g}}[\mu\nu\lambda]\partial_{\nu}A_{\lambda}.
+\]
+在正交曲线坐标中, 若
+\[
+\bm{A}
+=
+A_{\hat{1}}\hat{\bm{e}}_{1}
++
+A_{\hat{2}}\hat{\bm{e}}_{2}
++
+A_{\hat{3}}\hat{\bm{e}}_{3},
+\]
+则协变分量为
+\[
+A_{i}
+=
+h_{i}A_{\hat{i}},
+\qquad \text{不对 } i \text{ 求和}.
+\]
+又有
+\[
+\sqrt{g}=h_{1}h_{2}h_{3}.
+\]
+将这些关系代入式 \eqref{eq:2.17}, 即可得到第一章中的正交曲线坐标旋度公式: 
+\[
+\nabla\times\bm{A}
+=
+\frac{1}{h_{1}h_{2}h_{3}}
+\begin{vmatrix}
+	h_{1}\hat{\bm{e}}_{1} & h_{2}\hat{\bm{e}}_{2} & h_{3}\hat{\bm{e}}_{3}\\
+	\partial_{q^{1}} & \partial_{q^{2}} & \partial_{q^{3}}\\
+	h_{1}A_{\hat{1}} & h_{2}A_{\hat{2}} & h_{3}A_{\hat{3}}
+\end{vmatrix}.
+\]
+由此可见, 曲线坐标中的散度和旋度都可以从协变导数统一理解. 散度是协变导数的缩并; 旋度是协变导数的反对称部分再由 Levi-Civita 张量转化为向量. 前者体现体积元 $\sqrt{g}$ 的影响, 后者体现三维有向空间中的反对称结构. 
+
+\begin{example}{由协变导数推出柱坐标散度公式}{2,8}
+	柱坐标 $(\rho,\varphi,z)$ 的度规行列式满足
+	\[
+	\sqrt{g}=\rho.
+	\]
+	设向量场在自然基底下写为
+	\[
+	\bm{A}
+	=
+	A^{\rho}\bm{e}_{\rho}
+	+
+	A^{\varphi}\bm{e}_{\varphi}
+	+
+	A^{z}\bm{e}_{z}.
+	\]
+	利用散度公式
+	\[
+	\nabla\cdot\bm{A}
+	=
+	\nabla_{\mu}A^{\mu}
+	=
+	\frac{1}{\sqrt{g}}\partial_{\mu}(\sqrt{g}A^{\mu}),
+	\]
+	推出柱坐标中的散度表达式. 进一步, 若向量场写成物理分量形式
+	\[
+	\bm{A}
+	=
+	A_{\hat{\rho}}\hat{\bm{e}}_{\rho}
+	+
+	A_{\hat{\varphi}}\hat{\bm{e}}_{\varphi}
+	+
+	A_{\hat{z}}\hat{\bm{e}}_{z},
+	\]
+	求其散度. 
+\end{example}
+
+\begin{solution}
+	由柱坐标中的度规行列式
+	\[
+	\sqrt{g}=\rho
+	\]
+	以及一般曲线坐标中的散度公式
+	\[
+	\nabla\cdot\bm{A}
+	=
+	\frac{1}{\sqrt{g}}\partial_{\mu}(\sqrt{g}A^{\mu}),
+	\]
+	可得
+	\[
+	\nabla\cdot\bm{A}
+	=
+	\frac{1}{\rho}
+	\left[
+	\frac{\partial}{\partial\rho}(\rho A^{\rho})
+	+
+	\frac{\partial}{\partial\varphi}(\rho A^{\varphi})
+	+
+	\frac{\partial}{\partial z}(\rho A^{z})
+	\right].
+	\]
+	由于 $\rho$ 与 $\varphi,z$ 无关, 所以上式可写为
+	\[
+	\nabla\cdot\bm{A}
+	=
+	\frac{1}{\rho}
+	\frac{\partial}{\partial\rho}(\rho A^{\rho})
+	+
+	\frac{\partial A^{\varphi}}{\partial\varphi}
+	+
+	\frac{\partial A^{z}}{\partial z}.
+	\]
+	这是柱坐标中用自然基底逆变分量表示的散度公式. 
+	
+	下面将其改写为物理分量形式. 柱坐标的 Lamé 系数为
+	\[
+	h_{\rho}=1,
+	\qquad
+	h_{\varphi}=\rho,
+	\qquad
+	h_{z}=1.
+	\]
+	自然基底与单位基底之间满足
+	\[
+	\bm{e}_{\rho}=\hat{\bm{e}}_{\rho},
+	\qquad
+	\bm{e}_{\varphi}=\rho\hat{\bm{e}}_{\varphi},
+	\qquad
+	\bm{e}_{z}=\hat{\bm{e}}_{z}.
+	\]
+	因此
+	\[
+	\bm{A}
+	=
+	A^{\rho}\bm{e}_{\rho}
+	+
+	A^{\varphi}\bm{e}_{\varphi}
+	+
+	A^{z}\bm{e}_{z}
+	=
+	A^{\rho}\hat{\bm{e}}_{\rho}
+	+
+	\rho A^{\varphi}\hat{\bm{e}}_{\varphi}
+	+
+	A^{z}\hat{\bm{e}}_{z}.
+	\]
+	与物理分量展开
+	\[
+	\bm{A}
+	=
+	A_{\hat{\rho}}\hat{\bm{e}}_{\rho}
+	+
+	A_{\hat{\varphi}}\hat{\bm{e}}_{\varphi}
+	+
+	A_{\hat{z}}\hat{\bm{e}}_{z}
+	\]
+	比较, 得到
+	\[
+	A^{\rho}=A_{\hat{\rho}},
+	\qquad
+	A^{\varphi}=\frac{A_{\hat{\varphi}}}{\rho},
+	\qquad
+	A^{z}=A_{\hat{z}}.
+	\]
+	代入自然分量形式的散度公式: 
+	\[
+	\nabla\cdot\bm{A}
+	=
+	\frac{1}{\rho}
+	\frac{\partial}{\partial\rho}(\rho A^{\rho})
+	+
+	\frac{\partial A^{\varphi}}{\partial\varphi}
+	+
+	\frac{\partial A^{z}}{\partial z},
+	\]
+	可得
+	\[
+	\nabla\cdot\bm{A}
+	=
+	\frac{1}{\rho}
+	\frac{\partial}{\partial\rho}(\rho A_{\hat{\rho}})
+	+
+	\frac{\partial}{\partial\varphi}
+	\left(
+	\frac{A_{\hat{\varphi}}}{\rho}
+	\right)
+	+
+	\frac{\partial A_{\hat{z}}}{\partial z}.
+	\]
+	由于 $\rho$ 与 $\varphi$ 无关, 有
+	\[
+	\frac{\partial}{\partial\varphi}
+	\left(
+	\frac{A_{\hat{\varphi}}}{\rho}
+	\right)
+	=
+	\frac{1}{\rho}
+	\frac{\partial A_{\hat{\varphi}}}{\partial\varphi}.
+	\]
+	因此柱坐标中用物理分量表示的散度为
+	\[
+	\nabla\cdot\bm{A}
+	=
+	\frac{1}{\rho}
+	\frac{\partial}{\partial\rho}(\rho A_{\hat{\rho}})
+	+
+	\frac{1}{\rho}
+	\frac{\partial A_{\hat{\varphi}}}{\partial\varphi}
+	+
+	\frac{\partial A_{\hat{z}}}{\partial z}.
+	\]
+	该结果与第一章由正交曲线坐标公式得到的柱坐标散度完全一致. 由此可见, 散度公式中的因子 $\rho$ 本质上来自体积因子 $\sqrt{g}$. 
+\end{solution}
+
+\section{本章小结}
+
+本章从坐标变换出发, 建立了张量分析的基本语言. 张量的本质不在于指标数量本身, 而在于其分量在坐标变换下满足确定的变换规律. 自然基底和对偶基底的变换方向相反, 由此产生了逆变指标和协变指标的区别. 
+
+在坐标变换
+\[
+x^{\mu}\mapsto x'^{\mu}
+\]
+下, 自然基底满足
+\[
+\bm{e}'_{\mu}
+=
+\frac{\partial x^{\alpha}}{\partial x'^{\mu}}
+\bm{e}_{\alpha},
+\]
+而对偶基底满足
+\[
+\bm{e}'^{\mu}
+=
+\frac{\partial x'^{\mu}}{\partial x^{\alpha}}
+\bm{e}^{\alpha}.
+\]
+因此, 向量的逆变分量按
+\[
+A'^{\mu}
+=
+\frac{\partial x'^{\mu}}{\partial x^{\alpha}}A^{\alpha}
+\]
+变换, 协向量的协变分量按
+\[
+\omega'_{\mu}
+=
+\frac{\partial x^{\alpha}}{\partial x'^{\mu}}\omega_{\alpha}
+\]
+变换. 一般地, 若一个对象具有 $p$ 个逆变指标和 $q$ 个协变指标, 并按照相应的 Jacobian 因子变换, 则称它为 $(p,q)$ 型张量. 
+
+度规张量是曲线坐标中描述长度、夹角和升降指标的基本对象. 它由自然基底的内积给出: 
+\[
+g_{\mu\nu}
+=
+\bm{e}_{\mu}\cdot\bm{e}_{\nu}.
+\]
+度规可以把逆变分量变为协变分量, 也可以把协变分量变为逆变分量: 
+\[
+A_{\mu}=g_{\mu\nu}A^{\nu},
+\qquad
+A^{\mu}=g^{\mu\nu}A_{\nu}.
+\]
+同时, 度规行列式决定曲线坐标中的体积元. 若
+\[
+g=\det(g_{\mu\nu}),
+\]
+则几何体积元为
+\[
+\dif V=\sqrt{g}\,\dif^{3}x.
+\]
+这里的 $\sqrt{g}$ 可理解为坐标体积元到几何体积元的转换因子. 
+
+张量的代数运算包括加法、数乘、张量积、缩并、对称化和反对称化. 张量运算中必须保持自由指标一致, 哑指标只能成对出现, 并且通常一上一下进行缩并. Kronecker 符号 $\delta^{\mu}_{\nu}$ 表示恒等映射, Levi-Civita 张量则刻画三维有向空间中的反对称结构. 
+
+由于普通偏导数作用在向量或高阶张量上时一般不再满足张量变换规律, 因此需要引入协变导数. 曲线坐标中的自然基底随位置变化, 其变化可写成
+\[
+\partial_{\mu}\bm{e}_{\nu}
+=
+\Gamma^{\lambda}{}_{\mu\nu}\bm{e}_{\lambda}.
+\]
+这里的 $\Gamma^{\lambda}{}_{\mu\nu}$ 是第二类 Christoffel 符号, 它描述自然基底的变化. 由度规及其一阶偏导数可以计算 Christoffel 符号: 
+\[
+\Gamma^{\lambda}{}_{\mu\nu}
+=
+\frac{1}{2}g^{\lambda\sigma}
+\left(
+\partial_{\mu}g_{\nu\sigma}
++
+\partial_{\nu}g_{\mu\sigma}
+-
+\partial_{\sigma}g_{\mu\nu}
+\right).
+\]
+在笛卡尔坐标中, 度规为常数, Christoffel 符号为零; 在柱坐标、球坐标等曲线坐标中, 度规依赖坐标, Christoffel 符号一般不为零. 
+
+协变导数通过 Christoffel 符号补偿基底变化. 对逆变向量分量, 有
+\[
+\nabla_{\mu}A^{\lambda}
+=
+\partial_{\mu}A^{\lambda}
++
+\Gamma^{\lambda}{}_{\mu\nu}A^{\nu}.
+\]
+对协变向量分量, 有
+\[
+\nabla_{\mu}\omega_{\nu}
+=
+\partial_{\mu}\omega_{\nu}
+-
+\Gamma^{\lambda}{}_{\mu\nu}\omega_{\lambda}.
+\]
+更一般地, 每一个逆变指标产生一个正的联络项, 每一个协变指标产生一个负的联络项. 因此, 若 $T^{\alpha_{1}\cdots\alpha_{p}}{}_{\beta_{1}\cdots\beta_{q}}$ 是 $(p,q)$ 型张量, 则
+\[
+\nabla_{\mu}T^{\alpha_{1}\cdots\alpha_{p}}{}_{\beta_{1}\cdots\beta_{q}}
+\]
+是 $(p,q+1)$ 型张量. 
+
+协变导数满足线性性、Leibniz 法则, 并且与张量缩并相容. 对于标量场 $\phi$, 协变导数退化为普通偏导数: 
+\[
+\nabla_{\mu}\phi=\partial_{\mu}\phi.
+\]
+对于由度规确定的 Levi-Civita 联络, 还满足度规相容性: 
+\[
+\nabla_{\lambda}g_{\mu\nu}=0.
+\]
+因此, 协变导数可以与升降指标交换. 这一性质保证了张量微分运算与度规结构相容. 
+
+测地线可以理解为切向量沿自身平行移动的曲线. 若曲线写为 $x^{\mu}=x^{\mu}(s)$, 其切向量为
+\[
+u^{\mu}=\frac{\dif x^{\mu}}{\dif s},
+\]
+则测地线方程为
+\[
+\frac{\dif^{2}x^{\mu}}{\dif s^{2}}
++
+\Gamma^{\mu}{}_{\nu\lambda}
+\frac{\dif x^{\nu}}{\dif s}
+\frac{\dif x^{\lambda}}{\dif s}
+=
+0.
+\]
+在笛卡尔坐标中, 该方程退化为直线方程; 在一般曲线坐标中, Christoffel 符号给出坐标基底变化导致的修正项. 
+
+本章还用协变导数重新解释了散度和旋度. 向量场的散度是协变导数的缩并: 
+\[
+\nabla\cdot\bm{A}
+=
+\nabla_{\mu}A^{\mu}
+=
+\frac{1}{\sqrt{g}}\partial_{\mu}(\sqrt{g}A^{\mu}).
+\]
+旋度则来自协变导数的反对称部分. 若
+\[
+A_{\lambda}=g_{\lambda\rho}A^{\rho},
+\]
+则
+\[
+(\nabla\times\bm{A})^{\mu}
+=
+\varepsilon^{\mu\nu\lambda}\partial_{\nu}A_{\lambda}.
+\]
+其中联络项由于 Christoffel 符号的对称性与 Levi-Civita 张量的反对称性相互抵消. 由此可见, 散度反映体积元的变化, 旋度反映三维有向空间中的反对称结构. 
+
+商法则提供了一种判断张量性质的方法. 若一个未知对象与任意适当类型的张量缩并后总得到张量, 则在适当非退化条件下, 可以反推出该未知对象本身的张量类型. 该方法在物理推导中常用于由坐标无关的标量关系或张量方程反推某些物理量的张量性质. 
+
+综上, 本章的逻辑主线是: 坐标变换决定张量分量的变换规律; 度规给出内积、体积元和升降指标; 曲线坐标中的基底变化引出 Christoffel 符号; Christoffel 符号进一步给出协变导数; 协变导数使张量场的微分仍保持张量形式. 

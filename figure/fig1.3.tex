@@ -1,0 +1,134 @@
+\documentclass[tikz, border=15pt]{standalone}
+
+\usepackage{tikz-3dplot}
+\usepackage{amsmath}
+\usepackage{bm}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+	
+	% 设置主视角: 仰角 70 度, 方位角 110 度
+	\tdplotsetmaincoords{70}{110}
+	
+	\begin{tikzpicture}[
+		tdplot_main_coords,
+		>=Stealth,
+		line cap=round,
+		line join=round
+		]
+		
+		% ================= 参数定义 =================
+		\def\R{4.5}
+		\def\axLen{6}
+		\def\angTheta{45}
+		\def\angPhi{55}
+		\def\vecLen{1.5}
+		\def\phiArcR{1.2}
+		\def\thetaArcR{2.5}
+		% ================= 计算 P 点坐标 =================
+		\pgfmathsetmacro{\Px}{\R*sin(\angTheta)*cos(\angPhi)}
+		\pgfmathsetmacro{\Py}{\R*sin(\angTheta)*sin(\angPhi)}
+		\pgfmathsetmacro{\Pz}{\R*cos(\angTheta)}
+		
+		\coordinate (O) at (0,0,0);
+		\coordinate (P) at (\Px,\Py,\Pz);
+		
+		\tdplotsetcoord{Ptd}{\R}{\angTheta}{\angPhi}
+		
+		% ================= 1. 球体外轮廓 =================
+		\begin{scope}[tdplot_screen_coords]
+			\draw[gray!30, thin] (0,0) circle (\R);
+		\end{scope}
+		
+		% ================= 2. 参考圆 =================
+		
+		% 赤道
+		\tdplotdrawarc[gray!70, semithick]{(0,0,0)}{\R}{-70}{90}{}{}
+		
+		% 过 P 点的子午圈
+		\tdplotsetrotatedcoords{\angPhi}{0}{0}
+		\tdplotdrawarc[tdplot_rotated_coords, gray!70, dashed]{(0,0,0)}{\R}{0}{360}{}{}
+		
+		% ================= 3. 笛卡尔坐标轴 =================
+		\draw[->, thick] (O) -- (\axLen,0,0) node[below left] {$x$};
+		\draw[->, thick] (O) -- (0,\axLen,0) node[right] {$y$};
+		\draw[->, thick] (O) -- (0,0,\axLen) node[above] {$z$};
+		\node[above left, inner sep=2pt] at (O) {$O$};
+		
+		% ================= 4. 投影辅助线与位置矢量 =================
+		\draw[dashed, gray!60] (O) -- (Ptdxy);
+		\draw[dashed, gray!60] (P) -- (Ptdxy);
+		\draw[dashed, gray!60] (P) -- (0,0,\Pz);
+		
+		\draw[->, line width=1.5pt, red!80!black] (O) -- (P)
+		node[midway, below=6pt,right=3pt, inner sep=1pt] {$\bm{r}$};
+		
+		\fill (P) circle (1.4pt);
+		\node[above left] at (P) {$P$};
+		
+		% ================= 5. 角度标示 =================
+		
+		% 方位角 phi：在 xy 平面内
+		\tdplotdrawarc[
+		thick,
+		orange!90!black,
+		->
+		]{(0,0,0)}{\phiArcR}{0}{\angPhi}{anchor=north}{$\varphi$}
+		
+		% 极角 theta：在包含 z 轴和 r 的子午平面内，直接参数化
+		\draw[
+		thick,
+		purple!90!black,
+		->,
+		domain=0:\angTheta,
+		samples=50,
+		variable=\t
+		]
+		plot (
+		{\thetaArcR*sin(\t)*cos(\angPhi)},
+		{\thetaArcR*sin(\t)*sin(\angPhi)},
+		{\thetaArcR*cos(\t)}
+		);
+		\node[purple!90!black] at
+		(
+		{\thetaArcR*1.12*sin(0.55*\angTheta)*cos(\angPhi)},
+		{\thetaArcR*1.12*sin(0.55*\angTheta)*sin(\angPhi)},
+		{\thetaArcR*1.12*cos(0.55*\angTheta)}
+		)
+		{$\theta$};
+		
+		% ================= 6. 局部球坐标单位基底 =================
+		
+		% 标准球坐标单位基底：
+		% e_r     = (sin theta cos phi, sin theta sin phi, cos theta)
+		% e_theta = (cos theta cos phi, cos theta sin phi, -sin theta)
+		% e_phi   = (-sin phi, cos phi, 0)
+		
+		\pgfmathsetmacro{\erx}{sin(\angTheta)*cos(\angPhi)}
+		\pgfmathsetmacro{\ery}{sin(\angTheta)*sin(\angPhi)}
+		\pgfmathsetmacro{\erz}{cos(\angTheta)}
+		
+		\pgfmathsetmacro{\etx}{cos(\angTheta)*cos(\angPhi)}
+		\pgfmathsetmacro{\ety}{cos(\angTheta)*sin(\angPhi)}
+		\pgfmathsetmacro{\etz}{-sin(\angTheta)}
+		
+		\pgfmathsetmacro{\epx}{-sin(\angPhi)}
+		\pgfmathsetmacro{\epy}{cos(\angPhi)}
+		\pgfmathsetmacro{\epz}{0}
+		
+		\coordinate (Er) at ({\Px+\vecLen*\erx},{\Py+\vecLen*\ery},{\Pz+\vecLen*\erz});
+		\coordinate (Et) at ({\Px+\vecLen*\etx},{\Py+\vecLen*\ety},{\Pz+\vecLen*\etz});
+		\coordinate (Ep) at ({\Px+\vecLen*\epx},{\Py+\vecLen*\epy},{\Pz+\vecLen*\epz});
+		
+		\draw[->, line width=1.5pt, blue!80!black] (P) -- (Er)
+		node[above=8pt, right=1pt] {$\hat{\bm{e}}_{r}$};
+		
+		\draw[->, line width=1.5pt, blue!80!black] (P) -- (Et)
+		node[right] {$\hat{\bm{e}}_{\theta}$};
+		
+		\draw[->, line width=1.5pt, blue!80!black] (P) -- (Ep)
+		node[right] {$\hat{\bm{e}}_{\varphi}$};
+		
+	\end{tikzpicture}
+	
+\end{document}

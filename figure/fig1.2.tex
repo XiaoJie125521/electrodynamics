@@ -1,0 +1,75 @@
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{tikz-3dplot}
+\usepackage{amsmath}
+
+\begin{document}
+	
+	% 设置 3D 观察视角 (仰角 75, 方位角 100)
+	\tdplotsetmaincoords{75}{100}
+	
+	\begin{tikzpicture}[tdplot_main_coords, >=stealth, line cap=round, line join=round]
+		
+		% ================= 参数设置 =================
+		\def\ax{5}         % 直角坐标系轴长
+		\def\ar{1.5}       % 局部基矢量绘制长度
+		\def\rhol{3.5}     % 柱坐标 \rho 的实际长度
+		\def\phiangle{60}  % 柱坐标 \phi 的角度
+		\def\zvec{4.5}     % 柱坐标 z 的高度
+		% ============================================
+		
+		% 计算与极坐标相关的三角函数及三维坐标点
+		\tdplotsinandcos{\sinphi}{\cosphi}{\phiangle}
+		\pgfmathsetmacro{\xvec}{\rhol*\cosphi}
+		\pgfmathsetmacro{\yvec}{\rhol*\sinphi}
+		\tdplotgetpolarcoords{\xvec}{\yvec}{\zvec}
+		\tdplotsinandcos{\sintheta}{\costheta}{\tdplotrestheta}
+		\pgfmathsetmacro{\lrho}{sqrt(\xvec*\xvec+\yvec*\yvec+\zvec*\zvec)} 
+		
+		% 定义目标点 R 以及各投影平面的辅助点
+		\tdplotsetcoord{R}{\lrho}{\tdplotrestheta}{\tdplotresphi}
+		
+		% ============ 1. 绘制笛卡尔参考坐标系 ============
+		\draw[thick, ->] (0,0,0) -- (\ax,0,0) node[below] {$x$};
+		\draw[thick, ->] (0,0,0) -- (0,\ax,0) node[right] {$y$};
+		\draw[thick, ->] (0,0,0) -- (0,0,\ax) node[above] {$z$};
+		\node[anchor=east] at (0,0,0) {$O$};
+		
+		% ============ 2. 绘制圆柱面等值面轮廓 ============
+		% 计算圆柱体视觉边缘点
+		\tdplotsetcoord{P}{\lrho}{\tdplotrestheta}{100}
+		\tdplotsetcoord{Q}{\lrho}{\tdplotrestheta}{280}
+		
+		% 画圆柱的上下底面圆弧和侧边 (使用浅灰色辅助线)
+		\tdplotdrawarc[thick, dashed, gray!50]{(0,0,0)}{\lrho*\sintheta}{100}{280}{anchor=north}{};
+		\tdplotdrawarc[thick, gray!50]{(0,0,0)}{\lrho*\sintheta}{280}{460}{anchor=north}{};
+		\tdplotdrawarc[thick, gray!50]{(Rz)}{\lrho*\sintheta}{0}{360}{anchor=north}{};
+		\draw[thick, gray!50] (P) -- (Pxy);
+		\draw[thick, gray!50] (Q) -- (Qxy);
+		
+		% ============ 3. 绘制位置矢量及其投影 ============
+		\draw[line width=1.2pt, -stealth, red] (0,0,0) -- (R) node[midway, below=10pt, right=-6pt] {$\boldsymbol{r}(\rho,\varphi,z)$};
+		\draw[thick, dashed, gray!80] (R) -- (Rxy) node[midway, right, text=black] {$z$};
+		\draw[thick, dashed, gray!80] (R) -- (Rz) node[midway, above, text=black] {$\rho$};
+		\draw[thick, dashed, gray!80] (Rxy) -- (0,0,0) node[midway, below, text=black] ;
+		
+		% 在 x-y 平面上的进一步投影
+		\draw[dashed, gray!60] (Rxy) -- (\xvec, 0, 0);
+		\draw[dashed, gray!60] (Rxy) -- (0, \yvec, 0);
+		
+		% 绘制方位角 \phi 的圆弧
+		\tdplotdrawarc[thick, blue]{(0,0,0)}{1.2}{0}{\tdplotresphi}{anchor=north}{$\varphi$};
+		
+		% ============ 4. 绘制局部正交基底 ============
+		% 将全局坐标系按方位角 \phi 旋转，并将原点平移到目标点 R
+		\tdplotsetrotatedcoords{\tdplotresphi}{0}{0}
+		\tdplotsetrotatedcoordsorigin{(R)}
+		
+		\begin{scope}[tdplot_rotated_coords]
+			\draw[line width=1.5pt, -stealth, blue] (0,0,0) -- (\ar,0,0) node[right] {$\hat{\boldsymbol{e}}_\rho$};
+			\draw[line width=1.5pt, -stealth, blue] (0,0,0) -- (0,\ar,0) node[above=2pt ,right=0.2pt] {$\hat{\boldsymbol{e}}_\varphi$};
+			\draw[line width=1.5pt, -stealth, blue] (0,0,0) -- (0,0,\ar) node[above] {$\hat{\boldsymbol{e}}_z$};
+		\end{scope}
+		
+	\end{tikzpicture}
+	
+\end{document}

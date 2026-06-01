@@ -1,0 +1,46 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+	\begin{tikzpicture}[
+		>=Stealth,
+		line cap=round,
+		line join=round,
+		vector/.style={->, thick},
+		axis/.style={semithick}
+		]
+		
+		% 定义原点和点 P 的坐标
+		\coordinate (O) at (0,0);
+		\coordinate (P) at (3.2, 2.2);
+		
+		% 绘制直角坐标系轴 (x, y, z)
+		\draw[axis] (O) -- (-2.5, -2.0) node[below] {$x$};
+		\draw[axis] (O) -- (5.5, 0) node[below] {$y$};
+		\draw[axis] (O) -- (0, 4.5) node[right] {$z$};
+		
+		% 绘制直角坐标系基矢量 (i, j, k)
+		\draw[vector] (O) -- (-1.1, -0.88) node[below right, inner sep=2pt] {$\boldsymbol{i}$};
+		\draw[vector] (O) -- (1.8, 0) node[below, inner sep=3pt] {$\boldsymbol{j}$};
+		\draw[vector] (O) -- (0, 1.8) node[right, inner sep=3pt] {$\boldsymbol{k}$};
+		\node[above left, inner sep=1pt] at (O) {$O$};
+		
+		% 绘制位置矢量 r
+		\draw[vector] (O) -- (P) node[midway, below right, inner sep=2pt] {$\boldsymbol{r}$};
+		
+		% 绘制任意曲线坐标系轴 (x^1, x^2, x^3)
+		\draw[axis] (P) to[out=-25, in=130] ++(2, -1.5) node[below] {$q^1$};
+		\draw[axis] (P) to[out=25, in=180] ++(2.5, 0.6) node[right] {$q^2$};
+		\draw[axis] (P) to[out=95, in=-60] ++(-1, 2.6) node[right] {$q^3$};
+		
+		% 绘制曲线坐标系协变基矢量 (g_1, g_2, g_3)，与坐标曲线相切
+		\draw[vector] (P) -- ++(1.8, -0.85) node[above right, inner sep=1pt] {$\boldsymbol{e}_1$};
+		\draw[vector] (P) -- ++(1.6, 0.75) node[above left, inner sep=1pt] {$\boldsymbol{e}_2$};
+		\draw[vector] (P) -- ++(-0.14, 1.5) node[right, inner sep=3pt] {$\boldsymbol{e}_3$};
+		
+		% 绘制微分位移矢量 dr
+		\draw[vector] (P) -- ++(1.3, 2.1) node[right, inner sep=1pt] {$\mathrm{d}\boldsymbol{r}$};
+		
+	\end{tikzpicture}
+\end{document}
