@@ -102,10 +102,30 @@
 % 数学与物理常用包
 \RequirePackage{graphicx}
 \RequirePackage{amsmath}
-\RequirePackage{amssymb}
-\RequirePackage{amsthm}
 \RequirePackage{mathtools}
-\RequirePackage{bm}
+\RequirePackage{unicode-math}
+\setmathfont{latinmodern-math.otf}
+\newcommand{\bm}[1]{\symbfit{#1}}
+\makeatletter
+\newcommand{\ed@hbar}[1]{%
+  \begingroup
+  \sbox0{$#1 h$}%
+  \dimen0=.75\ht0%
+  \ooalign{%
+    $#1 h$\cr
+    \hidewidth\raise\dimen0\hbox{\rule{.55\wd0}{.045em}}\hidewidth\cr
+  }%
+  \endgroup
+}
+\renewcommand{\hbar}{%
+  \mathord{\mathchoice
+    {\ed@hbar\displaystyle}
+    {\ed@hbar\textstyle}
+    {\ed@hbar\scriptstyle}
+    {\ed@hbar\scriptscriptstyle}}%
+}
+\makeatother
+\RequirePackage{amsthm}
 \RequirePackage{mathrsfs}
 \DeclareFontFamily{U}{rsfs}{\skewchar\font127 }
 \DeclareFontShape{U}{rsfs}{m}{n}{%
@@ -369,7 +389,7 @@
 \newcommand{\eps}{\varepsilon}
 \newcommand{\epszero}{\varepsilon_0}
 \newcommand{\muzero}{\mu_0}
-\newcommand{\vb}[1]{\boldsymbol{#1}}
+\newcommand{\vb}[1]{\bm{#1}}
 \newcommand{\uv}[1]{\hat{\vb{#1}}}
 \newcommand{\grad}{\nabla}
 \newcommand{\divergence}{\nabla\!\cdot}

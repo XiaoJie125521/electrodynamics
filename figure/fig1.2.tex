@@ -47,7 +47,7 @@
 		\draw[thick, gray!50] (Q) -- (Qxy);
 		
 		% ============ 3. 绘制位置矢量及其投影 ============
-		\draw[line width=1.2pt, -stealth, red] (0,0,0) -- (R) node[midway, below=10pt, right=-6pt] {$\boldsymbol{r}(\rho,\varphi,z)$};
+		\draw[line width=1.2pt, -stealth, red] (0,0,0) -- (R) node[midway, below=10pt, right=-6pt] {$\bm{r}(\rho,\varphi,z)$};
 		\draw[thick, dashed, gray!80] (R) -- (Rxy) node[midway, right, text=black] {$z$};
 		\draw[thick, dashed, gray!80] (R) -- (Rz) node[midway, above, text=black] {$\rho$};
 		\draw[thick, dashed, gray!80] (Rxy) -- (0,0,0) node[midway, below, text=black] ;
@@ -65,9 +65,9 @@
 		\tdplotsetrotatedcoordsorigin{(R)}
 		
 		\begin{scope}[tdplot_rotated_coords]
-			\draw[line width=1.5pt, -stealth, blue] (0,0,0) -- (\ar,0,0) node[right] {$\hat{\boldsymbol{e}}_\rho$};
-			\draw[line width=1.5pt, -stealth, blue] (0,0,0) -- (0,\ar,0) node[above=2pt ,right=0.2pt] {$\hat{\boldsymbol{e}}_\varphi$};
-			\draw[line width=1.5pt, -stealth, blue] (0,0,0) -- (0,0,\ar) node[above] {$\hat{\boldsymbol{e}}_z$};
+			\draw[line width=1.5pt, -stealth, blue] (0,0,0) -- (\ar,0,0) node[right] {$\hat{\bm{e}}_\rho$};
+			\draw[line width=1.5pt, -stealth, blue] (0,0,0) -- (0,\ar,0) node[above=2pt ,right=0.2pt] {$\hat{\bm{e}}_\varphi$};
+			\draw[line width=1.5pt, -stealth, blue] (0,0,0) -- (0,0,\ar) node[above] {$\hat{\bm{e}}_z$};
 		\end{scope}
 		
 	\end{tikzpicture}
