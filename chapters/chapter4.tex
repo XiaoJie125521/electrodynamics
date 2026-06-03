@@ -32,22 +32,29 @@
 
 群是描述可复合变换的基本代数结构. 与其先背定义, 不如先看变换本身怎样自然地逼出群的四条性质. 
 
-平面转动是最简单的连续变换群之一. 设 $g(\phi)$ 表示平面内逆时针转动角度 $\phi$, 其矩阵表示为
+平面转动是最简单的连续变换群之一. 设 $g(\varphi)$ 表示平面内逆时针转动角度 $\varphi$, 其矩阵表示为
 \[
-g(\phi)
+g(\varphi)
 =
 \begin{pmatrix}
-\cos\phi&-\sin\phi\\
-\sin\phi&\cos\phi
+\cos\varphi&-\sin\varphi\\
+\sin\varphi&\cos\varphi
 \end{pmatrix}.
 \]
-若先转动角度 $\phi_1$, 再转动角度 $\phi_2$, 则总变换为
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{figure/fig4.1}
+	\caption[二维旋转变换]{二维旋转变换}
+	\label{fig:4.1}
+\end{figure}
+
+若先转动角度 $\varphi_1$, 再转动角度 $\varphi_2$, 则总变换为
 \[
-g(\phi_2)g(\phi_1).
+g(\varphi_2)g(\varphi_1).
 \]
 直接相乘可得
 \[
-g(\phi_2)g(\phi_1)=g(\phi_1+\phi_2).
+g(\varphi_2)g(\varphi_1)=g(\varphi_1+\varphi_2).
 \]
 这说明连续两次平面转动仍是平面转动, 因而平面转动集合对变换复合封闭. 单位元为
 \[
@@ -55,13 +62,13 @@ g(0)=I,
 \]
 逆元为
 \[
-g(\phi)^{-1}=g(-\phi).
+g(\varphi)^{-1}=g(-\varphi).
 \]
 由于
 \[
-g(\phi_2)g(\phi_1)=g(\phi_1)g(\phi_2),
+g(\varphi_2)g(\varphi_1)=g(\varphi_1)g(\varphi_2),
 \]
-平面转动群 $SO(2)$ 是 Abel 群. 这个例子表明, 群乘法在变换群中就是“连续作变换”的复合运算. 
+平面转动群 $SO(2)$ 是满足交换律,称为 Abel 群. 这个例子表明, 群乘法在变换群中就是“连续作变换”的复合运算. 
 
 平面转动本身是 Abel 的, 但物理中更常见的是不同类型变换的复合. 例如在二维平面上, 平移和旋转都保持距离, 但二者的顺序通常不能交换. 记平移为
 \[
@@ -127,7 +134,9 @@ G\times G\to G,
 (a,b)\mapsto ab.
 \]
 若满足以下四条性质, 则称 $G$ 是一个群:
+
 \begin{description}
+	
 \item[封闭性] 对任意 $a,b\in G$, 都有
 \[
 ab\in G.
@@ -640,7 +649,7 @@ I+\varepsilon^T+\varepsilon
 
 在旋转群下, 标量不变: 
 \[
-\phi'=\phi.
+\varphi'=\varphi.
 \]
 矢量按
 \[
@@ -690,7 +699,7 @@ D(g)=1,
 \]
 则称这是平凡表示. 标量在旋转下不变, 因此标量属于旋转群的平凡表示: 
 \[
-\phi'=\phi.
+\varphi'=\varphi.
 \]
 
 \subsection{矢量表示}
@@ -731,7 +740,7 @@ R^i{}_kR^j{}_lT^{kl}.
 
 在场论中, 场不仅依赖空间点, 还带有自身的分量结构. 标量场写为
 \[
-\phi(\bm{x}),
+\varphi(\bm{x}),
 \]
 矢量场写为
 \[
@@ -749,7 +758,7 @@ T^{ij}(\bm{x}).
 \]
 下, 标量场满足
 \[
-\phi'(\bm{x}')=\phi(\bm{x}).
+\varphi'(\bm{x}')=\varphi(\bm{x}).
 \]
 矢量场满足
 \[
@@ -1151,13 +1160,13 @@ i\hbar\varepsilon_{ijk}\hat{S}_k.
 
 \section{协变方程的群论理解}
 
-设群 $G$ 作用在一组场 $\Phi$ 上, 某个方程写成
+设群 $G$ 作用在一组场 $\varphi$ 上, 某个方程写成
 \[
-\mathcal E[\Phi]=0,
+\mathcal E[\varphi]=0,
 \]
-若对群中任意变换 $g$, 变换后的场 $\Phi'=g\cdot\Phi$ 仍满足同样形式的方程
+若对群中任意变换 $g$, 变换后的场 $\varphi'=g\cdot\varphi$ 仍满足同样形式的方程
 \[
-\mathcal E[\Phi']=0,
+\mathcal E[\varphi']=0,
 \]
 则称该方程在群 $G$ 下协变. 这里的重点不是某个分量数值是否不变, 而是方程两边在群作用下是否仍属于同一类对象, 并以同样规则变换. 
 

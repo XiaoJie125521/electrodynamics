@@ -410,6 +410,9 @@
 \newcommand{\Hfield}{\vb{H}}
 \newcommand{\Jfield}{\vb{J}}
 \newcommand{\Afield}{\vb{A}}
+\newcommand{\dalembert}{\mathop{\vcenter{\hrule height 0.4pt
+			\hbox{\vrule width 0.4pt height 1.2ex \kern 1.2ex \vrule width 0.4pt}
+			\hrule height 0.4pt}}\nolimits}
 \providecommand{\unit}[1]{\,\mathrm{#1}}
 
 \DeclareMathOperator{\sgn}{sgn}

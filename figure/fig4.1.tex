@@ -1,0 +1,164 @@
+% !TeX program = xelatex
+% Author: Izaak Neutelings (September 2020), modified
+\documentclass[border=3pt,tikz]{standalone}
+
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[outline]{contour}
+\usepackage{xcolor}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{bending}
+\usetikzlibrary{decorations.pathmorphing}
+
+\tikzset{>=latex}
+\contourlength{1.3pt}
+
+\colorlet{xcol}{blue!70!black}
+\colorlet{xcolp}{xcol!50!red}
+\colorlet{vcol}{green!45!black}
+\colorlet{acol}{red!50!blue!80!black!80}
+
+\tikzstyle{rvec}=[->,very thick,xcol,line cap=round]
+\tikzstyle{vvec}=[->,very thick,vcol,line cap=round]
+\tikzstyle{avec}=[->,very thick,acol,line cap=round]
+
+\colorlet{myred}{red!65!black}
+\tikzstyle{force}=[->,myred,very thick,line cap=round]
+\tikzstyle{mass}=[
+line width=0.5,
+draw=red!50!black,
+fill=red!50!black!10,
+rounded corners=1,
+top color=red!50!black!30,
+bottom color=red!50!black!10,
+shading angle=20
+]
+\tikzstyle{disk}=[
+line width=0.5,
+orange!30!black,
+fill=orange!40!black!10,
+top color=orange!40!black!20,
+bottom color=orange!40!black!10,
+shading angle=20
+]
+\tikzstyle{pole}=[
+line width=0.5,
+blue!20!black,
+fill=orange!20!black!10,
+top color=blue!20!black!20,
+bottom color=blue!20!black!10,
+shading angle=20
+]
+\tikzstyle{rope}=[brown!70!black,line width=1,line cap=round]
+\tikzstyle{myarr}=[-{Latex[length=3mm,width=2mm,flex'=1]},thin]
+\tikzstyle{mydashed}=[dash pattern=on 2pt off 1pt]
+
+\newcommand{\ropepath}[1]{
+	\draw[rope,black,line width=1.4pt] #1;
+	\draw[rope,line width=1.1pt] #1;
+}
+
+\newcommand{\tick}[2]{
+	\draw[thick] (#1) ++ (#2:0.1) --++ (#2-180:0.2);
+}
+
+\newcommand{\rightAngle}[4]{
+	\pgfmathanglebetweenpoints
+	{\pgfpointanchor{#2}{center}}
+	{\pgfpointanchor{#3}{center}}
+	\coordinate (tmpRA) at ($(#2)+(\pgfmathresult+45:#4)$);
+	\draw[black]
+	($(#2)!(tmpRA)!(#1)$) -- (tmpRA) -- ($(#2)!(tmpRA)!(#3)$);
+}
+
+\begin{document}
+	
+	\pgfmathsetmacro{\L}{3.1}
+	\pgfmathsetmacro{\R}{1.0*\L}
+	\pgfmathsetmacro{\Rang}{52}
+	\pgfmathsetmacro{\ang}{25}
+	
+	\begin{tikzpicture}
+		
+		% ================= Coordinates =================
+		
+		\coordinate (O) at (0,0);
+		
+		\coordinate (X) at ({1.05*\L},0);
+		\coordinate (Y) at (0,{1.05*\L});
+		
+		\coordinate (Xp) at (\ang:\L);
+		\coordinate (Yp) at ({90+\ang}:\L);
+		
+		\coordinate (R) at (\Rang:\R);
+		
+		\node[fill=blue!40!black,circle,inner sep=0.9pt] (Rp) at (R) {};
+		\node[above right=-1pt] at (Rp) {$P$};
+		
+		% Projections on fixed axes
+		\coordinate (Rx) at ({\R*cos(\Rang)},0);
+		\coordinate (Ry) at (0,{\R*sin(\Rang)});
+		
+		% Projections on rotating axes
+		\coordinate (Rxp) at (\ang:{\R*cos(\Rang-\ang)});
+		\coordinate (Ryp) at ({90+\ang}:{\R*sin(\Rang-\ang)});
+		
+		% ================= Axes =================
+		
+		\draw[<->,very thick,xcol!70!black]
+		(X) node[right=-1pt,xcol] {$x$}
+		-- (O) node[below left=-3pt] {$O$}
+		-- (Y) node[left=-1pt,xcol] {$y$};
+		
+		\draw[<->,very thick,xcolp!70!black]
+		(Xp) node[above=2pt,right=-2pt,xcolp] {$x'$}
+		-- (O)
+		-- (Yp) node[left=-2pt,xcolp] {$y'$};
+		
+		% ================= Position vector =================
+		
+		\draw[rvec,line cap=round]
+		(O) -- (Rp)
+		node[midway,left=2pt,above=1pt] {$\vb{r}$};
+		
+		% ================= Angle arc (plain arc, no arrow) =================
+		
+		\pic[
+		draw,
+		"$\varphi$"{scale=0.95,above=2pt,right},
+		angle radius=20pt,
+		angle eccentricity=1
+		] {angle=X--O--Xp};
+		
+		% ================= Projections on fixed axes =================
+		
+		\begin{scope}[xcol!70!black]
+			\draw[dashed] (Ry) -- (Rp) -- (Rx);
+			
+			\tick{Rx}{90}
+			\tick{Ry}{0}
+			
+			\rightAngle{Rp}{Rx}{X}{0.25}
+			\rightAngle{Y}{Ry}{Rp}{0.25}
+		\end{scope}
+		
+		% ================= Projections on rotating axes =================
+		
+		\begin{scope}[xcolp!70!black]
+			\draw[dashed] (Ryp) -- (Rp) -- (Rxp);
+			
+			\tick{Rxp}{90+\ang}
+			\tick{Ryp}{\ang}
+			
+			\rightAngle{Xp}{Rxp}{Rp}{0.25}
+			\rightAngle{Yp}{Ryp}{Rp}{0.25}
+		\end{scope}
+		
+	\end{tikzpicture}
+	
+\end{document}
