@@ -1,0 +1,757 @@
+\chapter{相对论力学基础}
+
+\section{自由粒子的相对论作用量}
+
+在经典力学中，质点的运动由轨道 $q^{i}(t)$ 描述，其作用量写为
+\[
+S=\int_{t_{1}}^{t_{2}}L(q^{i},\dot q^{i},t)\,\dif t .
+\]
+真实轨道满足 Hamilton 原理
+\[
+\delta S=0 .
+\]
+这里的变分不是把端点也一起移动，而是在端点固定的条件下比较所有可能轨道。也就是说，真实轨道附近的任意一条试探轨道都可写成
+\[
+q^{i}(t)+\delta q^{i}(t),
+\]
+其中 $\delta q^{i}(t)$ 是任意小函数，但在初末时刻必须为零。
+对轨道作无穷小变分
+\[
+q^{i}(t)\longrightarrow q^{i}(t)+\delta q^{i}(t),
+\]
+并取固定端点条件
+\[
+\delta q^{i}(t_{1})=\delta q^{i}(t_{2})=0,
+\]
+可得到通常的 Euler--Lagrange 方程：
+\[
+\frac{\dif}{\dif t}\left(\frac{\partial L}{\partial \dot q^{i}}\right)
+-
+\frac{\partial L}{\partial q^{i}}
+=0 .
+\]
+其推导的关键一步是
+\[
+\delta\dot q^{i}
+=\frac{\dif}{\dif t}\delta q^{i}.
+\]
+因此
+\[
+\delta S
+=
+\int_{t_{1}}^{t_{2}}
+\left(
+\frac{\partial L}{\partial q^{i}}\delta q^{i}
++
+\frac{\partial L}{\partial \dot q^{i}}\delta\dot q^{i}
+\right)\dif t .
+\]
+对第二项分部积分得
+\[
+\delta S
+=
+\left.
+\frac{\partial L}{\partial \dot q^{i}}\delta q^{i}
+\right|_{t_{1}}^{t_{2}}
++
+\int_{t_{1}}^{t_{2}}
+\left[
+\frac{\partial L}{\partial q^{i}}
+-
+\frac{\dif}{\dif t}
+\left(\frac{\partial L}{\partial \dot q^{i}}\right)
+\right]\delta q^{i}\,\dif t .
+\]
+由于端点变分为零，边界项消失；又由于 $\delta q^{i}$ 在中间时刻任意，括号中的系数必须为零。这就得到 Euler--Lagrange 方程。
+
+在相对论中，作用量不仅要给出正确的运动方程，还必须是 Lorentz 标量。对于自由粒子而言，世界线上最自然的 Lorentz 标量是固有时积分，或者等价地，是世界线长度积分。类时世界线满足
+\[
+\dif s^{2}=\eta_{\mu\nu}\dif x^{\mu}\dif x^{\nu}=c^{2}\dif\tau^{2}.
+\]
+因此，自由粒子的相对论作用量取为
+\[
+S=-mc\int \dif s=-mc^{2}\int \dif\tau .
+\]
+这里 $m$ 为粒子的静质量。负号是一种约定，它保证低速极限下得到通常的经典自由粒子拉格朗日量。
+
+若用任意参数 $\lambda$ 描述世界线，
+\[
+x^{\mu}=x^{\mu}(\lambda),
+\]
+则
+\[
+\dif x^{\mu}=\frac{\dif x^{\mu}}{\dif\lambda}\dif\lambda.
+\]
+于是作用量可写为
+\[
+S=-mc\int
+\sqrt{\eta_{\mu\nu}
+	\frac{\dif x^{\mu}}{\dif\lambda}
+	\frac{\dif x^{\nu}}{\dif\lambda}}
+\,\dif\lambda .
+\]
+如果换用另一个单调参数 $\lambda'=\lambda'(\lambda)$，则
+\[
+\frac{\dif x^{\mu}}{\dif\lambda}
+=
+\frac{\dif x^{\mu}}{\dif\lambda'}
+\frac{\dif\lambda'}{\dif\lambda}.
+\]
+根号中的量会多出因子 $(\dif\lambda'/\dif\lambda)^{2}$，而积分测度 $\dif\lambda$ 同时变为
+\[
+\dif\lambda
+=
+\frac{\dif\lambda}{\dif\lambda'}\dif\lambda' .
+\]
+二者正好抵消。因此该形式不依赖参数 $\lambda$ 的具体选取，说明世界线作用量的重参数化不变性。
+
+\section{自由粒子的相对论拉格朗日量}
+
+在某一惯性系中，固有时与坐标时间满足
+\[
+\dif\tau=\dif t\sqrt{1-\frac{v^{2}}{c^{2}}},
+\]
+其中
+\[
+v^{2}=\bm{v}\cdot\bm{v}.
+\]
+这是由时空间隔
+\[
+c^{2}\dif\tau^{2}
+=
+c^{2}\dif t^{2}-\dif\bm{x}^{2}
+\]
+直接得到的。因为 $\dif\bm{x}=\bm{v}\dif t$，所以
+\[
+c^{2}\dif\tau^{2}
+=
+c^{2}\dif t^{2}-v^{2}\dif t^{2}
+=
+c^{2}\dif t^{2}
+\left(1-\frac{v^{2}}{c^{2}}\right).
+\]
+即
+\[
+\dif\tau
+=
+\dif t
+\sqrt{1-\frac{v^{2}}{c^{2}}}.
+\]
+将其代入自由粒子作用量，得到
+\[
+S=-mc^{2}\int \dif\tau
+=-mc^{2}\int \sqrt{1-\frac{v^{2}}{c^{2}}}\,\dif t .
+\]
+与 $S=\int L\,\dif t$ 比较，自由粒子的相对论拉格朗日量为
+\[
+L=-mc^{2}\sqrt{1-\frac{v^{2}}{c^{2}}}.
+\]
+
+为了检查其非相对论极限，令 $v\ll c$。利用展开式
+\[
+\sqrt{1-\frac{v^{2}}{c^{2}}}
+=
+1-\frac{1}{2}\frac{v^{2}}{c^{2}}
++O\left(\frac{v^{4}}{c^{4}}\right),
+\]
+得到
+\[
+L=-mc^{2}+\frac{1}{2}mv^{2}
++O\left(\frac{v^{4}}{c^{2}}\right).
+\]
+第一项 $-mc^{2}$ 是常数，不影响 Euler--Lagrange 方程。因此低速极限下，上式回到经典自由粒子的拉格朗日量
+\[
+L_{\mathrm{nr}}=\frac{1}{2}mv^{2}.
+\]
+
+\section{自由粒子的世界线方程}
+
+自由粒子的世界线方程可以直接由作用量变分得到。取
+\[
+\dot x^{\mu}=\frac{\dif x^{\mu}}{\dif\lambda},
+\qquad
+\dot x^{2}=\eta_{\mu\nu}\dot x^{\mu}\dot x^{\nu}.
+\]
+作用量写为
+\[
+S=-mc\int \sqrt{\dot x^{2}}\,\dif\lambda .
+\]
+相应的有效拉格朗日量为
+\[
+L_{\lambda}=-mc\sqrt{\eta_{\mu\nu}\dot x^{\mu}\dot x^{\nu}}.
+\]
+这里的 $L_{\lambda}$ 不是以坐标时间为自变量的普通拉格朗日量，而是以世界线参数 $\lambda$ 为自变量的拉格朗日量。变分时把 $x^{\mu}(\lambda)$ 看成四个广义坐标，端点条件为
+\[
+\delta x^{\mu}(\lambda_{1})=
+\delta x^{\mu}(\lambda_{2})=0 .
+\]
+由于 $L_{\lambda}$ 不显含 $x^{\mu}$，Euler--Lagrange 方程给出
+\[
+\frac{\dif}{\dif\lambda}
+\left(
+\frac{\partial L_{\lambda}}{\partial \dot x^{\mu}}
+\right)=0 .
+\]
+直接计算有
+\[
+\frac{\partial L_{\lambda}}{\partial \dot x^{\mu}}
+=
+-mc\frac{\dot x_{\mu}}{\sqrt{\dot x^{2}}}.
+\]
+其中用到了
+\[
+\frac{\partial\dot x^{2}}{\partial\dot x^{\mu}}
+=
+\frac{\partial}{\partial\dot x^{\mu}}
+(\eta_{\alpha\beta}\dot x^{\alpha}\dot x^{\beta})
+=2\eta_{\mu\nu}\dot x^{\nu}
+=2\dot x_{\mu}.
+\]
+因此
+\[
+\frac{\dif}{\dif\lambda}
+\left(
+\frac{\dot x_{\mu}}{\sqrt{\dot x^{2}}}
+\right)=0 .
+\]
+取固有时参数 $\lambda=\tau$ 时，
+\[
+\dot x^{\mu}=\frac{\dif x^{\mu}}{\dif\tau}=u^{\mu},
+\qquad
+\dot x^{2}=u^{\mu}u_{\mu}=c^{2}.
+\]
+于是上式化为
+\[
+\frac{\dif u_{\mu}}{\dif\tau}=0,
+\]
+等价地，
+\[
+\frac{\dif^{2}x^{\mu}}{\dif\tau^{2}}=0 .
+\]
+这说明自由粒子的世界线是闵可夫斯基时空中的直线。它是相对论中惯性运动的几何表述。
+
+\section{四速度与四加速度}
+
+粒子的四维坐标写为
+\[
+x^{\mu}=(ct,\bm{x}).
+\]
+固有时 $\tau$ 是类时世界线的自然参数。四速度定义为
+\[
+u^{\mu}=\frac{\dif x^{\mu}}{\dif\tau}.
+\]
+注意四速度不是三维速度 $\bm{v}$ 后面简单添一个分量；它是四维坐标对固有时的导数。由于固有时是 Lorentz 标量，$u^\mu$ 才按四维矢量变换。
+由
+\[
+\dif t=\gamma\dif\tau,
+\qquad
+\gamma=\frac{1}{\sqrt{1-\frac{v^{2}}{c^{2}}}},
+\]
+可得时间分量
+\[
+u^{0}=\frac{\dif(ct)}{\dif\tau}=\gamma c,
+\]
+空间分量
+\[
+u^{i}=\frac{\dif x^{i}}{\dif\tau}=\frac{\dif x^{i}}{\dif t}\frac{\dif t}{\dif\tau}=\gamma v^{i}.
+\]
+因此
+\[
+u^{\mu}=\gamma(c,\bm{v}).
+\]
+四速度的 Minkowski 模长为
+\[
+u^{\mu}u_{\mu}=\gamma^{2}(c^{2}-v^{2})=c^{2}.
+\]
+这说明四速度的 Minkowski 长度恒为 $c$。
+
+四加速度定义为
+\[
+a^{\mu}=\frac{\dif u^{\mu}}{\dif\tau}.
+\]
+虽然四速度的模长恒为 $c$，四速度本身仍可随固有时改变。四加速度描述的正是这种方向上的改变，而不是模长的改变。
+对恒等式
+\[
+u^{\mu}u_{\mu}=c^{2}
+\]
+求固有时导数，得到
+\[
+\frac{\dif}{\dif\tau}(u^{\mu}u_{\mu})=2a^{\mu}u_{\mu}=0.
+\]
+因此
+\[
+a^{\mu}u_{\mu}=0 .
+\]
+四加速度总是与四速度正交。这里的正交是 Minkowski 意义下的正交。
+
+\section{四动量与能量动量关系}
+
+四动量定义为
+\[
+p^{\mu}=mu^{\mu}.
+\]
+这里假定粒子的质量 $m$ 为常数。因此四动量与四速度方向相同，并且也构成四维矢量。
+由
+\[
+u^{\mu}=\gamma(c,\bm{v})
+\]
+得到
+\[
+p^{\mu}=(\gamma mc,\gamma m\bm{v}).
+\]
+定义相对论三维动量和能量为
+\[
+\bm{p}=\gamma m\bm{v},
+\qquad
+E=\gamma mc^{2}.
+\]
+这些定义不是任意记号。空间分量在低速极限 $\gamma\to 1$ 时回到 Newton 力学的 $\bm{p}=m\bm{v}$；时间分量乘以 $c$ 得到的量在后面会等于哈密顿量，因此自然解释为粒子总能量。
+则四动量可写成
+\[
+p^{\mu}=\left(\frac{E}{c},\bm{p}\right).
+\]
+降低指标得到
+\[
+p_{\mu}=\left(\frac{E}{c},-\bm{p}\right).
+\]
+
+四动量的 Minkowski 模长为
+\[
+p^{\mu}p_{\mu}=m^{2}u^{\mu}u_{\mu}=m^{2}c^{2}.
+\]
+另一方面，
+\[
+p^{\mu}p_{\mu}=\left(\frac{E}{c}\right)^{2}-p^{2}.
+\]
+因此
+\[
+\frac{E^{2}}{c^{2}}-p^{2}=m^{2}c^{2}.
+\]
+两边乘以 $c^{2}$，得到能量动量关系
+\[
+E^{2}=p^{2}c^{2}+m^{2}c^{4}.
+\]
+对于无质量粒子，令 $m=0$，得到
+\[
+E=pc.
+\]
+
+\section{相对论哈密顿量}
+
+自由粒子的三维正则动量由拉格朗日量
+\[
+L=-mc^{2}\sqrt{1-\frac{v^{2}}{c^{2}}}
+\]
+给出：
+\[
+\bm{p}=\frac{\partial L}{\partial\bm{v}}=\gamma m\bm{v}.
+\]
+具体地，
+\[
+\frac{\partial L}{\partial v_{i}}
+=
+-mc^{2}\frac{1}{2}
+\left(1-\frac{v^{2}}{c^{2}}\right)^{-1/2}
+\left(-\frac{2v_{i}}{c^{2}}\right)
+=
+\gamma mv_{i}.
+\]
+哈密顿量定义为
+\[
+H=\bm{p}\cdot\bm{v}-L.
+\]
+代入 $\bm{p}=\gamma m\bm{v}$ 与 $L=-mc^{2}/\gamma$，得到
+\[
+H=\gamma mv^{2}+\frac{mc^{2}}{\gamma}.
+\]
+利用
+\[
+\frac{1}{\gamma^{2}}=1-\frac{v^{2}}{c^{2}},
+\]
+可将第二项写成
+\[
+\frac{mc^{2}}{\gamma}
+=
+\gamma mc^{2}\frac{1}{\gamma^{2}}
+=
+\gamma mc^{2}\left(1-\frac{v^{2}}{c^{2}}\right)
+=
+\gamma mc^{2}-\gamma mv^{2}.
+\]
+可化简为
+\[
+H=\gamma mc^{2}=E.
+\]
+因此自由相对论粒子的哈密顿量等于总能量。
+
+在哈密顿形式中，哈密顿量应写为动量的函数。由能量动量关系可得
+\[
+H(\bm{p})=\sqrt{p^{2}c^{2}+m^{2}c^{4}}.
+\]
+也可以直接从 $\bm{p}=\gamma m\bm{v}$ 消去速度。由
+\[
+p^{2}
+=
+\gamma^{2}m^{2}v^{2}
+=
+m^{2}c^{2}(\gamma^{2}-1),
+\]
+得到
+\[
+\gamma mc^{2}
+=
+\sqrt{p^{2}c^{2}+m^{2}c^{4}}.
+\]
+当 $p\ll mc$ 时，
+\[
+H=mc^{2}\sqrt{1+\frac{p^{2}}{m^{2}c^{2}}}
+=
+mc^{2}+\frac{p^{2}}{2m}-\frac{p^{4}}{8m^{3}c^{2}}+\cdots .
+\]
+第一项为静止能，第二项为经典动能，后续项为相对论修正。
+
+\section{四动量的洛伦兹变换}
+
+四动量是四维矢量，因此在 Lorentz 变换下满足
+\[
+p'^{\mu}=\Lambda^{\mu}{}_{\nu}p^{\nu}.
+\]
+因为 $p^{0}=E/c$，四动量的时间分量变换后再乘以 $c$ 就得到能量变换式；空间分量则直接给出三维动量分量的变换式。
+考虑 $K'$ 相对于 $K$ 沿 $x$ 轴正方向以速度 $V$ 运动。若采用从 $K$ 到 $K'$ 的 Lorentz boost，则
+\[
+E'=\gamma_{V}(E-Vp_{x}),
+\]
+\[
+p'_{x}=\gamma_{V}\left(p_{x}-\frac{V}{c^{2}}E\right),
+\]
+以及
+\[
+p'_{y}=p_{y},
+\qquad
+p'_{z}=p_{z}.
+\]
+其中
+\[
+\gamma_{V}=\frac{1}{\sqrt{1-\frac{V^{2}}{c^{2}}}}.
+\]
+反过来，从 $K'$ 到 $K$ 的变换为
+\[
+E=\gamma_{V}(E'+Vp'_{x}),
+\]
+\[
+p_{x}=\gamma_{V}\left(p'_{x}+\frac{V}{c^{2}}E'\right),
+\]
+\[
+p_{y}=p'_{y},
+\qquad
+p_{z}=p'_{z}.
+\]
+这些公式说明，能量和动量在 Lorentz 变换下相互混合。能量不是 Lorentz 标量，三维动量也不是孤立的四维对象；它们共同组成四动量。
+
+\section{四维力与相对论运动方程}
+
+三维力定义为
+\[
+\bm{f}=\frac{\dif\bm{p}}{\dif t}.
+\]
+相对论中更自然的对象是四维力，定义为
+\[
+F^{\mu}=\frac{\dif p^{\mu}}{\dif\tau}.
+\]
+由于
+\[
+\frac{\dif}{\dif\tau}=\gamma\frac{\dif}{\dif t},
+\]
+四维力的空间分量为
+\[
+F^{i}=\frac{\dif p^{i}}{\dif\tau}=\gamma\frac{\dif p^{i}}{\dif t}=\gamma f^{i}.
+\]
+时间分量为
+\[
+F^{0}=\frac{\dif}{\dif\tau}\left(\frac{E}{c}\right)
+=\frac{\gamma}{c}\frac{\dif E}{\dif t}.
+\]
+功率公式可由能量动量关系推出。对
+\[
+E^{2}=p^{2}c^{2}+m^{2}c^{4}
+\]
+关于坐标时间求导，得
+\[
+2E\frac{\dif E}{\dif t}
+=
+2c^{2}\bm{p}\cdot\frac{\dif\bm{p}}{\dif t}.
+\]
+利用 $E=\gamma mc^{2}$ 与 $\bm{p}=\gamma m\bm{v}$，有
+\[
+\frac{c^{2}\bm{p}}{E}=\bm{v}.
+\]
+因此
+\[
+\frac{\dif E}{\dif t}
+=
+\bm{v}\cdot\frac{\dif\bm{p}}{\dif t}.
+\]
+由功率公式
+\[
+\frac{\dif E}{\dif t}=\bm{f}\cdot\bm{v},
+\]
+可得
+\[
+F^{0}=\frac{\gamma}{c}\bm{f}\cdot\bm{v}.
+\]
+因此
+\[
+F^{\mu}=\left(\frac{\gamma}{c}\bm{f}\cdot\bm{v},\gamma\bm{f}\right).
+\]
+四维运动方程为
+\[
+\frac{\dif p^{\mu}}{\dif\tau}=F^{\mu}.
+\]
+由于
+\[
+p^{\mu}p_{\mu}=m^{2}c^{2}
+\]
+为常数，对固有时求导得
+\[
+2p_{\mu}F^{\mu}=0.
+\]
+又因 $p^{\mu}=mu^{\mu}$，所以
+\[
+F^{\mu}u_{\mu}=0.
+\]
+四维力总是与四速度正交。这是相对论动力学对力的基本约束。
+
+\section{四维角动量张量}
+
+三维角动量为
+\[
+\bm{L}=\bm{r}\times\bm{p}.
+\]
+它的分量可以写成
+\[
+L^{i}=\epsilon^{ijk}x^{j}p^{k}.
+\]
+这个写法提示我们，角动量本质上来自位置和动量的反对称组合。到了四维时空中，时间分量也应与空间分量一起参与这种反对称组合。
+在四维时空中，与角动量对应的对象是二阶反对称张量：
+\[
+M^{\mu\nu}=x^{\mu}p^{\nu}-x^{\nu}p^{\mu}.
+\]
+显然
+\[
+M^{\mu\nu}=-M^{\nu\mu}.
+\]
+其纯空间分量
+\[
+M^{ij}=x^{i}p^{j}-x^{j}p^{i}
+\]
+对应三维角动量。例如
+\[
+M^{12}=x^{1}p^{2}-x^{2}p^{1}=L^{3}.
+\]
+含时间指标的分量
+\[
+M^{0i}=x^{0}p^{i}-x^{i}p^{0}
+\]
+与 boost 生成元和质心运动相关。
+
+对固有时求导：
+\[
+\frac{\dif M^{\mu\nu}}{\dif\tau}
+=
+\frac{\dif x^{\mu}}{\dif\tau}p^{\nu}
++x^{\mu}\frac{\dif p^{\nu}}{\dif\tau}
+-
+\frac{\dif x^{\nu}}{\dif\tau}p^{\mu}
+-
+x^{\nu}\frac{\dif p^{\mu}}{\dif\tau}.
+\]
+利用 $p^{\mu}=mu^{\mu}$，有
+\[
+u^{\mu}p^{\nu}-u^{\nu}p^{\mu}=m(u^{\mu}u^{\nu}-u^{\nu}u^{\mu})=0.
+\]
+因此
+\[
+\frac{\dif M^{\mu\nu}}{\dif\tau}
+=
+x^{\mu}F^{\nu}-x^{\nu}F^{\mu}.
+\]
+定义四维力矩张量
+\[
+N^{\mu\nu}=x^{\mu}F^{\nu}-x^{\nu}F^{\mu},
+\]
+则
+\[
+\frac{\dif M^{\mu\nu}}{\dif\tau}=N^{\mu\nu}.
+\]
+对于自由粒子，$F^{\mu}=0$，所以
+\[
+\frac{\dif M^{\mu\nu}}{\dif\tau}=0.
+\]
+这就是自由粒子的四维角动量张量守恒。
+
+\section{哈密顿--雅可比方程}
+
+Hamilton--Jacobi 理论把动力学问题转化为作用量函数的偏微分方程。在相对论中，可把作用量看成时空坐标的标量函数：
+\[
+S=S(x^{\mu}).
+\]
+这里的 $S(x^\mu)$ 可以理解为从某个固定初始点到事件 $x^\mu$ 的经典作用量。改变终点位置时，作用量的变化由终点处的动量决定；这正是 Hamilton--Jacobi 理论中把动量写成作用量梯度的原因。
+为了与平面波相位
+\[
+S=-Et+\bm{p}\cdot\bm{x}
+\]
+相容，这里取约定
+\[
+p_{\mu}=-\partial_{\mu}S.
+\]
+这个负号来自本讲义对作用量相位的约定。若把 $S=-Et+\bm{p}\cdot\bm{x}$ 看成一条自由粒子轨道对应的作用量函数，则时间导数应给出能量，空间梯度应给出三维动量。
+需要注意，$p_{\mu}$ 是四维协变动量分量，而不是三维动量分量。由于
+\[
+\partial_{\mu}=\left(\frac{1}{c}\frac{\partial}{\partial t},\bm{\nabla}\right),
+\]
+时间分量给出
+\[
+p_{0}=-\frac{\partial S}{\partial x^{0}}
+=-\frac{1}{c}\frac{\partial S}{\partial t}.
+\]
+对于 $S=-Et+\bm{p}\cdot\bm{x}$，有
+\[
+p_{0}=\frac{E}{c}.
+\]
+空间分量为
+\[
+p_{i}=-\frac{\partial S}{\partial x^{i}}.
+\]
+在号差约定 $\eta_{\mu\nu}=\mathrm{diag}(1,-1,-1,-1)$ 下，四维协变空间分量满足 $p_{i}=-p^{i}$。因此三维动量为
+\[
+\bm{p}=\bm{\nabla}S.
+\]
+
+自由粒子的质量壳条件为
+\[
+p_{\mu}p^{\mu}=m^{2}c^{2}.
+\]
+代入 $p_{\mu}=-\partial_{\mu}S$，得到相对论 Hamilton--Jacobi 方程：
+\[
+\eta^{\mu\nu}\partial_{\mu}S\partial_{\nu}S=m^{2}c^{2}.
+\]
+展开为
+\[
+\frac{1}{c^{2}}\left(\frac{\partial S}{\partial t}\right)^{2}
+-
+(\bm{\nabla}S)^{2}
+=
+m^{2}c^{2}.
+\]
+若取 $S=-Et+\bm{p}\cdot\bm{x}$，则立即得到
+\[
+E^{2}=p^{2}c^{2}+m^{2}c^{4}.
+\]
+因此 Hamilton--Jacobi 方程可以看成能量动量关系在作用量函数上的局部形式。
+
+\section{从粒子力学到场论}
+
+本章讨论的是点粒子的相对论力学。点粒子的自由度是有限个世界线坐标
+\[
+x^{\mu}=x^{\mu}(\tau).
+\]
+场论的基本对象则是定义在时空每一点上的场，例如
+\[
+\phi(x),
+\qquad
+A^{\mu}(x),
+\qquad
+T^{\mu\nu}(x).
+\]
+因此，场论可以看成从有限自由度系统到无限自由度系统的推广。
+
+粒子力学中的作用量通常是世界线上的积分：
+\[
+S=\int L_{\tau}\,\dif\tau.
+\]
+场论中的作用量则是时空区域上的积分：
+\[
+S=\int \mathcal{L}(\phi,\partial_{\mu}\phi,x)\,\dif^{4}x.
+\]
+其中 $\mathcal{L}$ 称为拉格朗日密度。
+
+粒子力学中的 Euler--Lagrange 方程为
+\[
+\frac{\dif}{\dif t}
+\left(
+\frac{\partial L}{\partial \dot q^{i}}
+\right)
+-
+\frac{\partial L}{\partial q^{i}}
+=0.
+\]
+场论中的 Euler--Lagrange 方程将推广为
+\[
+\partial_{\mu}
+\left(
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}
+\right)
+-
+\frac{\partial\mathcal{L}}{\partial\phi}
+=0.
+\]
+由此可见，相对论力学不仅给出粒子的能量动量关系，也为经典场论提供了三个基本思想：作用量应是 Lorentz 标量；动力学方程应写成协变形式；连续对称性通过守恒量或守恒流体现。
+
+\section{本章小结}
+
+本章建立了相对论点粒子的基本力学形式。自由粒子的作用量为
+\[
+S=-mc\int \dif s=-mc^{2}\int \dif\tau,
+\]
+它是 Lorentz 标量。由该作用量可得到自由粒子在闵可夫斯基时空中的直线世界线。
+
+四速度和四动量分别定义为
+\[
+u^{\mu}=\frac{\dif x^{\mu}}{\dif\tau},
+\qquad
+p^{\mu}=mu^{\mu}.
+\]
+它们满足
+\[
+u^{\mu}u_{\mu}=c^{2},
+\qquad
+p^{\mu}p_{\mu}=m^{2}c^{2}.
+\]
+由四动量的模长得到能量动量关系
+\[
+E^{2}=p^{2}c^{2}+m^{2}c^{4}.
+\]
+
+自由粒子的哈密顿量为
+\[
+H(\bm{p})=\sqrt{p^{2}c^{2}+m^{2}c^{4}},
+\]
+其低动量极限给出静止能、经典动能和相对论修正项。
+
+四维力定义为
+\[
+F^{\mu}=\frac{\dif p^{\mu}}{\dif\tau},
+\]
+并满足约束
+\[
+F^{\mu}u_{\mu}=0.
+\]
+四维角动量张量为
+\[
+M^{\mu\nu}=x^{\mu}p^{\nu}-x^{\nu}p^{\mu}.
+\]
+自由粒子满足
+\[
+\frac{\dif p^{\mu}}{\dif\tau}=0,
+\qquad
+\frac{\dif M^{\mu\nu}}{\dif\tau}=0.
+\]
+这分别表示四动量守恒和四维角动量张量守恒。
+
+最后，相对论 Hamilton--Jacobi 方程
+\[
+\eta^{\mu\nu}\partial_{\mu}S\partial_{\nu}S=m^{2}c^{2}
+\]
+表明能量动量关系也可以写成作用量函数的局部偏微分方程。
+
+下一章将把这些思想推广到场论。粒子的世界线变量 $x^{\mu}(\tau)$ 将被时空场 $\phi(x)$、$A^{\mu}(x)$ 等取代；粒子力学中的守恒量将推广为场论中的守恒流和能量动量张量。
