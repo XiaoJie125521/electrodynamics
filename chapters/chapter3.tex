@@ -896,11 +896,11 @@ x=\cos t,\qquad y=\sin t,\qquad 0\leq t\leq 2\pi.
 \section{广义 Stokes 公式}
 
 广义 Stokes 公式是微分形式理论中最重要的积分定理. 设 $M$ 是一个带边界的定向光滑区域, $\omega$ 是定义在 $M$ 上的适当阶数的微分形式, 则
-\[
-\int_M \dif\omega
+\begin{equation}
+	\int_M \dif\omega
 =
 \int_{\partial M}\omega.
-\]
+\end{equation}
 这里 $\partial M$ 表示 $M$ 的边界. 
 
 这个公式统一了微积分基本定理、Gauss公式和 Stokes 公式. 
@@ -940,9 +940,9 @@ M=[a,b],
 \subsection{平面 Green 公式}
 
 在二维区域 $D$ 中, 设一次形式为
-\[
-\omega=P\,\dif x+Q\,\dif y.
-\]
+\begin{equation}
+	\omega=P\,\dif x+Q\,\dif y.
+\end{equation}
 则
 \[
 \dif\omega
@@ -979,11 +979,11 @@ M=[a,b],
 (Q_x-P_y)\dif x\wedge \dif y.
 \]
 广义 Stokes 公式给出
-\[
-\int_D(Q_x-P_y)\dif x\dif y
+\begin{equation}
+	\int_D(Q_x-P_y)\dif x\dif y
 =
 \oint_{\partial D}P\,\dif x+Q\,\dif y.
-\]
+\end{equation}
 这就是平面 Green 公式. 
 \begin{figure}
 	\centering
@@ -1044,17 +1044,17 @@ A^\flat=A_i \dif x^i.
 可知, $\dif A^\flat$ 对应旋度的通量形式. 
 
 广义 Stokes 公式给出
-\[
-\int_S \dif A^\flat
+\begin{equation}
+	\int_S \dif A^\flat
 =
 \oint_{\partial S}A^\flat.
-\]
+\end{equation}
 写成传统向量形式, 就是
-\[
-\int_S(\nabla\times\bm{A})\cdot \dif\bm{S}
+\begin{equation}
+	\int_S(\nabla\times\bm{A})\cdot \dif\bm{S}
 =
 \oint_{\partial S}\bm{A}\cdot \dif\bm{l}.
-\]
+\end{equation}
 \subsection{三维Gauss公式}
 
 设向量场 $\bm{A}$ 对应一次形式 $A^\flat$. 通量二形式为
@@ -1070,17 +1070,17 @@ A^\flat=A_i \dif x^i.
 可知 $\dif(*A^\flat)$ 是散度对应的体积形式. 
 
 广义 Stokes 公式给出
-\[
-\int_V \dif(*A^\flat)
+\begin{equation}
+	\int_V \dif(*A^\flat)
 =
 \oint_{\partial V}*A^\flat.
-\]
+\end{equation}
 写成传统向量形式, 就是
-\[
-\int_V\nabla\cdot\bm{A}\,\dif V
+\begin{equation}
+	\int_V\nabla\cdot\bm{A}\,\dif V
 =
 \oint_{\partial V}\bm{A}\cdot \dif\bm{S}.
-\]
+\end{equation}
 因此, Gauss公式和 Stokes 公式不是两个孤立的定理, 而是同一个广义 Stokes 公式在不同维数和不同阶数微分形式上的表现. 
 \begin{figure}[h]
 	\centering

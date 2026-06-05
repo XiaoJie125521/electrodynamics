@@ -1,0 +1,1165 @@
+\chapter{电磁场的四维协变形式}
+
+\section{本章目标与符号约定}
+
+前面几章已经建立了本章所需的基本语言：闵可夫斯基时空、洛伦兹变换、四维张量、相对论粒子力学以及经典场论的拉格朗日形式。本章在这些基础上讨论电磁场的四维协变形式。
+
+本章采用四维张量语言重写经典电动力学。电磁相互作用由四维势描述，电场和磁场合并为反对称二阶张量，Maxwell 方程则表现为洛伦兹协变的张量方程。
+
+本章采用闵可夫斯基度规号差约定
+\begin{equation}
+	\eta_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1).
+	\label{eq:8.1}
+\end{equation}
+四维坐标取为
+
+\[
+x^{\mu}=(ct,x,y,z).
+\]
+
+四维偏导算符为
+\begin{equation}
+	\partial_{\mu}
+	=
+	\frac{\partial}{\partial x^{\mu}}
+	=
+	\left(
+	\frac{1}{c}\frac{\partial}{\partial t},
+	\bm{\nabla}
+	\right),
+	\label{eq:8.3}
+\end{equation}
+升高指标后有
+
+\[
+\partial^{\mu}
+=
+\eta^{\mu\nu}\partial_{\nu}
+=
+\left(
+\frac{1}{c}\frac{\partial}{\partial t},
+-\bm{\nabla}
+\right).
+\]
+
+四维电流取为
+\begin{equation}
+	j^{\mu}=(c\rho,\bm{j}),
+	\qquad
+	j_{\mu}=(c\rho,-\bm{j}).
+	\label{eq:8.5}
+\end{equation}
+电荷守恒的四维形式为
+\begin{equation}
+	\partial_{\mu}j^{\mu}=0.
+	\label{eq:8.6}
+\end{equation}
+本章采用 SI 制单位。达朗贝尔算子记为
+\begin{equation}
+	\dalembert
+	=
+	\partial_{\mu}\partial^{\mu}
+	=
+	\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}
+	-
+	\bm{\nabla}^{2}.
+	\label{eq:8.7}
+\end{equation}
+
+\section{四维势与三维势}
+
+电磁场可以由标量势 $\phi$ 和矢量势 $\bm{A}$ 描述：
+\begin{equation}
+	\bm{E}
+	=
+	-\bm{\nabla}\phi
+	-
+	\frac{\partial\bm{A}}{\partial t},
+	\qquad
+	\bm{B}
+	=
+	\bm{\nabla}\times\bm{A}.
+	\label{eq:8.8}
+\end{equation}
+在相对论形式中，标量势和矢量势不是两个独立对象，而是同一个四维势的不同分量。本章采用
+\begin{equation}
+	A^{\mu}
+	=
+	\left(
+	\frac{\phi}{c},
+	\bm{A}
+	\right).
+	\label{eq:8.9}
+\end{equation}
+由度规 \eqref{eq:8.1} 降低指标，得
+\begin{equation}
+	A_{\mu}
+	=
+	\eta_{\mu\nu}A^{\nu}
+	=
+	\left(
+	\frac{\phi}{c},
+	-\bm{A}
+	\right).
+	\label{eq:8.10}
+\end{equation}
+因此
+\[
+A_{0}=\frac{\phi}{c},
+\qquad
+A_{i}=-A^{(3)}_{i},
+\]
+其中 $A^{(3)}_{i}$ 表示三维矢量势的第 $i$ 个分量。后文仍用 $\bm{A}$ 表示三维矢量势。
+
+由于 $A^{\mu}$ 是四维矢量，在洛伦兹变换下满足
+\begin{equation}
+	A'^{\mu}=\Lambda^{\mu}{}_{\nu}A^{\nu}.
+	\label{eq:8.12}
+\end{equation}
+例如，设参考系 $K'$ 相对于 $K$ 沿 $x$ 轴正方向以速度 $V$ 运动，从 $K$ 到 $K'$ 的 boost 给出
+\[
+A'^{0}=\gamma\left(A^{0}-\frac{V}{c}A^{1}\right),
+\qquad
+A'^{1}=\gamma\left(A^{1}-\frac{V}{c}A^{0}\right),
+\]
+以及
+\[
+A'^{2}=A^{2},
+\qquad
+A'^{3}=A^{3}.
+\]
+代入 $A^{0}=\phi/c$ 与 $A^{1}=A_{x}$，得到
+\[
+\phi'
+=
+\gamma(\phi-VA_{x}),
+\qquad
+A'_{x}
+=
+\gamma\left(A_{x}-\frac{V}{c^{2}}\phi\right),
+\]
+并且
+\[
+A'_{y}=A_{y},
+\qquad
+A'_{z}=A_{z}.
+\]
+由此可见，标量势和矢量势在洛伦兹变换下会相互混合；完整的相对论对象是四维势 $A^{\mu}$。
+
+\section{电磁场张量}
+
+\subsection{由四维势定义场强张量}
+
+电磁场张量定义为
+\begin{equation}
+	F_{\mu\nu}
+	=
+	\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}.
+	\label{eq:8.17}
+\end{equation}
+由定义立刻得到
+\begin{equation}
+	F_{\mu\nu}=-F_{\nu\mu}.
+	\label{eq:8.18}
+\end{equation}
+因此在四维时空中，$F_{\mu\nu}$ 只有六个独立分量。这六个分量正好对应三维电场和磁场的六个分量。
+
+若四维势按 \eqref{eq:8.12} 作为四维矢量变换，则 $F_{\mu\nu}$ 按二阶协变张量变换：
+\begin{equation}
+	F'_{\mu\nu}
+	=
+	\Lambda_{\mu}{}^{\alpha}\Lambda_{\nu}{}^{\beta}F_{\alpha\beta}.
+	\label{eq:8.19}
+\end{equation}
+因此，电场和磁场在不同惯性系中可以相互混合，而 $F_{\mu\nu}$ 作为整体具有洛伦兹张量的变换性质。
+
+\subsection{电场和磁场作为场张量的分量}
+
+下面把 $F_{\mu\nu}$ 写成 $\bm{E}$ 和 $\bm{B}$ 的形式。由 \eqref{eq:8.10} 与 \eqref{eq:8.3} 可得
+
+\[
+F_{0i}
+=
+\partial_{0}A_{i}-\partial_{i}A_{0}.
+\]
+
+利用 $A_{i}=-A^{(3)}_{i}$，有
+\begin{equation}
+	F_{0i}
+	=
+	-\frac{1}{c}\frac{\partial A^{(3)}_{i}}{\partial t}
+	-
+	\frac{1}{c}\partial_{i}\phi
+	=
+	\frac{E_{i}}{c}.
+	\label{eq:8.21}
+\end{equation}
+空间分量为
+\begin{equation}
+	F_{ij}
+	=
+	\partial_{i}A_{j}-\partial_{j}A_{i}
+	=
+	-\varepsilon_{ijk}B_{k}.
+	\label{eq:8.22}
+\end{equation}
+因此
+\begin{equation}
+	(F_{\mu\nu})
+	=
+	\begin{pmatrix}
+		0 & E_{x}/c & E_{y}/c & E_{z}/c\\
+		-E_{x}/c & 0 & -B_{z} & B_{y}\\
+		-E_{y}/c & B_{z} & 0 & -B_{x}\\
+		-E_{z}/c & -B_{y} & B_{x} & 0
+	\end{pmatrix}.
+	\label{eq:8.23}
+\end{equation}
+
+\subsection{场张量的升降指标}
+
+利用闵可夫斯基度规升高两个指标：
+\begin{equation}
+	F^{\mu\nu}
+	=
+	\eta^{\mu\alpha}\eta^{\nu\beta}F_{\alpha\beta}.
+	\label{eq:8.24}
+\end{equation}
+由 \eqref{eq:8.23} 得
+\begin{equation}
+	(F^{\mu\nu})
+	=
+	\begin{pmatrix}
+		0 & -E_{x}/c & -E_{y}/c & -E_{z}/c\\
+		E_{x}/c & 0 & -B_{z} & B_{y}\\
+		E_{y}/c & B_{z} & 0 & -B_{x}\\
+		E_{z}/c & -B_{y} & B_{x} & 0
+	\end{pmatrix}.
+	\label{eq:8.25}
+\end{equation}
+特别地，
+\begin{equation}
+	F^{0i}=-\frac{E_{i}}{c},
+	\qquad
+	F^{i0}=\frac{E_{i}}{c},
+	\qquad
+	F^{ij}=F_{ij}=-\varepsilon_{ijk}B_{k}.
+	\label{eq:8.26}
+\end{equation}
+这些符号关系将在从四维 Maxwell 方程恢复三维形式时使用。
+
+\section{规范变换与规范不变性}
+
+\subsection{势函数的不唯一性}
+
+三维势 $\phi,\bm{A}$ 并不是唯一的。电场和磁场由 \eqref{eq:8.8} 给出，只要势的改变不改变 $\bm{E}$ 和 $\bm{B}$，就描述同一个物理电磁场。这种势函数的冗余称为规范自由度。
+
+在四维形式中，这种自由度表现为四维势的一类变换。设 $f(x)$ 是充分光滑的标量函数，定义
+\begin{equation}
+	A'_{\mu}=A_{\mu}-\partial_{\mu}f.
+	\label{eq:8.27}
+\end{equation}
+这称为电磁规范变换。
+
+\subsection{四维规范变换}
+
+在规范变换 \eqref{eq:8.27} 下，场张量变为
+\[
+F'_{\mu\nu}
+=
+\partial_{\mu}A'_{\nu}-\partial_{\nu}A'_{\mu}.
+\]
+代入 \eqref{eq:8.27}，得
+\begin{align}
+	F'_{\mu\nu}
+	&=
+	\partial_{\mu}(A_{\nu}-\partial_{\nu}f)
+	-
+	\partial_{\nu}(A_{\mu}-\partial_{\mu}f) \\
+	&=
+	F_{\mu\nu}
+	-
+	(\partial_{\mu}\partial_{\nu}f-
+	\partial_{\nu}\partial_{\mu}f).
+\end{align}
+若 $f$ 足够光滑，混合偏导可交换，因此
+\begin{equation}
+	F'_{\mu\nu}=F_{\mu\nu}.
+	\label{eq:8.29}
+\end{equation}
+规范变换改变势函数的代表元，但保持场张量不变。
+
+\subsection{三维规范变换}
+
+由 \eqref{eq:8.10} 与 \eqref{eq:8.27} 可得三维形式：
+\begin{equation}
+	\phi'=
+	\phi-
+	\frac{\partial f}{\partial t},
+	\qquad
+	\bm{A}'=
+	\bm{A}+\bm{\nabla}f.
+	\label{eq:8.30}
+\end{equation}
+代入 \eqref{eq:8.8}，电场变为
+\begin{align}
+	\bm{E}'
+	&=
+	-\bm{\nabla}\phi'
+	-
+	\frac{\partial\bm{A}'}{\partial t} \\
+	&=
+	-\bm{\nabla}\left(\phi-\frac{\partial f}{\partial t}\right)
+	-
+	\frac{\partial}{\partial t}(\bm{A}+\bm{\nabla}f) \\
+	&=
+	-\bm{\nabla}\phi
+	-
+	\frac{\partial\bm{A}}{\partial t}
+	=
+	\bm{E}.
+\end{align}
+磁场变为
+\[
+\bm{B}'
+=
+\bm{\nabla}\times\bm{A}'
+=
+\bm{\nabla}\times(\bm{A}+\bm{\nabla}f)
+=
+\bm{B}.
+\]
+由此得到三维电场和磁场的规范不变性。
+
+\subsection{场张量的规范不变性}
+
+式 \eqref{eq:8.29} 表明，真正由势导出的可观测对象不是单个势函数，而是规范等价类所确定的场张量 $F_{\mu\nu}$。在经典电动力学中，$A_{\mu}$ 是描述电磁相互作用的基本势变量，而 $F_{\mu\nu}$ 是规范不变的场强变量。
+
+从带电粒子的作用量角度看，相互作用项
+\[
+S_{\mathrm{int}}=-q\int A_{\mu}\dif x^{\mu}
+\]
+在规范变换下只改变端点项：
+\[
+S'_{\mathrm{int}}
+=
+S_{\mathrm{int}}+qf(b)-qf(a).
+\]
+因此，在端点固定的变分问题中，规范变换不改变运动方程。
+
+\section{Maxwell 方程的协变形式}
+
+\subsection{齐次 Maxwell 方程}
+
+由场张量定义 \eqref{eq:8.17} 可得恒等式
+\begin{equation}
+	\partial_{\lambda}F_{\mu\nu}
+	+
+	\partial_{\mu}F_{\nu\lambda}
+	+
+	\partial_{\nu}F_{\lambda\mu}
+	=
+	0.
+	\label{eq:8.34}
+\end{equation}
+这是因为每一项展开后均由二阶偏导数组成，而二阶偏导可交换。式 \eqref{eq:8.34} 称为齐次 Maxwell 方程的四维协变形式。
+
+它等价于三维方程
+
+\[
+\bm{\nabla}\cdot\bm{B}=0,
+\qquad
+\bm{\nabla}\times\bm{E}
++
+\frac{\partial\bm{B}}{\partial t}
+=
+0.
+\]
+因此，磁场无散度和 Faraday 电磁感应定律都来自 $F_{\mu\nu}$ 可由势函数表示这一事实。
+
+\subsection{非齐次 Maxwell 方程}
+
+非齐次 Maxwell 方程写为
+\begin{equation}
+	\partial_{\mu}F^{\mu\nu}
+	=
+	\mu_{0}j^{\nu}.
+	\label{eq:8.36}
+\end{equation}
+这是电磁场的动力学方程。它等价于三维形式中的 Gauss 定律和 Ampere--Maxwell 方程。
+
+\subsection{三维 Maxwell 方程}
+
+先取 $\nu=0$。由 \eqref{eq:8.26} 得 $F^{i0}=E_{i}/c$，于是
+\[
+\partial_{\mu}F^{\mu0}
+=
+\partial_{i}F^{i0}
+=
+\frac{1}{c}\bm{\nabla}\cdot\bm{E}.
+\]
+而右侧为 $\mu_{0}j^{0}=\mu_{0}c\rho$。代入 \eqref{eq:8.36} 并利用 $\mu_{0}c^{2}=1/\varepsilon_{0}$，得到
+\[
+\bm{\nabla}\cdot\bm{E}
+=
+\frac{\rho}{\varepsilon_{0}}.
+\]
+这就是 Gauss 定律。
+
+再取 $\nu=i$。由 \eqref{eq:8.26} 可得
+\[
+\partial_{\mu}F^{\mu i}
+=
+(\bm{\nabla}\times\bm{B})_{i}
+-
+\frac{1}{c^{2}}\frac{\partial E_{i}}{\partial t}.
+\]
+因此 \eqref{eq:8.36} 给出
+\[
+\bm{\nabla}\times\bm{B}
+=
+\mu_{0}\bm{j}
++
+\frac{1}{c^{2}}\frac{\partial\bm{E}}{\partial t}.
+\]
+这就是 Ampere--Maxwell 方程。
+
+综上，四维方程 \eqref{eq:8.34} 与 \eqref{eq:8.36} 等价于四条三维 Maxwell 方程：
+\begin{equation}
+	\bm{\nabla}\cdot\bm{E}
+	=
+	\frac{\rho}{\varepsilon_{0}},
+	\qquad
+	\bm{\nabla}\times\bm{B}
+	=
+	\mu_{0}\bm{j}
+	+
+	\frac{1}{c^{2}}\frac{\partial\bm{E}}{\partial t},
+	\label{eq:8.41}
+\end{equation}
+以及
+\begin{equation}
+	\bm{\nabla}\cdot\bm{B}=0,
+	\qquad
+	\bm{\nabla}\times\bm{E}
+	=
+	-
+	\frac{\partial\bm{B}}{\partial t}.
+	\label{eq:8.42}
+\end{equation}
+
+\section{电荷守恒}
+
+非齐次 Maxwell 方程 \eqref{eq:8.36} 与场张量反对称性直接推出电荷守恒。对 \eqref{eq:8.36} 两边作用 $\partial_{\nu}$，得
+
+\[
+\partial_{\nu}\partial_{\mu}F^{\mu\nu}
+=
+\mu_{0}\partial_{\nu}j^{\nu}.
+\]
+
+左侧为零。原因是 $\partial_{\nu}\partial_{\mu}$ 对 $\mu,\nu$ 对称，而 $F^{\mu\nu}$ 对 $\mu,\nu$ 反对称。因此
+\begin{equation}
+	\partial_{\mu}j^{\mu}=0.
+	\label{eq:8.44}
+\end{equation}
+展开为三维形式，由 \eqref{eq:8.5} 得
+\begin{equation}
+	\frac{\partial\rho}{\partial t}
+	+
+	\bm{\nabla}\cdot\bm{j}=0.
+	\label{eq:8.45}
+\end{equation}
+所以在协变电磁理论中，电荷守恒不是独立附加条件，而是非齐次 Maxwell 方程自洽性的必要结果。
+
+\section{电磁场的作用量与场方程}
+
+\subsection{电磁场拉格朗日密度}
+
+按照第七章的约定，场作用量写成
+\begin{equation}
+	S=
+	\frac{1}{c}
+	\int
+	\mathcal{L}\,\dif^{4}x.
+	\label{eq:8.46}
+\end{equation}
+在 SI 制下，电磁场与给定外电流的拉格朗日密度可取为
+\begin{equation}
+	\mathcal{L}
+	=
+	-
+	\frac{1}{4\mu_{0}}F_{\mu\nu}F^{\mu\nu}
+	-
+	j^{\mu}A_{\mu}.
+	\label{eq:8.47}
+\end{equation}
+其中第一项是自由电磁场拉格朗日密度，第二项描述电流与电磁势的相互作用。由于 $F_{\mu\nu}F^{\mu\nu}$ 和 $j^{\mu}A_{\mu}$ 都是洛伦兹标量，作用量具有洛伦兹不变性。
+
+\subsection{对四维势的变分}
+
+对 $A_{\nu}$ 作变分。由 \eqref{eq:8.17} 得
+\begin{equation}
+	\delta F_{\mu\nu}
+	=
+	\partial_{\mu}\delta A_{\nu}
+	-
+	\partial_{\nu}\delta A_{\mu}.
+	\label{eq:8.48}
+\end{equation}
+自由场部分的变分为
+
+\[
+\delta\mathcal{L}_{\mathrm{f}}
+=
+-
+\frac{1}{2\mu_{0}}F^{\mu\nu}\delta F_{\mu\nu}.
+\]
+
+代入 \eqref{eq:8.48}，并利用 $F^{\mu\nu}$ 的反对称性，得到
+
+\[
+\delta\mathcal{L}_{\mathrm{f}}
+=
+-
+\frac{1}{\mu_{0}}F^{\mu\nu}\partial_{\mu}\delta A_{\nu}.
+\]
+
+对其分部积分：
+
+\[
+-
+\frac{1}{\mu_{0}}F^{\mu\nu}\partial_{\mu}\delta A_{\nu}
+=
+-
+\frac{1}{\mu_{0}}\partial_{\mu}(F^{\mu\nu}\delta A_{\nu})
++
+\frac{1}{\mu_{0}}(\partial_{\mu}F^{\mu\nu})\delta A_{\nu}.
+\]
+
+相互作用项的变分为
+
+\[
+\delta\mathcal{L}_{\mathrm{int}}
+=
+-j^{\nu}\delta A_{\nu}.
+\]
+
+
+\subsection{非齐次 Maxwell 方程的推出}
+
+忽略边界项后，作用量变分为
+\begin{equation}
+	\delta S
+	=
+	\frac{1}{c}
+	\int
+	\left[
+	\frac{1}{\mu_{0}}\partial_{\mu}F^{\mu\nu}
+	-
+	j^{\nu}
+	\right]
+	\delta A_{\nu}\,\dif^{4}x.
+	\label{eq:8.53}
+\end{equation}
+由于 $\delta A_{\nu}$ 任意，得到
+\begin{equation}
+	\partial_{\mu}F^{\mu\nu}
+	=
+	\mu_{0}j^{\nu}.
+	\label{eq:8.54}
+\end{equation}
+这正是非齐次 Maxwell 方程 \eqref{eq:8.36}。齐次 Maxwell 方程则不是独立变分得到的动力学方程，而是由 $F_{\mu\nu}=\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}$ 自动推出的几何恒等式。
+
+\section{Lorenz 规范与势的波动方程}
+
+由
+\begin{equation}
+	F^{\mu\nu}
+	=
+	\partial^{\mu}A^{\nu}-\partial^{\nu}A^{\mu},
+	\label{eq:8.55}
+\end{equation}
+非齐次 Maxwell 方程 \eqref{eq:8.36} 可写为
+
+\[
+\partial_{\mu}(\partial^{\mu}A^{\nu}-\partial^{\nu}A^{\mu})
+=
+\mu_{0}j^{\nu}.
+\]
+
+展开得
+\begin{equation}
+	\dalembert A^{\nu}
+	-
+	\partial^{\nu}(\partial_{\mu}A^{\mu})
+	=
+	\mu_{0}j^{\nu}.
+	\label{eq:8.57}
+\end{equation}
+利用规范自由度，可以选择 Lorenz 规范
+\begin{equation}
+	\partial_{\mu}A^{\mu}=0.
+	\label{eq:8.58}
+\end{equation}
+在三维形式中，
+
+\[
+\partial_{\mu}A^{\mu}
+=
+\frac{1}{c^{2}}\frac{\partial\phi}{\partial t}
++
+\bm{\nabla}\cdot\bm{A}.
+\]
+
+因此 Lorenz 规范为
+\begin{equation}
+	\frac{1}{c^{2}}\frac{\partial\phi}{\partial t}
+	+
+	\bm{\nabla}\cdot\bm{A}=0.
+	\label{eq:8.60}
+\end{equation}
+在 Lorenz 规范下，势方程化为
+\begin{equation}
+	\dalembert A^{\nu}=\mu_{0}j^{\nu}.
+	\label{eq:8.61}
+\end{equation}
+
+时间分量给出
+\[
+\dalembert\phi=\frac{\rho}{\varepsilon_{0}},
+\]
+空间分量给出
+\[
+\dalembert\bm{A}=\mu_{0}\bm{j}.
+\]
+在无源区域中，$j^{\mu}=0$，于是
+\[
+\dalembert A^{\mu}=0.
+\]
+这表明在真空中，电磁势满足传播速度为 $c$ 的波动方程。
+
+\section{带电粒子与电磁场的耦合}
+
+\subsection{带电粒子的协变作用量}
+
+带电粒子在外电磁场中的作用量应当是洛伦兹标量。自由粒子的作用量为
+
+\[
+S_{\mathrm{p}}
+=
+-mc\int \dif s.
+\]
+
+电磁相互作用项由四维势与世界线微元构造：
+
+\[
+S_{\mathrm{int}}
+=
+-q\int A_{\mu}\dif x^{\mu}.
+\]
+
+因此总作用量为
+\begin{equation}
+	S
+	=
+	\int
+	\left(
+	-mc\,\dif s
+	-
+	qA_{\mu}\dif x^{\mu}
+	\right).
+	\label{eq:8.67}
+\end{equation}
+将耦合项展开，利用 $A_{0}=\phi/c$、$\dif x^{0}=c\dif t$ 和 $A_{i}\dif x^{i}=-\bm{A}\cdot\dif\bm{r}$，有
+
+\[
+A_{\mu}\dif x^{\mu}
+=
+\phi\,\dif t
+-
+\bm{A}\cdot\dif\bm{r}.
+\]
+
+于是总作用量可写成
+
+\[
+S
+=
+\int_{t_{1}}^{t_{2}}
+\left[
+-mc^{2}\sqrt{1-\frac{v^{2}}{c^{2}}}
++
+q\bm{A}\cdot\bm{v}
+-
+q\phi
+\right]\dif t.
+\]
+
+对应的拉格朗日量为
+\begin{equation}
+	L
+	=
+	-mc^{2}\sqrt{1-\frac{v^{2}}{c^{2}}}
+	+
+	q\bm{A}\cdot\bm{v}
+	-
+	q\phi.
+	\label{eq:8.70}
+\end{equation}
+
+\subsection{正则动量与力学动量}
+
+由 \eqref{eq:8.70} 定义正则动量：
+
+\[
+\bm{P}
+=
+\frac{\partial L}{\partial\bm{v}}.
+\]
+
+直接计算得到
+\begin{equation}
+	\bm{P}
+	=
+	\gamma m\bm{v}+q\bm{A}.
+	\label{eq:8.72}
+\end{equation}
+记力学动量为
+
+\[
+\bm{p}=\gamma m\bm{v},
+\]
+
+则
+\begin{equation}
+	\bm{P}=\bm{p}+q\bm{A}.
+	\label{eq:8.74}
+\end{equation}
+在电磁场中，正则动量与力学动量不同。正则动量含有势函数项，力学动量对应粒子的实际运动。
+
+哈密顿量为
+
+\[
+H=\bm{v}\cdot\bm{P}-L.
+\]
+
+代入 \eqref{eq:8.70} 与 \eqref{eq:8.72}，得
+
+\[
+H=\gamma mc^{2}+q\phi.
+\]
+
+于是
+
+\[
+H-q\phi=\gamma mc^{2}.
+\]
+
+由相对论能量动量关系得到
+\begin{equation}
+	(H-q\phi)^{2}
+	=
+	(\bm{P}-q\bm{A})^{2}c^{2}+m^{2}c^{4}.
+	\label{eq:8.78}
+\end{equation}
+这就是带电粒子在外电磁势中的相对论质量壳关系。
+
+
+由此可见，电磁势进入粒子动力学时，总是以组合
+\[
+H-q\phi,
+\qquad
+\bm{P}-q\bm{A}
+\]
+出现。这个结构通常称为最小耦合。它把自由粒子的能量动量关系改写为外电磁势中的质量壳关系，后面的 Lorentz 力方程也可从同一个拉格朗日量推出。
+
+\subsection{Lorentz 力的三维形式}
+
+由拉格朗日量 \eqref{eq:8.70} 出发，欧拉--拉格朗日方程为
+\begin{equation}
+	\frac{\dif}{\dif t}
+	\left(
+	\frac{\partial L}{\partial\bm{v}}
+	\right)
+	=
+	\frac{\partial L}{\partial\bm{r}}.
+	\label{eq:8.83}
+\end{equation}
+左侧为
+
+\[
+\frac{\dif}{\dif t}
+\left(
+\frac{\partial L}{\partial\bm{v}}
+\right)
+=
+\frac{\dif\bm{p}}{\dif t}
++
+q\frac{\partial\bm{A}}{\partial t}
++
+q(\bm{v}\cdot\bm{\nabla})\bm{A}.
+\]
+
+右侧为
+
+\[
+\frac{\partial L}{\partial\bm{r}}
+=
+q\bm{\nabla}(\bm{A}\cdot\bm{v})
+-
+q\bm{\nabla}\phi.
+\]
+
+利用恒等式
+
+\[
+\bm{\nabla}(\bm{A}\cdot\bm{v})
+=
+(\bm{v}\cdot\bm{\nabla})\bm{A}
++
+\bm{v}\times(\bm{\nabla}\times\bm{A}),
+\]
+
+代入 \eqref{eq:8.83} 后抵消公共项，得到
+
+\[
+\frac{\dif\bm{p}}{\dif t}
+=
+q\left(
+-\bm{\nabla}\phi
+-
+\frac{\partial\bm{A}}{\partial t}
+\right)
++
+q\bm{v}\times(\bm{\nabla}\times\bm{A}).
+\]
+
+利用 \eqref{eq:8.8}，可得 Lorentz 力公式
+\begin{equation}
+	\frac{\dif\bm{p}}{\dif t}
+	=
+	q(\bm{E}+\bm{v}\times\bm{B}).
+	\label{eq:8.88}
+\end{equation}
+磁力项不做功，因为 $(\bm{v}\times\bm{B})\cdot\bm{v}=0$。粒子能量变化率为
+\begin{equation}
+	\frac{\dif E}{\dif t}=q\bm{E}\cdot\bm{v}.
+	\label{eq:8.89}
+\end{equation}
+
+\subsection{Lorentz 力的四维协变形式}
+
+从协变作用量 \eqref{eq:8.67} 出发，对世界线作变分。自由粒子部分给出
+
+\[
+\delta S_{\mathrm{p}}
+=
+\int
+\frac{\dif p_{\mu}}{\dif\tau}\delta x^{\mu}\,\dif\tau.
+\]
+
+相互作用项为
+
+\[
+S_{\mathrm{int}}
+=
+-q\int A_{\mu}\dif x^{\mu}.
+\]
+
+其变分经分部积分并利用端点固定条件后得到
+
+\[
+\delta S_{\mathrm{int}}
+=
+q\int F_{\mu\nu}u^{\nu}\delta x^{\mu}\,\dif\tau.
+\]
+
+总变分为
+
+\[
+\delta S
+=
+\int
+\left[
+\frac{\dif p_{\mu}}{\dif\tau}
++
+qF_{\mu\nu}u^{\nu}
+\right]
+\delta x^{\mu}\,\dif\tau.
+\]
+
+由 $\delta x^{\mu}$ 任意，得
+\begin{equation}
+	\frac{\dif p_{\mu}}{\dif\tau}
+	=
+	-qF_{\mu\nu}u^{\nu}.
+	\label{eq:8.94}
+\end{equation}
+升高指标后，得到最常用的协变 Lorentz 力方程：
+\begin{equation}
+	\frac{\dif p^{\mu}}{\dif\tau}
+	=
+	qF^{\mu}{}_{\nu}u^{\nu}.
+	\label{eq:8.95}
+\end{equation}
+取空间分量可恢复三维 Lorentz 力 \eqref{eq:8.88}。
+
+\section{对偶场张量与微分形式写法}
+
+定义四维 Levi-Civita 张量满足
+
+\[
+\varepsilon^{0123}=1.
+\]
+
+电磁场张量的对偶张量定义为
+\begin{equation}
+	\widetilde{F}^{\mu\nu}
+	=
+	\frac{1}{2}\varepsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}.
+	\label{eq:8.97}
+\end{equation}
+齐次 Maxwell 方程 \eqref{eq:8.34} 可等价写为
+
+\[
+\partial_{\mu}\widetilde{F}^{\mu\nu}=0.
+\]
+
+因此 Maxwell 方程可以压缩为
+\begin{equation}
+	\partial_{\mu}F^{\mu\nu}=\mu_{0}j^{\nu},
+	\qquad
+	\partial_{\mu}\widetilde{F}^{\mu\nu}=0.
+	\label{eq:8.99}
+\end{equation}
+
+若使用微分形式语言，四维势是一形式
+
+\[
+A=A_{\mu}\dif x^{\mu},
+\]
+
+电磁场是二形式
+\begin{equation}
+	F=\dif A.
+	\label{eq:8.101}
+\end{equation}
+由于外微分满足 $\dif^{2}=0$，有
+\begin{equation}
+	\dif F=0.
+	\label{eq:8.102}
+\end{equation}
+这正是齐次 Maxwell 方程。非齐次 Maxwell 方程则可写成
+\begin{equation}
+	\dif *F=\mu_{0}*J,
+	\label{eq:8.103}
+\end{equation}
+其中 $J$ 是电流一形式，$*J$ 是它的 Hodge 对偶三形式。微分形式写法不是本章正文推导的必要工具，但它清楚揭示了齐次方程的几何来源。
+
+\section{电磁场的 Lorentz 不变量}
+
+由于 $F_{\mu\nu}$ 是张量，可以通过缩并构造 Lorentz 不变量。第一个不变量为
+\begin{equation}
+	I_{1}=F_{\mu\nu}F^{\mu\nu}.
+	\label{eq:8.104}
+\end{equation}
+代入场张量分量可得
+\begin{equation}
+	I_{1}
+	=
+	2\left(B^{2}-\frac{E^{2}}{c^{2}}\right).
+	\label{eq:8.105}
+\end{equation}
+第二个不变量由对偶张量给出：
+\begin{equation}
+	I_{2}=F_{\mu\nu}\widetilde{F}^{\mu\nu}.
+	\label{eq:8.106}
+\end{equation}
+展开得
+\begin{equation}
+	I_{2}
+	=
+	-\frac{4}{c}\bm{E}\cdot\bm{B}.
+	\label{eq:8.107}
+\end{equation}
+这两个量是 Lorentz 标量，可用于对电磁场作参考系无关的分类。
+
+若
+
+\[
+\bm{E}\cdot\bm{B}=0,
+\]
+
+则电场和磁场正交。此时由 $c^{2}B^{2}-E^{2}$ 的符号决定场的类型。若 $cB>E$，称为类磁场，可以找到参考系使 $\bm{E}'=0$。若 $E>cB$，称为类电场，可以找到参考系使 $\bm{B}'=0$。若
+
+\[
+E=cB,
+\qquad
+\bm{E}\cdot\bm{B}=0,
+\]
+
+则两个不变量均为零，称为零场。平面电磁波就是典型例子。
+
+\section{匀速运动点电荷的四维势}
+
+考虑点电荷 $q$ 沿 $x$ 轴正方向以速度 $V$ 匀速运动。在共动参考系 $K'$ 中，电荷静止在原点，势函数为 Coulomb 势：
+\begin{equation}
+	\phi'
+	=
+	\frac{1}{4\pi\varepsilon_{0}}
+	\frac{q}{\sqrt{x'^{2}+y'^{2}+z'^{2}}},
+	\qquad
+	\bm{A}'=0.
+	\label{eq:8.110}
+\end{equation}
+从共动系 $K'$ 变换回实验室系 $K$，有
+
+\[
+\phi=\gamma\phi',
+\qquad
+A_{x}=\gamma\frac{V}{c^{2}}\phi'.
+\]
+
+因此
+\begin{equation}
+	A_{x}=\frac{V}{c^{2}}\phi,
+	\qquad
+	\bm{A}=\frac{\bm{V}}{c^{2}}\phi.
+	\label{eq:8.112}
+\end{equation}
+坐标变换为
+
+\[
+x'=\gamma(x-Vt),
+\qquad
+y'=y,
+\qquad
+z'=z.
+\]
+
+代入 \eqref{eq:8.110}，得到实验室系中的标量势
+
+\[
+\phi(x,y,z,t)
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{q\gamma}
+{\sqrt{\gamma^{2}(x-Vt)^{2}+y^{2}+z^{2}}}.
+\]
+
+也可以写成
+\begin{equation}
+	\phi(x,y,z,t)
+	=
+	\frac{1}{4\pi\varepsilon_{0}}
+	\frac{q}
+	{\sqrt{(x-Vt)^{2}+
+			\left(1-\frac{V^{2}}{c^{2}}\right)(y^{2}+z^{2})}}.
+	\label{eq:8.115}
+\end{equation}
+实验室系中的势分布不再具有球对称性，横向距离项带有因子 $1-V^{2}/c^{2}$，这反映了运动电荷场分布的相对论性变形。
+
+\section{本章小结}
+
+本章建立了电磁场的四维协变形式。电磁势统一为四维矢量
+
+\[
+A^{\mu}
+=
+\left(
+\frac{\phi}{c},
+\bm{A}
+\right),
+\qquad
+A_{\mu}
+=
+\left(
+\frac{\phi}{c},
+-\bm{A}
+\right).
+\]
+
+电磁场张量由四维势定义为
+
+\[
+F_{\mu\nu}
+=
+\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}.
+\]
+
+在本章约定下，
+
+\[
+F_{0i}=\frac{E_{i}}{c},
+\qquad
+F_{ij}=-\varepsilon_{ijk}B_{k}.
+\]
+
+规范变换
+
+\[
+A'_{\mu}=A_{\mu}-\partial_{\mu}f
+\]
+
+不改变场张量。
+
+Maxwell 方程的协变形式为
+
+\[
+\partial_{\mu}F^{\mu\nu}=\mu_{0}j^{\nu},
+\]
+
+以及
+
+\[
+\partial_{\lambda}F_{\mu\nu}
++
+\partial_{\mu}F_{\nu\lambda}
++
+\partial_{\nu}F_{\lambda\mu}=0.
+\]
+
+前者是动力学方程，后者来自 $F_{\mu\nu}$ 由势函数定义这一几何结构。对 $A_{\mu}$ 变分的电磁场作用量可推出非齐次 Maxwell 方程。
+
+Lorenz 规范为
+
+\[
+\partial_{\mu}A^{\mu}=0.
+\]
+
+在该规范下，四维势满足
+
+\[
+\dalembert A^{\mu}=\mu_{0}j^{\mu}.
+\]
+
+带电粒子与电磁场的耦合由作用量项
+
+\[
+S_{\mathrm{int}}=-q\int A_{\mu}\dif x^{\mu}
+\]
+
+给出，并导出 Lorentz 力
+
+\[
+\frac{\dif\bm{p}}{\dif t}
+=
+q(\bm{E}+\bm{v}\times\bm{B}),
+\qquad
+\frac{\dif p^{\mu}}{\dif\tau}=qF^{\mu}{}_{\nu}u^{\nu}.
+\]
+
+电磁场的两个 Lorentz 不变量为
+
+\[
+F_{\mu\nu}F^{\mu\nu}
+=
+2\left(B^{2}-\frac{E^{2}}{c^{2}}\right),
+\qquad
+F_{\mu\nu}\widetilde{F}^{\mu\nu}
+=
+-\frac{4}{c}\bm{E}\cdot\bm{B}.
+\]
+
+本章建立了电磁场的四维表述：电场和磁场是反对称张量 $F_{\mu\nu}$ 的不同分量，Maxwell 方程、Lorentz 力和规范不变性都可以用协变形式表达。

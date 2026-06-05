@@ -1,0 +1,767 @@
+\chapter{经典场论基础}
+
+\section{从粒子力学到场论}
+
+在有限自由度的粒子力学中，体系的动力学变量是有限个广义坐标
+\[
+q^{i}=q^{i}(t).
+\]
+这些广义坐标只依赖于时间。相应的作用量通常写为
+\[
+S=\int_{t_{1}}^{t_{2}}L(q^{i},\dot q^{i},t)\,\dif t.
+\]
+真实运动轨道由作用量驻值条件
+\[
+\delta S=0
+\]
+确定。
+
+在经典场论中，动力学变量不再是有限个广义坐标，而是定义在时空每一点上的场变量。设场分量记为
+\[
+\phi^{a}=\phi^{a}(x^{\mu}),
+\]
+其中指标 $a$ 用来区分不同的场分量。例如，实标量场只有一个分量，复标量场可看作两个实场分量，四矢量场则带有时空指标。
+
+时空坐标写为
+\[
+x^{\mu}=(ct,\bm{x}).
+\]
+在通常的场变分中，时空坐标 $x^{\mu}$ 作为自变量保持固定，真正被变分的是场函数 $\phi^{a}(x)$。因此，从粒子力学到场论的核心变化可以概括为
+\[
+q^{i}(t)
+\quad\longrightarrow\quad
+\phi^{a}(x^{\mu}).
+\]
+前者描述有限自由度系统，后者描述无限自由度系统。
+
+粒子力学中的基本对象是拉格朗日量 $L$。场论中更自然的基本对象是拉格朗日密度
+\[
+\mathcal{L}=\mathcal{L}(\phi^{a},\partial_{\mu}\phi^{a},x^{\mu}).
+\]
+在某一惯性系中，总拉格朗日量由空间积分给出：
+\[
+L=\int \mathcal{L}\,\dif^{3}x.
+\]
+若采用四维体元
+\[
+\dif^{4}x=\dif x^{0}\,\dif x^{1}\,\dif x^{2}\,\dif x^{3}=c\,\dif t\,\dif^{3}x,
+\]
+则作用量写为式 \eqref{eq:ch7-action}：
+\begin{equation}
+	S=\frac{1}{c}\int_{\Omega}\mathcal{L}(\phi^{a},\partial_{\mu}\phi^{a},x^{\mu})\,\dif^{4}x.
+	\label{eq:ch7-action}
+\end{equation}
+这里因子 $1/c$ 来自约定 $x^{0}=ct$。若采用 $x^{0}=t$，或把四维体元直接定义为 $\dif t\,\dif^{3}x$，则该因子会相应改变。整体常数不影响场方程，但在单位制上必须保持一致。
+
+本章的目标是建立经典场论的三条基本线索：由作用量变分得到场方程；由局域连续性方程表达守恒律；由连续对称性得到 Noether 守恒流。
+
+\section{场的作用量原理}
+
+设场变量为 $\phi^{a}(x)$，作用量取为
+\[
+S=\frac{1}{c}\int_{\Omega}
+\mathcal{L}(\phi^{a},\partial_{\mu}\phi^{a},x^{\mu})\,\dif^{4}x,
+\]
+其中 $\Omega$ 是四维时空中的积分区域。哈密顿原理要求真实场构型满足
+\begin{equation}
+	\delta S=0.
+	\label{eq:ch7-stationary-action}
+\end{equation}
+
+对场作无穷小变分：
+\[
+\phi^{a}(x)\rightarrow \phi^{a}(x)+\delta\phi^{a}(x).
+\]
+在这种变分中，时空坐标固定不变。因此有
+\[
+\delta(\partial_{\mu}\phi^{a})=\partial_{\mu}(\delta\phi^{a}).
+\]
+同时要求场的变分在积分区域边界上消失：
+\[
+\delta\phi^{a}\big|_{\partial\Omega}=0.
+\]
+
+作用量的一阶变分为
+\[
+\delta S
+=
+\frac{1}{c}
+\int_{\Omega}
+\left[
+\frac{\partial\mathcal{L}}{\partial\phi^{a}}\delta\phi^{a}
++
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\delta(\partial_{\mu}\phi^{a})
+\right]\dif^{4}x.
+\]
+利用 $\delta(\partial_{\mu}\phi^{a})=\partial_{\mu}(\delta\phi^{a})$，得到
+\[
+\delta S
+=
+\frac{1}{c}
+\int_{\Omega}
+\left[
+\frac{\partial\mathcal{L}}{\partial\phi^{a}}\delta\phi^{a}
++
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\partial_{\mu}(\delta\phi^{a})
+\right]\dif^{4}x.
+\]
+
+第二项可用恒等式
+\[
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\partial_{\mu}(\delta\phi^{a})
+=
+\partial_{\mu}\left[
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\delta\phi^{a}
+\right]
+-
+\partial_{\mu}\left[
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\right]\delta\phi^{a}
+\]
+作分部积分。代入上式后得到
+\[
+\delta S
+=
+\frac{1}{c}
+\int_{\Omega}
+\left[
+\frac{\partial\mathcal{L}}{\partial\phi^{a}}
+-
+\partial_{\mu}\left(
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\right)
+\right]\delta\phi^{a}\,\dif^{4}x
++
+\frac{1}{c}
+\int_{\Omega}
+\partial_{\mu}\left[
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\delta\phi^{a}
+\right]\dif^{4}x.
+\]
+第二项是四维全散度项。由四维高斯定理，
+\[
+\int_{\Omega}
+\partial_{\mu}\left[
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\delta\phi^{a}
+\right]\dif^{4}x
+=
+\oint_{\partial\Omega}
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\delta\phi^{a}\,\dif\Sigma_{\mu}.
+\]
+由于边界上 $\delta\phi^{a}=0$，边界项消失。因此
+\[
+\delta S
+=
+\frac{1}{c}
+\int_{\Omega}
+\left[
+\frac{\partial\mathcal{L}}{\partial\phi^{a}}
+-
+\partial_{\mu}\left(
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\right)
+\right]\delta\phi^{a}\,\dif^{4}x.
+\]
+由于 $\delta\phi^{a}$ 在区域内部任意，得到场的 Euler--Lagrange 方程：
+\begin{equation}
+	\partial_{\mu}\left(
+	\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+	\right)
+	-
+	\frac{\partial\mathcal{L}}{\partial\phi^{a}}
+	=0.
+	\label{eq:ch7-field-el}
+\end{equation}
+式 \eqref{eq:ch7-field-el} 就是经典场论中的基本变分方程。给定拉格朗日密度 $\mathcal{L}$ 后，场方程由这条公式确定。
+
+\section{标量场的例子}
+
+先考虑实标量场
+\[
+\phi=\phi(x^{\mu}).
+\]
+自由无质量标量场的拉格朗日密度可取为
+\begin{equation}
+	\mathcal{L}
+	=
+	\frac{1}{2}\partial_{\alpha}\phi\,\partial^{\alpha}\phi.
+	\label{eq:ch7-massless-scalar-lagrangian}
+\end{equation}
+它不显含 $\phi$，所以
+\[
+\frac{\partial\mathcal{L}}{\partial\phi}=0.
+\]
+另一方面，由
+\[
+\mathcal{L}
+=
+\frac{1}{2}\eta^{\alpha\beta}(\partial_{\alpha}\phi)(\partial_{\beta}\phi)
+\]
+可得
+\[
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}=\partial^{\mu}\phi.
+\]
+代入式 \eqref{eq:ch7-field-el}，得到
+\[
+\partial_{\mu}\partial^{\mu}\phi=0.
+\]
+记达朗贝尔算子为
+\begin{equation}
+	\dalembert=\partial_{\mu}\partial^{\mu}.
+	\label{eq:ch7-dalembert-def}
+\end{equation}
+在号差约定
+\[
+\eta_{\mu\nu}=\mathrm{diag}(1,-1,-1,-1)
+\]
+下，有
+\begin{equation}
+	\dalembert
+	=
+	\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}
+	-
+	\bm{\nabla}^{2}.
+	\label{eq:ch7-dalembert-expanded}
+\end{equation}
+因此无质量自由标量场满足
+\begin{equation}
+	\dalembert\phi=0.
+	\label{eq:ch7-massless-wave-equation}
+\end{equation}
+展开后即
+\[
+\left(
+\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}
+-
+\bm{\nabla}^{2}
+\right)\phi=0.
+\]
+这是以光速传播的自由波动方程。
+
+若考虑有质量实标量场，为避免过早引入量子常数，可先把质量参数写成逆长度量纲的常数 $\mu$，取
+\begin{equation}
+	\mathcal{L}
+	=
+	\frac{1}{2}\partial_{\alpha}\phi\,\partial^{\alpha}\phi
+	-
+	\frac{1}{2}\mu^{2}\phi^{2}.
+	\label{eq:ch7-massive-scalar-lagrangian}
+\end{equation}
+此时
+\[
+\frac{\partial\mathcal{L}}{\partial\phi}
+=
+-\mu^{2}\phi,
+\qquad
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}
+=
+\partial^{\mu}\phi.
+\]
+场方程为
+\[
+\partial_{\mu}\partial^{\mu}\phi+\mu^{2}\phi=0,
+\]
+即
+\begin{equation}
+	(\dalembert+\mu^{2})\phi=0.
+	\label{eq:ch7-kg-mu}
+\end{equation}
+若进一步联系量子场论中粒子质量 $m$ 的记号，可取
+\[
+\mu=\frac{mc}{\hbar},
+\]
+则方程写为
+\begin{equation}
+	\left(\dalembert+\frac{m^{2}c^{2}}{\hbar^{2}}\right)\phi=0.
+	\label{eq:ch7-kg-mass}
+\end{equation}
+这就是 Klein--Gordon 型方程。这里仍将它理解为经典场方程。
+
+\section{多分量场与向量场的 Euler--Lagrange 方程}
+
+一般场可以有多个分量，记为
+\[
+\phi^{a}(x).
+\]
+其中 $a$ 可以表示内部指标，也可以表示场分量标签。若拉格朗日密度为
+\[
+\mathcal{L}=\mathcal{L}(\phi^{a},\partial_{\mu}\phi^{a},x),
+\]
+则每一个场分量都满足与式 \eqref{eq:ch7-field-el} 同形的方程：
+\begin{equation}
+	\partial_{\mu}\left(
+	\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+	\right)
+	-
+	\frac{\partial\mathcal{L}}{\partial\phi^{a}}
+	=0.
+	\label{eq:ch7-multifield-el}
+\end{equation}
+
+四矢量场可写为
+\[
+A_{\mu}=A_{\mu}(x).
+\]
+若
+\[
+\mathcal{L}=\mathcal{L}(A_{\mu},\partial_{\nu}A_{\mu},x),
+\]
+对 $A_{\mu}$ 作变分：
+\[
+A_{\mu}\rightarrow A_{\mu}+\delta A_{\mu}.
+\]
+重复前面的分部积分过程，可得
+\begin{equation}
+	\partial_{\nu}\left(
+	\frac{\partial\mathcal{L}}{\partial(\partial_{\nu}A_{\mu})}
+	\right)
+	-
+	\frac{\partial\mathcal{L}}{\partial A_{\mu}}
+	=0.
+	\label{eq:ch7-vector-field-el}
+\end{equation}
+这与标量场的公式完全同构，差别只在于场变量本身带有指标。后续电磁场理论中，四维势 $A_{\mu}$ 和场强张量都将使用这一类变分公式。
+
+\section{拉格朗日密度的不唯一性}
+
+粒子力学中，如果对拉格朗日量加上全时间导数
+\[
+L\rightarrow L+\frac{\dif F}{\dif t},
+\]
+则作用量只改变端点项，不改变运动方程。场论中有完全类似的结论。
+
+若拉格朗日密度改变为
+\[
+\mathcal{L}\rightarrow \mathcal{L}+\partial_{\mu}K^{\mu},
+\]
+则作用量改变为
+\[
+S\rightarrow S+\frac{1}{c}\int_{\Omega}\partial_{\mu}K^{\mu}\,\dif^{4}x.
+\]
+由四维高斯定理，
+\[
+\int_{\Omega}\partial_{\mu}K^{\mu}\,\dif^{4}x
+=
+\oint_{\partial\Omega}K^{\mu}\,\dif\Sigma_{\mu}.
+\]
+这是边界项。在通常的变分问题中，场的边界值固定，或者要求场在无穷远处足够快衰减，因此这个边界项不影响 Euler--Lagrange 方程。
+
+所以，拉格朗日密度具有式 \eqref{eq:ch7-lagrangian-density-equivalence} 所示的不唯一性：
+\begin{equation}
+	\mathcal{L}\sim \mathcal{L}+\partial_{\mu}K^{\mu}.
+	\label{eq:ch7-lagrangian-density-equivalence}
+\end{equation}
+不同但只相差全散度项的拉格朗日密度给出相同的局域场方程。Noether 流和能动张量也可能因此相差一个改进项。
+
+\section{局域守恒律与守恒荷}
+
+对有限粒子体系，守恒律通常写成某个总量不随时间变化。对于连续场，守恒律更自然地写成局域形式。设某个物理量的密度为 $\rho$，通量为 $\bm{j}$。若该物理量没有源和汇，则对任意固定空间区域 $V$，有
+\[
+\frac{\dif}{\dif t}\int_{V}\rho\,\dif^{3}x
++
+\oint_{\partial V}\bm{j}\cdot\dif\bm{S}=0.
+\]
+利用三维高斯定理，得到
+\[
+\int_{V}\left(
+\frac{\partial\rho}{\partial t}
++\bm{\nabla}\cdot\bm{j}
+\right)\dif^{3}x=0.
+\]
+由于区域 $V$ 任意，有
+\begin{equation}
+	\frac{\partial\rho}{\partial t}
+	+\bm{\nabla}\cdot\bm{j}=0.
+	\label{eq:ch7-continuity-3d}
+\end{equation}
+式 \eqref{eq:ch7-continuity-3d} 就是局域连续性方程。
+
+采用 $x^{0}=ct$ 时，若定义四维守恒流为
+\begin{equation}
+	j^{\mu}=(c\rho,\bm{j}),
+	\label{eq:ch7-four-current-convention}
+\end{equation}
+则
+\[
+\partial_{\mu}j^{\mu}
+=
+\frac{1}{c}\frac{\partial}{\partial t}(c\rho)
++\bm{\nabla}\cdot\bm{j}.
+\]
+因此式 \eqref{eq:ch7-continuity-3d} 可写为协变形式
+\begin{equation}
+	\partial_{\mu}j^{\mu}=0.
+	\label{eq:ch7-local-conservation}
+\end{equation}
+
+在式 \eqref{eq:ch7-four-current-convention} 的约定下，与该守恒流对应的守恒荷应定义为
+\begin{equation}
+	Q=\int \rho\,\dif^{3}x
+	=\frac{1}{c}\int j^{0}\,\dif^{3}x.
+	\label{eq:ch7-conserved-charge}
+\end{equation}
+由 $\partial_{\mu}j^{\mu}=0$ 可得
+\[
+\frac{\partial j^{0}}{\partial t}=-c\,\partial_{i}j^{i}.
+\]
+于是
+\[
+\frac{\dif Q}{\dif t}
+=
+\frac{1}{c}\int \frac{\partial j^{0}}{\partial t}\,\dif^{3}x
+=
+-\int \partial_{i}j^{i}\,\dif^{3}x.
+\]
+若场在无穷远处足够快衰减，使边界通量为零，则
+\[
+\frac{\dif Q}{\dif t}=0.
+\]
+这说明四维局域守恒律 \eqref{eq:ch7-local-conservation} 蕴含式 \eqref{eq:ch7-conserved-charge} 中总荷 $Q$ 的守恒。
+
+\section{场的 Noether 定理}
+
+考虑一组场
+\[
+\phi^{a}(x).
+\]
+设发生无穷小变换
+\[
+x^{\mu}\rightarrow x'^{\mu}=x^{\mu}+\delta x^{\mu},
+\]
+\[
+\phi^{a}(x)\rightarrow \phi'^{a}(x')=\phi^{a}(x)+\delta\phi^{a}.
+\]
+这里 $\delta\phi^{a}$ 表示总变化，即比较变换前点 $x$ 处的场值与变换后点 $x'$ 处的场值。
+
+为了在同一个时空点比较场值，定义同点变化
+\[
+\bar{\delta}\phi^{a}=\phi'^{a}(x)-\phi^{a}(x).
+\]
+总变化与同点变化之间满足
+\begin{equation}
+	\bar{\delta}\phi^{a}
+	=
+	\delta\phi^{a}-\partial_{\nu}\phi^{a}\,\delta x^{\nu}.
+	\label{eq:ch7-same-point-variation}
+\end{equation}
+本章采用如下约定：若无穷小变换由参数 $\epsilon^{A}$ 生成，则
+\[
+\delta x^{\mu}=\epsilon^{A}X_{A}^{\mu},
+\qquad
+\delta\phi^{a}=\epsilon^{A}\Delta_{A}\phi^{a}
+\]
+表示总变化，而 $\bar{\delta}\phi^{a}$ 表示同点变化。后文所有 Noether 流均按这一约定书写。
+
+在场方程成立时，作用量的一阶变分可以化为边界项。对于严格对称变换，局域守恒律可写为
+\[
+\partial_{\mu}\left[
+\mathcal{L}\,\delta x^{\mu}
++
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\bar{\delta}\phi^{a}
+\right]=0.
+\]
+代入
+\[
+\bar{\delta}\phi^{a}
+=
+\delta\phi^{a}-\partial_{\nu}\phi^{a}\,\delta x^{\nu},
+\]
+得到
+\[
+\partial_{\mu}\left[
+\mathcal{L}\,\delta x^{\mu}
++
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\delta\phi^{a}
+-
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\partial_{\nu}\phi^{a}\,\delta x^{\nu}
+\right]=0.
+\]
+将 $\delta x^{\mu}=\delta^{\mu}_{\nu}\delta x^{\nu}$ 写入，并定义典范能动张量
+\begin{equation}
+	T^{\mu}{}_{\nu}
+	=
+	\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+	\partial_{\nu}\phi^{a}
+	-
+	\delta^{\mu}_{\nu}\mathcal{L}.
+	\label{eq:ch7-canonical-energy-momentum}
+\end{equation}
+利用式 \eqref{eq:ch7-canonical-energy-momentum}，守恒律可整理为
+\[
+\partial_{\mu}\left[
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\delta\phi^{a}
+-
+T^{\mu}{}_{\nu}\delta x^{\nu}
+\right]=0.
+\]
+
+若写成由参数 $\epsilon^{A}$ 标记的守恒流，本章约定下可取
+\begin{equation}
+	(j^{\mu})_{A}
+	=
+	T^{\mu}{}_{\nu}X_{A}^{\nu}
+	-
+	\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+	\Delta_{A}\phi^{a}.
+	\label{eq:ch7-noether-current}
+\end{equation}
+则有
+\begin{equation}
+	\partial_{\mu}(j^{\mu})_{A}=0.
+	\label{eq:ch7-noether-conservation}
+\end{equation}
+式 \eqref{eq:ch7-noether-current} 与 \eqref{eq:ch7-noether-conservation} 就是场论中的 Noether 定理。
+
+若拉格朗日密度在变换下不是严格不变，而是改变一个全散度，则守恒流需要相应加入边界修正项。实际使用时，最可靠的做法是从作用量变分的边界项直接读出守恒流。
+
+拉格朗日形式的一个核心作用，是把对称性和守恒律联系起来。这个联系由 Noether 定理给出。其基本思想是：每一个连续对称性都对应一个守恒流。
+
+这里有两个关键词。第一，对称性，指的是对系统变量作某种变换后，作用量不变，或者至多改变一个边界项。第二，连续性，指的是这种变换可以由无穷小参数连续生成。例如时间平移、空间平移、旋转、洛伦兹变换、全局相位变换都是连续变换。
+
+离散变换，例如空间反演和时间反演，不属于 Noether 第一定理的直接讨论范围。在场论中，Noether 定理特别自然，因为守恒律自动以局域连续性方程的形式出现：
+\[
+\partial_{\mu}j^{\mu}=0.
+\]
+该式进一步给出守恒荷
+\[
+Q=\frac{1}{c}\int j^{0}\,\dif^{3}x.
+\]
+
+\section{能动张量}
+
+\subsection{时空平移与典范能动张量}
+
+考虑时空平移
+\[
+x^{\mu}\rightarrow x'^{\mu}=x^{\mu}+\epsilon^{\mu}.
+\]
+在本章采用的总变化约定下，平移可取
+\[
+\delta x^{\mu}=\epsilon^{\mu},
+\qquad
+\delta\phi^{a}=0.
+\]
+于是 Noether 流为
+\[
+(j^{\mu})_{\nu}=T^{\mu}{}_{\nu}.
+\]
+因此时空平移对称性给出守恒律
+\begin{equation}
+	\partial_{\mu}T^{\mu}{}_{\nu}=0.
+	\label{eq:ch7-canonical-em-conservation}
+\end{equation}
+其中
+\[
+T^{\mu}{}_{\nu}
+=
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\partial_{\nu}\phi^{a}
+-
+\delta^{\mu}_{\nu}\mathcal{L}
+\]
+即式 \eqref{eq:ch7-canonical-energy-momentum} 中的典范能动张量。指标 $\nu=0$ 对应能量守恒，$\nu=1,2,3$ 对应动量守恒。典范能动张量是时空平移对称性的 Noether 流。
+
+\subsection{能动张量的不唯一性与改进}
+
+由 Noether 定理直接得到的能动张量称为典范能动张量。前一节自然得到混合形式 $T^{\mu}{}_{\nu}$。为了讨论对称性和改进项，常将第二个指标升起，记
+\begin{equation}
+	T^{\mu\nu}=T^{\mu}{}_{\rho}\eta^{\rho\nu}.
+	\label{eq:ch7-raise-em-index}
+\end{equation}
+将式 \eqref{eq:ch7-canonical-em-conservation} 升指标后，对应的守恒方程写为
+\[
+\partial_{\mu}T^{\mu\nu}=0.
+\]
+
+典范能动张量并不总是具有最理想的物理性质。它可能不是对称张量，也可能不具备某些规范不变性。这不表示 Noether 定理有问题，而是因为满足守恒方程的能动张量并不唯一。
+
+若向 $T^{\mu\nu}$ 加上一个全散度项
+\begin{equation}
+	\Theta^{\mu\nu}=T^{\mu\nu}+\partial_{\rho}\chi^{\rho\mu\nu}.
+	\label{eq:ch7-improved-em-tensor}
+\end{equation}
+并要求
+\[
+\chi^{\rho\mu\nu}=-\chi^{\mu\rho\nu},
+\]
+则
+\[
+\partial_{\mu}\partial_{\rho}\chi^{\rho\mu\nu}=0.
+\]
+这是因为偏导数对 $\mu,\rho$ 对称，而 $\chi^{\rho\mu\nu}$ 对 $\rho,\mu$ 反对称。因此
+\[
+\partial_{\mu}\Theta^{\mu\nu}
+=
+\partial_{\mu}T^{\mu\nu}.
+\]
+所以由式 \eqref{eq:ch7-improved-em-tensor} 定义的新能动张量仍满足同样的守恒方程：
+\[
+\partial_{\mu}\Theta^{\mu\nu}=0.
+\]
+若场在无穷远处衰减足够快，散度改进项对总能量和总动量的空间积分没有贡献。
+
+这种自由度称为能动张量的改进。通过适当选择 $\chi^{\rho\mu\nu}$，可以把典范能动张量改写成更适合物理解释的形式。例如，对具有自旋的场，常用 Belinfante--Rosenfeld 方法得到对称能动张量。电磁场中也会出现类似问题：直接由 Noether 定理得到的典范能动张量可能显含势函数，而物理上更自然的能动张量应当用场强张量表示。
+
+\section{洛伦兹对称性与角动量流}
+
+时空平移给出能量动量守恒，洛伦兹对称性则给出角动量和 boost 相关守恒量。无穷小洛伦兹变换可写为
+\[
+\delta x^{\mu}=\omega^{\mu}{}_{\nu}x^{\nu},
+\]
+其中参数满足
+\[
+\omega_{\mu\nu}=-\omega_{\nu\mu}.
+\]
+对这种连续对称性应用 Noether 定理，可以得到广义角动量流
+\[
+M^{\rho\mu\nu}.
+\]
+它对后两个指标反对称：
+\[
+M^{\rho\mu\nu}=-M^{\rho\nu\mu}.
+\]
+守恒律为
+\begin{equation}
+	\partial_{\rho}M^{\rho\mu\nu}=0.
+	\label{eq:ch7-angular-current-conservation}
+\end{equation}
+
+对于没有内禀自旋结构的标量场，角动量流只有式 \eqref{eq:ch7-orbital-angular-momentum-current} 所示的轨道部分：
+\begin{equation}
+	M^{\rho\mu\nu}
+	=
+	x^{\mu}T^{\rho\nu}-x^{\nu}T^{\rho\mu}.
+	\label{eq:ch7-orbital-angular-momentum-current}
+\end{equation}
+这正是粒子力学中 $\bm{L}=\bm{r}\times\bm{p}$ 的四维场论推广。
+
+对矢量场、旋量场等带有内禀洛伦兹变换结构的场，还会出现自旋部分：
+\[
+M^{\rho\mu\nu}
+=
+x^{\mu}T^{\rho\nu}
+-
+x^{\nu}T^{\rho\mu}
++
+S^{\rho\mu\nu}.
+\]
+其中 $S^{\rho\mu\nu}$ 称为自旋角动量流。它来自场分量本身在洛伦兹变换下的变化，而不是来自坐标位置因子。
+
+因此，场的总角动量一般由轨道角动量和内禀自旋角动量组成。若使用经过 Belinfante--Rosenfeld 对称化的能动张量，自旋部分可以被吸收到改进后的能动张量中，使总角动量流写成更紧凑的形式。
+
+\section{内部对称性与守恒流}
+
+Noether 定理不仅适用于时空变换，也适用于不改变时空坐标的内部变换。这类对称性称为内部对称性。
+
+最简单的例子是复标量场的全局相位变换。设复场为
+\[
+\psi(x),
+\]
+其复共轭为
+\[
+\psi^{*}(x).
+\]
+若拉格朗日密度在全局相位变换下不变：
+\[
+\psi\rightarrow e^{\mathrm{i}\alpha}\psi,
+\qquad
+\psi^{*}\rightarrow e^{-\mathrm{i}\alpha}\psi^{*},
+\]
+则系统具有全局 $U(1)$ 对称性。
+
+对无穷小参数 $\alpha$，有
+\[
+\delta\psi=\mathrm{i}\alpha\psi,
+\qquad
+\delta\psi^{*}=-\mathrm{i}\alpha\psi^{*}.
+\]
+这里时空坐标不变，$\delta x^{\mu}=0$。若把 $\psi$ 与 $\psi^{*}$ 看作独立场变量，则由式 \eqref{eq:ch7-noether-current} 可得 Noether 流
+\begin{equation}
+	j^{\mu}
+	=
+	\mathrm{i}
+	\left[
+	\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\psi)}\psi
+	-
+	\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\psi^{*})}\psi^{*}
+	\right].
+	\label{eq:ch7-u1-current}
+\end{equation}
+它满足
+\[
+\partial_{\mu}j^{\mu}=0.
+\]
+该流的整体符号取决于全局相位变换采用 $\psi\rightarrow e^{\mathrm{i}\alpha}\psi$ 还是 $\psi\rightarrow e^{-\mathrm{i}\alpha}\psi$。物理电荷的正负号也需要与这一约定一致。
+
+对应的守恒荷仍按式 \eqref{eq:ch7-conserved-charge} 定义。
+若场在空间无穷远处衰减足够快，则 $\dif Q/\dif t=0$。
+
+这里需要区分两类对称性。全局对称性的变换参数是常数，例如 $\alpha=\mathrm{const}$；局域对称性的变换参数可以依赖时空，例如 $\alpha=\alpha(x)$。全局对称性通过 Noether 定理给出守恒流。局域对称性则进一步要求引入规范场，并导致规范相互作用。电磁场正是 $U(1)$ 规范对称性的典型例子。
+
+\section{本章小结}
+
+本章建立了经典场论的拉格朗日形式。粒子力学中的有限自由度 $q^{i}(t)$ 被推广为时空中的场变量 $\phi^{a}(x)$，拉格朗日量被推广为拉格朗日密度 $\mathcal{L}$。在 $x^{0}=ct$ 的约定下，作用量写为
+\[
+S=\frac{1}{c}\int \mathcal{L}\,\dif^{4}x.
+\]
+
+作用量驻值条件给出场的 Euler--Lagrange 方程：
+\[
+\partial_{\mu}\left(
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\right)
+-
+\frac{\partial\mathcal{L}}{\partial\phi^{a}}
+=0.
+\]
+例如，实标量场的自由拉格朗日密度给出无质量波动方程或有质量 Klein--Gordon 型方程。
+
+场论中的局域守恒律写为
+\[
+\partial_{\mu}j^{\mu}=0.
+\]
+若 $j^{\mu}=(c\rho,\bm{j})$，则对应守恒荷为
+\[
+Q=\frac{1}{c}\int j^{0}\,\dif^{3}x.
+\]
+在边界通量为零时，$Q$ 不随时间变化。
+
+Noether 定理说明，连续对称性给出守恒流。时空平移对称性给出典范能动张量
+\[
+T^{\mu}{}_{\nu}
+=
+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{a})}
+\partial_{\nu}\phi^{a}
+-
+\delta^{\mu}_{\nu}\mathcal{L},
+\]
+并满足
+\[
+\partial_{\mu}T^{\mu}{}_{\nu}=0.
+\]
+洛伦兹对称性给出角动量流，内部连续对称性给出相应的内部荷流。例如，复标量场的全局 $U(1)$ 相位对称性给出守恒流。
+
+本章的核心思想可以概括为
+\[
+\delta S=0
+\quad\Longrightarrow\quad
+\text{场方程},
+\]
+以及
+\[
+\text{连续对称性}
+\quad\Longrightarrow\quad
+\text{守恒流}.
+\]
+后续电磁场理论将以本章为基础：电磁场的拉格朗日密度给出麦克斯韦方程，时空平移对称性给出电磁场能动张量，规范对称性则与电荷守恒密切相关。

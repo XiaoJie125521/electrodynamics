@@ -33,14 +33,15 @@
 群是描述可复合变换的基本代数结构. 与其先背定义, 不如先看变换本身怎样自然地逼出群的四条性质. 
 
 平面转动是最简单的连续变换群之一. 设 $g(\varphi)$ 表示平面内逆时针转动角度 $\varphi$, 其矩阵表示为
-\[
+\begin{equation}
+\label{eq:ch4-so2-rotation}
 g(\varphi)
 =
 \begin{pmatrix}
 \cos\varphi&-\sin\varphi\\
 \sin\varphi&\cos\varphi
 \end{pmatrix}.
-\]
+\end{equation}
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\linewidth]{figure/fig4.1}
@@ -52,11 +53,12 @@ g(\varphi)
 \[
 g(\varphi_2)g(\varphi_1).
 \]
-直接相乘可得
-\[
+由 \eqref{eq:ch4-so2-rotation} 直接相乘可得
+\begin{equation}
+\label{eq:ch4-so2-composition}
 g(\varphi_2)g(\varphi_1)=g(\varphi_1+\varphi_2).
-\]
-这说明连续两次平面转动仍是平面转动, 因而平面转动集合对变换复合封闭. 单位元为
+\end{equation}
+\eqref{eq:ch4-so2-composition} 说明连续两次平面转动仍是平面转动, 因而平面转动集合对变换复合封闭. 单位元为
 \[
 g(0)=I,
 \]
@@ -268,10 +270,11 @@ A'^i=B'^i.
 \bm{v}^TA^TgA\bm{v}=\bm{v}^Tg\bm{v}.
 \]
 由于该式对任意 $\bm{v}$ 成立, 必须有
-\[
+\begin{equation}
+\label{eq:ch4-metric-preserving}
 A^TgA=g.
-\]
-因此, 不同几何结构中的“旋转”可以看作保持相应度规的变换. 若 $g=I$, 则得到欧氏正交群. 这个观点把长度、角度与变换群之间的关系清楚地联系起来. 
+\end{equation}
+因此, 不同几何结构中的“旋转”可以看作保持相应度规的变换. 若 $g=I$, 则 \eqref{eq:ch4-metric-preserving} 给出欧氏正交群. 这个观点把长度、角度与变换群之间的关系清楚地联系起来. 
 
 这也是几何中常说的“不变量观点”. 一种几何结构可以由它在某个变换群下保持不变的量来刻画. 欧氏几何的核心不变量是正定内积
 \[
@@ -286,34 +289,37 @@ A^TgA=g.
 \subsection{一般线性群与特殊线性群}
 
 $n$ 维实一般线性群定义为
-\[
+\begin{equation}
+\label{eq:ch4-gl-definition}
 GL(n,\mathbb{R})
 =
 \{A\in M_n(\mathbb{R})\mid \det A\neq 0\}.
-\]
-它包含所有可逆实矩阵, 群运算是矩阵乘法. 单位元是单位矩阵 $I$, 每个 $A\in GL(n,\mathbb{R})$ 都有逆矩阵 $A^{-1}$. 
+\end{equation}
+\eqref{eq:ch4-gl-definition} 包含所有可逆实矩阵, 群运算是矩阵乘法. 单位元是单位矩阵 $I$, 每个 $A\in GL(n,\mathbb{R})$ 都有逆矩阵 $A^{-1}$. 
 
 特殊线性群定义为
-\[
+\begin{equation}
+\label{eq:ch4-sl-definition}
 SL(n,\mathbb{R})
 =
 \{A\in GL(n,\mathbb{R})\mid \det A=1\}.
-\]
+\end{equation}
 由于
 \[
 \det(AB)=\det A\det B,
 \]
-所以 $SL(n,\mathbb{R})$ 在矩阵乘法下封闭. 该群表示保持有向体积不变的线性变换. 
+所以 \eqref{eq:ch4-sl-definition} 中的 $SL(n,\mathbb{R})$ 在矩阵乘法下封闭. 该群表示保持有向体积不变的线性变换. 
 
 \subsection{正交群与特殊正交群}
 
 $n$ 维正交群定义为
-\[
+\begin{equation}
+\label{eq:ch4-o-definition}
 O(n)
 =
 \{R\in GL(n,\mathbb{R})\mid R^TR=I\}.
-\]
-等价地, $R$ 保持欧氏度规不变: 
+\end{equation}
+等价地, \eqref{eq:ch4-o-definition} 表示 $R$ 保持欧氏度规不变: 
 \[
 R^T\delta R=\delta.
 \]
@@ -342,28 +348,31 @@ R^T\delta R=\delta.
 其中 $\det R=1$ 的部分表示保持取向的旋转; $\det R=-1$ 的部分包含反射. 
 
 特殊正交群定义为
-\[
+\begin{equation}
+\label{eq:ch4-so-definition}
 SO(n)
 =
 \{R\in O(n)\mid \det R=1\}.
-\]
-其中 $SO(3)$ 是三维空间中真正的旋转群, 不包含镜面反射. 在物理中, $SO(3)$ 描述空间各向同性. 
+\end{equation}
+其中 \eqref{eq:ch4-so-definition} 给出的 $SO(3)$ 是三维空间中真正的旋转群, 不包含镜面反射. 在物理中, $SO(3)$ 描述空间各向同性. 
 
 \subsection{酉群与特殊酉群}
 
 在复线性空间中, 保持厄米内积的矩阵构成酉群: 
-\[
+\begin{equation}
+\label{eq:ch4-u-definition}
 U(n)
 =
 \{U\in GL(n,\mathbb{C})\mid U^\dagger U=I\}.
-\]
+\end{equation}
 若进一步要求行列式为 $1$, 得到特殊酉群: 
-\[
+\begin{equation}
+\label{eq:ch4-su-definition}
 SU(n)
 =
 \{U\in U(n)\mid \det U=1\}.
-\]
-在量子力学和场论中, 酉群非常重要. $U(1)$ 与电磁相位对称性有关, $SU(2)$ 和 $SU(3)$ 分别出现在弱相互作用和强相互作用的规范结构中. 本章只把它们作为重要矩阵群列出, 具体物理意义将在后续章节讨论. 
+\end{equation}
+在量子力学和场论中, 酉群非常重要. \eqref{eq:ch4-u-definition} 中的 $U(1)$ 与电磁相位对称性有关, \eqref{eq:ch4-su-definition} 中的 $SU(2)$ 和 $SU(3)$ 分别出现在弱相互作用和强相互作用的规范结构中. 本章只把它们作为重要矩阵群列出, 具体物理意义将在后续章节讨论. 
 
 \subsection{\texorpdfstring{$SO(2)$ 与平移群}{SO(2) 与平移群}}
 
@@ -468,16 +477,17 @@ T_{(a,b)}
 \section{\texorpdfstring{三维旋转群 $SO(3)$}{三维旋转群 SO(3)}}
 
 三维旋转矩阵 $R$ 满足
-\[
+\begin{equation}
+\label{eq:ch4-so3-condition}
 R^TR=I,
 \qquad
 \det R=1.
-\]
+\end{equation}
 因此
 \[
 R\in SO(3).
 \]
-如果位置矢量变换为
+\eqref{eq:ch4-so3-condition} 是三维旋转矩阵的定义性条件. 如果位置矢量变换为
 \[
 \bm{r}'=R\bm{r},
 \]
@@ -591,14 +601,15 @@ R=I+\delta\theta^iL_i,
 反过来, 任意三维反对称矩阵都只有三个独立参数, 因而都可以写成 $\delta\theta^iL_i$ 的形式. 这说明三维旋转群有三个独立生成元, 对应绕三条坐标轴的无穷小旋转. 
 
 生成元不对易:
-\[
+\begin{equation}
+\label{eq:ch4-so3-real-algebra}
 [L_x,L_y]=L_z,
 \qquad
 [L_y,L_z]=L_x,
 \qquad
 [L_z,L_x]=L_y.
-\]
-因此三维旋转的顺序会影响最终结果. 这与平面旋转 $SO(2)$ 的 Abel 性形成对比. 
+\end{equation}
+因此三维旋转的顺序会影响最终结果. \eqref{eq:ch4-so3-real-algebra} 与平面旋转 $SO(2)$ 的 Abel 性形成对比. 
 
 为了实际描述一般三维旋转, 常用欧拉角把任意旋转分解成三次绕坐标轴的旋转. 在一种常用约定下,
 \[
@@ -606,7 +617,7 @@ R(\alpha,\beta,\gamma)
 =
 R_z(\alpha)R_y(\beta)R_z(\gamma).
 \]
-这表示先后用三个角参数描述一个一般旋转. 不同教材可能采用不同的轴序和主动、被动约定, 但共同点是: $SO(3)$ 是三参数李群, 而三个参数背后的局部结构由上面的三个生成元及其对易关系决定. 
+这表示先后用三个角参数描述一个一般旋转. 不同教材可能采用不同的轴序和主动、被动约定, 但共同点是: $SO(3)$ 是三参数李群, 而三个参数背后的局部结构由 \eqref{eq:ch4-so3-real-algebra} 中的生成元对易关系决定. 
 
 \begin{example}{无穷小正交变换的生成元必须反对称}{4,3}
 设三维无穷小线性变换为
@@ -680,14 +691,15 @@ A'^i=R^i{}_jA^j
 D:G\to GL(V)
 \]
 满足
-\[
+\begin{equation}
+\label{eq:ch4-representation-condition}
 D(g_1g_2)=D(g_1)D(g_2),
-\]
+\end{equation}
 并且
 \[
 D(e)=I,
 \]
-则称 $D$ 是群 $G$ 在空间 $V$ 上的一个表示. 这里 $V$ 称为表示空间. 
+则称 $D$ 是群 $G$ 在空间 $V$ 上的一个表示. 这里 $V$ 称为表示空间. \eqref{eq:ch4-representation-condition} 表明表示必须保持群乘法结构. 
 
 物理中的标量、矢量、张量、旋量和场函数, 都可以看作某个群表示空间中的元素. 
 
@@ -807,11 +819,12 @@ f(\alpha,f(\beta,\gamma))=f(f(\alpha,\beta),\gamma).
 这些关系说明, 李群不仅是一族带参数的矩阵或算符, 参数之间的复合规律也被群结构严格限制. 
 
 在单位元附近展开群元,
-\[
+\begin{equation}
+\label{eq:ch4-lie-group-expansion}
 g(\alpha)
 =
 I+\alpha^aX_a+O(\alpha^2),
-\]
+\end{equation}
 其中
 \[
 X_a=
@@ -819,7 +832,7 @@ X_a=
 \frac{\partial g(\alpha)}{\partial \alpha^a}
 \right|_{\alpha=0}
 \]
-称为李群的生成元. 生成元描述的是从单位元出发的无穷小方向. 对矩阵群来说, 它们就是单位元处切空间中的矩阵. 
+称为李群的生成元. 生成元描述的是从单位元出发的无穷小方向. \eqref{eq:ch4-lie-group-expansion} 对矩阵群来说就是单位元处切空间中的一阶展开. 
 
 设两个无穷小变换分别由参数 $\beta^i$ 和 $\gamma^j$ 生成. 群交换子
 \[
@@ -830,10 +843,11 @@ g(\beta)^{-1}g(\gamma)^{-1}g(\beta)g(\gamma)
 I+\beta^i\gamma^j[X_i,X_j]+O(\beta\gamma^2,\beta^2\gamma).
 \]
 由于群乘法封闭, 这个结果仍必须对应某个无穷小群元, 所以生成元的对易子可以写成生成元的线性组合:
-\[
+\begin{equation}
+\label{eq:ch4-lie-algebra-structure}
 [X_i,X_j]=C_{ij}{}^kX_k.
-\]
-常数 $C_{ij}{}^k$ 称为结构常数, 它们刻画李群在单位元附近的非交换结构. 这组对易关系就是李代数. 
+\end{equation}
+常数 $C_{ij}{}^k$ 称为结构常数, 它们刻画李群在单位元附近的非交换结构. \eqref{eq:ch4-lie-algebra-structure} 这组对易关系就是李代数. 
 
 设 $g(\alpha)$ 是一个单参数连续变换, 满足
 \[
@@ -846,12 +860,13 @@ D(g(\alpha))
 I-\frac{i}{\hbar}\alpha \hat{Q}+O(\alpha^2).
 \]
 其中 $\hat{Q}$ 称为该单参数变换的物理生成元. 有限变换可写为
-\[
+\begin{equation}
+\label{eq:ch4-finite-generator}
 D(g(\alpha))
 =
 \exp\left(-\frac{i}{\hbar}\alpha\hat{Q}\right).
-\]
-这里采用量子力学和场论中常见的约定: 生成元取为厄米算符, 指数中显式出现 $-i/\hbar$. 如果采用数学中的实反对称矩阵生成元, 则公式中不会出现该因子. 两种约定等价, 但符号形式不同. 
+\end{equation}
+这里采用量子力学和场论中常见的约定: 生成元取为厄米算符, \eqref{eq:ch4-finite-generator} 的指数中显式出现 $-i/\hbar$. 如果采用数学中的实反对称矩阵生成元, 则公式中不会出现该因子. 两种约定等价, 但符号形式不同. 
 
 从无穷小变换到有限变换的过程可以直接由群的复合性质理解. 若把有限参数 $\alpha$ 分成 $N$ 份, 则
 \[
@@ -936,12 +951,13 @@ U(\theta)
 [\hat{X},\hat{Y}]=\hat{X}\hat{Y}-\hat{Y}\hat{X}.
 \]
 若一组生成元 $\hat{T}_a$ 在对易子下封闭, 即
-\[
+\begin{equation}
+\label{eq:ch4-physical-lie-algebra}
 [\hat{T}_a,\hat{T}_b]
 =
 i\hbar f_{ab}{}^c\hat{T}_c,
-\]
-则这些生成元构成李代数. 其中 $f_{ab}{}^c$ 称为结构常数. 
+\end{equation}
+则这些生成元构成李代数. 其中 $f_{ab}{}^c$ 称为结构常数. \eqref{eq:ch4-physical-lie-algebra} 是物理厄米生成元约定下的李代数写法. 
 
 对易关系可以从两个无穷小变换的交换失败中看出. 考虑两个小参数变换
 \[
@@ -988,11 +1004,12 @@ U_a^{-1}U_b^{-1}U_aU_b
 \exp(\theta^iL_i),
 \]
 与前面旋转矩阵的写法一致. 物理约定的好处是生成元是厄米算符, 可以直接对应可观测量. 它们满足
-\[
+\begin{equation}
+\label{eq:ch4-angular-momentum-algebra}
 [\hat{J}_i,\hat{J}_j]
 =
 i\hbar\varepsilon_{ijk}\hat{J}_k.
-\]
+\end{equation}
 有限旋转可写为
 \[
 U(R)
@@ -1007,7 +1024,7 @@ U(R)
 \[
 R_z(\theta)=\exp(\theta L_z).
 \]
-这与物理厄米生成元约定并不矛盾, 只是作用空间和符号约定不同. 
+这与 \eqref{eq:ch4-angular-momentum-algebra} 所采用的物理厄米生成元约定并不矛盾, 只是作用空间和符号约定不同. 
 
 生成元决定物理量在无穷小对称变换下的变化. 例如在量子力学中, 态矢量在无穷小旋转下变为
 \[
@@ -1068,31 +1085,35 @@ U(\bm{\theta})
 \right).
 \]
 这些矩阵满足
-\[
+\begin{equation}
+\label{eq:ch4-pauli-commutator}
 [\sigma_i,\sigma_j]
 =
 2i\varepsilon_{ijk}\sigma_k,
-\]
+\end{equation}
 以及
-\[
+\begin{equation}
+\label{eq:ch4-pauli-anticommutator}
 \{\sigma_i,\sigma_j\}
 =
 2\delta_{ij}I.
-\]
-由对易关系和反对易关系合起来可得
-\[
+\end{equation}
+由对易关系 \eqref{eq:ch4-pauli-commutator} 和反对易关系 \eqref{eq:ch4-pauli-anticommutator} 合起来可得
+\begin{equation}
+\label{eq:ch4-pauli-product}
 \sigma_i\sigma_j
 =
 \delta_{ij}I+i\varepsilon_{ijk}\sigma_k.
-\]
+\end{equation}
 因此对任意三维向量 $\bm{A}$ 和 $\bm{B}$,
-\[
+\begin{equation}
+\label{eq:ch4-pauli-vector-identity}
 (\bm{\sigma}\cdot\bm{A})(\bm{\sigma}\cdot\bm{B})
 =
 \bm{A}\cdot\bm{B}
 +i\bm{\sigma}\cdot(\bm{A}\times\bm{B}).
-\]
-这条恒等式在自旋计算、电磁相互作用和多分量波动方程中都会反复出现. 
+\end{equation}
+\eqref{eq:ch4-pauli-product} 推出的 \eqref{eq:ch4-pauli-vector-identity} 在自旋计算、电磁相互作用和多分量波动方程中都会反复出现. 
 
 \begin{example}{自旋态绕 $z$ 轴旋转}{4,4}
 自旋 $1/2$ 态绕 $z$ 轴旋转角度 $\theta$ 的变换为
@@ -1151,24 +1172,27 @@ I,
 \hat{S}_i=\frac{\hbar}{2}\sigma_i,
 \]
 则有
-\[
+\begin{equation}
+\label{eq:ch4-spin-algebra}
 [\hat{S}_i,\hat{S}_j]
 =
 i\hbar\varepsilon_{ijk}\hat{S}_k.
-\]
-这与角动量代数相同. 因此, $SU(2)$ 给出了旋转群在自旋空间中的重要表示. 更深入地, $SU(2)$ 是 $SO(3)$ 的双覆盖: $SU(2)$ 中相差一个整体负号的两个群元素对应于同一个三维空间旋转. 这个事实是自旋 $1/2$ 粒子在旋转 $2\pi$ 后态矢量变号的群论来源. 
+\end{equation}
+\eqref{eq:ch4-spin-algebra} 与角动量代数 \eqref{eq:ch4-angular-momentum-algebra} 相同. 因此, $SU(2)$ 给出了旋转群在自旋空间中的重要表示. 更深入地, $SU(2)$ 是 $SO(3)$ 的双覆盖: $SU(2)$ 中相差一个整体负号的两个群元素对应于同一个三维空间旋转. 这个事实是自旋 $1/2$ 粒子在旋转 $2\pi$ 后态矢量变号的群论来源. 
 
 \section{协变方程的群论理解}
 
 设群 $G$ 作用在一组场 $\varphi$ 上, 某个方程写成
-\[
+\begin{equation}
+\label{eq:ch4-covariant-equation}
 \mathcal E[\varphi]=0,
-\]
+\end{equation}
 若对群中任意变换 $g$, 变换后的场 $\varphi'=g\cdot\varphi$ 仍满足同样形式的方程
-\[
+\begin{equation}
+\label{eq:ch4-transformed-covariant-equation}
 \mathcal E[\varphi']=0,
-\]
-则称该方程在群 $G$ 下协变. 这里的重点不是某个分量数值是否不变, 而是方程两边在群作用下是否仍属于同一类对象, 并以同样规则变换. 
+\end{equation}
+则称该方程在群 $G$ 下协变. 也就是说, \eqref{eq:ch4-covariant-equation} 在群变换后仍保持为 \eqref{eq:ch4-transformed-covariant-equation} 的同一形式. 这里的重点不是某个分量数值是否不变, 而是方程两边在群作用下是否仍属于同一类对象, 并以同样规则变换. 
 
 如果方程两边都是同类型张量或同一群表示中的对象, 则协变性通常可以直接保证. 例如, 对任意群表示 $D(g)$, 若
 \[
