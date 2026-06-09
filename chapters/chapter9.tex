@@ -1,0 +1,790 @@
+\chapter{电磁场的能量、动量与应力张量}
+
+\section{电磁场的能量守恒}
+
+第八章已经把 Maxwell 方程写成四维协变形式，并说明电场和磁场可以统一为反对称张量 $F_{\mu\nu}$。在此基础上，本章讨论电磁场的另一个基本性质：电磁场不仅决定带电粒子所受的力，而且本身也携带能量和动量，并能通过空间边界传递作用。
+
+在粒子力学中，能量和动量由粒子的运动状态表征；在场论中，场本身也应当具有相应的能量动量结构。电磁场提供了最典型的例子：它可以对带电物质做功，也可以在没有物质直接接触的情况下把能量和动量从一处输运到另一处。因此，电磁场不能仅仅看作描述相互作用的辅助量，而应看作具有独立物理内容的场。
+
+本章采用 SI 制单位，并沿用前文的闵可夫斯基度规约定
+\[
+\eta_{\mu\nu}
+=
+\operatorname{diag}(1,-1,-1,-1).
+\]
+四维坐标取为
+\[
+x^{\mu}
+=
+(ct,x,y,z),
+\]
+四维电流取为
+\[
+j^{\mu}
+=
+(c\rho,\bm{j}).
+\]
+在三维形式中，Maxwell 方程写为
+\[
+\bm{\nabla}\cdot\bm{E}
+=
+\frac{\rho}{\varepsilon_{0}},
+\qquad
+\bm{\nabla}\cdot\bm{B}=0,
+\]
+\[
+\bm{\nabla}\times\bm{E}
+=
+-\frac{\partial\bm{B}}{\partial t},
+\qquad
+\bm{\nabla}\times\bm{B}
+=
+\mu_{0}\bm{j}
++
+\mu_{0}\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}.
+\]
+电磁场张量的分量约定为
+\[
+F_{0i}
+=
+\frac{E_{i}}{c},
+\qquad
+F_{ij}
+=
+-\varepsilon_{ijk}B_{k}.
+\]
+
+下面首先从 Maxwell 方程推出电磁场能量守恒的局域形式。
+
+\section{Poynting 定理}
+
+电场对带电物质做功的功率密度为
+\[
+\bm{j}\cdot\bm{E}.
+\]
+若 $\bm{j}\cdot\bm{E}>0$，电磁场对带电物质做正功，场能转化为物质的能量；若 $\bm{j}\cdot\bm{E}<0$，则物质把能量交还给电磁场。因此，在只考察电磁场自身的能量变化时，守恒方程中应出现源项 $-\bm{j}\cdot\bm{E}$。
+
+为得到这一局域守恒律，从 Ampere--Maxwell 方程
+\[
+\bm{\nabla}\times\bm{B}
+=
+\mu_{0}\bm{j}
++
+\mu_{0}\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t},
+\]
+解出电流密度
+\[
+\bm{j}
+=
+\frac{1}{\mu_{0}}\bm{\nabla}\times\bm{B}
+-
+\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}.
+\]
+两边与 $\bm{E}$ 点乘，并把表示物质得能的项移到场的一侧，可得
+\[
+-\bm{j}\cdot\bm{E}
+=
+-\frac{1}{\mu_{0}}
+\bm{E}\cdot(\bm{\nabla}\times\bm{B})
++
+\varepsilon_{0}
+\bm{E}\cdot
+\frac{\partial\bm{E}}{\partial t}.
+\]
+其中第二项可写为
+\[
+\varepsilon_{0}
+\bm{E}\cdot
+\frac{\partial\bm{E}}{\partial t}
+=
+\frac{\partial}{\partial t}
+\left(
+\frac{\varepsilon_{0}}{2}E^{2}
+\right).
+\]
+对于第一项，使用矢量恒等式
+\[
+\bm{\nabla}\cdot(\bm{E}\times\bm{B})
+=
+\bm{B}\cdot(\bm{\nabla}\times\bm{E})
+-
+\bm{E}\cdot(\bm{\nabla}\times\bm{B}).
+\]
+由 Faraday 定律
+\[
+\bm{\nabla}\times\bm{E}
+=
+-\frac{\partial\bm{B}}{\partial t},
+\]
+可得
+\[
+\bm{B}\cdot(\bm{\nabla}\times\bm{E})
+=
+-\bm{B}\cdot\frac{\partial\bm{B}}{\partial t}
+=
+-\frac{\partial}{\partial t}
+\left(
+\frac{1}{2}B^{2}
+\right).
+\]
+因此
+\[
+\bm{E}\cdot(\bm{\nabla}\times\bm{B})
+=
+-\frac{\partial}{\partial t}
+\left(
+\frac{1}{2}B^{2}
+\right)
+-
+\bm{\nabla}\cdot(\bm{E}\times\bm{B}).
+\]
+代回前式，得到
+\[
+-\bm{j}\cdot\bm{E}
+=
+\frac{\partial}{\partial t}
+\left(
+\frac{1}{2\mu_{0}}B^{2}
+\right)
++
+\frac{1}{\mu_{0}}
+\bm{\nabla}\cdot(\bm{E}\times\bm{B})
++
+\frac{\partial}{\partial t}
+\left(
+\frac{\varepsilon_{0}}{2}E^{2}
+\right).
+\]
+将电场能和磁场能两部分合并，便得到
+\begin{equation}
+	\frac{\partial u}{\partial t}
+	+
+	\bm{\nabla}\cdot\bm{S}
+	=
+	-\bm{j}\cdot\bm{E}.
+	\label{eq:9:poynting-theorem}
+\end{equation}
+这就是 Poynting 定理。其中
+\begin{equation}
+	u
+	=
+	\frac{\varepsilon_{0}}{2}E^{2}
+	+
+	\frac{1}{2\mu_{0}}B^{2}
+	\label{eq:9:energy-density}
+\end{equation}
+是电磁场能量密度，
+\begin{equation}
+	\bm{S}
+	=
+	\frac{1}{\mu_{0}}\bm{E}\times\bm{B}
+	\label{eq:9:poynting-vector}
+\end{equation}
+是 Poynting 矢量。
+
+式 \eqref{eq:9:poynting-theorem} 给出了电磁场能量守恒的局域形式。左端第一项表示单位体积内场能的变化率，第二项表示场能流过单位面积的净通量；右端则表示电磁场对带电物质做功而损失的能量率。
+
+\section{电磁场的能量密度与能流密度}
+
+由式 \eqref{eq:9:energy-density} 可见，电磁场能量密度由电场部分和磁场部分组成。电场部分为
+\[
+u_{e}=\frac{\varepsilon_{0}}{2}E^{2},
+\]
+磁场部分为
+\[
+u_{m}=\frac{1}{2\mu_{0}}B^{2}.
+\]
+这里的能量密度不是额外假定的，而是由 Maxwell 方程与能量守恒要求共同确定的。静态情形下，若只有电场存在，它退化为静电能量密度；若只有磁场存在，则退化为磁场能量密度。
+
+Poynting 矢量 \eqref{eq:9:poynting-vector} 表示电磁场的能流密度。它的方向由 $\bm{E}\times\bm{B}$ 决定，大小表示单位时间内穿过单位面积的电磁能量。为了看清这一物理意义，对空间区域 $V$ 积分式 \eqref{eq:9:poynting-theorem}：
+\[
+\int_{V}
+\frac{\partial u}{\partial t}\,\dif^{3}x
++
+\int_{V}
+\bm{\nabla}\cdot\bm{S}\,\dif^{3}x
+=
+-\int_{V}
+\bm{j}\cdot\bm{E}\,\dif^{3}x.
+\]
+若区域 $V$ 固定，则
+\[
+\int_{V}
+\frac{\partial u}{\partial t}\,\dif^{3}x
+=
+\frac{\dif}{\dif t}
+\int_{V}
+u\,\dif^{3}x.
+\]
+再由 Gauss 定理，
+\[
+\int_{V}
+\bm{\nabla}\cdot\bm{S}\,\dif^{3}x
+=
+\oint_{\partial V}
+\bm{S}\cdot\dif\bm{a}.
+\]
+于是得到积分形式
+\begin{equation}
+	\frac{\dif}{\dif t}
+	\int_{V}u\,\dif^{3}x
+	+
+	\oint_{\partial V}
+	\bm{S}\cdot\dif\bm{a}
+	=
+	-\int_{V}
+	\bm{j}\cdot\bm{E}\,\dif^{3}x.
+	\label{eq:9:poynting-integral}
+\end{equation}
+
+式 \eqref{eq:9:poynting-integral} 中，
+\[
+\int_{V}u\,\dif^{3}x
+\]
+表示区域 $V$ 内的电磁场总能量；
+\[
+\oint_{\partial V}
+\bm{S}\cdot\dif\bm{a}
+\]
+表示单位时间内通过边界 $\partial V$ 流出的电磁能量；
+\[
+\int_{V}
+\bm{j}\cdot\bm{E}\,\dif^{3}x
+\]
+表示电磁场对区域内带电物质做功的总功率。因此，Poynting 矢量并非形式上的定义，而是具有直接的能量输运意义。
+
+\section{电磁场的动量密度}
+
+在相对论中，能量流与动量密度不是彼此独立的量。对于电磁场，场动量密度可由 Poynting 矢量确定：
+\begin{equation}
+	\bm{g}
+	=
+	\frac{\bm{S}}{c^{2}}.
+	\label{eq:9:momentum-density-s}
+\end{equation}
+将 \eqref{eq:9:poynting-vector} 代入，并利用
+\[
+\frac{1}{c^{2}}
+=
+\mu_{0}\varepsilon_{0},
+\]
+可得
+\begin{equation}
+	\bm{g}
+	=
+	\varepsilon_{0}\bm{E}\times\bm{B}.
+	\label{eq:9:momentum-density}
+\end{equation}
+这就是电磁场的动量密度。
+
+这个结果说明，只要电场和磁场形成非零的 $\bm{E}\times\bm{B}$，电磁场中就存在动量。电磁场能够对物质产生力，不仅是因为场在局域处作用于电荷和电流，也因为场本身可以携带并传递动量。
+
+式 \eqref{eq:9:momentum-density-s} 还预示了能流和动量密度之间的相对论联系。后面引入四维能动张量时，这一联系将表现为同一张量中时间-空间分量与空间-时间分量的对应关系。
+
+\section{Maxwell 应力张量}
+
+动量密度描述电磁动量在空间中的分布。若要进一步描述动量如何穿过空间边界输运，还需要引入应力张量。对于电磁场，相应的应力张量称为 Maxwell 应力张量。
+
+带电物质受到的 Lorentz 力密度为
+\[
+\bm{f}
+=
+\rho\bm{E}
++
+\bm{j}\times\bm{B}.
+\]
+利用 Maxwell 方程可以把 $\rho$ 和 $\bm{j}$ 用场量表示：
+\[
+\rho
+=
+\varepsilon_{0}\bm{\nabla}\cdot\bm{E},
+\]
+\[
+\bm{j}
+=
+\frac{1}{\mu_{0}}\bm{\nabla}\times\bm{B}
+-
+\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}.
+\]
+代入 Lorentz 力密度，得到
+\[
+\bm{f}
+=
+\varepsilon_{0}
+(\bm{\nabla}\cdot\bm{E})\bm{E}
++
+\frac{1}{\mu_{0}}
+(\bm{\nabla}\times\bm{B})\times\bm{B}
+-
+\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}\times\bm{B}.
+\]
+其中含时间导数的最后一项可改写为
+\[
+-\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}\times\bm{B}
+=
+-\frac{\partial}{\partial t}
+(\varepsilon_{0}\bm{E}\times\bm{B})
++
+\varepsilon_{0}
+\bm{E}\times
+\frac{\partial\bm{B}}{\partial t}.
+\]
+由 Faraday 定律，
+\[
+\frac{\partial\bm{B}}{\partial t}
+=
+-\bm{\nabla}\times\bm{E},
+\]
+于是
+\[
+\varepsilon_{0}
+\bm{E}\times
+\frac{\partial\bm{B}}{\partial t}
+=
+-\varepsilon_{0}
+\bm{E}\times(\bm{\nabla}\times\bm{E}).
+\]
+因此
+\[
+\bm{f}
+=
+-\frac{\partial}{\partial t}
+(\varepsilon_{0}\bm{E}\times\bm{B})
++
+\varepsilon_{0}
+\left[
+(\bm{\nabla}\cdot\bm{E})\bm{E}
+-
+\bm{E}\times(\bm{\nabla}\times\bm{E})
+\right]
++
+\frac{1}{\mu_{0}}
+(\bm{\nabla}\times\bm{B})\times\bm{B}.
+\]
+
+接下来使用两个矢量恒等式。其一为
+\[
+(\bm{\nabla}\cdot\bm{E})\bm{E}
+-
+\bm{E}\times(\bm{\nabla}\times\bm{E})
+=
+\bm{\nabla}\cdot
+\left(
+\bm{E}\bm{E}
+-
+\frac{1}{2}E^{2}\mathbf I
+\right).
+\]
+其二在 $\bm{\nabla}\cdot\bm{B}=0$ 时成立：
+\[
+(\bm{\nabla}\times\bm{B})\times\bm{B}
+=
+\bm{\nabla}\cdot
+\left(
+\bm{B}\bm{B}
+-
+\frac{1}{2}B^{2}\mathbf I
+\right).
+\]
+将它们代入上式，得到
+\[
+\bm{f}
+=
+-\frac{\partial\bm{g}}{\partial t}
++
+\bm{\nabla}\cdot\mathbf T,
+\]
+其中 $\bm{g}$ 正是式 \eqref{eq:9:momentum-density} 中的电磁场动量密度，而
+\begin{equation}
+	\mathbf T
+	=
+	\varepsilon_{0}\bm{E}\bm{E}
+	+
+	\frac{1}{\mu_{0}}\bm{B}\bm{B}
+	-
+	\frac{1}{2}
+	\left(
+	\varepsilon_{0}E^{2}
+	+
+	\frac{1}{\mu_{0}}B^{2}
+	\right)\mathbf I
+	\label{eq:9:maxwell-stress-dyadic}
+\end{equation}
+称为 Maxwell 应力张量。
+
+Maxwell 应力张量的分量形式为
+\begin{equation}
+	T_{ij}
+	=
+	\varepsilon_{0}E_{i}E_{j}
+	+
+	\frac{1}{\mu_{0}}B_{i}B_{j}
+	-
+	\frac{1}{2}
+	\left(
+	\varepsilon_{0}E^{2}
+	+
+	\frac{1}{\mu_{0}}B^{2}
+	\right)\delta_{ij}.
+	\label{eq:9:maxwell-stress-components}
+\end{equation}
+其中 $\bm{E}\bm{E}$ 和 $\bm{B}\bm{B}$ 表示并矢积：
+\[
+(\bm{E}\bm{E})_{ij}
+=
+E_{i}E_{j},
+\qquad
+(\bm{B}\bm{B})_{ij}
+=
+B_{i}B_{j}.
+\]
+
+应力张量的对角分量表示正应力，非对角分量表示切向应力。对于电磁场，Maxwell 应力张量刻画的是场通过空间边界输运动量的方式，也可用来计算场对物质边界施加的压力和张力。
+
+\section{电磁场的局域动量守恒}
+
+由上一节的结果
+\[
+\bm{f}
+=
+-\frac{\partial\bm{g}}{\partial t}
++
+\bm{\nabla}\cdot\mathbf T.
+\]
+移项后得到电磁场的局域动量守恒方程：
+\begin{equation}
+	\frac{\partial\bm{g}}{\partial t}
+	-
+	\bm{\nabla}\cdot\mathbf T
+	=
+	-\bm{f}.
+	\label{eq:9:momentum-balance}
+\end{equation}
+其中
+\[
+\bm{f}
+=
+\rho\bm{E}
++
+\bm{j}\times\bm{B}
+\]
+是电磁场对带电物质的力密度。
+
+式 \eqref{eq:9:momentum-balance} 与 Poynting 定理在结构上完全类似。左端第一项表示场动量密度的变化率，第二项表示由 Maxwell 应力张量给出的动量通量，右端表示电磁场传递给物质的动量率的负值。因此，电磁场与带电物质可以相互交换动量；若把二者合为一个整体，总动量仍然守恒。
+
+对空间区域 $V$ 积分式 \eqref{eq:9:momentum-balance}，得
+\[
+\frac{\dif}{\dif t}
+\int_{V}\bm{g}\,\dif^{3}x
+-
+\int_{V}
+\bm{\nabla}\cdot\mathbf T\,\dif^{3}x
+=
+-\int_{V}\bm{f}\,\dif^{3}x.
+\]
+由 Gauss 定理，
+\[
+\int_{V}
+\bm{\nabla}\cdot\mathbf T\,\dif^{3}x
+=
+\oint_{\partial V}
+\mathbf T\cdot\dif\bm{a}.
+\]
+于是
+\begin{equation}
+	\frac{\dif}{\dif t}
+	\int_{V}\bm{g}\,\dif^{3}x
+	-
+	\oint_{\partial V}
+	\mathbf T\cdot\dif\bm{a}
+	=
+	-\int_{V}\bm{f}\,\dif^{3}x.
+	\label{eq:9:momentum-integral}
+\end{equation}
+若把区域 $V$ 内物质受到的总电磁力记为
+\[
+\bm{F}
+=
+\int_{V}\bm{f}\,\dif^{3}x,
+\]
+则
+\[
+\bm{F}
+=
+-\frac{\dif}{\dif t}
+\int_{V}\bm{g}\,\dif^{3}x
++
+\oint_{\partial V}
+\mathbf T\cdot\dif\bm{a}.
+\]
+这表明，区域内物质所受的总电磁力，可以由该区域内场动量的变化和边界上的 Maxwell 应力通量共同决定。对于稳态情形，若区域内场动量不随时间变化，则有
+\[
+\bm{F}
+=
+\oint_{\partial V}
+\mathbf T\cdot\dif\bm{a}.
+\]
+
+\section{电磁场的能动张量}
+
+前面分别得到了电磁场的能量密度 $u$、能流密度 $\bm{S}$、动量密度 $\bm{g}$ 和 Maxwell 应力张量 $\mathbf T$。从四维观点看，这些量并不是彼此孤立的对象，而是同一个能动张量的不同分量。
+
+在本讲义采用的号差 $(+---)$ 与场张量约定下，电磁场能动张量定义为
+\begin{equation}
+	T^{\mu\nu}
+	=
+	-\frac{1}{\mu_{0}}
+	\left(
+	F^{\mu\alpha}F^{\nu}{}_{\alpha}
+	-
+	\frac{1}{4}\eta^{\mu\nu}
+	F^{\alpha\beta}F_{\alpha\beta}
+	\right).
+	\label{eq:9:em-stress-energy}
+\end{equation}
+该张量只由场强张量 $F_{\mu\nu}$ 构成，因此是规范不变的。它同时是对称张量：
+\[
+T^{\mu\nu}
+=
+T^{\nu\mu}.
+\]
+
+为了看清式 \eqref{eq:9:em-stress-energy} 与三维物理量的关系，将指标分为时间分量和空间分量。时间-时间分量为
+\[
+T^{00}
+=
+u.
+\]
+时间-空间分量为
+\[
+T^{0i}
+=
+\frac{S_{i}}{c}.
+\]
+由于 $\bm{g}=\bm{S}/c^{2}$，也可写成
+\[
+T^{0i}
+=
+cg_{i}.
+\]
+由对称性可知
+\[
+T^{i0}
+=
+T^{0i}.
+\]
+空间-空间分量与 Maxwell 应力张量相差一个负号：
+\[
+T^{ij}
+=
+-T_{ij}.
+\]
+因此，能动张量可以写成矩阵形式
+\begin{equation}
+	T^{\mu\nu}
+	=
+	\begin{pmatrix}
+		u & S_{x}/c & S_{y}/c & S_{z}/c\\
+		S_{x}/c & -T_{xx} & -T_{xy} & -T_{xz}\\
+		S_{y}/c & -T_{yx} & -T_{yy} & -T_{yz}\\
+		S_{z}/c & -T_{zx} & -T_{zy} & -T_{zz}
+	\end{pmatrix}.
+	\label{eq:9:em-stress-energy-matrix}
+\end{equation}
+
+这种分解表明，电磁场的能量密度、能流、动量密度和应力张量，本质上是同一四维张量在不同分量上的表现。三维形式的 Poynting 定理和动量守恒方程，也可以统一理解为四维能动张量方程的不同分量。
+
+此外，电磁场能动张量的迹为零。由 \eqref{eq:9:em-stress-energy} 得
+\[
+T^{\mu}{}_{\mu}
+=
+-\frac{1}{\mu_{0}}
+\left(
+F^{\mu\alpha}F_{\mu\alpha}
+-
+\frac{1}{4}\eta_{\mu\nu}\eta^{\mu\nu}
+F^{\alpha\beta}F_{\alpha\beta}
+\right).
+\]
+在四维时空中，
+\[
+\eta_{\mu\nu}\eta^{\mu\nu}=4.
+\]
+因此
+\[
+T^{\mu}{}_{\mu}
+=
+-\frac{1}{\mu_{0}}
+\left(
+F^{\mu\alpha}F_{\mu\alpha}
+-
+F^{\alpha\beta}F_{\alpha\beta}
+\right)
+=
+0.
+\]
+这说明经典真空 Maxwell 理论的电磁场能动张量是无迹的。
+
+\section{场与带电物质的能量动量交换}
+
+在无源区域中，电磁场能动张量满足守恒方程
+\[
+\partial_{\mu}T^{\mu\nu}=0.
+\]
+在有源区域中，电磁场与带电物质发生能量动量交换，电磁场能动张量本身一般不再单独守恒。由 Maxwell 方程可以推出
+\begin{equation}
+	\partial_{\mu}T^{\mu\nu}
+	=
+	-F^{\nu\lambda}j_{\lambda}.
+	\label{eq:9:em-matter-exchange}
+\end{equation}
+定义物质受到的四维力密度为
+\[
+f^{\nu}
+=
+F^{\nu\lambda}j_{\lambda}.
+\]
+则 \eqref{eq:9:em-matter-exchange} 可写为
+\[
+\partial_{\mu}T^{\mu\nu}
+=
+-f^{\nu}.
+\]
+这表明，电磁场损失的四动量正好转化为物质获得的四动量。
+
+取 $\nu=0$，式 \eqref{eq:9:em-matter-exchange} 给出能量交换方程，等价于 Poynting 定理 \eqref{eq:9:poynting-theorem}；取 $\nu=i$，则得到三维动量交换方程 \eqref{eq:9:momentum-balance}。由此可见，Poynting 定理和 Maxwell 应力张量方程在四维形式中统一为同一个能动张量方程。
+
+若把物质能动张量记为 $T_{\mathrm{matter}}^{\mu\nu}$，则物质获得的四动量满足
+\[
+\partial_{\mu}T_{\mathrm{matter}}^{\mu\nu}
+=
+F^{\nu\lambda}j_{\lambda}.
+\]
+将其与 \eqref{eq:9:em-matter-exchange} 相加，得到总能动张量
+\[
+T_{\mathrm{tot}}^{\mu\nu}
+=
+T^{\mu\nu}
++
+T_{\mathrm{matter}}^{\mu\nu}
+\]
+满足
+\begin{equation}
+	\partial_{\mu}T_{\mathrm{tot}}^{\mu\nu}
+	=
+	0.
+	\label{eq:9:total-energy-momentum-conservation}
+\end{equation}
+因此，严格守恒的是“电磁场 + 带电物质”组成的总系统的能量动量。电磁场自身的能量动量可以发生变化，但这种变化总是由它与物质之间的交换来补偿。
+
+\section{本章小结}
+
+本章讨论了电磁场的能量、动量和应力张量。由 Maxwell 方程可以推出 Poynting 定理
+\[
+\frac{\partial u}{\partial t}
++
+\bm{\nabla}\cdot\bm{S}
+=
+-\bm{j}\cdot\bm{E}.
+\]
+其中
+\[
+u
+=
+\frac{\varepsilon_{0}}{2}E^{2}
++
+\frac{1}{2\mu_{0}}B^{2}
+\]
+是电磁场能量密度，
+\[
+\bm{S}
+=
+\frac{1}{\mu_{0}}\bm{E}\times\bm{B}
+\]
+是 Poynting 矢量，表示电磁场的能流密度。
+
+电磁场动量密度为
+\[
+\bm{g}
+=
+\frac{\bm{S}}{c^{2}}
+=
+\varepsilon_{0}\bm{E}\times\bm{B}.
+\]
+带电物质受到的 Lorentz 力密度为
+\[
+\bm{f}
+=
+\rho\bm{E}
++
+\bm{j}\times\bm{B}.
+\]
+电磁场的局域动量守恒方程为
+\[
+\frac{\partial\bm{g}}{\partial t}
+-
+\bm{\nabla}\cdot\mathbf T
+=
+-\bm{f}.
+\]
+其中 Maxwell 应力张量为
+\[
+T_{ij}
+=
+\varepsilon_{0}E_{i}E_{j}
++
+\frac{1}{\mu_{0}}B_{i}B_{j}
+-
+\frac{1}{2}
+\left(
+\varepsilon_{0}E^{2}
++
+\frac{1}{\mu_{0}}B^{2}
+\right)\delta_{ij}.
+\]
+
+在四维形式中，电磁场能量密度、能流、动量密度和应力统一为能动张量
+\[
+T^{\mu\nu}
+=
+-\frac{1}{\mu_{0}}
+\left(
+F^{\mu\alpha}F^{\nu}{}_{\alpha}
+-
+\frac{1}{4}\eta^{\mu\nu}
+F^{\alpha\beta}F_{\alpha\beta}
+\right).
+\]
+其分量满足
+\[
+T^{00}=u,
+\qquad
+T^{0i}=T^{i0}=\frac{S_{i}}{c},
+\qquad
+T^{ij}=-T_{ij}.
+\]
+在有源区域中，
+\[
+\partial_{\mu}T^{\mu\nu}
+=
+-F^{\nu\lambda}j_{\lambda}.
+\]
+这说明电磁场通过 Lorentz 力密度与带电物质交换能量和动量。若把物质能动张量一并考虑，则总能动张量满足
+\[
+\partial_{\mu}
+\left(
+T^{\mu\nu}
++
+T_{\mathrm{matter}}^{\mu\nu}
+\right)
+=
+0.
+\]
+
+本章的核心结论是：电磁场不仅传递相互作用，而且自身携带能量、动量和应力。Poynting 矢量、场动量密度、Maxwell 应力张量和四维能动张量，分别给出了这一结构在三维形式和四维协变形式下的表述。
