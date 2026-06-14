@@ -1,0 +1,1261 @@
+\chapter{电磁感应与含时电磁场}
+
+\section{从静态场到含时场}
+
+静电场和静磁场分别描述静止电荷与稳恒电流产生的电磁场。在静态情形下，电场和磁场可以分开处理：
+\[
+\bm{\nabla}\times\bm{E}=0,
+\qquad
+\bm{\nabla}\cdot\bm{E}=\frac{\rho}{\varepsilon_{0}},
+\]
+\[
+\bm{\nabla}\cdot\bm{B}=0,
+\qquad
+\bm{\nabla}\times\bm{B}=\mu_{0}\bm{j}.
+\]
+其中静电场由电荷密度作为散度源，静磁场由稳恒电流作为旋度源。
+
+当场量随时间变化时，这种分离不再成立。变化的磁场会产生有旋电场，变化的电场也会产生磁场。因此，含时电磁场不是静电场和静磁场的简单叠加，而是电场和磁场相互耦合的整体。
+
+本章讨论含时电磁场的基本结构。首先讨论 Faraday 方程和感生电场，再讨论固定回路中的感生电动势与运动导体中的动生电动势。随后引入位移电流，得到完整的含时 Maxwell 方程组。最后讨论含时势函数、规范变换、Lorenz 规范、推迟势和准静态近似。
+
+\section{Faraday 方程与感生电场}
+
+静电场满足
+\[
+\bm{\nabla}\times\bm{E}=0.
+\]
+这意味着静电场是保守场，可以写成标量势的梯度：
+\[
+\bm{E}=-\bm{\nabla}\phi.
+\]
+然而，当磁场随时间变化时，电场一般不再无旋。含时情况下的 Faraday 方程为
+\begin{equation}
+	\bm{\nabla}\times\bm{E}
+	=
+	-\frac{\partial\bm{B}}{\partial t}.
+	\label{eq:12:faraday-differential}
+\end{equation}
+如果
+\[
+\frac{\partial\bm{B}}{\partial t}\neq 0,
+\]
+则
+\[
+\bm{\nabla}\times\bm{E}\neq 0.
+\]
+此时电场不能只由标量势 $-\bm{\nabla}\phi$ 描述。
+
+Faraday 方程表明，变化的磁场会产生有旋电场。这种电场称为感生电场。它与静电场不同：静电场的环路积分为零，而感生电场的环路积分一般不为零。对闭合曲线 $C$ 及其所围固定曲面 $S$，由 Stokes 定理，
+\[
+\oint_{C}\bm{E}\cdot\dif\bm{l}
+=
+\int_{S}
+(\bm{\nabla}\times\bm{E})\cdot\dif\bm{a}.
+\]
+代入 \eqref{eq:12:faraday-differential}，得到
+\begin{equation}
+	\oint_{C}\bm{E}\cdot\dif\bm{l}
+	=
+	-\int_{S}
+	\frac{\partial\bm{B}}{\partial t}
+	\cdot\dif\bm{a}.
+	\label{eq:12:faraday-integral-fixed}
+\end{equation}
+这里 $C$ 与 $S$ 均为固定曲线和固定曲面。式 \eqref{eq:12:faraday-integral-fixed} 是 Faraday 方程在固定回路上的积分形式。
+
+\begin{example}{圆柱形区域内变化磁场产生的感生电场}{12,1}
+半径为 $a$ 的无限长圆柱形区域内存在沿轴向的均匀磁场
+\[
+\bm{B}=B(t)\bm{e}_{z},
+\]
+圆柱外磁场为零。求空间中的感生电场。
+
+\begin{solution}
+该体系绕 $z$ 轴旋转对称，感生电场只能沿方位角方向，并且其大小只依赖到轴线的距离。因此可写为
+\[
+\bm{E}=E(r,t)\bm{e}_{\varphi}.
+\]
+
+取以 $z$ 轴为中心、半径为 $r$ 的圆形回路。若 $r<a$，穿过回路的磁通量为
+\[
+\Phi_{B}=\pi r^{2}B(t).
+\]
+由 Faraday 方程，
+\[
+2\pi rE(r,t)
+=
+-\frac{\dif}{\dif t}\left[\pi r^{2}B(t)\right],
+\]
+所以
+\[
+E(r,t)
+=
+-\frac{r}{2}\frac{\dif B}{\dif t},
+\qquad
+r<a.
+\]
+
+若 $r>a$，只有半径 $a$ 以内的区域对磁通量有贡献，因此
+\[
+\Phi_{B}=\pi a^{2}B(t).
+\]
+于是
+\[
+2\pi rE(r,t)
+=
+-\frac{\dif}{\dif t}\left[\pi a^{2}B(t)\right],
+\]
+即
+\[
+E(r,t)
+=
+-\frac{a^{2}}{2r}\frac{\dif B}{\dif t},
+\qquad
+r>a.
+\]
+因此
+\[
+\bm{E}
+=
+\begin{dcases}
+-\dfrac{r}{2}\dfrac{\dif B}{\dif t}\bm{e}_{\varphi},
+& r<a,\\[8pt]
+-\dfrac{a^{2}}{2r}\dfrac{\dif B}{\dif t}\bm{e}_{\varphi},
+& r>a.
+\end{dcases}
+\]
+负号表示感生电场的环绕方向遵循 Lenz 定律。虽然圆柱外部的磁场为零，但只要回路包围的磁通量随时间变化，圆柱外仍存在感生电场。
+\end{solution}
+\end{example}
+
+\section{感生电动势}
+
+电动势描述单位电荷沿回路运动一周时非静电力所做的功。在固定导线回路中，若电荷受到的驱动力来自感生电场，则感生电动势定义为
+\begin{equation}
+	\mathcal{E}_{\mathrm{ind}}
+	=
+	\oint_{C}\bm{E}\cdot\dif\bm{l}.
+	\label{eq:12:induced-emf-definition}
+\end{equation}
+由 \eqref{eq:12:faraday-integral-fixed} 得
+\begin{equation}
+	\mathcal{E}_{\mathrm{ind}}
+	=
+	-\int_{S}
+	\frac{\partial\bm{B}}{\partial t}
+	\cdot\dif\bm{a}.
+	\label{eq:12:induced-emf-partial-b}
+\end{equation}
+
+若回路和曲面固定，则可以把时间导数移到积分号外。定义磁通量
+\[
+\Phi_{B}
+=
+\int_{S}
+\bm{B}\cdot\dif\bm{a}.
+\]
+于是
+\begin{equation}
+	\mathcal{E}_{\mathrm{ind}}
+	=
+	-\frac{\dif \Phi_{B}}{\dif t}.
+	\label{eq:12:induced-emf-flux}
+\end{equation}
+在这一节中，\eqref{eq:12:induced-emf-flux} 只用于固定回路。它表示磁场本身随时间变化时产生的感生电动势。
+
+负号反映 Lenz 方向。感生电流的方向总是使它所产生的磁场反抗原磁通量的变化。若穿过回路的磁通量增大，感生电流产生的磁场倾向于削弱这一增大；若磁通量减小，感生电流产生的磁场倾向于抵抗这一减小。
+
+需要注意的是，感生电动势不要求导线本身运动。即使回路静止，只要穿过回路的磁场随时间变化，固定回路中也可以出现非零的电动势。这种电动势的局域来源是有旋感生电场。
+
+\section{动生电动势}
+
+动生电动势来自导体在磁场中的运动。设导体元以速度 $\bm{v}$ 在磁场 $\bm{B}$ 中运动。导体中的电荷随导体运动时，单位电荷受到的磁力项为
+\[
+\bm{v}\times\bm{B}.
+\]
+因此，沿运动导体回路的动生电动势定义为
+\begin{equation}
+	\mathcal{E}_{\mathrm{mot}}
+	=
+	\oint_{C}
+	(\bm{v}\times\bm{B})\cdot\dif\bm{l}.
+	\label{eq:12:motional-emf-definition}
+\end{equation}
+这里的 $\bm{v}$ 是导体元相对于所选参考系的速度，$\dif\bm{l}$ 沿回路方向取向。
+
+作为基本例子，考虑一根长度为 $l$ 的导体棒，在匀强磁场中以速度 $v$ 匀速运动。设 $\bm{v}$、$\bm{B}$ 和导体棒方向两两垂直，并且导体棒沿 $\dif\bm{l}$ 方向。此时
+\[
+(\bm{v}\times\bm{B})\cdot\dif\bm{l}
+=
+vB\,\dif l.
+\]
+所以
+\[
+\mathcal{E}_{\mathrm{mot}}
+=
+\int_{0}^{l}vB\,\dif l
+=
+Blv.
+\]
+该电动势的物理来源不是有旋电场，而是运动电荷受到磁力后的电荷分离。电荷分离会在导体内部建立静电场；达到稳态时，导体内部沿棒方向的总力可以平衡，但两端仍存在电势差。
+
+若回路中同时存在随时间变化的磁场和导体运动，则电动势可分为两部分：
+\begin{equation}
+	\mathcal{E}
+	=
+	\oint_{C}
+	\left(
+	\bm{E}
+	+
+	\bm{v}\times\bm{B}
+	\right)
+	\cdot\dif\bm{l}.
+	\label{eq:12:total-emf-local}
+\end{equation}
+其中 $\bm{E}$ 项描述感生电场或其他电场贡献，$\bm{v}\times\bm{B}$ 项描述导体运动带来的磁力贡献。在本章中，二者作为不同物理机制分别讨论。
+
+\begin{example}{滑动导体棒中的动生电动势与能量转化}{12,2}
+两根平行导轨相距 $l$，一根导体棒垂直跨在导轨上，并以恒定速度 $v$ 沿导轨滑动。整个回路处于垂直于导轨平面的匀强磁场中，回路总电阻为 $R$。忽略自感，求回路中的电流、导体棒受到的磁力以及维持匀速运动所需的机械功率。
+
+\begin{solution}
+导体棒切割磁感线产生的动生电动势大小为
+\[
+\mathcal{E}=Blv.
+\]
+因此回路中的电流大小为
+\[
+I=\frac{Blv}{R}.
+\]
+电流方向由 Lenz 定律确定：它所产生的磁场总是反抗回路磁通量的变化。
+
+导体棒受到的磁力大小为
+\[
+F=IlB
+=
+\frac{B^{2}l^{2}v}{R}.
+\]
+磁力方向与导体棒的运动方向相反。为了维持匀速运动，外力必须与该磁力平衡，因此外力提供的机械功率为
+\[
+P_{\mathrm{mech}}
+=
+Fv
+=
+\frac{B^{2}l^{2}v^{2}}{R}.
+\]
+另一方面，回路中的焦耳热功率为
+\[
+P_{\mathrm{J}}
+=
+I^{2}R
+=
+\frac{B^{2}l^{2}v^{2}}{R}.
+\]
+所以
+\[
+P_{\mathrm{mech}}=P_{\mathrm{J}}.
+\]
+这表明导体棒匀速运动时，外力所做的机械功全部转化为回路中的焦耳热。
+\end{solution}
+\end{example}
+
+\section{电磁感应的磁通量表述}
+
+在许多电路问题中，电磁感应可以用磁通量变化来表述。对固定回路，上一节已经得到
+\[
+\mathcal{E}_{\mathrm{ind}}
+=
+-\frac{\dif\Phi_{B}}{\dif t}.
+\]
+这时磁通量变化来自磁场本身的显含时变。
+
+对于运动导体回路，在一些简单几何中，动生电动势也可以写成磁通量变化形式。例如，导体棒在匀强磁场中运动时，回路面积以速率
+\[
+\frac{\dif S}{\dif t}
+=
+lv
+\]
+改变。若磁场垂直于回路平面，则
+\[
+\frac{\dif \Phi_{B}}{\dif t}
+=
+B\frac{\dif S}{\dif t}
+=
+Blv.
+\]
+因此
+\[
+|\mathcal{E}_{\mathrm{mot}}|
+=
+\left|
+\frac{\dif\Phi_{B}}{\dif t}
+\right|.
+\]
+符号由回路取向和法向取向决定。
+
+磁通量表述在电路计算中很方便，但它不是区分物理机制的最好方式。感生电动势来自变化磁场产生的有旋电场，动生电动势来自运动电荷受到的磁力项。二者在某些电路问题中可以写成相同的磁通量形式，但局域来源不同。
+
+因此，在使用
+\[
+\mathcal{E}
+=
+-\frac{\dif\Phi_{B}}{\dif t}
+\]
+时，需要明确回路是否固定、磁场是否显含时间、导体是否运动以及回路取向如何选取。对固定回路，磁通量公式直接来自 Faraday 方程；对运动回路，则应回到 \eqref{eq:12:motional-emf-definition} 或 \eqref{eq:12:total-emf-local} 判断电荷实际受到的作用。
+
+\section{自感、互感与电路方程}
+
+电磁感应在电路中的重要表现是自感和互感。设一个回路中电流为 $I$，穿过该回路的磁通量与电流成正比：
+\[
+\Phi
+=
+LI.
+\]
+其中 $L$ 称为自感系数。若回路固定，则由感应电动势公式得到
+\begin{equation}
+	\mathcal{E}_{L}
+	=
+	-L\frac{\dif I}{\dif t}.
+	\label{eq:12:self-induction-emf}
+\end{equation}
+负号表示自感电动势反抗电流变化。若电流增大，自感电动势阻碍其增大；若电流减小，自感电动势阻碍其减小。
+
+对于两个回路，若回路 $1$ 中电流 $I_{1}$ 在回路 $2$ 中产生磁通量
+\[
+\Phi_{21}
+=
+MI_{1},
+\]
+则回路 $2$ 中的互感电动势为
+\begin{equation}
+	\mathcal{E}_{2}
+	=
+	-M\frac{\dif I_{1}}{\dif t}.
+	\label{eq:12:mutual-induction-emf}
+\end{equation}
+同理，若回路 $2$ 中电流变化，也会在回路 $1$ 中产生互感电动势。在线性介质和固定几何中，互感系数满足互易关系
+\[
+M_{12}=M_{21}.
+\]
+
+自感和互感可以写入电路方程。以串联 $RL$ 电路为例，设外电源电动势为 $\mathcal{E}_{0}$，电阻为 $R$，自感为 $L$。沿回路列方程：
+\[
+\mathcal{E}_{0}
+-
+IR
+-
+L\frac{\dif I}{\dif t}
+=
+0.
+\]
+即
+\[
+L\frac{\dif I}{\dif t}
++
+RI
+=
+\mathcal{E}_{0}.
+\]
+若 $\mathcal{E}_{0}$ 为常数，且初始电流为零，则解为
+\[
+I(t)
+=
+\frac{\mathcal{E}_{0}}{R}
+\left(
+1-e^{-Rt/L}
+\right).
+\]
+断开电源放电时，电流满足
+\[
+L\frac{\dif I}{\dif t}
++
+RI=0,
+\]
+因此
+\[
+I(t)
+=
+I_{0}e^{-Rt/L}.
+\]
+时间常数为
+\[
+\tau
+=
+\frac{L}{R}.
+\]
+这些结果说明，电感使电流不能突变。其根源是电流变化会改变磁场，进而产生反抗电流变化的感应电动势。
+
+\begin{example}{$RL$ 电路接通过程中的能量关系}{12,3}
+串联 $RL$ 电路在 $t=0$ 时接到恒定电动势 $\mathcal{E}_{0}$ 上，初始电流为零。证明任意时刻电源提供的功率等于电阻消耗的功率与磁场能增加率之和，并求电流达到稳态值一半所需的时间。
+
+\begin{solution}
+电路方程为
+\[
+L\frac{\dif I}{\dif t}+RI=\mathcal{E}_{0}.
+\]
+两边乘以 $I$，得到
+\[
+\mathcal{E}_{0}I
+=
+RI^{2}
++
+LI\frac{\dif I}{\dif t}.
+\]
+注意到
+\[
+LI\frac{\dif I}{\dif t}
+=
+\frac{\dif}{\dif t}
+\left(
+\frac{1}{2}LI^{2}
+\right),
+\]
+所以
+\[
+\mathcal{E}_{0}I
+=
+RI^{2}
++
+\frac{\dif}{\dif t}
+\left(
+\frac{1}{2}LI^{2}
+\right).
+\]
+等式左侧是电源提供的功率，右侧第一项是焦耳热功率，第二项是电感磁场能的增加率。
+
+接通过程中的电流为
+\[
+I(t)
+=
+\frac{\mathcal{E}_{0}}{R}
+\left(
+1-e^{-Rt/L}
+\right).
+\]
+稳态电流为 $\mathcal{E}_{0}/R$。令电流达到其一半，得到
+\[
+1-e^{-Rt/L}=\frac{1}{2},
+\]
+因此
+\[
+t=\frac{L}{R}\ln 2.
+\]
+\end{solution}
+\end{example}
+
+\section{位移电流与 Ampere--Maxwell 方程}
+
+静磁场中有
+\[
+\bm{\nabla}\times\bm{B}
+=
+\mu_{0}\bm{j}.
+\]
+这个方程只适用于稳恒电流。若直接把它用于含时情形，会与电荷守恒发生矛盾。对两边取散度，得到
+\[
+\bm{\nabla}\cdot(\bm{\nabla}\times\bm{B})
+=
+\mu_{0}\bm{\nabla}\cdot\bm{j}.
+\]
+左边恒为零，因此
+\[
+\bm{\nabla}\cdot\bm{j}=0.
+\]
+但含时电荷守恒要求
+\[
+\frac{\partial\rho}{\partial t}
++
+\bm{\nabla}\cdot\bm{j}=0.
+\]
+当 $\partial\rho/\partial t\neq 0$ 时，不能再要求 $\bm{\nabla}\cdot\bm{j}=0$。
+
+利用 Gauss 定律
+\[
+\rho
+=
+\varepsilon_{0}\bm{\nabla}\cdot\bm{E},
+\]
+连续性方程可写为
+\[
+\varepsilon_{0}
+\frac{\partial}{\partial t}
+(\bm{\nabla}\cdot\bm{E})
++
+\bm{\nabla}\cdot\bm{j}=0.
+\]
+即
+\[
+\bm{\nabla}\cdot
+\left(
+\bm{j}
++
+\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}
+\right)
+=0.
+\]
+因此，在含时情形中，磁场旋度方程中的源项应包含
+\[
+\bm{j}
++
+\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}.
+\]
+于是得到 Ampere--Maxwell 方程：
+\begin{equation}
+	\bm{\nabla}\times\bm{B}
+	=
+	\mu_{0}\bm{j}
+	+
+	\mu_{0}\varepsilon_{0}
+	\frac{\partial\bm{E}}{\partial t}.
+	\label{eq:12:ampere-maxwell}
+\end{equation}
+其中
+\[
+\bm{j}_{\mathrm{d}}
+=
+\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}
+\]
+称为位移电流密度。
+
+位移电流不是传导电荷的流动，而是含时电场对磁场旋度的贡献。它使 Ampere 方程与电荷守恒相容，也使电场和磁场能够在无源空间中相互维持并传播。
+
+\begin{example}{充电平行板电容器中的位移电流}{12,4}
+半径为 $a$ 的圆形平行板电容器正在充电，导线中的传导电流为 $I(t)$。忽略边缘效应，求极板之间的位移电流密度，并求以电容器轴线为中心、半径为 $r$ 的圆周上的磁场。
+
+\begin{solution}
+极板面积为 $\pi a^{2}$。若极板上的电荷为 $Q(t)$，则板间电场为
+\[
+E(t)
+=
+\frac{Q(t)}{\varepsilon_{0}\pi a^{2}}.
+\]
+由于
+\[
+\frac{\dif Q}{\dif t}=I(t),
+\]
+位移电流密度为
+\[
+\bm{j}_{\mathrm{d}}
+=
+\varepsilon_{0}\frac{\partial\bm{E}}{\partial t}
+=
+\frac{I(t)}{\pi a^{2}}\bm{e}_{z},
+\]
+其中轴向正方向取为电场增强的方向。
+
+由轴对称性，磁场沿方位角方向。若 $r<a$，半径为 $r$ 的曲面所包含的位移电流为
+\[
+I_{\mathrm{d}}
+=
+j_{\mathrm{d}}\pi r^{2}
+=
+I(t)\frac{r^{2}}{a^{2}}.
+\]
+由 Ampere--Maxwell 方程的积分形式，
+\[
+2\pi rB(r,t)
+=
+\mu_{0}I(t)\frac{r^{2}}{a^{2}},
+\]
+因此
+\[
+B(r,t)
+=
+\frac{\mu_{0}I(t)}{2\pi a^{2}}r,
+\qquad
+r<a.
+\]
+
+若 $r>a$，所包含的总位移电流等于导线中的传导电流，故
+\[
+2\pi rB(r,t)=\mu_{0}I(t),
+\]
+从而
+\[
+B(r,t)
+=
+\frac{\mu_{0}I(t)}{2\pi r},
+\qquad
+r>a.
+\]
+所以
+\[
+\bm{B}
+=
+\begin{dcases}
+\dfrac{\mu_{0}I(t)}{2\pi a^{2}}r\,\bm{e}_{\varphi},
+& r<a,\\[8pt]
+\dfrac{\mu_{0}I(t)}{2\pi r}\bm{e}_{\varphi},
+& r>a.
+\end{dcases}
+\]
+在 $r=a$ 处两式连续。这个结果说明，极板间虽然没有传导电流穿过，变化的电场仍通过位移电流产生磁场。
+\end{solution}
+\end{example}
+
+\section{真空中的含时 Maxwell 方程组}
+
+结合前面结果，真空中的含时 Maxwell 方程组为
+\begin{equation}
+	\bm{\nabla}\cdot\bm{E}
+	=
+	\frac{\rho}{\varepsilon_{0}},
+	\label{eq:12:maxwell-gauss-e}
+\end{equation}
+\begin{equation}
+	\bm{\nabla}\cdot\bm{B}=0,
+	\label{eq:12:maxwell-gauss-b}
+\end{equation}
+\begin{equation}
+	\bm{\nabla}\times\bm{E}
+	=
+	-\frac{\partial\bm{B}}{\partial t},
+	\label{eq:12:maxwell-faraday}
+\end{equation}
+\begin{equation}
+	\bm{\nabla}\times\bm{B}
+	=
+	\mu_{0}\bm{j}
+	+
+	\mu_{0}\varepsilon_{0}
+	\frac{\partial\bm{E}}{\partial t}.
+	\label{eq:12:maxwell-ampere}
+\end{equation}
+这四个方程统一描述电荷、电流、电场和磁场之间的关系。
+
+若场不随时间变化，\eqref{eq:12:maxwell-faraday} 退化为
+\[
+\bm{\nabla}\times\bm{E}=0,
+\]
+\eqref{eq:12:maxwell-ampere} 在稳恒电流条件下退化为
+\[
+\bm{\nabla}\times\bm{B}=\mu_{0}\bm{j}.
+\]
+因此，静电场和静磁场都是含时 Maxwell 方程的静态极限。
+
+在无源真空中，$\rho=0$、$\bm{j}=0$，Maxwell 方程化为
+\[
+\bm{\nabla}\cdot\bm{E}=0,
+\qquad
+\bm{\nabla}\cdot\bm{B}=0,
+\]
+\[
+\bm{\nabla}\times\bm{E}
+=
+-\frac{\partial\bm{B}}{\partial t},
+\qquad
+\bm{\nabla}\times\bm{B}
+=
+\mu_{0}\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}.
+\]
+这组方程包含电磁波解。下一章将专门讨论电磁波。
+
+\section{含时势函数与规范变换}
+
+即使在含时情形中，磁场仍满足
+\[
+\bm{\nabla}\cdot\bm{B}=0.
+\]
+因此仍可引入磁矢势：
+\[
+\bm{B}
+=
+\bm{\nabla}\times\bm{A}.
+\]
+将其代入 Faraday 方程：
+\[
+\bm{\nabla}\times\bm{E}
+=
+-\frac{\partial}{\partial t}
+(\bm{\nabla}\times\bm{A}),
+\]
+得
+\[
+\bm{\nabla}\times
+\left(
+\bm{E}
++
+\frac{\partial\bm{A}}{\partial t}
+\right)
+=0.
+\]
+于是存在标量势 $\phi$，使得
+\begin{equation}
+	\bm{E}
+	=
+	-\bm{\nabla}\phi
+	-
+	\frac{\partial\bm{A}}{\partial t}.
+	\label{eq:12:time-dependent-fields-potentials}
+\end{equation}
+含时电磁场的势函数表示为
+\[
+\bm{B}
+=
+\bm{\nabla}\times\bm{A},
+\qquad
+\bm{E}
+=
+-\bm{\nabla}\phi
+-
+\frac{\partial\bm{A}}{\partial t}.
+\]
+
+势函数仍具有规范自由。令
+\begin{equation}
+	\bm{A}'
+	=
+	\bm{A}
+	+
+	\bm{\nabla}\chi,
+	\qquad
+	\phi'
+	=
+	\phi
+	-
+	\frac{\partial\chi}{\partial t}.
+	\label{eq:12:gauge-transformation}
+\end{equation}
+则
+\[
+\bm{B}'
+=
+\bm{\nabla}\times\bm{A}'
+=
+\bm{\nabla}\times\bm{A}
+=
+\bm{B},
+\]
+并且
+\[
+\bm{E}'
+=
+-\bm{\nabla}\phi'
+-
+\frac{\partial\bm{A}'}{\partial t}
+=
+-\bm{\nabla}\phi
+-
+\frac{\partial\bm{A}}{\partial t}
+=
+\bm{E}.
+\]
+因此，不同势函数可以描述同一组电磁场。规范自由是势函数描述中的基本结构。
+
+\section{Lorenz 规范与推迟势}
+
+将 \eqref{eq:12:time-dependent-fields-potentials} 代入 Gauss 定律：
+\[
+\bm{\nabla}\cdot\bm{E}
+=
+\frac{\rho}{\varepsilon_{0}},
+\]
+得到
+\[
+-\nabla^{2}\phi
+-
+\frac{\partial}{\partial t}
+(\bm{\nabla}\cdot\bm{A})
+=
+\frac{\rho}{\varepsilon_{0}}.
+\]
+即
+\begin{equation}
+	\nabla^{2}\phi
+	+
+	\frac{\partial}{\partial t}
+	(\bm{\nabla}\cdot\bm{A})
+	=
+	-\frac{\rho}{\varepsilon_{0}}.
+	\label{eq:12:potential-equation-phi-raw}
+\end{equation}
+
+再将
+\[
+\bm{B}
+=
+\bm{\nabla}\times\bm{A}
+\]
+和
+\[
+\bm{E}
+=
+-\bm{\nabla}\phi
+-
+\frac{\partial\bm{A}}{\partial t}
+\]
+代入 Ampere--Maxwell 方程，得到
+\[
+\bm{\nabla}\times(\bm{\nabla}\times\bm{A})
+=
+\mu_{0}\bm{j}
++
+\mu_{0}\varepsilon_{0}
+\frac{\partial}{\partial t}
+\left(
+-\bm{\nabla}\phi
+-
+\frac{\partial\bm{A}}{\partial t}
+\right).
+\]
+利用
+\[
+\bm{\nabla}\times(\bm{\nabla}\times\bm{A})
+=
+\bm{\nabla}(\bm{\nabla}\cdot\bm{A})
+-
+\nabla^{2}\bm{A},
+\]
+并用 $c^{-2}=\mu_{0}\varepsilon_{0}$，整理得
+\begin{equation}
+	\nabla^{2}\bm{A}
+	-
+	\frac{1}{c^{2}}
+	\frac{\partial^{2}\bm{A}}{\partial t^{2}}
+	-
+	\bm{\nabla}
+	\left(
+	\bm{\nabla}\cdot\bm{A}
+	+
+	\frac{1}{c^{2}}
+	\frac{\partial\phi}{\partial t}
+	\right)
+	=
+	-\mu_{0}\bm{j}.
+	\label{eq:12:potential-equation-a-raw}
+\end{equation}
+
+选择 Lorenz 规范
+\begin{equation}
+	\bm{\nabla}\cdot\bm{A}
+	+
+	\frac{1}{c^{2}}
+	\frac{\partial\phi}{\partial t}
+	=
+	0.
+	\label{eq:12:lorenz-gauge}
+\end{equation}
+则 \eqref{eq:12:potential-equation-phi-raw} 和 \eqref{eq:12:potential-equation-a-raw} 化为解耦的波动方程：
+\begin{equation}
+	\nabla^{2}\phi
+	-
+	\frac{1}{c^{2}}
+	\frac{\partial^{2}\phi}{\partial t^{2}}
+	=
+	-\frac{\rho}{\varepsilon_{0}},
+	\label{eq:12:wave-equation-phi}
+\end{equation}
+\begin{equation}
+	\nabla^{2}\bm{A}
+	-
+	\frac{1}{c^{2}}
+	\frac{\partial^{2}\bm{A}}{\partial t^{2}}
+	=
+	-\mu_{0}\bm{j}.
+	\label{eq:12:wave-equation-a}
+\end{equation}
+
+这两个方程说明，势函数的变化以有限速度 $c$ 传播。无界空间中，相应解为推迟势：
+\begin{equation}
+	\phi(\bm{r},t)
+	=
+	\frac{1}{4\pi\varepsilon_{0}}
+	\int
+	\frac{
+		\rho(\bm{r}',t_{\mathrm{r}})
+	}{
+		|\bm{r}-\bm{r}'|
+	}
+	\,\dif^{3}r',
+	\label{eq:12:retarded-potential-phi}
+\end{equation}
+\begin{equation}
+	\bm{A}(\bm{r},t)
+	=
+	\frac{\mu_{0}}{4\pi}
+	\int
+	\frac{
+		\bm{j}(\bm{r}',t_{\mathrm{r}})
+	}{
+		|\bm{r}-\bm{r}'|
+	}
+	\,\dif^{3}r',
+	\label{eq:12:retarded-potential-a}
+\end{equation}
+其中
+\[
+t_{\mathrm{r}}
+=
+t
+-
+\frac{|\bm{r}-\bm{r}'|}{c}
+\]
+称为推迟时间。
+
+推迟势表明，观察点 $(\bm{r},t)$ 处的电磁势并不由源在同一时刻的状态决定，而由源在较早时刻 $t_{\mathrm{r}}$ 的状态决定。相互作用信息从源点 $\bm{r}'$ 传播到观察点 $\bm{r}$ 需要时间 $|\bm{r}-\bm{r}'|/c$。这正是电磁作用有限传播速度的体现。
+
+在静态极限下，若 $\rho$ 和 $\bm{j}$ 不随时间变化，则推迟时间不再影响源函数。于是推迟势退化为静电势和静磁矢势：
+\[
+\phi(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\int
+\frac{\rho(\bm{r}')}{|\bm{r}-\bm{r}'|}
+\,\dif^{3}r',
+\]
+\[
+\bm{A}(\bm{r})
+=
+\frac{\mu_{0}}{4\pi}
+\int
+\frac{\bm{j}(\bm{r}')}{|\bm{r}-\bm{r}'|}
+\,\dif^{3}r'.
+\]
+
+\section{准静态近似}
+
+完整含时 Maxwell 方程包含有限传播速度和辐射效应。但在很多低频或小尺度问题中，系统的特征尺寸远小于电磁波长，推迟效应可以忽略。设系统尺度为 $L$，源变化的特征时间为 $T$，则电磁作用穿过系统所需时间约为 $L/c$。若
+\[
+\frac{L}{cT}\ll 1,
+\]
+则场可以近似认为瞬时跟随源变化。这就是准静态近似。
+
+准静态近似并不是一个单一近似，而是包含不同层次。若电荷分布变化较慢，磁感应效应可以忽略，而保留近似瞬时的电势作用，则称为电准静态近似。若电流变化较慢，位移电流和辐射效应可以忽略，而保留磁感应和电感效应，则称为磁准静态近似。
+
+在电路理论中，常用的集中参数模型通常隐含准静态条件。电阻、电容、电感可以作为集中元件，是因为元件尺度远小于相关电磁波长，元件内部的传播延迟可以忽略。若系统尺寸与波长可比，就必须使用分布参数模型或完整 Maxwell 方程来描述。
+
+准静态近似说明，静电场、静磁场和电路理论不是与含时 Maxwell 理论相矛盾的独立理论，而是完整电磁场理论在适当尺度和频率条件下的近似形式。
+
+
+\section{介质中的宏观 Maxwell 方程组}
+
+前面几节讨论的是以总电荷密度 $\rho$ 和总电流密度 $\bm{j}$ 为源的 Maxwell 方程。需要首先强调，这组以 $\bm{E}$、$\bm{B}$ 和总源为基本变量的方程不仅适用于真空；只要把物质内部的全部微观电荷和电流都计入 $\rho$ 与 $\bm{j}$，它在介质内部同样成立。因此，通常所说的“真空 Maxwell 方程组”更准确地说是\emph{微观 Maxwell 方程组}，它构成后面宏观介质理论的基础。
+
+宏观介质方程不是另一套更基本的电磁规律。在宏观尺度上，逐个追踪原子和分子内部的电荷与电流既不现实，也没有必要，所以需要对微观场和微观源作空间与时间平均，并把总源分解为自由部分和束缚部分。$\bm{D}$ 与 $\bm{H}$ 正是在这种源的重组中引入的辅助场。
+
+第十章已经在静电场中引入极化强度 $\bm{P}$ 和电位移矢量 $\bm{D}$。第十一章已经在静磁场中引入磁化强度 $\bm{M}$ 和磁场强度 $\bm{H}$。现在把这些概念合并到含时 Maxwell 方程中。
+
+总电荷密度写为
+\[
+\rho
+=
+\rho_{\mathrm{f}}
++
+\rho_{\mathrm{b}},
+\]
+其中 $\rho_{\mathrm{f}}$ 是自由电荷密度，$\rho_{\mathrm{b}}$ 是束缚电荷密度。极化强度与束缚电荷的关系为
+\begin{equation}
+	\rho_{\mathrm{b}}
+	=
+	-\bm{\nabla}\cdot\bm{P}.
+	\label{eq:12:bound-charge-p}
+\end{equation}
+总电流密度写为
+\[
+\bm{j}
+=
+\bm{j}_{\mathrm{f}}
++
+\bm{j}_{\mathrm{b}},
+\]
+其中 $\bm{j}_{\mathrm{f}}$ 是自由电流密度，$\bm{j}_{\mathrm{b}}$ 是束缚电流密度。含时介质中，束缚电流包含两部分：一部分来自极化随时间变化，另一部分来自磁化的空间旋度：
+\begin{equation}
+	\bm{j}_{\mathrm{b}}
+	=
+	\frac{\partial\bm{P}}{\partial t}
+	+
+	\bm{\nabla}\times\bm{M}.
+	\label{eq:12:bound-current-pm}
+\end{equation}
+第一项称为极化电流密度，第二项称为磁化电流密度。
+
+从 Gauss 定律开始：
+\[
+\bm{\nabla}\cdot\bm{E}
+=
+\frac{\rho_{\mathrm{f}}+\rho_{\mathrm{b}}}{\varepsilon_{0}}.
+\]
+代入 \eqref{eq:12:bound-charge-p}，得到
+\[
+\bm{\nabla}\cdot\bm{E}
+=
+\frac{\rho_{\mathrm{f}}-\bm{\nabla}\cdot\bm{P}}{\varepsilon_{0}}.
+\]
+整理为
+\[
+\bm{\nabla}\cdot(\varepsilon_{0}\bm{E}+\bm{P})
+=
+\rho_{\mathrm{f}}.
+\]
+定义电位移矢量
+\begin{equation}
+	\bm{D}
+	=
+	\varepsilon_{0}\bm{E}
+	+
+	\bm{P}.
+	\label{eq:12:d-definition}
+\end{equation}
+于是得到介质中的 Gauss 定律：
+\begin{equation}
+	\bm{\nabla}\cdot\bm{D}
+	=
+	\rho_{\mathrm{f}}.
+	\label{eq:12:macroscopic-gauss-d}
+\end{equation}
+
+再看 Ampere--Maxwell 方程：
+\[
+\bm{\nabla}\times\bm{B}
+=
+\mu_{0}\bm{j}
++
+\mu_{0}\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}.
+\]
+代入
+\[
+\bm{j}
+=
+\bm{j}_{\mathrm{f}}
++
+\frac{\partial\bm{P}}{\partial t}
++
+\bm{\nabla}\times\bm{M},
+\]
+得
+\[
+\bm{\nabla}\times\bm{B}
+=
+\mu_{0}\bm{j}_{\mathrm{f}}
++
+\mu_{0}\frac{\partial\bm{P}}{\partial t}
++
+\mu_{0}\bm{\nabla}\times\bm{M}
++
+\mu_{0}\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}.
+\]
+将磁化项移到左边：
+\[
+\bm{\nabla}\times
+\left(
+\frac{\bm{B}}{\mu_{0}}-\bm{M}
+\right)
+=
+\bm{j}_{\mathrm{f}}
++
+\frac{\partial}{\partial t}
+(\varepsilon_{0}\bm{E}+\bm{P}).
+\]
+定义磁场强度
+\begin{equation}
+	\bm{H}
+	=
+	\frac{\bm{B}}{\mu_{0}}
+	-
+	\bm{M}.
+	\label{eq:12:h-definition}
+\end{equation}
+并利用 \eqref{eq:12:d-definition}，得到介质中的 Ampere--Maxwell 方程：
+\begin{equation}
+	\bm{\nabla}\times\bm{H}
+	=
+	\bm{j}_{\mathrm{f}}
+	+
+	\frac{\partial\bm{D}}{\partial t}.
+	\label{eq:12:macroscopic-ampere-h}
+\end{equation}
+
+Faraday 方程和无磁单极方程不需要重新定义源项，仍写为
+\begin{equation}
+	\bm{\nabla}\times\bm{E}
+	=
+	-\frac{\partial\bm{B}}{\partial t},
+	\label{eq:12:macroscopic-faraday}
+\end{equation}
+\begin{equation}
+	\bm{\nabla}\cdot\bm{B}
+	=
+	0.
+	\label{eq:12:macroscopic-gauss-b}
+\end{equation}
+因此，介质中的宏观 Maxwell 方程组为
+\begin{equation}
+	\begin{dcases}
+		\bm{\nabla}\cdot\bm{D}=\rho_{\mathrm{f}}, \\[6pt]
+		\bm{\nabla}\cdot\bm{B}=0, \\[6pt]
+		\bm{\nabla}\times\bm{E}=-\frac{\partial\bm{B}}{\partial t}, \\[6pt]
+		\bm{\nabla}\times\bm{H}=\bm{j}_{\mathrm{f}}+\frac{\partial\bm{D}}{\partial t}.
+	\end{dcases}
+	\label{eq:maxwell-matter}
+\end{equation}
+
+这组方程把束缚电荷和束缚电流的效应吸收到 $\bm{D}$ 与 $\bm{H}$ 中，使方程的显式源只包含自由电荷和自由电流。它可以由微观 Maxwell 方程经过宏观平均和源的重新分类导出，而不是独立于微观方程的新规律。若已知介质内部的全部总电荷和总电流，原则上始终可以直接使用关于 $\bm{E}$ 和 $\bm{B}$ 的微观方程；引入 $\bm{D}$ 和 $\bm{H}$ 的意义在于把复杂的物质响应组织成更适合宏观计算的形式。
+
+因此，介质的具体性质不包含在 Maxwell 方程本身，而包含在极化、磁化以及相应的本构关系中。宏观 Maxwell 方程组本身并不封闭：未知量包括 $\bm{E}$、$\bm{B}$、$\bm{D}$ 和 $\bm{H}$，还必须给出介质的本构关系。
+
+在线性各向同性介质中，常用本构关系为
+\begin{equation}
+	\bm{D}
+	=
+	\varepsilon\bm{E},
+	\qquad
+	\bm{B}
+	=
+	\mu\bm{H}.
+	\label{eq:12:linear-medium-constitutive}
+\end{equation}
+若介质还具有电导率 $\sigma$，自由电流通常写为
+\begin{equation}
+	\bm{j}_{\mathrm{f}}
+	=
+	\sigma\bm{E}.
+	\label{eq:12:ohm-law-local}
+\end{equation}
+这些关系不是 Maxwell 方程本身，而是对介质响应的物理刻画。不同材料、不同频率和不同场强下，本构关系可能不同。各向异性介质中，$\varepsilon$ 与 $\mu$ 应写成张量；色散介质中，$\bm{D}$ 与 $\bm{E}$ 的关系会依赖频率；非线性介质中，极化响应不再与电场成正比。
+
+宏观 Maxwell 方程组为后续电磁波章节提供了基本方程。真空中的波速由 $\varepsilon_{0}$ 和 $\mu_{0}$ 决定；均匀线性介质中的波速则由 $\varepsilon$ 和 $\mu$ 决定。
+
+\section{本章小结}
+
+本章讨论了电磁感应与含时电磁场。变化的磁场产生有旋电场，满足
+\[
+\bm{\nabla}\times\bm{E}
+=
+-\frac{\partial\bm{B}}{\partial t}.
+\]
+对固定回路，感生电动势为
+\[
+\mathcal{E}_{\mathrm{ind}}
+=
+\oint_{C}\bm{E}\cdot\dif\bm{l}
+=
+-\int_{S}
+\frac{\partial\bm{B}}{\partial t}
+\cdot\dif\bm{a}.
+\]
+若回路固定，也可写成
+\[
+\mathcal{E}_{\mathrm{ind}}
+=
+-\frac{\dif\Phi_{B}}{\dif t}.
+\]
+
+导体在磁场中运动时，电荷受到磁力项 $\bm{v}\times\bm{B}$，动生电动势为
+\[
+\mathcal{E}_{\mathrm{mot}}
+=
+\oint_{C}
+(\bm{v}\times\bm{B})\cdot\dif\bm{l}.
+\]
+感生电动势和动生电动势在一些电路问题中都可以用磁通量变化表示，但二者的局域物理来源不同。
+
+电流变化会产生自感电动势
+\[
+\mathcal{E}_{L}
+=
+-L\frac{\dif I}{\dif t},
+\]
+两个回路之间的电流变化会产生互感电动势
+\[
+\mathcal{E}_{2}
+=
+-M\frac{\dif I_{1}}{\dif t}.
+\]
+
+为了使 Ampere 方程与含时电荷守恒相容，需要引入位移电流，得到
+\[
+\bm{\nabla}\times\bm{B}
+=
+\mu_{0}\bm{j}
++
+\mu_{0}\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}.
+\]
+完整的含时 Maxwell 方程组为
+\[
+\bm{\nabla}\cdot\bm{E}
+=
+\frac{\rho}{\varepsilon_{0}},
+\qquad
+\bm{\nabla}\cdot\bm{B}=0,
+\]
+\[
+\bm{\nabla}\times\bm{E}
+=
+-\frac{\partial\bm{B}}{\partial t},
+\qquad
+\bm{\nabla}\times\bm{B}
+=
+\mu_{0}\bm{j}
++
+\mu_{0}\varepsilon_{0}
+\frac{\partial\bm{E}}{\partial t}.
+\]
+
+含时电磁场可由势函数表示为
+\[
+\bm{B}
+=
+\bm{\nabla}\times\bm{A},
+\qquad
+\bm{E}
+=
+-\bm{\nabla}\phi
+-
+\frac{\partial\bm{A}}{\partial t}.
+\]
+在 Lorenz 规范
+\[
+\bm{\nabla}\cdot\bm{A}
++
+\frac{1}{c^{2}}
+\frac{\partial\phi}{\partial t}
+=
+0
+\]
+下，势函数满足波动方程，其无界空间解为推迟势。推迟势体现了电磁相互作用以有限速度 $c$ 传播。
+
+对于宏观介质，总电荷和总电流可以分解为自由部分与束缚部分。引入
+\[
+\bm{D}
+=
+\varepsilon_{0}\bm{E}
++
+\bm{P},
+\qquad
+\bm{H}
+=
+\frac{\bm{B}}{\mu_{0}}
+-
+\bm{M},
+\]
+可将 Maxwell 方程组写成
+\[
+\bm{\nabla}\cdot\bm{D}
+=
+\rho_{\mathrm{f}},
+\qquad
+\bm{\nabla}\cdot\bm{B}=0,
+\]
+\[
+\bm{\nabla}\times\bm{E}
+=
+-\frac{\partial\bm{B}}{\partial t},
+\qquad
+\bm{\nabla}\times\bm{H}
+=
+\bm{j}_{\mathrm{f}}
++
+\frac{\partial\bm{D}}{\partial t}.
+\]
+宏观方程必须与本构关系配合使用，才能形成封闭的物理问题。
+
+需要再次强调，以总电荷和总电流为源的微观 Maxwell 方程是基础；介质中的宏观方程则是对微观方程进行平均并重新组织源项后得到的有效描述。本构关系携带材料信息，因此不像 Maxwell 方程那样具有普适形式。
+
+本章的主线是：静态电磁场在含时条件下重新耦合；变化磁场产生感生电场，运动导体产生动生电动势，变化电场产生位移电流；完整 Maxwell 方程、含时势函数和宏观介质方程把这些现象统一到同一个电磁场理论中。

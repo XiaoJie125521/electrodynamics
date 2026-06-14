@@ -68,7 +68,7 @@ x^{\mu}=(ct,x,y,z).
 
 \section{四维势与三维势}
 
-电磁场可以由标量势 $\phi$ 和矢量势 $\bm{A}$ 描述：
+电磁场可以用标量势 $\phi$ 和矢量势 $\bm{A}$ 描述。取
 \begin{equation}
 	\bm{E}
 	=
@@ -364,18 +364,7 @@ S_{\mathrm{int}}+qf(b)-qf(a).
 \end{equation}
 这是因为每一项展开后均由二阶偏导数组成，而二阶偏导可交换。式 \eqref{eq:8.34} 称为齐次 Maxwell 方程的四维协变形式。
 
-它等价于三维方程
-
-\[
-\bm{\nabla}\cdot\bm{B}=0,
-\qquad
-\bm{\nabla}\times\bm{E}
-+
-\frac{\partial\bm{B}}{\partial t}
-=
-0.
-\]
-因此，磁场无散度和 Faraday 电磁感应定律都来自 $F_{\mu\nu}$ 可由势函数表示这一事实。
+下面通过分量展开说明这一恒等式所包含的三维内容。
 
 \subsection{非齐次 Maxwell 方程}
 
@@ -386,11 +375,77 @@ S_{\mathrm{int}}+qf(b)-qf(a).
 	\mu_{0}j^{\nu}.
 	\label{eq:8.36}
 \end{equation}
-这是电磁场的动力学方程。它等价于三维形式中的 Gauss 定律和 Ampere--Maxwell 方程。
+这是电磁场的动力学方程，其作用量来源将在后文给出。这里先讨论它的各个分量。
 
 \subsection{三维 Maxwell 方程}
 
-先取 $\nu=0$。由 \eqref{eq:8.26} 得 $F^{i0}=E_{i}/c$，于是
+先考察齐次方程 \eqref{eq:8.34}。当三个指标均为空间指标时，只需取
+$(\lambda,\mu,\nu)=(1,2,3)$，便有
+\[
+\partial_{1}F_{23}
++
+\partial_{2}F_{31}
++
+\partial_{3}F_{12}
+=0.
+\]
+由 \eqref{eq:8.22}，
+\[
+F_{23}=-B_{1},
+\qquad
+F_{31}=-B_{2},
+\qquad
+F_{12}=-B_{3},
+\]
+所以
+\[
+\partial_{1}B_{1}
++
+\partial_{2}B_{2}
++
+\partial_{3}B_{3}
+=0,
+\]
+即
+\[
+\bm{\nabla}\cdot\bm{B}=0.
+\]
+
+再令齐次方程的一个指标为时间指标，取
+$(\lambda,\mu,\nu)=(0,i,j)$，得到
+\[
+\partial_{0}F_{ij}
++
+\partial_{i}F_{j0}
++
+\partial_{j}F_{0i}
+=0.
+\]
+利用 $F_{ij}=-\varepsilon_{ijk}B_{k}$、$F_{0i}=E_{i}/c$ 和
+$\partial_{0}=c^{-1}\partial/\partial t$，上式化为
+\[
+-\varepsilon_{ijk}\frac{\partial B_{k}}{\partial t}
+-\partial_{i}E_{j}
++\partial_{j}E_{i}
+=0.
+\]
+例如，取 $(i,j)=(1,2)$，可得
+\[
+\partial_{1}E_{2}-\partial_{2}E_{1}
+=
+-\frac{\partial B_{3}}{\partial t}.
+\]
+这是旋度方程的第三个分量；另两个分量由指标的循环置换得到。因此
+\[
+\bm{\nabla}\times\bm{E}
+=
+-\frac{\partial\bm{B}}{\partial t}.
+\]
+由此可见，磁场的 Gauss 定律和 Faraday 电磁感应定律都直接来自
+$F_{\mu\nu}$ 的定义。
+
+下面考察非齐次方程 \eqref{eq:8.36}。先取 $\nu=0$。由
+\eqref{eq:8.26} 得 $F^{i0}=E_{i}/c$，于是
 \[
 \partial_{\mu}F^{\mu0}
 =
@@ -424,7 +479,7 @@ S_{\mathrm{int}}+qf(b)-qf(a).
 \]
 这就是 Ampere--Maxwell 方程。
 
-综上，四维方程 \eqref{eq:8.34} 与 \eqref{eq:8.36} 等价于四条三维 Maxwell 方程：
+将以上结果合在一起，便得到经典 Maxwell 方程组。含有电荷密度和电流密度的两式为
 \begin{equation}
 	\bm{\nabla}\cdot\bm{E}
 	=
@@ -437,7 +492,7 @@ S_{\mathrm{int}}+qf(b)-qf(a).
 	\frac{1}{c^{2}}\frac{\partial\bm{E}}{\partial t},
 	\label{eq:8.41}
 \end{equation}
-以及
+它们分别是电场的 Gauss 定律和 Ampere--Maxwell 方程。其余两式为
 \begin{equation}
 	\bm{\nabla}\cdot\bm{B}=0,
 	\qquad
@@ -447,6 +502,9 @@ S_{\mathrm{int}}+qf(b)-qf(a).
 	\frac{\partial\bm{B}}{\partial t}.
 	\label{eq:8.42}
 \end{equation}
+它们分别是磁场的 Gauss 定律和 Faraday 电磁感应定律。这样，经典
+Maxwell 方程组便作为协变方程 \eqref{eq:8.34} 与 \eqref{eq:8.36}
+的三维分量形式自然出现。
 
 \section{电荷守恒}
 
@@ -672,7 +730,6 @@ A_{\mu}\dif x^{\mu}
 \]
 
 于是总作用量可写成
-
 \[
 S
 =
@@ -685,7 +742,6 @@ q\bm{A}\cdot\bm{v}
 q\phi
 \right]\dif t.
 \]
-
 对应的拉格朗日量为
 \begin{equation}
 	L
@@ -1024,7 +1080,7 @@ z'=z.
 
 \section{本章小结}
 
-本章建立了电磁场的四维协变形式。电磁势统一为四维矢量
+本章从四维势出发建立了电磁场的协变描述。电磁势统一为四维矢量
 \[
 A^{\mu}
 =
@@ -1070,8 +1126,28 @@ Maxwell 方程的协变形式为
 +
 \partial_{\nu}F_{\lambda\mu}=0.
 \]
-前者是动力学方程，后者来自 $F_{\mu\nu}$ 由势函数定义这一几何结构。对 $A_{\mu}$ 变分的电磁场作用量可推出非齐次 Maxwell 方程。
-
+前者可由电磁场作用量对 $A_{\mu}$ 的变分推出，后者来自
+$F_{\mu\nu}$ 由势函数定义这一几何结构。将这两个四维方程按时间分量和空间分量展开，即得到经典 Maxwell 方程组。
+\[
+	\left\{
+	\begin{aligned}
+		\bm{\nabla}\cdot\bm{E}
+		&=
+		\frac{\rho}{\varepsilon_{0}}, \\[6pt]
+		\bm{\nabla}\cdot\bm{B}
+		&=
+		0, \\[6pt]
+		\bm{\nabla}\times\bm{E}
+		&=
+		-\frac{\partial\bm{B}}{\partial t}, \\[6pt]
+		\bm{\nabla}\times\bm{B}
+		&=
+		\mu_{0}\bm{j}
+		+
+		\frac{1}{c^{2}}\frac{\partial\bm{E}}{\partial t}.
+	\end{aligned}
+	\right.
+\]
 Lorenz 规范为
 \[
 \partial_{\mu}A^{\mu}=0.

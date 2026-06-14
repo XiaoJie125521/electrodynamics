@@ -274,23 +274,22 @@ g^{k\ell}\varepsilon_{ijk}A^{i}B^{j}
 =
 g^{k\ell}\varepsilon_{ijk}A^{i}B^{j}.
 \]
-\end{example}
-
 \begin{solution}
-由自然基底叉积 $\bm{e}_{i}\times\bm{e}_{j} = \varepsilon_{ijk}\bm{e}^{k}$, 以及\eqref{eq:1.8}, 有
-\[
-\bm{A}\times\bm{B}
-=
-A^{i}B^{j}\varepsilon_{ijk}\bm{e}^{k}.
-\]
-利用 $\bm{e}^{k}=g^{k\ell}\bm{e}_{\ell}$, 得到
-\[
-\bm{A}\times\bm{B}
-=
-g^{k\ell}\varepsilon_{ijk}A^{i}B^{j}\bm{e}_{\ell},
-\]
-与 $\bm{A}\times\bm{B}=(\bm{A}\times\bm{B})^{\ell}\bm{e}_{\ell}$ 比较, 即得所证. 由此可见, 叉积不仅依赖排列的反对称性, 还依赖度规和空间取向. 
+	由自然基底叉积 $\bm{e}_{i}\times\bm{e}_{j} = \varepsilon_{ijk}\bm{e}^{k}$, 以及\eqref{eq:1.8}, 有
+	\[
+	\bm{A}\times\bm{B}
+	=
+	A^{i}B^{j}\varepsilon_{ijk}\bm{e}^{k}.
+	\]
+	利用 $\bm{e}^{k}=g^{k\ell}\bm{e}_{\ell}$, 得到
+	\[
+	\bm{A}\times\bm{B}
+	=
+	g^{k\ell}\varepsilon_{ijk}A^{i}B^{j}\bm{e}_{\ell},
+	\]
+	与 $\bm{A}\times\bm{B}=(\bm{A}\times\bm{B})^{\ell}\bm{e}_{\ell}$ 比较, 即得所证. 由此可见, 叉积不仅依赖排列的反对称性, 还依赖度规和空间取向. 
 \end{solution}
+\end{example}
 
 \section{梯度、散度、旋度与拉普拉斯算子}
 
@@ -724,147 +723,148 @@ z\bm{k}.
 z\bm{e}_{z}.
 \]
 求 $\bm{A}$ 的逆变分量、协变分量和单位基底下的物理分量. 
-\end{example}
+
 \begin{solution}
-题目已经将 $\bm{A}$ 写成自然基底展开: 
-\[
-\bm{A}
-=
-A^{\rho}\bm{e}_{\rho}
-+
-A^{\varphi}\bm{e}_{\varphi}
-+
-A^{z}\bm{e}_{z},
-\]
-因此逆变分量为
-\[
-A^{\rho}=\rho^{2},
-\qquad
-A^{\varphi}=\sin{\varphi},
-\qquad
-A^{z}=z.
-\]
-柱坐标的度规由\eqref{eq:1.20}给出, 协变分量由 $A_{i}=g_{ij}A^{j}$ 确定: 
-\[
-A_{\rho}=g_{\rho\rho}A^{\rho}=\rho^{2},
-\qquad
-A_{\varphi}=g_{\varphi\varphi}A^{\varphi}
-=
-\rho^{2}\sin{\varphi},
-\qquad
-A_{z}=g_{zz}A^{z}=z.
-\]
-另一方面, 柱坐标的单位基底满足
-\[
-\hat{\bm{e}}_{\rho}=\bm{e}_{\rho},
-\qquad
-\hat{\bm{e}}_{\varphi}=\frac{1}{\rho}\bm{e}_{\varphi},
-\qquad
-\hat{\bm{e}}_{z}=\bm{e}_{z},
-\]
-即 $\bm{e}_{\varphi}=\rho\hat{\bm{e}}_{\varphi}$, 于是
-\[
-\bm{A}
-=
-\rho^{2}\hat{\bm{e}}_{\rho}
-+
-\rho\sin{\varphi}\,\hat{\bm{e}}_{\varphi}
-+
-z\hat{\bm{e}}_{z}.
-\]
-因此物理分量为
-\[
-A_{\hat{\rho}}=\rho^{2},
-\qquad
-A_{\hat{\varphi}}=\rho\sin{\varphi},
-\qquad
-A_{\hat{z}}=z.
-\]
-该例表明, 在曲线坐标中一般有 $A^{\varphi}\neq A_{\varphi}\neq A_{\hat{\varphi}}$. 
+	题目已经将 $\bm{A}$ 写成自然基底展开: 
+	\[
+	\bm{A}
+	=
+	A^{\rho}\bm{e}_{\rho}
+	+
+	A^{\varphi}\bm{e}_{\varphi}
+	+
+	A^{z}\bm{e}_{z},
+	\]
+	因此逆变分量为
+	\[
+	A^{\rho}=\rho^{2},
+	\qquad
+	A^{\varphi}=\sin{\varphi},
+	\qquad
+	A^{z}=z.
+	\]
+	柱坐标的度规由\eqref{eq:1.20}给出, 协变分量由 $A_{i}=g_{ij}A^{j}$ 确定: 
+	\[
+	A_{\rho}=g_{\rho\rho}A^{\rho}=\rho^{2},
+	\qquad
+	A_{\varphi}=g_{\varphi\varphi}A^{\varphi}
+	=
+	\rho^{2}\sin{\varphi},
+	\qquad
+	A_{z}=g_{zz}A^{z}=z.
+	\]
+	另一方面, 柱坐标的单位基底满足
+	\[
+	\hat{\bm{e}}_{\rho}=\bm{e}_{\rho},
+	\qquad
+	\hat{\bm{e}}_{\varphi}=\frac{1}{\rho}\bm{e}_{\varphi},
+	\qquad
+	\hat{\bm{e}}_{z}=\bm{e}_{z},
+	\]
+	即 $\bm{e}_{\varphi}=\rho\hat{\bm{e}}_{\varphi}$, 于是
+	\[
+	\bm{A}
+	=
+	\rho^{2}\hat{\bm{e}}_{\rho}
+	+
+	\rho\sin{\varphi}\,\hat{\bm{e}}_{\varphi}
+	+
+	z\hat{\bm{e}}_{z}.
+	\]
+	因此物理分量为
+	\[
+	A_{\hat{\rho}}=\rho^{2},
+	\qquad
+	A_{\hat{\varphi}}=\rho\sin{\varphi},
+	\qquad
+	A_{\hat{z}}=z.
+	\]
+	该例表明, 在曲线坐标中一般有 $A^{\varphi}\neq A_{\varphi}\neq A_{\hat{\varphi}}$. 
 \end{solution}
+\end{example}
 
 \begin{example}{由度规推出柱坐标中的拉普拉斯算子}{1,3}
 利用一般公式\eqref{eq:1.13}推导柱坐标中的标量拉普拉斯算子. 
+\begin{solution}
+	柱坐标中 $(q^{1},q^{2},q^{3})=(\rho,\varphi,z)$, 度规为\eqref{eq:1.20}, 因此
+	\[
+	g=\det{(g_{ij})}=\rho^{2},
+	\qquad
+	\sqrt{g}=\rho.
+	\]
+	逆变度规为
+	\[
+	(g^{ij})
+	=
+	\begin{pmatrix}
+		1&0&0\\
+		0&\dfrac{1}{\rho^{2}}&0\\
+		0&0&1
+	\end{pmatrix}.
+	\]
+	代入\eqref{eq:1.13}得
+	\[
+	\nabla^{2} f
+	=
+	\frac{1}{\rho}
+	\left[
+	\partial_{\rho}
+	\left(
+	\rho g^{\rho\rho}\partial_{\rho} f
+	\right)
+	+
+	\partial_{\varphi}
+	\left(
+	\rho g^{\varphi\varphi}\partial_{\varphi} f
+	\right)
+	+
+	\partial_{z}
+	\left(
+	\rho g^{zz}\partial_{z} f
+	\right)
+	\right].
+	\]
+	由于 $g^{\rho\rho}=1$, $g^{\varphi\varphi}=1/\rho^{2}$, $g^{zz}=1$, 上式化为
+	\[
+	\nabla^{2} f
+	=
+	\frac{1}{\rho}
+	\left[
+	\partial_{\rho}
+	\left(
+	\rho\partial_{\rho} f
+	\right)
+	+
+	\partial_{\varphi}
+	\left(
+	\frac{1}{\rho}\partial_{\varphi} f
+	\right)
+	+
+	\partial_{z}
+	\left(
+	\rho\partial_{z} f
+	\right)
+	\right].
+	\]
+	由于 $\rho$ 与 $\varphi,z$ 无关, 进一步化简得
+	\[
+	\nabla^{2} f
+	=
+	\frac{1}{\rho}
+	\frac{\partial}{\partial\rho}
+	\left(
+	\rho\frac{\partial f}{\partial\rho}
+	\right)
+	+
+	\frac{1}{\rho^{2}}
+	\frac{\partial^{2} f}{\partial\varphi^{2}}
+	+
+	\frac{\partial^{2} f}{\partial z^{2}}.
+	\]
+	这正是柱坐标中的标量拉普拉斯算子\eqref{eq:1.22}. 
+\end{solution}
 \end{example}
 
-\begin{solution}
-柱坐标中 $(q^{1},q^{2},q^{3})=(\rho,\varphi,z)$, 度规为\eqref{eq:1.20}, 因此
-\[
-g=\det{(g_{ij})}=\rho^{2},
-\qquad
-\sqrt{g}=\rho.
-\]
-逆变度规为
-\[
-(g^{ij})
-=
-\begin{pmatrix}
-1&0&0\\
-0&\dfrac{1}{\rho^{2}}&0\\
-0&0&1
-\end{pmatrix}.
-\]
-代入\eqref{eq:1.13}得
-\[
-\nabla^{2} f
-=
-\frac{1}{\rho}
-\left[
-\partial_{\rho}
-\left(
-\rho g^{\rho\rho}\partial_{\rho} f
-\right)
-+
-\partial_{\varphi}
-\left(
-\rho g^{\varphi\varphi}\partial_{\varphi} f
-\right)
-+
-\partial_{z}
-\left(
-\rho g^{zz}\partial_{z} f
-\right)
-\right].
-\]
-由于 $g^{\rho\rho}=1$, $g^{\varphi\varphi}=1/\rho^{2}$, $g^{zz}=1$, 上式化为
-\[
-\nabla^{2} f
-=
-\frac{1}{\rho}
-\left[
-\partial_{\rho}
-\left(
-\rho\partial_{\rho} f
-\right)
-+
-\partial_{\varphi}
-\left(
-\frac{1}{\rho}\partial_{\varphi} f
-\right)
-+
-\partial_{z}
-\left(
-\rho\partial_{z} f
-\right)
-\right].
-\]
-由于 $\rho$ 与 $\varphi,z$ 无关, 进一步化简得
-\[
-\nabla^{2} f
-=
-\frac{1}{\rho}
-\frac{\partial}{\partial\rho}
-\left(
-\rho\frac{\partial f}{\partial\rho}
-\right)
-+
-\frac{1}{\rho^{2}}
-\frac{\partial^{2} f}{\partial\varphi^{2}}
-+
-\frac{\partial^{2} f}{\partial z^{2}}.
-\]
-这正是柱坐标中的标量拉普拉斯算子\eqref{eq:1.22}. 
-\end{solution}
 
 \section{球坐标}
 
@@ -980,106 +980,103 @@ r^{2}\frac{\partial f}{\partial r}
 \end{figure}
 
 \begin{example}{球坐标中径向函数的拉普拉斯算子}{1,4}
-设标量场只依赖径向坐标: $f=f(r)$. 求球坐标下的 $\nabla^{2} f$. 
+设标量场只依赖径向坐标: $f=f(r)$. 求球坐标下的 $\nabla^{2} f$.
+ \begin{solution}
+ 	球坐标中的标量拉普拉斯算子为\eqref{eq:1.25}. 由于 $f=f(r)$, 角向导数为零, 因此
+ 	\[
+ 	\nabla^{2} f
+ 	=
+ 	\frac{1}{r^{2}}
+ 	\frac{\dif}{\dif r}
+ 	\left(
+ 	r^{2}\frac{\dif f}{\dif r}
+ 	\right)
+ 	=
+ 	\frac{\dif^{2} f}{\dif r^{2}}
+ 	+
+ 	\frac{2}{r}\frac{\dif f}{\dif r}.
+ 	\]
+ 	特别地, 若 $f(r)=1/r$ ($r\neq 0$), 则 $\dif f/\dif r = -1/r^{2}$, $r^{2}\dif f/\dif r = -1$, 从而
+ 	\[
+ 	\nabla^{2}\left(\frac{1}{r}\right)
+ 	=
+ 	\frac{1}{r^{2}}\frac{\dif}{\dif r}(-1)=0,
+ 	\qquad r\neq 0.
+ 	\]
+ 	因此 $1/r$ 在除原点以外的区域是调和函数. 
+ \end{solution}
 \end{example}
-
-\begin{solution}
-球坐标中的标量拉普拉斯算子为\eqref{eq:1.25}. 由于 $f=f(r)$, 角向导数为零, 因此
-\[
-\nabla^{2} f
-=
-\frac{1}{r^{2}}
-\frac{\dif}{\dif r}
-\left(
-r^{2}\frac{\dif f}{\dif r}
-\right)
-=
-\frac{\dif^{2} f}{\dif r^{2}}
-+
-\frac{2}{r}\frac{\dif f}{\dif r}.
-\]
-特别地, 若 $f(r)=1/r$ ($r\neq 0$), 则 $\dif f/\dif r = -1/r^{2}$, $r^{2}\dif f/\dif r = -1$, 从而
-\[
-\nabla^{2}\left(\frac{1}{r}\right)
-=
-\frac{1}{r^{2}}\frac{\dif}{\dif r}(-1)=0,
-\qquad r\neq 0.
-\]
-因此 $1/r$ 在除原点以外的区域是调和函数. 
-\end{solution}
 
 \begin{example}{球坐标中点源型径向场的散度}{1,5}
-设向量场为 $\bm{A} = \frac{C}{r^{2}}\hat{\bm{e}}_{r}$, 其中 $C$ 为常数. 求 $r\neq 0$ 区域中的 $\nabla\cdot\bm{A}$. 
+设向量场为 $\bm{A} = \frac{C}{r^{2}}\hat{\bm{e}}_{r}$, 其中 $C$ 为常数. 求 $r\neq 0$ 区域中的 $\nabla\cdot\bm{A}$.
+ \begin{solution}
+ 	物理分量为 $A_{\hat{r}}=C/r^{2}$, $A_{\hat{\theta}}=0$, $A_{\hat{\varphi}}=0$. 由球坐标散度公式\eqref{eq:1.24}可得
+ 	\[
+ 	\nabla\cdot\bm{A}
+ 	=
+ 	\frac{1}{r^{2}}
+ 	\frac{\partial}{\partial r}
+ 	\left(
+ 	r^{2}\frac{C}{r^{2}}
+ 	\right)
+ 	=
+ 	\frac{1}{r^{2}}\frac{\partial C}{\partial r}
+ 	=
+ 	0,
+ 	\qquad r\neq 0.
+ 	\]
+ 	由此可见在除原点以外的区域, 该场没有普通意义下的散度. 若将原点也包括进来, 则该场在分布意义下满足
+ 	\[
+ 	\nabla\cdot\left(\frac{C}{r^{2}}\hat{\bm{e}}_{r}\right)
+ 	=
+ 	4\pi C\,\delta^{(3)}(\bm{r}).
+ 	\]
+ 	这正是点源场的典型结构. 
+ \end{solution}
 \end{example}
-
-\begin{solution}
-物理分量为 $A_{\hat{r}}=C/r^{2}$, $A_{\hat{\theta}}=0$, $A_{\hat{\varphi}}=0$. 由球坐标散度公式\eqref{eq:1.24}可得
-\[
-\nabla\cdot\bm{A}
-=
-\frac{1}{r^{2}}
-\frac{\partial}{\partial r}
-\left(
-r^{2}\frac{C}{r^{2}}
-\right)
-=
-\frac{1}{r^{2}}\frac{\partial C}{\partial r}
-=
-0,
-\qquad r\neq 0.
-\]
-由此可见在除原点以外的区域, 该场没有普通意义下的散度. 若将原点也包括进来, 则该场在分布意义下满足
-\[
-\nabla\cdot\left(\frac{C}{r^{2}}\hat{\bm{e}}_{r}\right)
-=
-4\pi C\,\delta^{(3)}(\bm{r}).
-\]
-这正是点源场的典型结构. 
-\end{solution}
 
 \begin{example}{计算球坐标中的梯度}{1,6}
 设标量场 $f(r,\theta,\varphi)=r^{2}\sin{\theta}\cos{\varphi}$, 求 $\nabla f$. 
-\end{example}
-
 \begin{solution}
-球坐标中 $h_{r}=1$, $h_{\theta}=r$, $h_{\varphi}=r\sin{\theta}$. 由正交曲线坐标梯度公式\eqref{eq:1.16}, 
-\[
-\nabla f
-=
-\frac{\partial f}{\partial r}\hat{\bm{e}}_{r}
-+
-\frac{1}{r}\frac{\partial f}{\partial\theta}\hat{\bm{e}}_{\theta}
-+
-\frac{1}{r\sin{\theta}}\frac{\partial f}{\partial\varphi}\hat{\bm{e}}_{\varphi}.
-\]
-各偏导数为
-\[
-\frac{\partial f}{\partial r} = 2r\sin{\theta}\cos{\varphi},\quad
-\frac{\partial f}{\partial\theta} = r^{2}\cos{\theta}\cos{\varphi},\quad
-\frac{\partial f}{\partial\varphi} = -r^{2}\sin{\theta}\sin{\varphi}.
-\]
-因此
-\[
-\nabla f
-=
-2r\sin{\theta}\cos{\varphi}\,\hat{\bm{e}}_{r}
-+
-r\cos{\theta}\cos{\varphi}\,\hat{\bm{e}}_{\theta}
--
-r\sin{\varphi}\,\hat{\bm{e}}_{\varphi}.
-\]
-这是单位基底下的物理分量形式. 若改写为自然基底形式, 利用 $\hat{\bm{e}}_{r}=\bm{e}_{r}$, $\hat{\bm{e}}_{\theta}=\frac{1}{r}\bm{e}_{\theta}$, $\hat{\bm{e}}_{\varphi}=\frac{1}{r\sin{\theta}}\bm{e}_{\varphi}$, 可得
-\[
-\nabla f
-=
-2r\sin{\theta}\cos{\varphi}\,\bm{e}_{r}
-+
-\cos{\theta}\cos{\varphi}\,\bm{e}_{\theta}
--
-\frac{\sin{\varphi}}{\sin{\theta}}\bm{e}_{\varphi},
-\]
-这再次体现了物理分量与逆变分量的区别. 
+	球坐标中 $h_{r}=1$, $h_{\theta}=r$, $h_{\varphi}=r\sin{\theta}$. 由正交曲线坐标梯度公式\eqref{eq:1.16}, 
+	\[
+	\nabla f
+	=
+	\frac{\partial f}{\partial r}\hat{\bm{e}}_{r}
+	+
+	\frac{1}{r}\frac{\partial f}{\partial\theta}\hat{\bm{e}}_{\theta}
+	+
+	\frac{1}{r\sin{\theta}}\frac{\partial f}{\partial\varphi}\hat{\bm{e}}_{\varphi}.
+	\]
+	各偏导数为
+	\[
+	\frac{\partial f}{\partial r} = 2r\sin{\theta}\cos{\varphi},\quad
+	\frac{\partial f}{\partial\theta} = r^{2}\cos{\theta}\cos{\varphi},\quad
+	\frac{\partial f}{\partial\varphi} = -r^{2}\sin{\theta}\sin{\varphi}.
+	\]
+	因此
+	\[
+	\nabla f
+	=
+	2r\sin{\theta}\cos{\varphi}\,\hat{\bm{e}}_{r}
+	+
+	r\cos{\theta}\cos{\varphi}\,\hat{\bm{e}}_{\theta}
+	-
+	r\sin{\varphi}\,\hat{\bm{e}}_{\varphi}.
+	\]
+	这是单位基底下的物理分量形式. 若改写为自然基底形式, 利用 $\hat{\bm{e}}_{r}=\bm{e}_{r}$, $\hat{\bm{e}}_{\theta}=\frac{1}{r}\bm{e}_{\theta}$, $\hat{\bm{e}}_{\varphi}=\frac{1}{r\sin{\theta}}\bm{e}_{\varphi}$, 可得
+	\[
+	\nabla f
+	=
+	2r\sin{\theta}\cos{\varphi}\,\bm{e}_{r}
+	+
+	\cos{\theta}\cos{\varphi}\,\bm{e}_{\theta}
+	-
+	\frac{\sin{\varphi}}{\sin{\theta}}\bm{e}_{\varphi},
+	\]
+	这再次体现了物理分量与逆变分量的区别. 
 \end{solution}
+\end{example}
 
 \section{本章小结}
 

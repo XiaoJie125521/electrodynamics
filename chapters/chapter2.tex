@@ -367,83 +367,82 @@ g' = \det\left( \frac{\partial x^\alpha}{\partial x'^\mu} \right)^2 g.
 	r^{2}\sin^{2}\theta\,\dif\varphi^{2}.
 	\]
 	求球坐标下的度规 $g_{\mu\nu}$、逆变度规 $g^{\mu\nu}$、度规行列式 $g$ 以及体积元 $\dif V$. 
+	\begin{solution}
+		一般曲线坐标中的线元写为
+		\[
+		\dif s^{2}
+		=
+		g_{\mu\nu}\dif x^{\mu}\dif x^{\nu}.
+		\]
+		在球坐标中取
+		\[
+		(x^{1},x^{2},x^{3})=(r,\theta,\varphi).
+		\]
+		将题中的线元与一般形式比较, 可直接读出非零度规分量: 
+		\[
+		g_{rr}=1,
+		\qquad
+		g_{\theta\theta}=r^{2},
+		\qquad
+		g_{\varphi\varphi}=r^{2}\sin^{2}\theta.
+		\]
+		因此度规矩阵为
+		\[
+		(g_{\mu\nu})
+		=
+		\begin{pmatrix}
+			1 & 0 & 0\\
+			0 & r^{2} & 0\\
+			0 & 0 & r^{2}\sin^{2}\theta
+		\end{pmatrix}.
+		\]
+		由于该矩阵为对角矩阵, 其逆矩阵可直接写出: 
+		\[
+		(g^{\mu\nu})
+		=
+		\begin{pmatrix}
+			1 & 0 & 0\\
+			0 & \dfrac{1}{r^{2}} & 0\\
+			0 & 0 & \dfrac{1}{r^{2}\sin^{2}\theta}
+		\end{pmatrix}.
+		\]
+		于是
+		\[
+		g^{rr}=1,
+		\qquad
+		g^{\theta\theta}=\frac{1}{r^{2}},
+		\qquad
+		g^{\varphi\varphi}=\frac{1}{r^{2}\sin^{2}\theta}.
+		\]
+		度规行列式为
+		\[
+		g
+		=
+		\det(g_{\mu\nu})
+		=
+		1\cdot r^{2}\cdot r^{2}\sin^{2}\theta
+		=
+		r^{4}\sin^{2}\theta.
+		\]
+		因此
+		\[
+		\sqrt{g}=r^{2}\sin\theta.
+		\]
+		曲线坐标中的体积元为
+		\[
+		\dif V
+		=
+		\sqrt{g}\,\dif r\,\dif\theta\,\dif\varphi.
+		\]
+		代入 $\sqrt{g}=r^{2}\sin\theta$, 得到
+		\[
+		\dif V
+		=
+		r^{2}\sin\theta\,\dif r\,\dif\theta\,\dif\varphi.
+		\]
+		这正是球坐标中的体积元. 该例表明, 度规不仅给出长度和夹角, 也决定曲线坐标中的积分测度. 
+	\end{solution}
 \end{example}
-
-\begin{solution}
-	一般曲线坐标中的线元写为
-	\[
-	\dif s^{2}
-	=
-	g_{\mu\nu}\dif x^{\mu}\dif x^{\nu}.
-	\]
-	在球坐标中取
-	\[
-	(x^{1},x^{2},x^{3})=(r,\theta,\varphi).
-	\]
-	将题中的线元与一般形式比较, 可直接读出非零度规分量: 
-	\[
-	g_{rr}=1,
-	\qquad
-	g_{\theta\theta}=r^{2},
-	\qquad
-	g_{\varphi\varphi}=r^{2}\sin^{2}\theta.
-	\]
-	因此度规矩阵为
-	\[
-	(g_{\mu\nu})
-	=
-	\begin{pmatrix}
-		1 & 0 & 0\\
-		0 & r^{2} & 0\\
-		0 & 0 & r^{2}\sin^{2}\theta
-	\end{pmatrix}.
-	\]
-	由于该矩阵为对角矩阵, 其逆矩阵可直接写出: 
-	\[
-	(g^{\mu\nu})
-	=
-	\begin{pmatrix}
-		1 & 0 & 0\\
-		0 & \dfrac{1}{r^{2}} & 0\\
-		0 & 0 & \dfrac{1}{r^{2}\sin^{2}\theta}
-	\end{pmatrix}.
-	\]
-	于是
-	\[
-	g^{rr}=1,
-	\qquad
-	g^{\theta\theta}=\frac{1}{r^{2}},
-	\qquad
-	g^{\varphi\varphi}=\frac{1}{r^{2}\sin^{2}\theta}.
-	\]
-	度规行列式为
-	\[
-	g
-	=
-	\det(g_{\mu\nu})
-	=
-	1\cdot r^{2}\cdot r^{2}\sin^{2}\theta
-	=
-	r^{4}\sin^{2}\theta.
-	\]
-	因此
-	\[
-	\sqrt{g}=r^{2}\sin\theta.
-	\]
-	曲线坐标中的体积元为
-	\[
-	\dif V
-	=
-	\sqrt{g}\,\dif r\,\dif\theta\,\dif\varphi.
-	\]
-	代入 $\sqrt{g}=r^{2}\sin\theta$, 得到
-	\[
-	\dif V
-	=
-	r^{2}\sin\theta\,\dif r\,\dif\theta\,\dif\varphi.
-	\]
-	这正是球坐标中的体积元. 该例表明, 度规不仅给出长度和夹角, 也决定曲线坐标中的积分测度. 
-\end{solution}
 
 
 \section{Kronecker 符号与恒等张量}
@@ -619,154 +618,153 @@ g_{\mu\nu}A^\mu B^\nu,
 	\right)\dif V
 	\]
 	称为刚体关于点 $O$ 的惯性张量. 
+	\begin{solution}
+		由刚体转动的速度公式
+		\[
+		\bm{v}
+		=
+		\bm{\omega}\times\bm{r}
+		\]
+		可得速度分量为
+		\[
+		v^{i}
+		=
+		\varepsilon^{i}{}_{jk}\omega^{j}x^{k}.
+		\]
+		角动量分量为
+		\[
+		L_{i}
+		=
+		\int_{B}\rho\,(\bm{r}\times\bm{v})_{i}\,\dif V.
+		\]
+		利用叉积的指标形式, 有
+		\[
+		(\bm{r}\times\bm{v})_{i}
+		=
+		\varepsilon_{ijk}x^{j}v^{k}.
+		\]
+		代入 $v^{k}=\varepsilon^{k}{}_{\ell m}\omega^{\ell}x^{m}$, 得到
+		\[
+		L_{i}
+		=
+		\int_{B}\rho\,
+		\varepsilon_{ijk}x^{j}
+		\varepsilon^{k}{}_{\ell m}\omega^{\ell}x^{m}
+		\,\dif V.
+		\]
+		利用 Levi-Civita 张量的缩并恒等式
+		\[
+		\varepsilon_{ijk}\varepsilon^{k}{}_{\ell m}
+		=
+		\delta_{i\ell}\delta_{jm}
+		-
+		\delta_{im}\delta_{j\ell},
+		\]
+		可得
+		\[
+		L_{i}
+		=
+		\int_{B}\rho
+		\left(
+		\delta_{i\ell}\delta_{jm}
+		-
+		\delta_{im}\delta_{j\ell}
+		\right)
+		x^{j}x^{m}\omega^{\ell}
+		\,\dif V.
+		\]
+		第一项为
+		\[
+		\delta_{i\ell}\delta_{jm}x^{j}x^{m}\omega^{\ell}
+		=
+		\delta_{i\ell}r^{2}\omega^{\ell}
+		=
+		r^{2}\omega_{i}.
+		\]
+		第二项为
+		\[
+		\delta_{im}\delta_{j\ell}x^{j}x^{m}\omega^{\ell}
+		=
+		x_{i}x_{\ell}\omega^{\ell}.
+		\]
+		因此
+		\[
+		L_{i}
+		=
+		\int_{B}\rho
+		\left(
+		r^{2}\omega_{i}
+		-
+		x_{i}x_{\ell}\omega^{\ell}
+		\right)\dif V.
+		\]
+		在欧氏空间中, $\omega_{i}=\delta_{ij}\omega^{j}$, 于是上式可以写为
+		\[
+		L_{i}
+		=
+		\int_{B}\rho
+		\left(
+		r^{2}\delta_{ij}
+		-
+		x_{i}x_{j}
+		\right)\omega^{j}\,\dif V.
+		\]
+		由于 $\omega^{j}$ 与积分变量无关, 可以提出积分号外, 得到
+		\[
+		L_{i}
+		=
+		\left[
+		\int_{B}\rho
+		\left(
+		r^{2}\delta_{ij}
+		-
+		x_{i}x_{j}
+		\right)\dif V
+		\right]\omega^{j}.
+		\]
+		因此定义
+		\[
+		I_{ij}
+		=
+		\int_{B}\rho
+		\left(
+		r^{2}\delta_{ij}
+		-
+		x_{i}x_{j}
+		\right)\dif V,
+		\]
+		便有
+		\[
+		L_{i}
+		=
+		I_{ij}\omega^{j}.
+		\]
+		
+		由定义可见, 惯性张量满足
+		\[
+		I_{ij}=I_{ji},
+		\]
+		因此它是一个对称二阶张量. 在正交笛卡尔坐标中, $I_{ij}$ 可看作一个对称矩阵. 若选取惯性主轴作为坐标轴, 则惯性张量可以对角化: 
+		\[
+		(I_{ij})
+		=
+		\begin{pmatrix}
+			I_{1} & 0 & 0\\
+			0 & I_{2} & 0\\
+			0 & 0 & I_{3}
+		\end{pmatrix}.
+		\]
+		此时角动量与角速度的关系化为
+		\[
+		L_{1}=I_{1}\omega^{1},
+		\qquad
+		L_{2}=I_{2}\omega^{2},
+		\qquad
+		L_{3}=I_{3}\omega^{3}.
+		\]
+		该例表明, 惯性张量描述刚体转动时角速度与角动量之间的线性关系; 一般情况下, 角动量方向并不必然与角速度方向相同. 
+	\end{solution}
 \end{example}
-
-\begin{solution}
-	由刚体转动的速度公式
-	\[
-	\bm{v}
-	=
-	\bm{\omega}\times\bm{r}
-	\]
-	可得速度分量为
-	\[
-	v^{i}
-	=
-	\varepsilon^{i}{}_{jk}\omega^{j}x^{k}.
-	\]
-	角动量分量为
-	\[
-	L_{i}
-	=
-	\int_{B}\rho\,(\bm{r}\times\bm{v})_{i}\,\dif V.
-	\]
-	利用叉积的指标形式, 有
-	\[
-	(\bm{r}\times\bm{v})_{i}
-	=
-	\varepsilon_{ijk}x^{j}v^{k}.
-	\]
-	代入 $v^{k}=\varepsilon^{k}{}_{\ell m}\omega^{\ell}x^{m}$, 得到
-	\[
-	L_{i}
-	=
-	\int_{B}\rho\,
-	\varepsilon_{ijk}x^{j}
-	\varepsilon^{k}{}_{\ell m}\omega^{\ell}x^{m}
-	\,\dif V.
-	\]
-	利用 Levi-Civita 张量的缩并恒等式
-	\[
-	\varepsilon_{ijk}\varepsilon^{k}{}_{\ell m}
-	=
-	\delta_{i\ell}\delta_{jm}
-	-
-	\delta_{im}\delta_{j\ell},
-	\]
-	可得
-	\[
-	L_{i}
-	=
-	\int_{B}\rho
-	\left(
-	\delta_{i\ell}\delta_{jm}
-	-
-	\delta_{im}\delta_{j\ell}
-	\right)
-	x^{j}x^{m}\omega^{\ell}
-	\,\dif V.
-	\]
-	第一项为
-	\[
-	\delta_{i\ell}\delta_{jm}x^{j}x^{m}\omega^{\ell}
-	=
-	\delta_{i\ell}r^{2}\omega^{\ell}
-	=
-	r^{2}\omega_{i}.
-	\]
-	第二项为
-	\[
-	\delta_{im}\delta_{j\ell}x^{j}x^{m}\omega^{\ell}
-	=
-	x_{i}x_{\ell}\omega^{\ell}.
-	\]
-	因此
-	\[
-	L_{i}
-	=
-	\int_{B}\rho
-	\left(
-	r^{2}\omega_{i}
-	-
-	x_{i}x_{\ell}\omega^{\ell}
-	\right)\dif V.
-	\]
-	在欧氏空间中, $\omega_{i}=\delta_{ij}\omega^{j}$, 于是上式可以写为
-	\[
-	L_{i}
-	=
-	\int_{B}\rho
-	\left(
-	r^{2}\delta_{ij}
-	-
-	x_{i}x_{j}
-	\right)\omega^{j}\,\dif V.
-	\]
-	由于 $\omega^{j}$ 与积分变量无关, 可以提出积分号外, 得到
-	\[
-	L_{i}
-	=
-	\left[
-	\int_{B}\rho
-	\left(
-	r^{2}\delta_{ij}
-	-
-	x_{i}x_{j}
-	\right)\dif V
-	\right]\omega^{j}.
-	\]
-	因此定义
-	\[
-	I_{ij}
-	=
-	\int_{B}\rho
-	\left(
-	r^{2}\delta_{ij}
-	-
-	x_{i}x_{j}
-	\right)\dif V,
-	\]
-	便有
-	\[
-	L_{i}
-	=
-	I_{ij}\omega^{j}.
-	\]
-	
-	由定义可见, 惯性张量满足
-	\[
-	I_{ij}=I_{ji},
-	\]
-	因此它是一个对称二阶张量. 在正交笛卡尔坐标中, $I_{ij}$ 可看作一个对称矩阵. 若选取惯性主轴作为坐标轴, 则惯性张量可以对角化: 
-	\[
-	(I_{ij})
-	=
-	\begin{pmatrix}
-		I_{1} & 0 & 0\\
-		0 & I_{2} & 0\\
-		0 & 0 & I_{3}
-	\end{pmatrix}.
-	\]
-	此时角动量与角速度的关系化为
-	\[
-	L_{1}=I_{1}\omega^{1},
-	\qquad
-	L_{2}=I_{2}\omega^{2},
-	\qquad
-	L_{3}=I_{3}\omega^{3}.
-	\]
-	该例表明, 惯性张量描述刚体转动时角速度与角动量之间的线性关系; 一般情况下, 角动量方向并不必然与角速度方向相同. 
-\end{solution}
 
 \section{对称张量与反对称张量}
 
@@ -1517,121 +1515,120 @@ A^{\nu}\Gamma^{\lambda}{}_{\mu\nu}\bm{e}_{\lambda}.
 	\frac{1}{\rho}.
 	\]
 	求 $\nabla_{\varphi}A^{\rho}$、$\nabla_{\varphi}A^{\varphi}$ 和 $\nabla_{\rho}A^{\varphi}$. 
+	\begin{solution}
+		向量逆变分量的协变导数为
+		\[
+		\nabla_{\mu}A^{\lambda}
+		=
+		\partial_{\mu}A^{\lambda}
+		+
+		\Gamma^{\lambda}{}_{\mu\nu}A^{\nu}.
+		\]
+		首先计算 $\nabla_{\varphi}A^{\rho}$. 令 $\mu=\varphi,\lambda=\rho$, 得到
+		\[
+		\nabla_{\varphi}A^{\rho}
+		=
+		\partial_{\varphi}A^{\rho}
+		+
+		\Gamma^{\rho}{}_{\varphi\nu}A^{\nu}.
+		\]
+		在柱坐标中, 与 $\Gamma^{\rho}{}_{\varphi\nu}$ 有关的非零项只有
+		\[
+		\Gamma^{\rho}{}_{\varphi\varphi}
+		=
+		-\rho.
+		\]
+		因此
+		\[
+		\nabla_{\varphi}A^{\rho}
+		=
+		\partial_{\varphi}A^{\rho}
+		+
+		\Gamma^{\rho}{}_{\varphi\varphi}A^{\varphi}
+		=
+		\partial_{\varphi}A^{\rho}
+		-
+		\rho A^{\varphi}.
+		\]
+		
+		其次计算 $\nabla_{\varphi}A^{\varphi}$. 令 $\mu=\varphi,\lambda=\varphi$, 有
+		\[
+		\nabla_{\varphi}A^{\varphi}
+		=
+		\partial_{\varphi}A^{\varphi}
+		+
+		\Gamma^{\varphi}{}_{\varphi\nu}A^{\nu}.
+		\]
+		在柱坐标中, 与 $\Gamma^{\varphi}{}_{\varphi\nu}$ 有关的非零项为
+		\[
+		\Gamma^{\varphi}{}_{\varphi\rho}
+		=
+		\frac{1}{\rho}.
+		\]
+		所以
+		\[
+		\nabla_{\varphi}A^{\varphi}
+		=
+		\partial_{\varphi}A^{\varphi}
+		+
+		\Gamma^{\varphi}{}_{\varphi\rho}A^{\rho}
+		=
+		\partial_{\varphi}A^{\varphi}
+		+
+		\frac{1}{\rho}A^{\rho}.
+		\]
+		
+		最后计算 $\nabla_{\rho}A^{\varphi}$. 令 $\mu=\rho,\lambda=\varphi$, 有
+		\[
+		\nabla_{\rho}A^{\varphi}
+		=
+		\partial_{\rho}A^{\varphi}
+		+
+		\Gamma^{\varphi}{}_{\rho\nu}A^{\nu}.
+		\]
+		在柱坐标中, 与 $\Gamma^{\varphi}{}_{\rho\nu}$ 有关的非零项为
+		\[
+		\Gamma^{\varphi}{}_{\rho\varphi}
+		=
+		\frac{1}{\rho}.
+		\]
+		因此
+		\[
+		\nabla_{\rho}A^{\varphi}
+		=
+		\partial_{\rho}A^{\varphi}
+		+
+		\Gamma^{\varphi}{}_{\rho\varphi}A^{\varphi}
+		=
+		\partial_{\rho}A^{\varphi}
+		+
+		\frac{1}{\rho}A^{\varphi}.
+		\]
+		
+		综上, 
+		\[
+		\nabla_{\varphi}A^{\rho}
+		=
+		\partial_{\varphi}A^{\rho}
+		-
+		\rho A^{\varphi},
+		\]
+		\[
+		\nabla_{\varphi}A^{\varphi}
+		=
+		\partial_{\varphi}A^{\varphi}
+		+
+		\frac{1}{\rho}A^{\rho},
+		\]
+		\[
+		\nabla_{\rho}A^{\varphi}
+		=
+		\partial_{\rho}A^{\varphi}
+		+
+		\frac{1}{\rho}A^{\varphi}.
+		\]
+	\end{solution}
 \end{example}
-
-\begin{solution}
-	向量逆变分量的协变导数为
-	\[
-	\nabla_{\mu}A^{\lambda}
-	=
-	\partial_{\mu}A^{\lambda}
-	+
-	\Gamma^{\lambda}{}_{\mu\nu}A^{\nu}.
-	\]
-	首先计算 $\nabla_{\varphi}A^{\rho}$. 令 $\mu=\varphi,\lambda=\rho$, 得到
-	\[
-	\nabla_{\varphi}A^{\rho}
-	=
-	\partial_{\varphi}A^{\rho}
-	+
-	\Gamma^{\rho}{}_{\varphi\nu}A^{\nu}.
-	\]
-	在柱坐标中, 与 $\Gamma^{\rho}{}_{\varphi\nu}$ 有关的非零项只有
-	\[
-	\Gamma^{\rho}{}_{\varphi\varphi}
-	=
-	-\rho.
-	\]
-	因此
-	\[
-	\nabla_{\varphi}A^{\rho}
-	=
-	\partial_{\varphi}A^{\rho}
-	+
-	\Gamma^{\rho}{}_{\varphi\varphi}A^{\varphi}
-	=
-	\partial_{\varphi}A^{\rho}
-	-
-	\rho A^{\varphi}.
-	\]
-	
-	其次计算 $\nabla_{\varphi}A^{\varphi}$. 令 $\mu=\varphi,\lambda=\varphi$, 有
-	\[
-	\nabla_{\varphi}A^{\varphi}
-	=
-	\partial_{\varphi}A^{\varphi}
-	+
-	\Gamma^{\varphi}{}_{\varphi\nu}A^{\nu}.
-	\]
-	在柱坐标中, 与 $\Gamma^{\varphi}{}_{\varphi\nu}$ 有关的非零项为
-	\[
-	\Gamma^{\varphi}{}_{\varphi\rho}
-	=
-	\frac{1}{\rho}.
-	\]
-	所以
-	\[
-	\nabla_{\varphi}A^{\varphi}
-	=
-	\partial_{\varphi}A^{\varphi}
-	+
-	\Gamma^{\varphi}{}_{\varphi\rho}A^{\rho}
-	=
-	\partial_{\varphi}A^{\varphi}
-	+
-	\frac{1}{\rho}A^{\rho}.
-	\]
-	
-	最后计算 $\nabla_{\rho}A^{\varphi}$. 令 $\mu=\rho,\lambda=\varphi$, 有
-	\[
-	\nabla_{\rho}A^{\varphi}
-	=
-	\partial_{\rho}A^{\varphi}
-	+
-	\Gamma^{\varphi}{}_{\rho\nu}A^{\nu}.
-	\]
-	在柱坐标中, 与 $\Gamma^{\varphi}{}_{\rho\nu}$ 有关的非零项为
-	\[
-	\Gamma^{\varphi}{}_{\rho\varphi}
-	=
-	\frac{1}{\rho}.
-	\]
-	因此
-	\[
-	\nabla_{\rho}A^{\varphi}
-	=
-	\partial_{\rho}A^{\varphi}
-	+
-	\Gamma^{\varphi}{}_{\rho\varphi}A^{\varphi}
-	=
-	\partial_{\rho}A^{\varphi}
-	+
-	\frac{1}{\rho}A^{\varphi}.
-	\]
-	
-	综上, 
-	\[
-	\nabla_{\varphi}A^{\rho}
-	=
-	\partial_{\varphi}A^{\rho}
-	-
-	\rho A^{\varphi},
-	\]
-	\[
-	\nabla_{\varphi}A^{\varphi}
-	=
-	\partial_{\varphi}A^{\varphi}
-	+
-	\frac{1}{\rho}A^{\rho},
-	\]
-	\[
-	\nabla_{\rho}A^{\varphi}
-	=
-	\partial_{\rho}A^{\varphi}
-	+
-	\frac{1}{\rho}A^{\varphi}.
-	\]
-\end{solution}
 
 \section{测地线方程}
 
@@ -1741,120 +1738,119 @@ A^{\mu}=u^{\mu}=\frac{\dif x^{\mu}}{\dif s},
 	\frac{1}{r}.
 	\]
 	写出平面极坐标中的测地线方程. 
+	\begin{solution}
+		测地线方程为
+		\[
+		\frac{\dif^{2}x^{\mu}}{\dif s^{2}}
+		+
+		\Gamma^{\mu}{}_{\nu\lambda}
+		\frac{\dif x^{\nu}}{\dif s}
+		\frac{\dif x^{\lambda}}{\dif s}
+		=
+		0.
+		\]
+		在极坐标中, 坐标为
+		\[
+		(x^{1},x^{2})=(r,\varphi).
+		\]
+		因此测地线方程应分别写出 $r$ 分量和 $\varphi$ 分量. 
+		
+		先取 $\mu=r$. 由于与 $r$ 分量有关的非零 Christoffel 符号为
+		\[
+		\Gamma^{r}{}_{\varphi\varphi}
+		=
+		-r,
+		\]
+		所以
+		\[
+		\frac{\dif^{2}r}{\dif s^{2}}
+		+
+		\Gamma^{r}{}_{\varphi\varphi}
+		\frac{\dif\varphi}{\dif s}
+		\frac{\dif\varphi}{\dif s}
+		=
+		0.
+		\]
+		代入 $\Gamma^{r}{}_{\varphi\varphi}=-r$, 得到
+		\[
+		\frac{\dif^{2}r}{\dif s^{2}}
+		-
+		r\left(
+		\frac{\dif\varphi}{\dif s}
+		\right)^{2}
+		=
+		0.
+		\]
+		
+		再取 $\mu=\varphi$. 与 $\varphi$ 分量有关的非零 Christoffel 符号为
+		\[
+		\Gamma^{\varphi}{}_{r\varphi}
+		=
+		\Gamma^{\varphi}{}_{\varphi r}
+		=
+		\frac{1}{r}.
+		\]
+		因此
+		\[
+		\frac{\dif^{2}\varphi}{\dif s^{2}}
+		+
+		\Gamma^{\varphi}{}_{r\varphi}
+		\frac{\dif r}{\dif s}
+		\frac{\dif\varphi}{\dif s}
+		+
+		\Gamma^{\varphi}{}_{\varphi r}
+		\frac{\dif\varphi}{\dif s}
+		\frac{\dif r}{\dif s}
+		=
+		0.
+		\]
+		代入 Christoffel 符号, 得到
+		\[
+		\frac{\dif^{2}\varphi}{\dif s^{2}}
+		+
+		\frac{1}{r}
+		\frac{\dif r}{\dif s}
+		\frac{\dif\varphi}{\dif s}
+		+
+		\frac{1}{r}
+		\frac{\dif\varphi}{\dif s}
+		\frac{\dif r}{\dif s}
+		=
+		0.
+		\]
+		整理得
+		\[
+		\frac{\dif^{2}\varphi}{\dif s^{2}}
+		+
+		\frac{2}{r}
+		\frac{\dif r}{\dif s}
+		\frac{\dif\varphi}{\dif s}
+		=
+		0.
+		\]
+		
+		综上, 平面极坐标中的测地线方程为
+		\[
+		\frac{\dif^{2}r}{\dif s^{2}}
+		-
+		r\left(
+		\frac{\dif\varphi}{\dif s}
+		\right)^{2}
+		=
+		0,
+		\]
+		\[
+		\frac{\dif^{2}\varphi}{\dif s^{2}}
+		+
+		\frac{2}{r}
+		\frac{\dif r}{\dif s}
+		\frac{\dif\varphi}{\dif s}
+		=
+		0.
+		\]
+		这些方程描述的仍是欧氏平面中的直线. Christoffel 符号的出现并不表示空间弯曲, 而是由于极坐标自然基底随位置变化. 
+	\end{solution}
 \end{example}
-
-\begin{solution}
-	测地线方程为
-	\[
-	\frac{\dif^{2}x^{\mu}}{\dif s^{2}}
-	+
-	\Gamma^{\mu}{}_{\nu\lambda}
-	\frac{\dif x^{\nu}}{\dif s}
-	\frac{\dif x^{\lambda}}{\dif s}
-	=
-	0.
-	\]
-	在极坐标中, 坐标为
-	\[
-	(x^{1},x^{2})=(r,\varphi).
-	\]
-	因此测地线方程应分别写出 $r$ 分量和 $\varphi$ 分量. 
-	
-	先取 $\mu=r$. 由于与 $r$ 分量有关的非零 Christoffel 符号为
-	\[
-	\Gamma^{r}{}_{\varphi\varphi}
-	=
-	-r,
-	\]
-	所以
-	\[
-	\frac{\dif^{2}r}{\dif s^{2}}
-	+
-	\Gamma^{r}{}_{\varphi\varphi}
-	\frac{\dif\varphi}{\dif s}
-	\frac{\dif\varphi}{\dif s}
-	=
-	0.
-	\]
-	代入 $\Gamma^{r}{}_{\varphi\varphi}=-r$, 得到
-	\[
-	\frac{\dif^{2}r}{\dif s^{2}}
-	-
-	r\left(
-	\frac{\dif\varphi}{\dif s}
-	\right)^{2}
-	=
-	0.
-	\]
-	
-	再取 $\mu=\varphi$. 与 $\varphi$ 分量有关的非零 Christoffel 符号为
-	\[
-	\Gamma^{\varphi}{}_{r\varphi}
-	=
-	\Gamma^{\varphi}{}_{\varphi r}
-	=
-	\frac{1}{r}.
-	\]
-	因此
-	\[
-	\frac{\dif^{2}\varphi}{\dif s^{2}}
-	+
-	\Gamma^{\varphi}{}_{r\varphi}
-	\frac{\dif r}{\dif s}
-	\frac{\dif\varphi}{\dif s}
-	+
-	\Gamma^{\varphi}{}_{\varphi r}
-	\frac{\dif\varphi}{\dif s}
-	\frac{\dif r}{\dif s}
-	=
-	0.
-	\]
-	代入 Christoffel 符号, 得到
-	\[
-	\frac{\dif^{2}\varphi}{\dif s^{2}}
-	+
-	\frac{1}{r}
-	\frac{\dif r}{\dif s}
-	\frac{\dif\varphi}{\dif s}
-	+
-	\frac{1}{r}
-	\frac{\dif\varphi}{\dif s}
-	\frac{\dif r}{\dif s}
-	=
-	0.
-	\]
-	整理得
-	\[
-	\frac{\dif^{2}\varphi}{\dif s^{2}}
-	+
-	\frac{2}{r}
-	\frac{\dif r}{\dif s}
-	\frac{\dif\varphi}{\dif s}
-	=
-	0.
-	\]
-	
-	综上, 平面极坐标中的测地线方程为
-	\[
-	\frac{\dif^{2}r}{\dif s^{2}}
-	-
-	r\left(
-	\frac{\dif\varphi}{\dif s}
-	\right)^{2}
-	=
-	0,
-	\]
-	\[
-	\frac{\dif^{2}\varphi}{\dif s^{2}}
-	+
-	\frac{2}{r}
-	\frac{\dif r}{\dif s}
-	\frac{\dif\varphi}{\dif s}
-	=
-	0.
-	\]
-	这些方程描述的仍是欧氏平面中的直线. Christoffel 符号的出现并不表示空间弯曲, 而是由于极坐标自然基底随位置变化. 
-\end{solution}
 
 \section{正交曲线坐标系中的联络系数}
 
@@ -2254,69 +2250,69 @@ B_{\alpha\beta}.
 	Q_{\mu}\delta q^{\mu}
 	\]
 	在任意坐标变换下都是标量, 并且 $\delta q^{\mu}$ 是任意逆变向量分量, 证明 $Q_{\mu}$ 是协变向量分量. 
-\end{example}
-
-\begin{solution}
-	虚位移是坐标增量, 因此在坐标变换 $q^{\mu}\mapsto q'^{\mu}$ 下满足逆变分量的变换规律: 
-	\[
-	\delta q'^{\mu}
-	=
-	\frac{\partial q'^{\mu}}{\partial q^{\alpha}}
-	\delta q^{\alpha}.
-	\]
-	由于虚功是标量, 有
-	\[
-	\delta W'
-	=
-	\delta W.
-	\]
-	即
-	\[
-	Q'_{\mu}\delta q'^{\mu}
-	=
-	Q_{\alpha}\delta q^{\alpha}.
-	\]
-	代入虚位移的变换规律, 得到
-	\[
-	Q'_{\mu}
-	\frac{\partial q'^{\mu}}{\partial q^{\alpha}}
-	\delta q^{\alpha}
-	=
-	Q_{\alpha}\delta q^{\alpha}.
-	\]
-	整理为
-	\[
-	\left(
-	\frac{\partial q'^{\mu}}{\partial q^{\alpha}}Q'_{\mu}
-	-
-	Q_{\alpha}
-	\right)\delta q^{\alpha}
-	=
-	0.
-	\]
-	由于 $\delta q^{\alpha}$ 是任意虚位移分量, 括号中的系数必须为零, 即
-	\[
-	\frac{\partial q'^{\mu}}{\partial q^{\alpha}}Q'_{\mu}
-	=
-	Q_{\alpha}.
-	\]
-	两边乘以 $\partial q^{\alpha}/\partial q'^{\nu}$, 并利用链式法则
-	\[
-	\frac{\partial q^{\alpha}}{\partial q'^{\nu}}
-	\frac{\partial q'^{\mu}}{\partial q^{\alpha}}
-	=
-	\delta^{\mu}_{\nu},
-	\]
-	得到
-	\[
-	Q'_{\nu}
-	=
-	\frac{\partial q^{\alpha}}{\partial q'^{\nu}}Q_{\alpha}.
-	\]
-	这正是协变向量的变换规律. 因此, 广义力 $Q_{\mu}$ 是协变向量分量. 
 	
-	该例表明, 若一个对象与任意逆变向量缩并后得到标量, 则该对象必须按协变向量规律变换. 这正是商法则的典型应用. 
-\end{solution}
+	\begin{solution}
+		虚位移是坐标增量, 因此在坐标变换 $q^{\mu}\mapsto q'^{\mu}$ 下满足逆变分量的变换规律: 
+		\[
+		\delta q'^{\mu}
+		=
+		\frac{\partial q'^{\mu}}{\partial q^{\alpha}}
+		\delta q^{\alpha}.
+		\]
+		由于虚功是标量, 有
+		\[
+		\delta W'
+		=
+		\delta W.
+		\]
+		即
+		\[
+		Q'_{\mu}\delta q'^{\mu}
+		=
+		Q_{\alpha}\delta q^{\alpha}.
+		\]
+		代入虚位移的变换规律, 得到
+		\[
+		Q'_{\mu}
+		\frac{\partial q'^{\mu}}{\partial q^{\alpha}}
+		\delta q^{\alpha}
+		=
+		Q_{\alpha}\delta q^{\alpha}.
+		\]
+		整理为
+		\[
+		\left(
+		\frac{\partial q'^{\mu}}{\partial q^{\alpha}}Q'_{\mu}
+		-
+		Q_{\alpha}
+		\right)\delta q^{\alpha}
+		=
+		0.
+		\]
+		由于 $\delta q^{\alpha}$ 是任意虚位移分量, 括号中的系数必须为零, 即
+		\[
+		\frac{\partial q'^{\mu}}{\partial q^{\alpha}}Q'_{\mu}
+		=
+		Q_{\alpha}.
+		\]
+		两边乘以 $\partial q^{\alpha}/\partial q'^{\nu}$, 并利用链式法则
+		\[
+		\frac{\partial q^{\alpha}}{\partial q'^{\nu}}
+		\frac{\partial q'^{\mu}}{\partial q^{\alpha}}
+		=
+		\delta^{\mu}_{\nu},
+		\]
+		得到
+		\[
+		Q'_{\nu}
+		=
+		\frac{\partial q^{\alpha}}{\partial q'^{\nu}}Q_{\alpha}.
+		\]
+		这正是协变向量的变换规律. 因此, 广义力 $Q_{\mu}$ 是协变向量分量. 
+		
+		该例表明, 若一个对象与任意逆变向量缩并后得到标量, 则该对象必须按协变向量规律变换. 这正是商法则的典型应用. 
+	\end{solution}
+\end{example}
 
 \begin{example}{由 Cauchy 公式判断应力张量的张量性}{2,7}
 	设连续介质中某点处, 过该点取一微小有向面元, 其单位法向量为 $\bm{n}$. 面元上受到的面力密度记为 $\bm{p}$. Cauchy 应力公式写作
@@ -2326,85 +2322,85 @@ B_{\alpha\beta}.
 	\sigma^{i}{}_{j}n^{j}.
 	\]
 	其中 $p^{i}$ 和 $n^{j}$ 分别是面力密度向量和法向量的逆变分量. 若该关系对任意法向量 $\bm{n}$ 成立, 并且 $\bm{p}$ 在坐标变换下始终是向量, 证明 $\sigma^{i}{}_{j}$ 是一个 $(1,1)$ 型张量. 
+	\begin{solution}
+		设坐标变换为 $x^{i}\mapsto x'^{i}$. 由于 $\bm{p}$ 和 $\bm{n}$ 都是向量, 它们的逆变分量分别满足
+		\[
+		p'^{i}
+		=
+		\frac{\partial x'^{i}}{\partial x^{\alpha}}p^{\alpha},
+		\qquad
+		n'^{j}
+		=
+		\frac{\partial x'^{j}}{\partial x^{\beta}}n^{\beta}.
+		\]
+		在旧坐标系中, Cauchy 公式为
+		\[
+		p^{\alpha}
+		=
+		\sigma^{\alpha}{}_{\beta}n^{\beta}.
+		\]
+		在新坐标系中, 同一物理关系应写为
+		\[
+		p'^{i}
+		=
+		\sigma'^{i}{}_{j}n'^{j}.
+		\]
+		将 $p'^{i}$ 和 $n'^{j}$ 的变换规律代入, 得到
+		\[
+		\frac{\partial x'^{i}}{\partial x^{\alpha}}p^{\alpha}
+		=
+		\sigma'^{i}{}_{j}
+		\frac{\partial x'^{j}}{\partial x^{\beta}}n^{\beta}.
+		\]
+		再代入旧坐标系中的关系 $p^{\alpha}=\sigma^{\alpha}{}_{\beta}n^{\beta}$, 得
+		\[
+		\frac{\partial x'^{i}}{\partial x^{\alpha}}
+		\sigma^{\alpha}{}_{\beta}n^{\beta}
+		=
+		\sigma'^{i}{}_{j}
+		\frac{\partial x'^{j}}{\partial x^{\beta}}n^{\beta}.
+		\]
+		整理为
+		\[
+		\left(
+		\frac{\partial x'^{i}}{\partial x^{\alpha}}
+		\sigma^{\alpha}{}_{\beta}
+		-
+		\sigma'^{i}{}_{j}
+		\frac{\partial x'^{j}}{\partial x^{\beta}}
+		\right)n^{\beta}
+		=
+		0.
+		\]
+		由于法向量 $n^{\beta}$ 可以任意选取, 括号中的系数必须为零, 即
+		\[
+		\frac{\partial x'^{i}}{\partial x^{\alpha}}
+		\sigma^{\alpha}{}_{\beta}
+		=
+		\sigma'^{i}{}_{j}
+		\frac{\partial x'^{j}}{\partial x^{\beta}}.
+		\]
+		两边乘以 $\partial x^{\beta}/\partial x'^{k}$, 并利用链式法则
+		\[
+		\frac{\partial x'^{j}}{\partial x^{\beta}}
+		\frac{\partial x^{\beta}}{\partial x'^{k}}
+		=
+		\delta^{j}_{k},
+		\]
+		得到
+		\[
+		\sigma'^{i}{}_{k}
+		=
+		\frac{\partial x'^{i}}{\partial x^{\alpha}}
+		\frac{\partial x^{\beta}}{\partial x'^{k}}
+		\sigma^{\alpha}{}_{\beta}.
+		\]
+		这正是 $(1,1)$ 型张量的变换规律. 因此, $\sigma^{i}{}_{j}$ 是一个 $(1,1)$ 型张量. 
+		
+		该例体现了商法则的典型用法: 已知 $p^{i}=\sigma^{i}{}_{j}n^{j}$ 对任意向量 $n^{j}$ 成立, 并且缩并结果 $p^{i}$ 是向量, 则可反推出 $\sigma^{i}{}_{j}$ 必须具有二阶混合张量的变换规律. 
+	\end{solution}
 \end{example}
 
-\begin{solution}
-	设坐标变换为 $x^{i}\mapsto x'^{i}$. 由于 $\bm{p}$ 和 $\bm{n}$ 都是向量, 它们的逆变分量分别满足
-	\[
-	p'^{i}
-	=
-	\frac{\partial x'^{i}}{\partial x^{\alpha}}p^{\alpha},
-	\qquad
-	n'^{j}
-	=
-	\frac{\partial x'^{j}}{\partial x^{\beta}}n^{\beta}.
-	\]
-	在旧坐标系中, Cauchy 公式为
-	\[
-	p^{\alpha}
-	=
-	\sigma^{\alpha}{}_{\beta}n^{\beta}.
-	\]
-	在新坐标系中, 同一物理关系应写为
-	\[
-	p'^{i}
-	=
-	\sigma'^{i}{}_{j}n'^{j}.
-	\]
-	将 $p'^{i}$ 和 $n'^{j}$ 的变换规律代入, 得到
-	\[
-	\frac{\partial x'^{i}}{\partial x^{\alpha}}p^{\alpha}
-	=
-	\sigma'^{i}{}_{j}
-	\frac{\partial x'^{j}}{\partial x^{\beta}}n^{\beta}.
-	\]
-	再代入旧坐标系中的关系 $p^{\alpha}=\sigma^{\alpha}{}_{\beta}n^{\beta}$, 得
-	\[
-	\frac{\partial x'^{i}}{\partial x^{\alpha}}
-	\sigma^{\alpha}{}_{\beta}n^{\beta}
-	=
-	\sigma'^{i}{}_{j}
-	\frac{\partial x'^{j}}{\partial x^{\beta}}n^{\beta}.
-	\]
-	整理为
-	\[
-	\left(
-	\frac{\partial x'^{i}}{\partial x^{\alpha}}
-	\sigma^{\alpha}{}_{\beta}
-	-
-	\sigma'^{i}{}_{j}
-	\frac{\partial x'^{j}}{\partial x^{\beta}}
-	\right)n^{\beta}
-	=
-	0.
-	\]
-	由于法向量 $n^{\beta}$ 可以任意选取, 括号中的系数必须为零, 即
-	\[
-	\frac{\partial x'^{i}}{\partial x^{\alpha}}
-	\sigma^{\alpha}{}_{\beta}
-	=
-	\sigma'^{i}{}_{j}
-	\frac{\partial x'^{j}}{\partial x^{\beta}}.
-	\]
-	两边乘以 $\partial x^{\beta}/\partial x'^{k}$, 并利用链式法则
-	\[
-	\frac{\partial x'^{j}}{\partial x^{\beta}}
-	\frac{\partial x^{\beta}}{\partial x'^{k}}
-	=
-	\delta^{j}_{k},
-	\]
-	得到
-	\[
-	\sigma'^{i}{}_{k}
-	=
-	\frac{\partial x'^{i}}{\partial x^{\alpha}}
-	\frac{\partial x^{\beta}}{\partial x'^{k}}
-	\sigma^{\alpha}{}_{\beta}.
-	\]
-	这正是 $(1,1)$ 型张量的变换规律. 因此, $\sigma^{i}{}_{j}$ 是一个 $(1,1)$ 型张量. 
-	
-	该例体现了商法则的典型用法: 已知 $p^{i}=\sigma^{i}{}_{j}n^{j}$ 对任意向量 $n^{j}$ 成立, 并且缩并结果 $p^{i}$ 是向量, 则可反推出 $\sigma^{i}{}_{j}$ 必须具有二阶混合张量的变换规律. 
-\end{solution}
 
 \section{散度、旋度与协变导数}
 
@@ -2663,144 +2659,143 @@ h_{i}A_{\hat{i}},
 	A_{\hat{z}}\hat{\bm{e}}_{z},
 	\]
 	求其散度. 
+	\begin{solution}
+		由柱坐标中的度规行列式
+		\[
+		\sqrt{g}=\rho
+		\]
+		以及一般曲线坐标中的散度公式
+		\[
+		\nabla\cdot\bm{A}
+		=
+		\frac{1}{\sqrt{g}}\partial_{\mu}(\sqrt{g}A^{\mu}),
+		\]
+		可得
+		\[
+		\nabla\cdot\bm{A}
+		=
+		\frac{1}{\rho}
+		\left[
+		\frac{\partial}{\partial\rho}(\rho A^{\rho})
+		+
+		\frac{\partial}{\partial\varphi}(\rho A^{\varphi})
+		+
+		\frac{\partial}{\partial z}(\rho A^{z})
+		\right].
+		\]
+		由于 $\rho$ 与 $\varphi,z$ 无关, 所以上式可写为
+		\[
+		\nabla\cdot\bm{A}
+		=
+		\frac{1}{\rho}
+		\frac{\partial}{\partial\rho}(\rho A^{\rho})
+		+
+		\frac{\partial A^{\varphi}}{\partial\varphi}
+		+
+		\frac{\partial A^{z}}{\partial z}.
+		\]
+		这是柱坐标中用自然基底逆变分量表示的散度公式. 
+		
+		下面将其改写为物理分量形式. 柱坐标的 Lamé 系数为
+		\[
+		h_{\rho}=1,
+		\qquad
+		h_{\varphi}=\rho,
+		\qquad
+		h_{z}=1.
+		\]
+		自然基底与单位基底之间满足
+		\[
+		\bm{e}_{\rho}=\hat{\bm{e}}_{\rho},
+		\qquad
+		\bm{e}_{\varphi}=\rho\hat{\bm{e}}_{\varphi},
+		\qquad
+		\bm{e}_{z}=\hat{\bm{e}}_{z}.
+		\]
+		因此
+		\[
+		\bm{A}
+		=
+		A^{\rho}\bm{e}_{\rho}
+		+
+		A^{\varphi}\bm{e}_{\varphi}
+		+
+		A^{z}\bm{e}_{z}
+		=
+		A^{\rho}\hat{\bm{e}}_{\rho}
+		+
+		\rho A^{\varphi}\hat{\bm{e}}_{\varphi}
+		+
+		A^{z}\hat{\bm{e}}_{z}.
+		\]
+		与物理分量展开
+		\[
+		\bm{A}
+		=
+		A_{\hat{\rho}}\hat{\bm{e}}_{\rho}
+		+
+		A_{\hat{\varphi}}\hat{\bm{e}}_{\varphi}
+		+
+		A_{\hat{z}}\hat{\bm{e}}_{z}
+		\]
+		比较, 得到
+		\[
+		A^{\rho}=A_{\hat{\rho}},
+		\qquad
+		A^{\varphi}=\frac{A_{\hat{\varphi}}}{\rho},
+		\qquad
+		A^{z}=A_{\hat{z}}.
+		\]
+		代入自然分量形式的散度公式: 
+		\[
+		\nabla\cdot\bm{A}
+		=
+		\frac{1}{\rho}
+		\frac{\partial}{\partial\rho}(\rho A^{\rho})
+		+
+		\frac{\partial A^{\varphi}}{\partial\varphi}
+		+
+		\frac{\partial A^{z}}{\partial z},
+		\]
+		可得
+		\[
+		\nabla\cdot\bm{A}
+		=
+		\frac{1}{\rho}
+		\frac{\partial}{\partial\rho}(\rho A_{\hat{\rho}})
+		+
+		\frac{\partial}{\partial\varphi}
+		\left(
+		\frac{A_{\hat{\varphi}}}{\rho}
+		\right)
+		+
+		\frac{\partial A_{\hat{z}}}{\partial z}.
+		\]
+		由于 $\rho$ 与 $\varphi$ 无关, 有
+		\[
+		\frac{\partial}{\partial\varphi}
+		\left(
+		\frac{A_{\hat{\varphi}}}{\rho}
+		\right)
+		=
+		\frac{1}{\rho}
+		\frac{\partial A_{\hat{\varphi}}}{\partial\varphi}.
+		\]
+		因此柱坐标中用物理分量表示的散度为
+		\[
+		\nabla\cdot\bm{A}
+		=
+		\frac{1}{\rho}
+		\frac{\partial}{\partial\rho}(\rho A_{\hat{\rho}})
+		+
+		\frac{1}{\rho}
+		\frac{\partial A_{\hat{\varphi}}}{\partial\varphi}
+		+
+		\frac{\partial A_{\hat{z}}}{\partial z}.
+		\]
+		该结果与第一章由正交曲线坐标公式得到的柱坐标散度完全一致. 由此可见, 散度公式中的因子 $\rho$ 本质上来自体积因子 $\sqrt{g}$. 
+	\end{solution}
 \end{example}
-
-\begin{solution}
-	由柱坐标中的度规行列式
-	\[
-	\sqrt{g}=\rho
-	\]
-	以及一般曲线坐标中的散度公式
-	\[
-	\nabla\cdot\bm{A}
-	=
-	\frac{1}{\sqrt{g}}\partial_{\mu}(\sqrt{g}A^{\mu}),
-	\]
-	可得
-	\[
-	\nabla\cdot\bm{A}
-	=
-	\frac{1}{\rho}
-	\left[
-	\frac{\partial}{\partial\rho}(\rho A^{\rho})
-	+
-	\frac{\partial}{\partial\varphi}(\rho A^{\varphi})
-	+
-	\frac{\partial}{\partial z}(\rho A^{z})
-	\right].
-	\]
-	由于 $\rho$ 与 $\varphi,z$ 无关, 所以上式可写为
-	\[
-	\nabla\cdot\bm{A}
-	=
-	\frac{1}{\rho}
-	\frac{\partial}{\partial\rho}(\rho A^{\rho})
-	+
-	\frac{\partial A^{\varphi}}{\partial\varphi}
-	+
-	\frac{\partial A^{z}}{\partial z}.
-	\]
-	这是柱坐标中用自然基底逆变分量表示的散度公式. 
-	
-	下面将其改写为物理分量形式. 柱坐标的 Lamé 系数为
-	\[
-	h_{\rho}=1,
-	\qquad
-	h_{\varphi}=\rho,
-	\qquad
-	h_{z}=1.
-	\]
-	自然基底与单位基底之间满足
-	\[
-	\bm{e}_{\rho}=\hat{\bm{e}}_{\rho},
-	\qquad
-	\bm{e}_{\varphi}=\rho\hat{\bm{e}}_{\varphi},
-	\qquad
-	\bm{e}_{z}=\hat{\bm{e}}_{z}.
-	\]
-	因此
-	\[
-	\bm{A}
-	=
-	A^{\rho}\bm{e}_{\rho}
-	+
-	A^{\varphi}\bm{e}_{\varphi}
-	+
-	A^{z}\bm{e}_{z}
-	=
-	A^{\rho}\hat{\bm{e}}_{\rho}
-	+
-	\rho A^{\varphi}\hat{\bm{e}}_{\varphi}
-	+
-	A^{z}\hat{\bm{e}}_{z}.
-	\]
-	与物理分量展开
-	\[
-	\bm{A}
-	=
-	A_{\hat{\rho}}\hat{\bm{e}}_{\rho}
-	+
-	A_{\hat{\varphi}}\hat{\bm{e}}_{\varphi}
-	+
-	A_{\hat{z}}\hat{\bm{e}}_{z}
-	\]
-	比较, 得到
-	\[
-	A^{\rho}=A_{\hat{\rho}},
-	\qquad
-	A^{\varphi}=\frac{A_{\hat{\varphi}}}{\rho},
-	\qquad
-	A^{z}=A_{\hat{z}}.
-	\]
-	代入自然分量形式的散度公式: 
-	\[
-	\nabla\cdot\bm{A}
-	=
-	\frac{1}{\rho}
-	\frac{\partial}{\partial\rho}(\rho A^{\rho})
-	+
-	\frac{\partial A^{\varphi}}{\partial\varphi}
-	+
-	\frac{\partial A^{z}}{\partial z},
-	\]
-	可得
-	\[
-	\nabla\cdot\bm{A}
-	=
-	\frac{1}{\rho}
-	\frac{\partial}{\partial\rho}(\rho A_{\hat{\rho}})
-	+
-	\frac{\partial}{\partial\varphi}
-	\left(
-	\frac{A_{\hat{\varphi}}}{\rho}
-	\right)
-	+
-	\frac{\partial A_{\hat{z}}}{\partial z}.
-	\]
-	由于 $\rho$ 与 $\varphi$ 无关, 有
-	\[
-	\frac{\partial}{\partial\varphi}
-	\left(
-	\frac{A_{\hat{\varphi}}}{\rho}
-	\right)
-	=
-	\frac{1}{\rho}
-	\frac{\partial A_{\hat{\varphi}}}{\partial\varphi}.
-	\]
-	因此柱坐标中用物理分量表示的散度为
-	\[
-	\nabla\cdot\bm{A}
-	=
-	\frac{1}{\rho}
-	\frac{\partial}{\partial\rho}(\rho A_{\hat{\rho}})
-	+
-	\frac{1}{\rho}
-	\frac{\partial A_{\hat{\varphi}}}{\partial\varphi}
-	+
-	\frac{\partial A_{\hat{z}}}{\partial z}.
-	\]
-	该结果与第一章由正交曲线坐标公式得到的柱坐标散度完全一致. 由此可见, 散度公式中的因子 $\rho$ 本质上来自体积因子 $\sqrt{g}$. 
-\end{solution}
 
 \section{本章小结}
 

@@ -865,34 +865,35 @@ $3$-形式适合在三维区域上积分. 若
 x=\cos t,\qquad y=\sin t,\qquad 0\leq t\leq 2\pi.
 \]
 求 $\int_C\omega$. 
-\end{example}
 \begin{solution}
-由参数化可得
-\[
-\dif x=-\sin t\,\dif t,
-\qquad
-\dif y=\cos t\,\dif t.
-\]
-将其代入一次形式, 得到
-\[
-\omega
-=
-\cos t\cos t\,\dif t
--
-\sin t(-\sin t\,\dif t)
-=
-\dif t.
-\]
-因此
-\[
-\int_C\omega
-=
-\int_0^{2\pi}\dif t
-=
-2\pi.
-\]
-该结果表明, 一次形式沿曲线的积分本质上是将一次形式拉回到参数区间后进行普通积分. 
+	由参数化可得
+	\[
+	\dif x=-\sin t\,\dif t,
+	\qquad
+	\dif y=\cos t\,\dif t.
+	\]
+	将其代入一次形式, 得到
+	\[
+	\omega
+	=
+	\cos t\cos t\,\dif t
+	-
+	\sin t(-\sin t\,\dif t)
+	=
+	\dif t.
+	\]
+	因此
+	\[
+	\int_C\omega
+	=
+	\int_0^{2\pi}\dif t
+	=
+	2\pi.
+	\]
+	该结果表明, 一次形式沿曲线的积分本质上是将一次形式拉回到参数区间后进行普通积分. 
 \end{solution}
+\end{example}
+
 \section{广义 Stokes 公式}
 
 广义 Stokes 公式是微分形式理论中最重要的积分定理. 设 $M$ 是一个带边界的定向光滑区域, $\omega$ 是定义在 $M$ 上的适当阶数的微分形式, 则
@@ -997,36 +998,37 @@ M=[a,b],
 \[
 \omega=P\,\dif x+Q\,\dif y.
 \]
-求 $\dif\omega$, 并说明它与 Green 公式中的面积分被积函数的关系. 
-\end{example}
+求 $\dif\omega$, 并说明它与 Green 公式中的面积分被积函数的关系.
 \begin{solution}
-由外微分的 Leibniz 规则和 $\dif^{2}x=\dif^{2}y=0$, 有
-\[
-\dif\omega
-=
-\dif P\wedge\dif x+
-\dif Q\wedge\dif y.
-\]
-又因为
-\[
-\dif P=P_x\,\dif x+P_y\,\dif y,
-\qquad
-\dif Q=Q_x\,\dif x+Q_y\,\dif y,
-\]
-所以
-\[
-\dif\omega
-=
-P_y\,\dif y\wedge\dif x+Q_x\,\dif x\wedge\dif y.
-\]
-利用 $\dif y\wedge\dif x=-\dif x\wedge\dif y$, 得到
-\[
-\dif\omega
-=
-(Q_x-P_y)\,\dif x\wedge\dif y.
-\]
-因此 Green 公式中的面积分被积函数 $Q_x-P_y$ 正是一次形式 $\omega$ 的外微分系数. 
-\end{solution}
+	由外微分的 Leibniz 规则和 $\dif^{2}x=\dif^{2}y=0$, 有
+	\[
+	\dif\omega
+	=
+	\dif P\wedge\dif x+
+	\dif Q\wedge\dif y.
+	\]
+	又因为
+	\[
+	\dif P=P_x\,\dif x+P_y\,\dif y,
+	\qquad
+	\dif Q=Q_x\,\dif x+Q_y\,\dif y,
+	\]
+	所以
+	\[
+	\dif\omega
+	=
+	P_y\,\dif y\wedge\dif x+Q_x\,\dif x\wedge\dif y.
+	\]
+	利用 $\dif y\wedge\dif x=-\dif x\wedge\dif y$, 得到
+	\[
+	\dif\omega
+	=
+	(Q_x-P_y)\,\dif x\wedge\dif y.
+	\]
+	因此 Green 公式中的面积分被积函数 $Q_x-P_y$ 正是一次形式 $\omega$ 的外微分系数. 
+\end{solution} 
+\end{example}
+
 \subsection{三维 Stokes 公式}
 
 设三维空间中的向量场为 $\bm{A}$, 其对应一次形式为

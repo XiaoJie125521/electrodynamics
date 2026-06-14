@@ -1,0 +1,2198 @@
+\chapter{静电场}
+
+\section{静电近似与 Maxwell 方程的退化}
+
+前面几章从四维协变形式、能量动量守恒和场论结构讨论了电磁场的一般性质。从本章开始，转向静态电磁学的具体求解。静电场是电磁学中最基本的静态极限，它研究不随时间变化的电荷分布所产生的电场。
+
+在静态情形下，电荷密度和电流密度不随时间变化，场量也不随时间变化：
+\[
+\frac{\partial \rho}{\partial t}=0,
+\qquad
+\frac{\partial \bm{j}}{\partial t}=0,
+\qquad
+\frac{\partial \bm{E}}{\partial t}=0,
+\qquad
+\frac{\partial \bm{B}}{\partial t}=0.
+\]
+此时 Maxwell 方程化为
+\begin{equation}
+	\begin{dcases}
+		\bm{\nabla}\cdot\bm{E}=\frac{\rho}{\varepsilon_{0}}, \\[6pt]
+		\bm{\nabla}\times\bm{E}=\bm{0}, \\[6pt]
+		\bm{\nabla}\cdot\bm{B}=0, \\[6pt]
+		\bm{\nabla}\times\bm{B}=\mu_{0}\bm{j}.
+	\end{dcases}
+\end{equation}
+可以看到，静态情况下电场方程和磁场方程相互分离。静电场只由电荷密度 $\rho$ 决定，其基本方程为
+\begin{equation}
+	\bm{\nabla}\cdot\bm{E}
+	=
+	\frac{\rho}{\varepsilon_{0}},
+	\qquad
+	\bm{\nabla}\times\bm{E}=0.
+	\label{eq:10:electrostatic-equations}
+\end{equation}
+第一式说明电荷是静电场的源；第二式说明静电场是无旋场。正是无旋性使得静电场可以用一个标量势函数表示，从而把矢量场问题化为标量偏微分方程问题。
+
+静电近似并不是说磁场必然不存在，而是说在本章所讨论的问题中，电场由静止电荷分布决定，并且可以与稳恒电流产生的磁场问题分开处理。静磁场将在后续章节中讨论。
+
+\section{电势与电场的无旋性}
+
+由式 \eqref{eq:10:electrostatic-equations} 可知，静电场满足
+\[
+\bm{\nabla}\times\bm{E}=0.
+\]
+在单连通区域中，无旋矢量场可以表示为某个标量函数的梯度。因此可以引入静电势 $\phi$，定义为
+\begin{equation}
+	\bm{E}
+	=
+	-\bm{\nabla}\phi.
+	\label{eq:10:e-potential}
+\end{equation}
+这里的负号有明确的物理意义。正试探电荷在电场方向上运动时，电场力做正功，电势能降低。因此电场方向指向电势降低最快的方向，而不是电势升高最快的方向。
+
+由 \eqref{eq:10:e-potential} 可得
+\[
+\bm{\nabla}\times\bm{E}
+=
+-\bm{\nabla}\times(\bm{\nabla}\phi)
+=
+0.
+\]
+所以用电势定义的电场自动满足静电场的无旋方程。
+
+电势并不是唯一的。若把电势改为
+\[
+\phi'
+=
+\phi+C,
+\]
+其中 $C$ 是常数，则
+\[
+\bm{E}'
+=
+-\bm{\nabla}\phi'
+=
+-\bm{\nabla}\phi
+=
+\bm{E}.
+\]
+因此，静电势具有加常数的不唯一性。物理上有意义的是电势差，而不是电势的绝对零点。
+
+沿曲线 $C$ 从点 $A$ 到点 $B$ 的电势差为
+\[
+\phi(B)-\phi(A)
+=
+-\int_{A}^{B}\bm{E}\cdot\dif\bm{l}.
+\]
+由于静电场无旋，线积分只依赖端点而与路径无关。等价地，对任意闭合回路有
+\[
+\oint \bm{E}\cdot\dif\bm{l}=0.
+\]
+这正是静电场保守性的数学表达。
+
+\section{Gauss 定律与 Poisson 方程}
+
+将电势表示式 \eqref{eq:10:e-potential} 代入 Gauss 定律
+\[
+\bm{\nabla}\cdot\bm{E}
+=
+\frac{\rho}{\varepsilon_{0}},
+\]
+得到
+\[
+\bm{\nabla}\cdot(-\bm{\nabla}\phi)
+=
+\frac{\rho}{\varepsilon_{0}}.
+\]
+因此电势满足
+\begin{equation}
+	\nabla^{2}\phi
+	=
+	-\frac{\rho}{\varepsilon_{0}}.
+	\label{eq:10:poisson}
+\end{equation}
+这就是静电势的 Poisson 方程。
+
+若所考察区域内没有电荷分布，即 $\rho=0$，则 \eqref{eq:10:poisson} 退化为
+\begin{equation}
+	\nabla^{2}\phi=0.
+	\label{eq:10:laplace}
+\end{equation}
+这称为 Laplace 方程。
+
+因此，静电学中的基本求解问题可以表述为：给定电荷分布和边界条件，求解 Poisson 方程或 Laplace 方程，然后由
+\[
+\bm{E}
+=
+-\bm{\nabla}\phi
+\]
+得到电场。
+
+Poisson 方程是椭圆型偏微分方程。与波动方程不同，它不描述随时间传播的过程，而是描述给定源分布和边界条件后空间中的场分布。静电问题的核心也因此从动力学演化问题转化为边值问题。
+
+\section{Coulomb 定律与自由空间 Green 函数}
+
+先考虑最简单的源：位于原点的点电荷 $q$。它的电荷密度可以写为
+\[
+\rho(\bm{r})
+=
+q\delta^{(3)}(\bm{r}),
+\]
+其中 $\delta^{(3)}(\bm{r})$ 是三维 Dirac 函数。对任意包含原点的体积 $V$，有
+\[
+\int_{V}\rho(\bm{r})\,\dif^{3}r
+=
+q.
+\]
+由球对称性，点电荷产生的电场只能沿径向，且大小只依赖距离 $r$。取以原点为球心、半径为 $r$ 的球面作为 Gauss 面，则
+\[
+\oint_{S}\bm{E}\cdot\dif\bm{a}
+=
+E(r)4\pi r^{2}
+=
+\frac{q}{\varepsilon_{0}}.
+\]
+于是
+\[
+\bm{E}(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{q}{r^{2}}\bm{e}_{r}.
+\]
+由 $\bm{E}=-\bm{\nabla}\phi$，并取无穷远处电势为零，得到点电荷电势
+\begin{equation}
+	\phi(\bm{r})
+	=
+	\frac{1}{4\pi\varepsilon_{0}}
+	\frac{q}{r}.
+	\label{eq:10:point-charge-potential}
+\end{equation}
+
+在分布意义下有恒等式
+\[
+\nabla^{2}\left(\frac{1}{r}\right)
+=
+-4\pi\delta^{(3)}(\bm{r}).
+\]
+因此 \eqref{eq:10:point-charge-potential} 满足
+\[
+\nabla^{2}\phi
+=
+-\frac{q}{\varepsilon_{0}}\delta^{(3)}(\bm{r}),
+\]
+正是 Poisson 方程 \eqref{eq:10:poisson} 对点电荷源的形式。
+
+对无界真空中的任意连续电荷分布，在电势于无穷远处趋于零的条件下，可以利用叠加原理写出电势：
+\begin{equation}
+	\phi(\bm{r})
+	=
+	\frac{1}{4\pi\varepsilon_{0}}
+	\int
+	\frac{\rho(\bm{r}')}{|\bm{r}-\bm{r}'|}
+	\,\dif^{3}r'.
+	\label{eq:10:potential-integral}
+\end{equation}
+这就是 Coulomb 定律的积分形式。
+
+从偏微分方程角度看，\eqref{eq:10:potential-integral} 是 Poisson 方程在无界空间中、且电势在无穷远处趋于零时的自由空间 Green 函数解。定义
+\[
+G(\bm{r},\bm{r}')
+=
+\frac{1}{4\pi|\bm{r}-\bm{r}'|}.
+\]
+它满足
+\[
+\nabla^{2}G(\bm{r},\bm{r}')
+=
+-\delta^{(3)}(\bm{r}-\bm{r}').
+\]
+于是 Poisson 方程的解可写为
+\[
+\phi(\bm{r})
+=
+\frac{1}{\varepsilon_{0}}
+\int
+G(\bm{r},\bm{r}')\rho(\bm{r}')
+\,\dif^{3}r'.
+\]
+这种形式的意义在于：Green 函数描述单位点源的响应，一般源分布的解可以看成所有点源响应的叠加。对于有边界的区域，Green 函数还必须满足相应的边界条件，电势表达式通常也包含边界积分项，不能直接套用自由空间形式。
+
+若电荷分布局域在有限区域内，并且观察点远离电荷分布区域，即 $r\gg r'$，则
+\[
+|\bm{r}-\bm{r}'|
+\approx r.
+\]
+于是电势最低阶近似为
+\[
+\phi(\bm{r})
+\approx
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{1}{r}
+\int \rho(\bm{r}')\,\dif^{3}r'
+=
+\frac{Q}{4\pi\varepsilon_{0}r},
+\]
+其中
+\[
+Q
+=
+\int \rho(\bm{r}')\,\dif^{3}r'
+\]
+是系统总电荷。当 $Q\neq 0$ 时，这说明远离局域带电体系后，最低阶效应等价于一个带总电荷 $Q$ 的点电荷；若 $Q=0$，则必须继续考察偶极项或更高阶多极项。
+
+\begin{example}{均匀带电球体的电场与电势}{10,1}
+半径为 $R$ 的实心球内均匀分布着总电荷 $Q$。取无穷远处电势为零，求球内外的电场和电势。
+
+\begin{solution}
+球内的体电荷密度为
+\[
+\rho
+=
+\frac{Q}{\frac{4}{3}\pi R^{3}}.
+\]
+由于电荷分布具有球对称性，电场可写为
+\[
+\bm{E}=E(r)\bm{e}_{r}.
+\]
+当 $r<R$ 时，半径为 $r$ 的 Gauss 面所包围的电荷为
+\[
+Q(r)
+=
+\rho\frac{4}{3}\pi r^{3}
+=
+Q\frac{r^{3}}{R^{3}}.
+\]
+由 Gauss 定律，
+\[
+E(r)4\pi r^{2}
+=
+\frac{Q(r)}{\varepsilon_{0}},
+\]
+所以
+\[
+\bm{E}(r)
+=
+\frac{Q}{4\pi\varepsilon_{0}}
+\frac{r}{R^{3}}\bm{e}_{r},
+\qquad r<R.
+\]
+当 $r>R$ 时，Gauss 面包围全部电荷，故
+\[
+\bm{E}(r)
+=
+\frac{Q}{4\pi\varepsilon_{0}r^{2}}\bm{e}_{r},
+\qquad r>R.
+\]
+
+球外电势与点电荷相同：
+\[
+\phi(r)
+=
+\frac{Q}{4\pi\varepsilon_{0}r},
+\qquad r\geq R.
+\]
+球内电势可由
+\[
+\phi(r)-\phi(R)
+=
+-\int_{R}^{r}\bm{E}\cdot\dif\bm{l}
+\]
+求得。代入球内电场，并利用
+\[
+\phi(R)=\frac{Q}{4\pi\varepsilon_{0}R},
+\]
+得到
+\[
+\phi(r)
+=
+\frac{Q}{8\pi\varepsilon_{0}R}
+\left(
+3-\frac{r^{2}}{R^{2}}
+\right),
+\qquad r\leq R.
+\]
+电势在 $r=R$ 处连续，而电场也因表面不存在面电荷而连续。
+\end{solution}
+\end{example}
+
+
+\section{电势的多极展开}
+
+上一节给出了一般电荷分布的电势积分
+\[
+\phi(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\int
+\frac{\rho(\bm{r}')}{|\bm{r}-\bm{r}'|}
+\,\dif^{3}r'.
+\]
+这个公式原则上已经解决了无界空间中的静电势问题，但在实际计算中，直接求积分往往并不方便。若电荷分布局域在原点附近，而观察点位于远处，即
+\[
+r\gg r',
+\]
+则可以把核函数 $1/|\bm{r}-\bm{r}'|$ 按 $r'/r$ 展开。这样得到的展开称为电势的多极展开。
+
+多极展开的物理意义是：远离电荷分布时，电势并不依赖于电荷分布的全部微观细节，而主要由少数几个低阶矩量决定。最低阶是总电荷，其次是电偶极矩，再其次是电四极矩。若某一低阶矩量为零，则远场的主导项由下一阶非零多极矩决定。
+
+\subsection{基于 Legendre 多项式的展开}
+
+设源点为 $\bm{r}'$，观察点为 $\bm{r}$，二者夹角为 $\alpha$。由余弦定理，
+\[
+|\bm{r}-\bm{r}'|^{2}
+=
+r^{2}+r'^{2}-2rr'\cos\alpha.
+\]
+因此
+\[
+\frac{1}{|\bm{r}-\bm{r}'|}
+=
+\frac{1}{r}
+\frac{1}{
+	\sqrt{
+		1-2(r'/r)\cos\alpha+(r'/r)^{2}
+	}
+}.
+\]
+令
+\[
+t=\frac{r'}{r},
+\qquad
+x=\cos\alpha.
+\]
+在远场区域 $r>r'$ 中，$|t|<1$，可以使用 Legendre 多项式的生成函数
+\[
+\frac{1}{\sqrt{1-2xt+t^{2}}}
+=
+\sum_{l=0}^{\infty}P_{l}(x)t^{l}.
+\]
+于是
+\begin{equation}
+	\frac{1}{|\bm{r}-\bm{r}'|}
+	=
+	\sum_{l=0}^{\infty}
+	\frac{r'^{l}}{r^{l+1}}
+	P_{l}(\cos\alpha).
+	\label{eq:10:legendre-kernel-expansion}
+\end{equation}
+代入电势积分，得到
+\begin{equation}
+	\phi(\bm{r})
+	=
+	\frac{1}{4\pi\varepsilon_{0}}
+	\sum_{l=0}^{\infty}
+	\frac{1}{r^{l+1}}
+	\int
+	r'^{l}P_{l}(\cos\alpha)
+	\rho(\bm{r}')
+	\,\dif^{3}r'.
+	\label{eq:10:legendre-multipole}
+\end{equation}
+
+当 $l=0$ 时，$P_{0}(\cos\alpha)=1$，故
+\[
+\phi_{0}(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{1}{r}
+\int \rho(\bm{r}')\,\dif^{3}r'.
+\]
+记总电荷为
+\[
+Q
+=
+\int \rho(\bm{r}')\,\dif^{3}r',
+\]
+则
+\[
+\phi_{0}(\bm{r})
+=
+\frac{Q}{4\pi\varepsilon_{0}r}.
+\]
+这就是单极项。
+
+当 $l=1$ 时，$P_{1}(\cos\alpha)=\cos\alpha$，于是
+\[
+\phi_{1}(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{1}{r^{2}}
+\int r'\cos\alpha\,\rho(\bm{r}')\,\dif^{3}r'.
+\]
+由于
+\[
+r'\cos\alpha
+=
+\bm{r}'\cdot\hat{\bm{r}},
+\]
+定义电偶极矩
+\begin{equation}
+	\bm{p}
+	=
+	\int
+	\bm{r}'\rho(\bm{r}')
+	\,\dif^{3}r',
+	\label{eq:10:dipole-moment}
+\end{equation}
+则
+\[
+\phi_{1}(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{\bm{p}\cdot\hat{\bm{r}}}{r^{2}}.
+\]
+这就是电偶极项。
+
+当 $l=2$ 时，
+\[
+P_{2}(\cos\alpha)
+=
+\frac{1}{2}(3\cos^{2}\alpha-1).
+\]
+相应的四极项为
+\[
+\phi_{2}(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{1}{r^{3}}
+\int
+r'^{2}
+\frac{3\cos^{2}\alpha-1}{2}
+\rho(\bm{r}')
+\,\dif^{3}r'.
+\]
+单极项按 $1/r$ 衰减，偶极项按 $1/r^{2}$ 衰减，四极项按 $1/r^{3}$ 衰减。因此远离源分布时，最低阶非零多极矩决定主要电势分布。
+
+\subsection{球谐函数形式的多极展开}
+
+式 \eqref{eq:10:legendre-multipole} 中的 $P_{l}(\cos\alpha)$ 同时含有观察点方向和源点方向。为了分离这两组角变量，引入球谐函数加法定理：
+\[
+P_{l}(\cos\alpha)
+=
+\frac{4\pi}{2l+1}
+\sum_{m=-l}^{l}
+Y_{lm}^{*}(\theta',\varphi')
+Y_{lm}(\theta,\varphi).
+\]
+这里 $(\theta,\varphi)$ 是观察点方向，$(\theta',\varphi')$ 是源点方向。
+
+代入 \eqref{eq:10:legendre-kernel-expansion}，得到
+\[
+\frac{1}{|\bm{r}-\bm{r}'|}
+=
+4\pi
+\sum_{l=0}^{\infty}
+\sum_{m=-l}^{l}
+\frac{1}{2l+1}
+\frac{r'^{l}}{r^{l+1}}
+Y_{lm}^{*}(\theta',\varphi')
+Y_{lm}(\theta,\varphi),
+\qquad r>r'.
+\]
+于是电势可写为
+\begin{equation}
+	\phi(\bm{r})
+	=
+	\frac{1}{\varepsilon_{0}}
+	\sum_{l=0}^{\infty}
+	\sum_{m=-l}^{l}
+	\frac{1}{2l+1}
+	\frac{q_{lm}}{r^{l+1}}
+	Y_{lm}(\theta,\varphi),
+	\label{eq:10:spherical-multipole-potential}
+\end{equation}
+其中
+\begin{equation}
+	q_{lm}
+	=
+	\int
+	r'^{l}
+	Y_{lm}^{*}(\theta',\varphi')
+	\rho(\bm{r}')
+	\,\dif^{3}r'
+	\label{eq:10:spherical-multipole-moment}
+\end{equation}
+称为球面多极矩。
+
+球谐形式的优点是角变量完全分离：$q_{lm}$ 只由源分布决定，而 $Y_{lm}(\theta,\varphi)/r^{l+1}$ 只由观察点决定。因此，在具有球对称、轴对称或角动量结构的问题中，球谐形式比笛卡尔形式更自然。
+
+当 $l=0$ 时，只有 $m=0$，且
+\[
+Y_{00}
+=
+\frac{1}{\sqrt{4\pi}}.
+\]
+于是
+\[
+q_{00}
+=
+\frac{Q}{\sqrt{4\pi}}.
+\]
+代入 \eqref{eq:10:spherical-multipole-potential} 可恢复单极电势
+\[
+\phi_{0}
+=
+\frac{Q}{4\pi\varepsilon_{0}r}.
+\]
+
+当 $l=1$ 时，$m=-1,0,1$，对应电偶极矩的三个独立分量。例如
+\[
+q_{10}
+=
+\sqrt{\frac{3}{4\pi}}p_{z},
+\]
+\[
+q_{11}
+=
+-\sqrt{\frac{3}{8\pi}}(p_{x}-ip_{y}),
+\qquad
+q_{1,-1}
+=
+\sqrt{\frac{3}{8\pi}}(p_{x}+ip_{y}).
+\]
+因此，球面多极矩的 $l=1$ 部分与笛卡尔电偶极矩 $\bm{p}$ 等价，只是采用了球基表示。
+
+当 $l=2$ 时，$m=-2,-1,0,1,2$，共有五个独立分量。这与笛卡尔四极矩张量的五个独立分量相对应。球面多极矩和笛卡尔多极矩描述的是同一组远场信息，只是基底不同。
+
+\subsection{基于 Taylor 展开的笛卡尔多极展开}
+
+多极展开也可以从 Taylor 展开得到。对远场点 $r\gg r'$，把核函数在 $\bm{r}'=0$ 附近展开：
+\[
+\frac{1}{|\bm{r}-\bm{r}'|}
+=
+\frac{1}{r}
+-
+r'_{\alpha}\partial_{\alpha}\left(\frac{1}{r}\right)
++
+\frac{1}{2}
+r'_{\alpha}r'_{\beta}
+\partial_{\alpha}\partial_{\beta}
+\left(\frac{1}{r}\right)
++\cdots.
+\]
+这里采用 Einstein 求和约定，$\partial_{\alpha}$ 是对观察点坐标 $x_{\alpha}$ 的偏导数。代入电势积分，得到
+\[
+\phi(\bm{r})
+=
+\phi_{0}(\bm{r})
++
+\phi_{1}(\bm{r})
++
+\phi_{2}(\bm{r})
++\cdots.
+\]
+
+零阶项为
+\[
+\phi_{0}(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{1}{r}
+\int \rho(\bm{r}')\,\dif^{3}r'
+=
+\frac{Q}{4\pi\varepsilon_{0}r}.
+\]
+
+一阶项为
+\[
+\phi_{1}(\bm{r})
+=
+-\frac{1}{4\pi\varepsilon_{0}}
+\partial_{\alpha}\left(\frac{1}{r}\right)
+\int r'_{\alpha}\rho(\bm{r}')\,\dif^{3}r'.
+\]
+定义电偶极矩分量
+\[
+p_{\alpha}
+=
+\int r'_{\alpha}\rho(\bm{r}')\,\dif^{3}r',
+\]
+则
+\[
+\phi_{1}(\bm{r})
+=
+-\frac{1}{4\pi\varepsilon_{0}}
+p_{\alpha}\partial_{\alpha}\left(\frac{1}{r}\right).
+\]
+由于
+\[
+\partial_{\alpha}\left(\frac{1}{r}\right)
+=
+-\frac{x_{\alpha}}{r^{3}},
+\]
+所以
+\[
+\phi_{1}(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{\bm{p}\cdot\bm{r}}{r^{3}}
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{\bm{p}\cdot\hat{\bm{r}}}{r^{2}}.
+\]
+
+二阶项为
+\[
+\phi_{2}(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{1}{2}
+\partial_{\alpha}\partial_{\beta}
+\left(\frac{1}{r}\right)
+\int r'_{\alpha}r'_{\beta}\rho(\bm{r}')\,\dif^{3}r'.
+\]
+在 $r\neq 0$ 区域，
+\[
+\nabla^{2}\left(\frac{1}{r}\right)=0.
+\]
+因此可以把二阶矩改写为无迹四极矩张量。定义
+\begin{equation}
+	D_{\alpha\beta}
+	=
+	\int
+	(3r'_{\alpha}r'_{\beta}-r'^{2}\delta_{\alpha\beta})
+	\rho(\bm{r}')
+	\,\dif^{3}r'.
+	\label{eq:10:quadrupole-tensor}
+\end{equation}
+它满足
+\[
+D_{\alpha\beta}=D_{\beta\alpha},
+\qquad
+D_{\alpha\alpha}=0.
+\]
+又有
+\[
+\partial_{\alpha}\partial_{\beta}
+\left(\frac{1}{r}\right)
+=
+\frac{3x_{\alpha}x_{\beta}-r^{2}\delta_{\alpha\beta}}{r^{5}}.
+\]
+于是四极项可以写成
+\[
+\phi_{2}(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{1}{6}
+D_{\alpha\beta}
+\frac{3x_{\alpha}x_{\beta}-r^{2}\delta_{\alpha\beta}}{r^{5}}.
+\]
+由于 $D_{\alpha\alpha}=0$，也可以写成
+\[
+\phi_{2}(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{1}{2r^{5}}
+D_{\alpha\beta}x_{\alpha}x_{\beta}.
+\]
+
+因此，笛卡尔形式的远场电势可写为
+\begin{equation}
+	\phi(\bm{r})
+	=
+	\frac{1}{4\pi\varepsilon_{0}}
+	\left[
+	\frac{Q}{r}
+	+
+	\frac{\bm{p}\cdot\hat{\bm{r}}}{r^{2}}
+	+
+	\frac{1}{2r^{5}}
+	D_{\alpha\beta}x_{\alpha}x_{\beta}
+	+\cdots
+	\right].
+	\label{eq:10:cartesian-multipole}
+\end{equation}
+该式清楚显示了各阶多极矩的几何意义：总电荷描述整体净电荷，电偶极矩描述正负电荷中心的分离，四极矩描述电荷分布的拉伸、压缩和各向异性。
+
+球谐函数形式和 Taylor 笛卡尔形式并不是两种不同物理理论。二者描述同一个远场展开，只是选取了不同的角向基底。球谐形式适合处理旋转对称性和角向本征模式，笛卡尔形式适合低阶多极矩的直观解释和实际近似。
+
+\begin{example}{零总电荷体系的远场主导项}{10,2}
+在 $z$ 轴上的 $z=a$ 和 $z=-a$ 处各放置一个电荷 $+q$，并在原点放置电荷 $-2q$。求该体系的总电荷和电偶极矩，并求 $z>a$ 的轴线上远场电势的最低阶非零项。
+
+\begin{solution}
+体系的总电荷为
+\[
+Q=q+q-2q=0.
+\]
+取原点为多极展开中心，电偶极矩为
+\[
+\bm{p}
+=
+q(a\bm{e}_{z})
++
+q(-a\bm{e}_{z})
++
+(-2q)\bm{0}
+=
+0.
+\]
+因此单极项和偶极项均为零，远场的最低阶非零贡献应为四极项。
+
+对 $z>a$ 的轴上观察点，精确电势为
+\[
+\phi(z)
+=
+\frac{q}{4\pi\varepsilon_{0}}
+\left(
+\frac{1}{z-a}
++
+\frac{1}{z+a}
+-
+\frac{2}{z}
+\right).
+\]
+当 $z\gg a$ 时，
+\[
+\frac{1}{z\mp a}
+=
+\frac{1}{z}
+\left(
+1\pm\frac{a}{z}+\frac{a^{2}}{z^{2}}+\cdots
+\right).
+\]
+将两式相加，奇次幂项相消，得到
+\[
+\frac{1}{z-a}
++
+\frac{1}{z+a}
+=
+\frac{2}{z}
++
+\frac{2a^{2}}{z^{3}}
++
+O\left(\frac{a^{4}}{z^{5}}\right).
+\]
+因此
+\[
+\phi(z)
+=
+\frac{q}{4\pi\varepsilon_{0}}
+\left[
+\frac{2a^{2}}{z^{3}}
++
+O\left(\frac{a^{4}}{z^{5}}\right)
+\right].
+\]
+电势按 $1/z^{3}$ 衰减，与四极场的远场行为一致。
+\end{solution}
+\end{example}
+
+\section{静电场的边界条件}
+
+静电场的边界条件来自 Maxwell 方程的积分形式。设两种介质或两个区域的分界面法向单位矢量为 $\bm{n}$，方向从区域 $1$ 指向区域 $2$。界面两侧的电场分别为 $\bm{E}_{1}$ 和 $\bm{E}_{2}$。
+
+先考虑法向分量。取一个跨过界面的薄柱形 Gauss 面，柱面上下底面积为 $\Delta A$，高度趋于零。Gauss 定律给出
+\[
+\oint \bm{E}\cdot\dif\bm{a}
+=
+\frac{1}{\varepsilon_{0}}
+\int \rho\,\dif V.
+\]
+当柱高趋于零时，侧面积贡献消失，只有上下底面贡献。若界面上有面电荷密度 $\sigma$，则
+\[
+\bm{n}\cdot\bm{E}_{2}\Delta A
+-
+\bm{n}\cdot\bm{E}_{1}\Delta A
+=
+\frac{\sigma \Delta A}{\varepsilon_{0}}.
+\]
+因此
+\begin{equation}
+	\bm{n}\cdot(\bm{E}_{2}-\bm{E}_{1})
+	=
+	\frac{\sigma}{\varepsilon_{0}}.
+	\label{eq:10:boundary-normal-e}
+\end{equation}
+这说明电场法向分量在带面电荷的界面上发生跃变。
+
+再考虑切向分量。取一个跨过界面的狭长矩形回路，长边平行于界面，短边垂直于界面。由静电场无旋性，
+\[
+\oint \bm{E}\cdot\dif\bm{l}=0.
+\]
+令短边长度趋于零，短边贡献消失，得到
+\[
+(\bm{E}_{2})_{\parallel}\cdot\Delta\bm{l}
+-
+(\bm{E}_{1})_{\parallel}\cdot\Delta\bm{l}
+=
+0.
+\]
+因此
+\begin{equation}
+	\bm{n}\times(\bm{E}_{2}-\bm{E}_{1})=0.
+	\label{eq:10:boundary-tangential-e}
+\end{equation}
+这说明静电场的切向分量在界面上连续。
+
+用电势表示时，由 $\bm{E}=-\bm{\nabla}\phi$ 可知，对于不存在理想偶极层的普通界面，切向电场连续意味着电势本身连续：
+\[
+\phi_{1}|_{\partial V}
+=
+\phi_{2}|_{\partial V}.
+\]
+法向分量条件则转化为电势法向导数的跃变：
+\[
+-\frac{\partial\phi_{2}}{\partial n}
++
+\frac{\partial\phi_{1}}{\partial n}
+=
+\frac{\sigma}{\varepsilon_{0}}.
+\]
+这些边界条件是求解静电边值问题的基础。
+
+\begin{example}{无限大均匀带电平面的电场}{10,3}
+真空中有一个无限大平面，面电荷密度为 $\sigma$。利用对称性和电场边界条件求平面两侧的电场。
+
+\begin{solution}
+设平面的法向单位矢量为 $\bm{n}$，由平移对称性和面内旋转对称性，电场只能垂直于平面，且同一侧各点的场强相同。又由关于平面的反射对称性，两侧电场大小相等、方向相反，因此可写为
+\[
+\bm{E}_{2}=E\bm{n},
+\qquad
+\bm{E}_{1}=-E\bm{n}.
+\]
+法向边界条件给出
+\[
+\bm{n}\cdot(\bm{E}_{2}-\bm{E}_{1})
+=
+\frac{\sigma}{\varepsilon_{0}}.
+\]
+代入两侧电场，得到
+\[
+2E=\frac{\sigma}{\varepsilon_{0}},
+\]
+故
+\[
+\bm{E}_{2}
+=
+\frac{\sigma}{2\varepsilon_{0}}\bm{n},
+\qquad
+\bm{E}_{1}
+=
+-\frac{\sigma}{2\varepsilon_{0}}\bm{n}.
+\]
+当 $\sigma>0$ 时，电场从带电平面向两侧指向外部；当 $\sigma<0$ 时，方向相反。
+\end{solution}
+\end{example}
+
+\section{导体静电平衡}
+
+导体中存在可以自由移动的电荷。若导体内部存在非零电场，自由电荷就会在电场力作用下运动。因此，静电平衡时导体内部电场必须为零：
+\begin{equation}
+	\bm{E}=0
+	\qquad
+	\text{在导体内部}.
+	\label{eq:10:conductor-e-zero}
+\end{equation}
+由 $\bm{E}=-\bm{\nabla}\phi$ 可知，导体内部电势为常数。因此整个导体在静电平衡时是等势体。
+
+由 Gauss 定律可知，导体内部若处于静电平衡，则
+\[
+\rho
+=
+\varepsilon_{0}\bm{\nabla}\cdot\bm{E}
+=
+0.
+\]
+所以导体内部没有体电荷。多余电荷只能分布在导体表面。
+
+设导体表面外侧电场为 $\bm{E}_{\mathrm{out}}$，内侧电场为零。由法向边界条件 \eqref{eq:10:boundary-normal-e} 得
+\[
+\bm{n}\cdot\bm{E}_{\mathrm{out}}
+=
+\frac{\sigma}{\varepsilon_{0}},
+\]
+即
+\begin{equation}
+	E_{n}
+	=
+	\frac{\sigma}{\varepsilon_{0}}.
+	\label{eq:10:conductor-surface-field}
+\end{equation}
+这里 $\bm{n}$ 是导体表面向外的法向单位矢量。由切向边界条件 \eqref{eq:10:boundary-tangential-e} 和导体内部电场为零，可得导体表面外侧电场没有切向分量。因此，静电平衡时导体表面外侧电场垂直于导体表面。
+
+这些结论可以概括为：导体内部电场为零，导体为等势体，多余电荷分布在表面，表面外侧电场垂直于导体表面，且法向电场由表面电荷密度决定。
+
+若导体内部有空腔，并且空腔中没有电荷，则空腔内电场也为零。这就是静电屏蔽的基本原理。外部电荷可以改变导体外表面的电荷分布，但不能在封闭导体内部的无源空腔中产生静电场。
+
+\section{静电场的边值问题}
+
+静电问题通常不是只给出电荷分布就完全确定。实际问题中还需要边界条件。例如，导体表面可能给定电势，介质界面可能给定面电荷，或者无穷远处要求电势趋于零。因此，静电学的中心问题是 Poisson 方程或 Laplace 方程的边值问题。
+
+\subsection{边界条件的类型}
+
+常见边界条件有三类。第一类是 Dirichlet 边界条件，即在边界上给定电势：
+\[
+\phi|_{\partial V}
+=
+f.
+\]
+第二类是 Neumann 边界条件，即在边界上给定电势的法向导数：
+\[
+\frac{\partial\phi}{\partial n}\bigg|_{\partial V}
+=
+g.
+\]
+由于
+\[
+E_{n}
+=
+-\frac{\partial\phi}{\partial n},
+\]
+Neumann 边界条件等价于给定边界上的法向电场。纯 Neumann 问题的解只能确定到一个加法常数，并且边界数据必须与区域内的总电荷满足相容条件
+\[
+\oint_{\partial V}
+\frac{\partial\phi}{\partial n}\,\dif a
+=
+-\frac{1}{\varepsilon_{0}}
+\int_{V}\rho\,\dif^{3}x.
+\]
+第三类是混合边界条件，即在边界不同部分或以线性组合形式给定 $\phi$ 与 $\partial\phi/\partial n$。
+
+\subsection{一般形式的唯一性定理}
+
+边值问题的一个基本结论是唯一性定理。设 $\phi_{1}$ 和 $\phi_{2}$ 是同一区域 $V$ 内 Poisson 方程的两个解，并且对应相同的电荷密度。令
+\[
+\psi
+=
+\phi_{1}-\phi_{2}.
+\]
+则 $\psi$ 满足
+\[
+\nabla^{2}\psi=0.
+\]
+使用恒等式
+\[
+\bm{\nabla}\cdot(\psi\bm{\nabla}\psi)
+=
+(\bm{\nabla}\psi)^{2}
++
+\psi\nabla^{2}\psi.
+\]
+对区域 $V$ 积分，得
+\[
+\int_{V}
+\bm{\nabla}\cdot(\psi\bm{\nabla}\psi)\,\dif^{3}x
+=
+\int_{V}
+(\bm{\nabla}\psi)^{2}\,\dif^{3}x
++
+\int_{V}
+\psi\nabla^{2}\psi\,\dif^{3}x.
+\]
+由于 $\nabla^{2}\psi=0$，利用 Gauss 定理可得
+\begin{equation}
+	\int_{V}
+	(\bm{\nabla}\psi)^{2}\,\dif^{3}x
+	=
+	\oint_{\partial V}
+	\psi
+	\frac{\partial\psi}{\partial n}
+	\,\dif a.
+	\label{eq:10:uniqueness-identity}
+\end{equation}
+
+对于 Dirichlet 问题，两个解在边界上取值相同，因此
+\[
+\psi|_{\partial V}=0.
+\]
+式 \eqref{eq:10:uniqueness-identity} 的右侧为零，从而
+\[
+\int_{V}
+(\bm{\nabla}\psi)^{2}\,\dif^{3}x=0.
+\]
+因此
+\[
+\bm{\nabla}\psi=0.
+\]
+所以 $\psi$ 为常数。又因为边界上 $\psi=0$，故 $\psi=0$，即
+\[
+\phi_{1}=\phi_{2}.
+\]
+这证明了 Dirichlet 边值问题解的唯一性。
+
+对于纯 Neumann 问题，两个解具有相同的法向导数，因此
+\[
+\frac{\partial\psi}{\partial n}\bigg|_{\partial V}=0.
+\]
+式 \eqref{eq:10:uniqueness-identity} 的右侧同样为零，所以
+$\bm{\nabla}\psi=0$。此时只能推出 $\psi$ 是常数。这说明纯 Neumann
+问题的电场唯一，而电势还可以相差一个加法常数。只要再指定一点的电势或区域内电势的平均值，电势也随之唯一。
+
+如果边界的一部分给定电势，另一部分给定法向导数，则在两部分边界上分别有
+$\psi=0$ 和 $\partial\psi/\partial n=0$，式
+\eqref{eq:10:uniqueness-identity} 的右侧仍为零。因此，相应的混合边值问题也具有唯一解。
+
+\subsection{金属导体存在时的唯一性定理}
+
+有导体存在时，边界条件常以另一种形式给出：每个导体表面是等势面，但其电势数值未必预先知道；实验上给定的可能是各导体携带的总电荷。此时电势仍然唯一。
+
+设区域中有若干个导体，$\phi_{1}$ 和 $\phi_{2}$ 对应相同的外部电荷分布，并且每个导体上的总电荷也相同。令
+\[
+\psi=\phi_{1}-\phi_{2}.
+\]
+在导体外部区域中仍有 $\nabla^{2}\psi=0$。由于每个导体在两种解中都是等势体，$\psi$ 在同一个导体表面上取某个常数，记为 $C_{k}$。因此
+\[
+\oint_{\partial V}
+\psi\frac{\partial\psi}{\partial n}\,\dif a
+=
+\sum_{k}
+C_{k}
+\oint_{S_{k}}
+\frac{\partial\psi}{\partial n}\,\dif a.
+\]
+法向导数的通量差正比于该导体在两种解中的总电荷之差。由于各导体的总电荷相同，
+\[
+\oint_{S_{k}}
+\frac{\partial\psi}{\partial n}\,\dif a=0.
+\]
+所以边界积分为零。由 \eqref{eq:10:uniqueness-identity} 可知
+$\bm{\nabla}\psi=0$，两种解给出相同的电场。若无穷远处电势取零，或另行指定一个参考电势，则电势本身也唯一。
+这里已经假定无穷远处的边界积分消失；对于有限封闭区域，则应把外边界上给定的条件一并计入。
+
+唯一性定理的物理意义是：只要构造出一个满足 Poisson 方程以及全部边界条件的电势，它就是该问题的物理解。镜像法、Green 函数法和分离变量法之所以可靠，正是因为唯一性定理保证了满足条件的构造解不可能对应另一个不同的静电场。
+
+\section{镜像法}
+
+\subsection{基本思想}
+
+镜像法适用于某些具有简单几何边界的静电问题。它的基本思想是：在所求物理区域之外放置一组虚构的像电荷，使真实电荷与像电荷共同产生的电势在物理区域内满足给定边界条件。由于像电荷位于求解区域之外，它们不会改变该区域内的 Poisson 方程；而唯一性定理保证，只要边界条件也得到满足，构造出的电势就是所求解。
+
+镜像法并不是说导体内部真的存在这些点电荷。真实的导体响应表现为表面电荷的重新分布。像电荷只是在物理区域内产生同样电势的一种数学替代。由构造出的电势求出导体表面的法向电场后，仍可利用
+\[
+\sigma
+=
+\varepsilon_{0}E_{n}
+\]
+恢复真实的感应面电荷密度。
+
+\subsection{接地导体平面附近的点电荷}
+
+\begin{example}{接地导体平面附近的点电荷}{10,4}
+接地无限大导体平面位于 $z=0$，点电荷 $q$ 位于
+$(0,0,d)$，其中 $d>0$。求上半空间的电势、导体表面的感应面电荷密度以及点电荷受到的力。
+
+\begin{solution}
+上半空间 $z>0$ 是物理求解区域，边界条件为
+\[
+\phi(x,y,0)=0,
+\qquad
+\phi\to 0
+\quad
+\text{当 }r\to\infty.
+\]
+在下半空间的对称位置 $(0,0,-d)$ 放置像电荷 $-q$。真实电荷与像电荷共同产生的电势为
+\begin{equation}
+	\phi(s,z)
+	=
+	\frac{q}{4\pi\varepsilon_{0}}
+	\left[
+	\frac{1}{\sqrt{s^{2}+(z-d)^{2}}}
+	-
+	\frac{1}{\sqrt{s^{2}+(z+d)^{2}}}
+	\right],
+	\label{eq:10:image-grounded-plane-potential}
+\end{equation}
+其中 $s=\sqrt{x^{2}+y^{2}}$。在 $z=0$ 上两项恰好相消，所以导体表面电势为零；在上半空间中，只有真实电荷所在位置是源点。因此由唯一性定理，\eqref{eq:10:image-grounded-plane-potential} 就是物理区域内的电势。
+
+导体表面外侧的法向电场为
+\[
+E_{z}(s,0^{+})
+=
+-\frac{\partial\phi}{\partial z}\bigg|_{z=0^{+}}
+=
+-\frac{qd}{2\pi\varepsilon_{0}(s^{2}+d^{2})^{3/2}}.
+\]
+因此感应面电荷密度为
+\begin{equation}
+	\sigma(s)
+	=
+	-\frac{qd}{2\pi(s^{2}+d^{2})^{3/2}}.
+	\label{eq:10:image-grounded-plane-sigma}
+\end{equation}
+对整个平面积分可得
+\[
+\int_{0}^{\infty}\sigma(s)\,2\pi s\,\dif s=-q,
+\]
+即接地平面从大地吸引了总量为 $-q$ 的感应电荷。
+
+点电荷受到的力可以用像电荷在真实电荷位置产生的场计算。两电荷相距 $2d$，所以
+\[
+\bm{F}
+=
+-\frac{q^{2}}{16\pi\varepsilon_{0}d^{2}}\bm{e}_{z}.
+\]
+力指向导体平面。这里可以用像电荷计算真实电荷受到的力，但不能把真实电荷与像电荷体系的全部 Coulomb 能直接当作物理静电能；导体感应过程中还包含边界响应。
+\end{solution}
+\end{example}
+
+\subsection{接地导体球附近的点电荷}
+
+\begin{example}{接地导体球附近的点电荷}{10,5}
+半径为 $a$ 的导体球接地，点电荷 $q$ 位于球心外距离 $d$ 处，其中
+$d>a$。求球外区域的电势。
+
+\begin{solution}
+取球心为原点，并令点电荷位于 $z$ 轴上。尝试在球内同一轴线上放置像电荷
+\[
+q'=-\frac{a}{d}q,
+\qquad
+d'=\frac{a^{2}}{d},
+\]
+其中 $d'$ 是像电荷到球心的距离。球外任一点的电势为
+\begin{equation}
+	\phi(\bm{r})
+	=
+	\frac{1}{4\pi\varepsilon_{0}}
+	\left(
+	\frac{q}{|\bm{r}-d\bm{e}_{z}|}
+	+
+	\frac{q'}{|\bm{r}-d'\bm{e}_{z}|}
+	\right).
+	\label{eq:10:image-grounded-sphere-potential}
+\end{equation}
+
+对于球面上的点 $r=a$，两个距离满足
+\[
+|\bm{r}-d'\bm{e}_{z}|
+=
+\frac{a}{d}
+|\bm{r}-d\bm{e}_{z}|.
+\]
+因此
+\[
+\frac{q'}{|\bm{r}-d'\bm{e}_{z}|}
+=
+-\frac{q}{|\bm{r}-d\bm{e}_{z}|},
+\]
+球面电势恰好为零。像电荷位于导体内部，不在球外求解区域中，所以
+\eqref{eq:10:image-grounded-sphere-potential} 在球外只含真实点电荷源，并满足接地边界条件。由唯一性定理，它就是球外区域的电势。
+
+点电荷受到的力等于像电荷对它的 Coulomb 力。真实电荷与像电荷的距离为
+\[
+d-d'
+=
+\frac{d^{2}-a^{2}}{d},
+\]
+所以力的大小为
+\[
+F
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{q^{2}ad}{(d^{2}-a^{2})^{2}},
+\]
+方向指向导体球。
+\end{solution}
+\end{example}
+
+\section{Poisson 方程的 Green 函数法}
+
+\subsection{Green 第二恒等式}
+
+自由空间 Green 函数只适用于无界空间。若区域存在边界，Green 函数还必须把边界条件编码进去。设观察点为 $\bm{r}$，积分变量为 $\bm{r}'$，区域 $V$ 的外法向导数记为 $\partial/\partial n'$。对两个光滑函数 $\phi(\bm{r}')$ 和 $G(\bm{r},\bm{r}')$，Green 第二恒等式为
+\begin{equation}
+	\int_{V}
+	\left(
+	\phi\nabla'^{2}G
+	-
+	G\nabla'^{2}\phi
+	\right)
+	\,\dif^{3}r'
+	=
+	\oint_{\partial V}
+	\left(
+	\phi\frac{\partial G}{\partial n'}
+	-
+	G\frac{\partial\phi}{\partial n'}
+	\right)
+	\,\dif a'.
+	\label{eq:10:green-second-identity}
+\end{equation}
+
+令 Green 函数满足
+\[
+\nabla'^{2}G(\bm{r},\bm{r}')
+=
+-\delta^{(3)}(\bm{r}-\bm{r}'),
+\]
+并利用 Poisson 方程
+\[
+\nabla'^{2}\phi(\bm{r}')
+=
+-\frac{\rho(\bm{r}')}{\varepsilon_{0}},
+\]
+代入 \eqref{eq:10:green-second-identity}，得到
+\begin{equation}
+	\phi(\bm{r})
+	=
+	\frac{1}{\varepsilon_{0}}
+	\int_{V}
+	G(\bm{r},\bm{r}')
+	\rho(\bm{r}')
+	\,\dif^{3}r'
+	+
+	\oint_{\partial V}
+	\left(
+	G\frac{\partial\phi}{\partial n'}
+	-
+	\phi\frac{\partial G}{\partial n'}
+	\right)
+	\,\dif a'.
+	\label{eq:10:green-representation-general}
+\end{equation}
+第一项描述区域内部电荷的贡献，边界积分则描述边界数据的贡献。选择不同的 Green 函数，可以使边界积分只保留已知的边界量。
+
+\subsection{Dirichlet 边值问题}
+
+对于给定边界电势的 Dirichlet 问题，选择满足
+\begin{equation}
+	G_{\mathrm{D}}(\bm{r},\bm{r}')=0,
+	\qquad
+	\bm{r}'\in\partial V
+	\label{eq:10:dirichlet-green-boundary}
+\end{equation}
+的 Green 函数。此时 \eqref{eq:10:green-representation-general} 化为
+\begin{equation}
+	\phi(\bm{r})
+	=
+	\frac{1}{\varepsilon_{0}}
+	\int_{V}
+	G_{\mathrm{D}}(\bm{r},\bm{r}')
+	\rho(\bm{r}')
+	\,\dif^{3}r'
+	-
+	\oint_{\partial V}
+	\phi(\bm{r}')
+	\frac{\partial G_{\mathrm{D}}}{\partial n'}
+	\,\dif a'.
+	\label{eq:10:dirichlet-green-solution}
+\end{equation}
+右侧只包含已知的体电荷密度和边界电势，因此给出了 Dirichlet 问题的积分解。
+
+接地平面 $z=0$ 的 Dirichlet Green 函数可以写为
+\[
+G_{\mathrm{D}}(\bm{r},\bm{r}')
+=
+\frac{1}{4\pi|\bm{r}-\bm{r}'|}
+-
+\frac{1}{4\pi|\bm{r}-\bm{r}'_{\mathrm{im}}|},
+\]
+其中 $\bm{r}'_{\mathrm{im}}$ 是源点关于平面的镜像点。它在边界上为零。由此可见，镜像法实际上是在直接构造满足特定边界条件的 Green 函数。
+
+\subsection{Neumann 边值问题}
+
+纯 Neumann 问题存在一个额外限制：若要求 Green 函数在整个边界上满足零法向导数，就会与
+\[
+\int_{V}\nabla'^{2}G\,\dif^{3}r'=-1
+\]
+矛盾。因此设边界总面积为 $A_{\partial V}$，选取满足
+\begin{equation}
+	\frac{\partial G_{\mathrm{N}}}{\partial n'}
+	=
+	-\frac{1}{A_{\partial V}},
+	\qquad
+	\bm{r}'\in\partial V
+	\label{eq:10:neumann-green-boundary}
+\end{equation}
+的 Neumann Green 函数。将它代入
+\eqref{eq:10:green-representation-general}，得到
+\begin{equation}
+	\phi(\bm{r})
+	=
+	\overline{\phi}_{\partial V}
+	+
+	\frac{1}{\varepsilon_{0}}
+	\int_{V}
+	G_{\mathrm{N}}(\bm{r},\bm{r}')
+	\rho(\bm{r}')
+	\,\dif^{3}r'
+	+
+	\oint_{\partial V}
+	G_{\mathrm{N}}(\bm{r},\bm{r}')
+	\frac{\partial\phi}{\partial n'}
+	\,\dif a',
+	\label{eq:10:neumann-green-solution}
+\end{equation}
+其中
+\[
+\overline{\phi}_{\partial V}
+=
+\frac{1}{A_{\partial V}}
+\oint_{\partial V}\phi\,\dif a
+\]
+是边界电势的平均值。这个常数反映纯 Neumann 问题中电势零点的任意性。给定一个参考电势后，\eqref{eq:10:neumann-green-solution} 才完全确定电势。
+
+Green 函数法把边值问题分成两部分：Green 函数只由区域几何和边界条件的类型决定，而电荷分布与具体边界数据只出现在积分中。同一几何区域的 Green 函数一旦求得，就可以用于该区域内的一整类 Poisson 方程。
+
+\section{Laplace 方程的分离变量法}
+
+\subsection{一般步骤}
+
+在无源区域中，电势满足 Laplace 方程。若边界与某种正交坐标系相适应，可以尝试把电势写成若干单变量函数的乘积。代入 Laplace 方程后，各坐标变量被分离，并分别满足常微分方程。最后根据区域的正则性要求舍去发散解，再利用边界条件确定展开系数。
+
+分离变量法的关键不是任意猜测一个乘积，而是让坐标系适应边界几何：矩形边界适合直角坐标，球形边界适合球坐标，圆柱形边界适合柱坐标。分离后得到的本征函数在边界上构成正交函数系，因此一般边界数据可以按这些本征函数展开。
+
+\subsection{直角坐标中的矩形边值问题}
+
+考虑二维 Laplace 方程
+\[
+\frac{\partial^{2}\phi}{\partial x^{2}}
++
+\frac{\partial^{2}\phi}{\partial y^{2}}
+=0.
+\]
+令 $\phi=X(x)Y(y)$，代入并除以 $XY$，得到
+\[
+\frac{X''}{X}
+=
+-\frac{Y''}{Y}
+=
+-k^{2}.
+\]
+于是
+\[
+X''+k^{2}X=0,
+\qquad
+Y''-k^{2}Y=0.
+\]
+
+对于矩形区域 $0<x<a$、$0<y<b$，若三条边
+$x=0$、$x=a$ 和 $y=0$ 接地，而上边界电势为 $f(x)$，则满足前三条边界条件的解可写成
+\begin{equation}
+	\phi(x,y)
+	=
+	\sum_{n=1}^{\infty}
+	A_{n}
+	\sinh\left(\frac{n\pi y}{a}\right)
+	\sin\left(\frac{n\pi x}{a}\right).
+	\label{eq:10:rectangle-separated-solution}
+\end{equation}
+由 $\phi(x,b)=f(x)$ 以及正弦函数的正交性，
+\begin{equation}
+	A_{n}
+	=
+	\frac{2}
+	{a\sinh(n\pi b/a)}
+	\int_{0}^{a}
+	f(x)
+	\sin\left(\frac{n\pi x}{a}\right)
+	\,\dif x.
+	\label{eq:10:rectangle-coefficients}
+\end{equation}
+
+\begin{example}{矩形区域中的单一边界模式}{10,6}
+在上述矩形区域中，三条边接地，上边界电势为
+\[
+f(x)=V_{0}\sin\left(\frac{\pi x}{a}\right).
+\]
+求区域内的电势。
+
+\begin{solution}
+边界电势只包含第一阶正弦模式，因此
+\eqref{eq:10:rectangle-separated-solution} 中只有 $n=1$ 项。由
+\eqref{eq:10:rectangle-coefficients} 得
+\[
+A_{1}
+=
+\frac{V_{0}}{\sinh(\pi b/a)}.
+\]
+所以
+\[
+\phi(x,y)
+=
+V_{0}
+\frac{\sinh(\pi y/a)}
+{\sinh(\pi b/a)}
+\sin\left(\frac{\pi x}{a}\right).
+\]
+该电势在三条接地边上为零，并在 $y=b$ 上恢复给定的边界电势。一般的
+$f(x)$ 只是不同正弦模式的叠加。
+\end{solution}
+\end{example}
+
+\subsection{球坐标中的轴对称边值问题}
+
+若电势与方位角无关，球坐标中的 Laplace 方程为
+\[
+\frac{1}{r^{2}}
+\frac{\partial}{\partial r}
+\left(
+r^{2}\frac{\partial\phi}{\partial r}
+\right)
++
+\frac{1}{r^{2}\sin\theta}
+\frac{\partial}{\partial\theta}
+\left(
+\sin\theta\frac{\partial\phi}{\partial\theta}
+\right)
+=0.
+\]
+令 $\phi=R(r)\Theta(\theta)$，分离变量后角向方程的正则解为
+$P_{l}(\cos\theta)$，径向方程的两个独立解为 $r^{l}$ 和
+$r^{-(l+1)}$。因此一般轴对称解为
+\begin{equation}
+	\phi(r,\theta)
+	=
+	\sum_{l=0}^{\infty}
+	\left(
+	A_{l}r^{l}
+	+
+	\frac{B_{l}}{r^{l+1}}
+	\right)
+	P_{l}(\cos\theta).
+	\label{eq:10:spherical-separated-solution}
+\end{equation}
+球内问题要求电势在原点有限，因此保留 $r^{l}$ 项；球外问题若要求电势在无穷远处趋于零，则保留 $r^{-(l+1)}$ 项。边界电势按 Legendre 多项式展开后，各阶系数可以分别确定。
+
+\begin{example}{具有偶极型边界电势的球外区域}{10,7}
+半径为 $a$ 的球面由彼此绝缘的电极维持在电势
+\[
+\phi(a,\theta)=V_{0}\cos\theta.
+\]
+球外没有电荷，并且电势在无穷远处趋于零。求球外电势。
+
+\begin{solution}
+因为
+\[
+\cos\theta=P_{1}(\cos\theta),
+\]
+边界条件只包含 $l=1$ 模式。球外解必须在无穷远处消失，因此由
+\eqref{eq:10:spherical-separated-solution} 可设
+\[
+\phi(r,\theta)
+=
+\frac{B_{1}}{r^{2}}\cos\theta.
+\]
+代入 $r=a$ 处的边界条件，得到
+\[
+B_{1}=V_{0}a^{2}.
+\]
+所以
+\[
+\phi(r,\theta)
+=
+V_{0}\frac{a^{2}}{r^{2}}\cos\theta,
+\qquad
+r>a.
+\]
+该结果具有电偶极势的空间形式。这里球面电势随角度变化，因此球面应理解为由绝缘间隔分开的电极，而不是单个处于静电平衡的连通导体。
+\end{solution}
+\end{example}
+
+球形电容器是球坐标分离变量中最简单的 $l=0$ 模式。由于电势与角变量无关，Laplace 方程只剩径向部分。
+
+\begin{example}{球形电容器的电势与电容}{10,8}
+两个同心导体球面的半径分别为 $a$ 和 $b$，其中 $a<b$。内球电势为 $V_{0}$，外球接地。求两球之间的电势、电场以及电容。
+
+\begin{solution}
+两球之间没有体电荷，电势满足 Laplace 方程。由球对称性，电势只依赖 $r$：
+\[
+\frac{1}{r^{2}}
+\frac{\dif}{\dif r}
+\left(
+r^{2}\frac{\dif\phi}{\dif r}
+\right)
+=
+0.
+\]
+积分两次得到
+\[
+\phi(r)=A+\frac{B}{r}.
+\]
+边界条件为
+\[
+\phi(a)=V_{0},
+\qquad
+\phi(b)=0.
+\]
+解得
+\[
+B
+=
+\frac{V_{0}ab}{b-a},
+\qquad
+A
+=
+-\frac{V_{0}a}{b-a}.
+\]
+因此
+\[
+\phi(r)
+=
+\frac{V_{0}a}{b-a}
+\left(
+\frac{b}{r}-1
+\right),
+\qquad a<r<b.
+\]
+电场为
+\[
+\bm{E}
+=
+-\bm{\nabla}\phi
+=
+\frac{V_{0}ab}{b-a}
+\frac{1}{r^{2}}\bm{e}_{r}.
+\]
+内球表面的面电荷密度为
+\[
+\sigma
+=
+\varepsilon_{0}E(a)
+=
+\varepsilon_{0}
+\frac{V_{0}b}{a(b-a)}.
+\]
+内球所带总电荷为
+\[
+Q
+=
+4\pi a^{2}\sigma
+=
+4\pi\varepsilon_{0}
+\frac{ab}{b-a}V_{0}.
+\]
+所以球形电容器的电容为
+\[
+C
+=
+\frac{Q}{V_{0}}
+=
+4\pi\varepsilon_{0}
+\frac{ab}{b-a}.
+\]
+\end{solution}
+\end{example}
+
+\subsection{柱坐标中的二维边值问题}
+
+若问题与 $z$ 无关，柱坐标中的 Laplace 方程退化为极坐标形式
+\[
+\frac{1}{r}
+\frac{\partial}{\partial r}
+\left(
+r\frac{\partial\phi}{\partial r}
+\right)
++
+\frac{1}{r^{2}}
+\frac{\partial^{2}\phi}{\partial\varphi^{2}}
+=0.
+\]
+分离变量后，一般解可写为
+\begin{equation}
+	\begin{aligned}
+	\phi(r,\varphi)
+	={}&
+	A_{0}+B_{0}\ln r\\
+	&+
+	\sum_{m=1}^{\infty}
+	\left[
+	(A_{m}r^{m}+B_{m}r^{-m})\cos(m\varphi)
+	\right.\\
+	&\hspace{6em}\left.
+	+
+	(C_{m}r^{m}+D_{m}r^{-m})\sin(m\varphi)
+	\right].
+	\end{aligned}
+	\label{eq:10:cylindrical-separated-solution}
+\end{equation}
+是否保留 $\ln r$、$r^{m}$ 或 $r^{-m}$ 项，由区域是否包含轴线以及无穷远处的条件决定。
+
+\begin{example}{匀强电场中的接地导体圆柱}{10,9}
+半径为 $a$ 的无限长导体圆柱接地，远处存在沿 $x$ 方向的匀强电场
+$E_{0}$。求圆柱外的电势。
+
+\begin{solution}
+远处的匀强电场对应电势
+\[
+\phi\sim -E_{0}r\cos\varphi.
+\]
+因此只需要保留 $m=1$ 的余弦模式。为了同时满足远场条件和圆柱表面
+$\phi(a,\varphi)=0$，设
+\[
+\phi(r,\varphi)
+=
+-E_{0}
+\left(
+r-\frac{a^{2}}{r}
+\right)
+\cos\varphi.
+\]
+当 $r\to\infty$ 时，该式趋于 $-E_{0}r\cos\varphi$；当 $r=a$ 时，电势为零。因此由唯一性定理，
+\[
+\phi(r,\varphi)
+=
+-E_{0}
+\left(
+r-\frac{a^{2}}{r}
+\right)
+\cos\varphi,
+\qquad
+r>a
+\]
+就是圆柱外的电势。第二项可以理解为导体表面感应电荷所产生的响应。
+\end{solution}
+\end{example}
+
+\section{电介质中的静电场}
+
+真空中的静电场由全部电荷作为源。在电介质中，电荷需要区分为自由电荷和束缚电荷：
+\[
+\rho
+=
+\rho_{\mathrm{f}}
++
+\rho_{\mathrm{b}}.
+\]
+自由电荷是能够在宏观尺度上迁移或由外部电路提供的电荷。束缚电荷属于原子、分子或晶格内部，不能像自由电荷那样在介质中任意迁移。
+
+外电场作用于介质时，微观正负电荷中心会发生相对位移，或者分子偶极矩发生取向排列。这种宏观平均效应用极化强度 $\bm{P}$ 描述。极化强度定义为单位体积内的电偶极矩。
+
+束缚电荷密度由极化强度给出：
+\begin{equation}
+	\rho_{\mathrm{b}}
+	=
+	-\bm{\nabla}\cdot\bm{P}.
+	\label{eq:10:bound-volume-charge}
+\end{equation}
+介质与真空交界面上的束缚面电荷密度为
+\begin{equation}
+	\sigma_{\mathrm{b}}
+	=
+	\bm{P}\cdot\bm{n}.
+	\label{eq:10:bound-surface-charge}
+\end{equation}
+其中 $\bm{n}$ 是介质表面向外的法向单位矢量。
+
+若区域 $1$ 和区域 $2$ 都发生极化，并取 $\bm{n}$ 从区域 $1$ 指向区域 $2$，则界面上的净束缚面电荷密度为
+\[
+\sigma_{\mathrm{b}}
+=
+\bm{n}\cdot(\bm{P}_{1}-\bm{P}_{2}).
+\]
+
+总电场仍然满足 Gauss 定律
+\[
+\bm{\nabla}\cdot\bm{E}
+=
+\frac{\rho_{\mathrm{f}}+\rho_{\mathrm{b}}}{\varepsilon_{0}}.
+\]
+代入 \eqref{eq:10:bound-volume-charge}，得到
+\[
+\bm{\nabla}\cdot\bm{E}
+=
+\frac{\rho_{\mathrm{f}}-\bm{\nabla}\cdot\bm{P}}{\varepsilon_{0}}.
+\]
+整理可得
+\[
+\bm{\nabla}\cdot
+(\varepsilon_{0}\bm{E}+\bm{P})
+=
+\rho_{\mathrm{f}}.
+\]
+于是定义电位移矢量
+\begin{equation}
+	\bm{D}
+	=
+	\varepsilon_{0}\bm{E}
+	+
+	\bm{P}.
+	\label{eq:10:d-definition}
+\end{equation}
+则介质中的 Gauss 定律写为
+\begin{equation}
+	\bm{\nabla}\cdot\bm{D}
+	=
+	\rho_{\mathrm{f}}.
+	\label{eq:10:gauss-d}
+\end{equation}
+
+需要强调的是，$\bm{D}$ 不是新的真实电场，而是为了把自由电荷和束缚电荷分开处理而引入的辅助场。真实作用在电荷上的仍然是 $\bm{E}$。引入 $\bm{D}$ 的好处是，方程 \eqref{eq:10:gauss-d} 的源只包含自由电荷，而束缚电荷的影响被吸收到 $\bm{P}$ 中。
+
+对于线性各向同性介质，极化强度与电场成正比：
+\[
+\bm{P}
+=
+\varepsilon_{0}\chi_{\mathrm{e}}\bm{E},
+\]
+其中 $\chi_{\mathrm{e}}$ 是电极化率。于是
+\[
+\bm{D}
+=
+\varepsilon_{0}(1+\chi_{\mathrm{e}})\bm{E}
+=
+\varepsilon\bm{E}.
+\]
+这里
+\[
+\varepsilon
+=
+\varepsilon_{0}\varepsilon_{\mathrm{r}}
+=
+\varepsilon_{0}(1+\chi_{\mathrm{e}})
+\]
+是介质的介电常数。
+
+若介质均匀且 $\varepsilon$ 为常数，由 $\bm{E}=-\bm{\nabla}\phi$ 得
+\[
+\bm{\nabla}\cdot(\varepsilon\bm{E})
+=
+\rho_{\mathrm{f}},
+\]
+即
+\[
+-\varepsilon\nabla^{2}\phi
+=
+\rho_{\mathrm{f}}.
+\]
+因此
+\[
+\nabla^{2}\phi
+=
+-\frac{\rho_{\mathrm{f}}}{\varepsilon}.
+\]
+这是真空 Poisson 方程在均匀线性介质中的对应形式。
+
+介质界面上的边界条件也应区分 $\bm{E}$ 和 $\bm{D}$。由静电场无旋性仍有
+\[
+\bm{n}\times(\bm{E}_{2}-\bm{E}_{1})=0.
+\]
+由 $\bm{\nabla}\cdot\bm{D}=\rho_{\mathrm{f}}$ 可得
+\[
+\bm{n}\cdot(\bm{D}_{2}-\bm{D}_{1})
+=
+\sigma_{\mathrm{f}}.
+\]
+其中 $\sigma_{\mathrm{f}}$ 是界面上的自由面电荷密度。若界面没有自由面电荷，则 $\bm{D}$ 的法向分量连续。
+
+\subsection{镜像法在介质分界面上的应用}
+
+导体边界的镜像法可以推广到平面介质分界面。与接地导体不同，这时需要同时满足电势连续和电位移法向分量的边界条件，因而两侧区域采用的等效电荷并不相同。
+
+\begin{example}{平面介质分界面附近的点电荷}{10,10}
+区域 $z>0$ 和 $z<0$ 分别充满介电常数为 $\varepsilon_{1}$ 和
+$\varepsilon_{2}$ 的线性均匀介质。点电荷 $q$ 位于
+$(0,0,d)$。设分界面上没有自由面电荷，求两侧的电势。
+
+\begin{solution}
+在区域 $z>0$ 中，将界面响应表示为位于 $(0,0,-d)$ 的像电荷
+$q'$；在区域 $z<0$ 中，则用位于真实电荷位置的等效电荷 $q''$
+表示电势。于是设
+\[
+\phi_{1}
+=
+\frac{1}{4\pi\varepsilon_{1}}
+\left(
+\frac{q}{R_{+}}
++
+\frac{q'}{R_{-}}
+\right),
+\qquad
+\phi_{2}
+=
+\frac{1}{4\pi\varepsilon_{2}}
+\frac{q''}{R_{+}},
+\]
+其中
+\[
+R_{\pm}
+=
+\sqrt{s^{2}+(z\mp d)^{2}}.
+\]
+
+界面上没有自由面电荷，因此
+\[
+\phi_{1}|_{z=0}
+=
+\phi_{2}|_{z=0},
+\qquad
+\varepsilon_{1}
+\frac{\partial\phi_{1}}{\partial z}\bigg|_{z=0}
+=
+\varepsilon_{2}
+\frac{\partial\phi_{2}}{\partial z}\bigg|_{z=0}.
+\]
+在 $z=0$ 上有 $R_{+}=R_{-}$。代入上式得到
+\[
+\frac{q+q'}{\varepsilon_{1}}
+=
+\frac{q''}{\varepsilon_{2}},
+\qquad
+q-q'=q''.
+\]
+解得
+\begin{equation}
+	q'
+	=
+	\frac{\varepsilon_{1}-\varepsilon_{2}}
+	{\varepsilon_{1}+\varepsilon_{2}}q,
+	\qquad
+	q''
+	=
+	\frac{2\varepsilon_{2}}
+	{\varepsilon_{1}+\varepsilon_{2}}q.
+	\label{eq:10:image-dielectric-charges}
+\end{equation}
+因此，$z>0$ 中的电势等效于真实电荷与像电荷 $q'$ 的叠加，而
+$z<0$ 中的电势等效于电荷 $q''$ 通过介质 $\varepsilon_{2}$ 产生的电势。
+
+当 $\varepsilon_{2}>\varepsilon_{1}$ 时，$q'$ 与 $q$ 异号，点电荷受到指向界面的吸引；当 $\varepsilon_{2}<\varepsilon_{1}$ 时，二者同号，作用力背离界面。导体极限
+$\varepsilon_{2}\to\infty$ 给出 $q'\to-q$，恢复接地导体平面的结果。
+\end{solution}
+\end{example}
+
+\begin{example}{充满电介质的平行板电容器}{10,11}
+两块面积为 $S$ 的平行导体板相距 $d$，忽略边缘效应。极板上自由面电荷密度分别为 $+\sigma_{\mathrm{f}}$ 和 $-\sigma_{\mathrm{f}}$，板间充满介电常数为 $\varepsilon$ 的线性各向同性介质。求介质中的 $\bm{D}$、$\bm{E}$、$\bm{P}$，以及介质表面的束缚面电荷密度。
+
+\begin{solution}
+取单位法向量 $\bm{n}$ 从正极板指向负极板。由对称性，板间各场均匀并沿 $\bm{n}$ 方向。对跨过正极板的薄柱形 Gauss 面应用
+\[
+\bm{\nabla}\cdot\bm{D}=\rho_{\mathrm{f}},
+\]
+得到
+\[
+\bm{D}
+=
+\sigma_{\mathrm{f}}\bm{n}.
+\]
+由于介质满足 $\bm{D}=\varepsilon\bm{E}$，
+\[
+\bm{E}
+=
+\frac{\sigma_{\mathrm{f}}}{\varepsilon}\bm{n}.
+\]
+再由 $\bm{D}=\varepsilon_{0}\bm{E}+\bm{P}$，可得
+\[
+\bm{P}
+=
+\left(
+1-\frac{\varepsilon_{0}}{\varepsilon}
+\right)
+\sigma_{\mathrm{f}}\bm{n}.
+\]
+
+束缚面电荷密度为
+\[
+\sigma_{\mathrm{b}}
+=
+\bm{P}\cdot\bm{n}_{\mathrm{out}},
+\]
+其中 $\bm{n}_{\mathrm{out}}$ 是介质表面的外法向。介质靠近正极板一侧的外法向为 $-\bm{n}$，故
+\[
+\sigma_{\mathrm{b}}^{(+)}
+=
+-P.
+\]
+介质靠近负极板一侧的外法向为 $\bm{n}$，故
+\[
+\sigma_{\mathrm{b}}^{(-)}
+=
+P.
+\]
+也就是说，靠近正极板的介质表面出现负束缚电荷，靠近负极板的一侧出现正束缚电荷。它们产生的附加电场与原电场方向相反，从而减弱介质内部的总电场。
+\end{solution}
+\end{example}
+
+\section{静电能}
+
+静电场的能量可以从组装电荷分布所需的功得到。对真空中的连续电荷分布，静电能写为
+\begin{equation}
+	U
+	=
+	\frac{1}{2}
+	\int
+	\rho\phi\,\dif^{3}x.
+	\label{eq:10:electrostatic-energy-charge}
+\end{equation}
+因子 $1/2$ 用来避免相互作用能的重复计数。
+
+在真空中，利用 Gauss 定律
+\[
+\rho
+=
+\varepsilon_{0}\bm{\nabla}\cdot\bm{E},
+\]
+将 \eqref{eq:10:electrostatic-energy-charge} 改写为
+\[
+U
+=
+\frac{\varepsilon_{0}}{2}
+\int
+\phi\,\bm{\nabla}\cdot\bm{E}
+\,\dif^{3}x.
+\]
+使用乘积散度公式
+\[
+\bm{\nabla}\cdot(\phi\bm{E})
+=
+\phi\bm{\nabla}\cdot\bm{E}
++
+\bm{E}\cdot\bm{\nabla}\phi,
+\]
+可得
+\[
+\phi\bm{\nabla}\cdot\bm{E}
+=
+\bm{\nabla}\cdot(\phi\bm{E})
+-
+\bm{E}\cdot\bm{\nabla}\phi.
+\]
+代入能量表达式：
+\[
+U
+=
+\frac{\varepsilon_{0}}{2}
+\int
+\bm{\nabla}\cdot(\phi\bm{E})
+\,\dif^{3}x
+-
+\frac{\varepsilon_{0}}{2}
+\int
+\bm{E}\cdot\bm{\nabla}\phi
+\,\dif^{3}x.
+\]
+第一项由 Gauss 定理化为边界项：
+\[
+\frac{\varepsilon_{0}}{2}
+\oint_{\partial V}
+\phi\bm{E}\cdot\dif\bm{a}.
+\]
+若电荷分布局域在有限区域内，并取边界趋于无穷远，则该边界项消失。又由于
+\[
+\bm{E}
+=
+-\bm{\nabla}\phi,
+\]
+有
+\[
+\bm{E}\cdot\bm{\nabla}\phi
+=
+-E^{2}.
+\]
+于是得到
+\begin{equation}
+	U
+	=
+	\frac{\varepsilon_{0}}{2}
+	\int
+	E^{2}\,\dif^{3}x.
+	\label{eq:10:electrostatic-energy-field}
+\end{equation}
+因此真空静电场能量密度为
+\[
+u_{\mathrm{e}}
+=
+\frac{\varepsilon_{0}}{2}E^{2}.
+\]
+这正是第九章电磁场能量密度在静电情形下的退化形式。
+
+对于由零场状态准静态建立起来的线性电介质，静电能密度可以写为
+\[
+u_{\mathrm{e}}
+=
+\frac{1}{2}
+\bm{E}\cdot\bm{D}.
+\]
+总能量为
+\[
+U
+=
+\frac{1}{2}
+\int
+\bm{E}\cdot\bm{D}\,\dif^{3}x.
+\]
+若介质均匀且线性各向同性，$\bm{D}=\varepsilon\bm{E}$，则
+\[
+U
+=
+\frac{1}{2}
+\int
+\varepsilon E^{2}\,\dif^{3}x.
+\]
+
+对于点电荷体系，若有 $N$ 个点电荷 $q_{i}$ 位于 $\bm{r}_{i}$，排除每个点电荷自身的发散自能后，相互作用能为
+\[
+U'
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\sum_{i<j}
+\frac{q_{i}q_{j}}{|\bm{r}_{i}-\bm{r}_{j}|}.
+\]
+若不排除自能，点电荷在自身位置产生的电势发散，从而导致经典点电荷自能发散。这说明经典点电荷模型在任意小尺度上并不自洽，实际物理问题中通常只讨论可测的相互作用能或有限大小电荷分布的场能。
+
+\begin{example}{均匀带电球体的静电能}{10,12}
+半径为 $R$ 的实心球内均匀分布着总电荷 $Q$。利用场能表达式计算该带电球体的静电能。
+
+\begin{solution}
+由 Gauss 定律，球内外电场分别为
+\[
+E_{\mathrm{in}}(r)
+=
+\frac{Q}{4\pi\varepsilon_{0}}
+\frac{r}{R^{3}},
+\qquad
+r<R,
+\]
+以及
+\[
+E_{\mathrm{out}}(r)
+=
+\frac{Q}{4\pi\varepsilon_{0}r^{2}},
+\qquad
+r>R.
+\]
+静电能为
+\[
+U
+=
+\frac{\varepsilon_{0}}{2}
+\int E^{2}\,\dif^{3}x
+=
+U_{\mathrm{in}}+U_{\mathrm{out}}.
+\]
+球内部分为
+\[
+\begin{aligned}
+U_{\mathrm{in}}
+&=
+\frac{\varepsilon_{0}}{2}
+4\pi
+\int_{0}^{R}
+E_{\mathrm{in}}^{2}(r)r^{2}\,\dif r\\
+&=
+\frac{Q^{2}}{40\pi\varepsilon_{0}R}.
+\end{aligned}
+\]
+球外部分为
+\[
+\begin{aligned}
+U_{\mathrm{out}}
+&=
+\frac{\varepsilon_{0}}{2}
+4\pi
+\int_{R}^{\infty}
+E_{\mathrm{out}}^{2}(r)r^{2}\,\dif r\\
+&=
+\frac{Q^{2}}{8\pi\varepsilon_{0}R}.
+\end{aligned}
+\]
+因此总静电能为
+\[
+U
+=
+\frac{3Q^{2}}{20\pi\varepsilon_{0}R}
+=
+\frac{3}{5}
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{Q^{2}}{R}.
+\]
+该结果是有限的，因为电荷分布在具有有限半径的球体内；若令 $R\to 0$ 而保持 $Q$ 不变，静电能将发散。
+\end{solution}
+\end{example}
+
+\section{本章小结}
+
+本章讨论了静电场的基本理论。静电近似下，电场满足
+\[
+\bm{\nabla}\cdot\bm{E}
+=
+\frac{\rho}{\varepsilon_{0}},
+\qquad
+\bm{\nabla}\times\bm{E}=0.
+\]
+由于静电场无旋，在单连通区域中可以引入电势
+\[
+\bm{E}
+=
+-\bm{\nabla}\phi.
+\]
+将该式代入 Gauss 定律，得到 Poisson 方程
+\[
+\nabla^{2}\phi
+=
+-\frac{\rho}{\varepsilon_{0}}.
+\]
+无源区域中该方程退化为 Laplace 方程
+\[
+\nabla^{2}\phi=0.
+\]
+
+点电荷的电势为
+\[
+\phi(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\frac{q}{r},
+\]
+一般电荷分布的电势为
+\[
+\phi(\bm{r})
+=
+\frac{1}{4\pi\varepsilon_{0}}
+\int
+\frac{\rho(\bm{r}')}{|\bm{r}-\bm{r}'|}
+\,\dif^{3}r'.
+\]
+这也可以理解为 Poisson 方程的 Green 函数解。
+
+静电场的边界条件为
+\[
+\bm{n}\cdot(\bm{E}_{2}-\bm{E}_{1})
+=
+\frac{\sigma}{\varepsilon_{0}},
+\qquad
+\bm{n}\times(\bm{E}_{2}-\bm{E}_{1})=0.
+\]
+导体静电平衡时，内部电场为零，导体为等势体，多余电荷分布在表面，表面外侧电场垂直于导体表面。
+
+静电边值问题的基本方程是 Poisson 方程或 Laplace 方程。Dirichlet 条件给出唯一电势；纯 Neumann 条件满足相容条件时，电势确定到一个加法常数，而电场仍然唯一。
+
+求解边值问题常用三类方法。镜像法在物理区域之外配置虚构电荷，以满足导体或界面的边界条件；有边界 Green 函数法利用 Green 第二恒等式，把电势写成体电荷与边界数据的积分；分离变量法则利用与边界几何相适应的坐标系，将 Laplace 方程化为常微分方程，并按正交本征函数展开边界电势。三种方法都以唯一性定理为依据，但适用的几何条件和计算目标不同。
+
+在电介质中，总电荷分为自由电荷和束缚电荷。极化强度 $\bm{P}$ 描述介质的束缚电荷响应，并满足
+\[
+\rho_{\mathrm{b}}
+=
+-\bm{\nabla}\cdot\bm{P}.
+\]
+引入电位移矢量
+\[
+\bm{D}
+=
+\varepsilon_{0}\bm{E}
++
+\bm{P},
+\]
+可将 Gauss 定律写成
+\[
+\bm{\nabla}\cdot\bm{D}
+=
+\rho_{\mathrm{f}}.
+\]
+
+静电能既可写为电荷分布形式
+\[
+U
+=
+\frac{1}{2}
+\int
+\rho\phi\,\dif^{3}x,
+\]
+也可写为场能形式
+\[
+U
+=
+\frac{\varepsilon_{0}}{2}
+\int
+E^{2}\,\dif^{3}x.
+\]
+在线性介质中，对应形式为
+\[
+U
+=
+\frac{1}{2}
+\int
+\bm{E}\cdot\bm{D}\,\dif^{3}x.
+\]
+
+本章的主线是：静电场由 Maxwell 方程的静态极限得到；无旋性引入电势；Gauss 定律给出 Poisson 方程；边界条件与唯一性定理确定解的存在形式；镜像法、Green 函数法和分离变量法提供具体求解工具；导体和电介质则分别体现自由电荷与束缚电荷对静电场的响应。
